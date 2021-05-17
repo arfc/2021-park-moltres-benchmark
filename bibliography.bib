@@ -1,27 +1,1408 @@
-@inproceedings{huff_extensions_2014,
-	address = {Anaheim, CA, United States},
-	title = {Extensions to the {Cyclus} {Ecosystem} {In} {Support} of {Market}-{Driven} {Transition} {Capability}},
-	abstract = {The CYCLUS Fuel Cycle Simulator [1] is a framework
-for assessment of nuclear fuel cycle options. While C Y -
-CLUS has previously been capable of system transitions
-from the current fuel cycle strategy to a future option, those
-transitions have never previously been driven by market
-forces in the simulation. This summary describes a set
-of libraries [2] that have been contibuted to the C YCLUS
-framework to enable a market-driven transition analysis.
-This simulation framework is incomplete without a suite
-of dynamically loadable libraries representing the process
-physics of the nuclear fuel cycle (i.e. mining, fuel fabri-
-cation, chemical processing, transmutation, reprocessing,
-etc.). Within Cycamore [3], the additional modules reposi-
-tory within the C YCLUS ecosystem, provides some basic li-
-braries to represent these processes. However, extension of
-C YCLUS with new capabilities is community-driven, rely-
-ing on contributions by user-developers. The libraries con-
-tributed in this work are examples of such contributions.},
-	booktitle = {Transactions of the {American} {Nuclear} {Society}},
-	publisher = {American Nuclear Society},
-	author = {Huff, Kathryn D. and Fratoni, Massimiliano and Greenberg, Harris},
+
+@article{heuer_simulation_2010,
+	title = {Simulation {Tools} and {New} {Developments} of the {Molten} {Salt} {Fast} {Reactor}},
+	copyright = {© SFEN 2010},
+	issn = {0335-5004},
+	url = {https://rgn.publications.sfen.org/articles/rgn/abs/2010/06/rgn20106p95/rgn20106p95.html},
+	doi = {10.1051/rgn/20106095},
+	abstract = {The CNRS has been involved in molten salt reactors since 1997. Starting from the Molten Salt Breeder Reactor project of Oak-Ridge, an innovative concept called Molten Salt Fast Reactor or MSFR has been proposed, resulting from extensive parametric studies in which various core arrangements, reprocessing performances and salt compositions were investigated to adapt the reactor in the framework of the deployment of a thorium based reactor fleet on a worldwide scale. The primary feature of the MSFR concept is the removal of the graphite moderator from the core (graphite-free core), resulting in a breeder reactor with a fast neutron spectrum and operated in the Thorium fuel cycle. MSFR has been recognized as a long term alternative to solid fuelled fast neutron systems with unique potential (negative safety coefficients, smaller fissile inventory, easy in-service inspection, simplified fuel cycle…) and has thus been selected for further studies by the Generation IV International Forum in 2008.In the MSFR, the liquid fuel processing is part of the reactor where a small side stream of the molten salt is processed for fission product removal and then returned to the reactor. This is fundamentally different from a solid fuel reactor where separate facilities produce the solid fuel and process the Spent Nuclear Fuel. Because of this design characteristic, the MSFR can thus operate with widely varying fuel composition. Thanks to this fuel composition flexibility, the MSFR concept may use as initial fissile load, {\textless}sup{\textgreater}233{\textless}sup/{\textgreater}U or enriched (between 5\% and 30\%) uranium or also the transuranic elements currently produced by PWRs in the world.Our reactor’s studies of the MSFR concept rely on numerical simulations making use of the MCNP neutron transport code coupled with a code for materials evolution which resolves the Bateman’s equations giving the population of each nucleus inside each part of the reactor at each moment. Because of MSR’s fundamental characteristics compared to classical solid-fuelled reactors, the classical Bateman equations have to be modified by adding two terms representing the reprocessing efficiencies and the fertile or fissile alimentation. We have finally coupled neutronic and reprocessing simulation codes in a numerical tool develop to calculate the evolution of the whole MSFR system. This tool is used to evaluate the extraction capacities of fission products and their location in the whole system (reactor and reprocessing unit), basis of any safety and radioprotection assessment of the reactor., Le CNRS s’intéresse aux réacteurs à sels fondus (RSF) depuis 1997. Dans le but de proposer un réacteur critique basé sur le cycle thorium pour la production d’énergie, des études plus complètes sont menées à partir de 1999. Une réévaluation complète du MSBR qui constituait alors la configuration de référence des RSF est tout d’abord effectuée, suivie d’une étude systématique d’optimisation du comportement de ce type de réacteurs en s’éloignant du design initial. Ces travaux ont permis de faire émerger un concept de réacteur innovant, qui a été sélectionné fin 2008 par le Forum International Generation IV comme représentant type des réacteurs à sels fondus et qui a désormais comme dénomination officielle : MSFR (Molten Salt Fast Reactor). Il s’agit d’un concept de réacteur surrégénérateur à spectre neutronique rapide et en cycle Thorium, qui présente une très bonne stabilité intrinsèque de fonctionnement grâce à des coefficients de sûreté tous négatifs, et un processus de retraitement du combustible in-situ simplifié acceptable d’un point de vue économique. Ce réacteur se place dans le contexte d’une filière d’utilisation du Thorium qui est un élément fertile abondant dans la nature, en association avec des éléments fissiles naturels ({\textless}sup{\textgreater}235{\textless}sup/{\textgreater}U) ou non ({\textless}sup{\textgreater}233{\textless}sup/{\textgreater}U) ou encore qui proviennent de la chaine de gestion des éléments radioactifs à vie longue des réacteurs actuels (Np, Pu, Am, …).Les études menées sont basées sur le couplage du code de transport de neutrons MCNP avec le code d’évolution des matériaux REM développé au CNRS. La résolution des équations de Bateman qui est effectuée permet de connaître la population de chaque noyau dans chaque partie du réacteur à chaque instant. Du fait des caractéristiques fondamentales des RSF qui sont très différentes de celles des réacteurs à combustible solide, ces équations doivent être modifiées pour prendre en compte la capacité d’alimentation en matière fissile et fertile, ainsi que le retraitement du sel combustible, de manière continue sans arrêt du réacteur. Nous avons finalement associé le code décrivant l’évolution du coeur et une représentation simulée du retraitement pour construire un outil numérique servant au calcul de l’évolution du système complet. Cet outil permet d’évaluer l’efficacité du retraitement vis-à-vis de l’ensemble des produits de fission (en supposant une efficacité donnée pour le procédé physicochimique utilisé), ainsi que de déterminer leur localisation dans le système. Ces informations sont essentielles pour pouvoir aborder une étude de la sûreté ou de la radioprotection du système.},
+	language = {en},
+	number = {6},
+	urldate = {2018-02-01},
+	journal = {Revue Générale Nucléaire},
+	author = {Heuer, D. and Merle-Lucotte, E. and Allibert, M. and Doligez, X. and Ghetta, V.},
+	year = {2010},
+	pages = {95--100},
+	file = {Heuer et al. - 2010 - Simulation Tools and New Developments of the Molte.pdf:/home/sunmyung/Zotero/storage/N9LPQ8AB/Heuer et al. - 2010 - Simulation Tools and New Developments of the Molte.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/ECV96N73/rgn20106p95.html:text/html}
+}
+
+@article{rosenthal_molten-salt_1970,
+	title = {Molten-{Salt} {Reactors} - {History}, {Status}, and {Potential}},
+	volume = {8},
+	issn = {0550-3043},
+	url = {https://doi.org/10.13182/NT70-A28619},
+	doi = {10.13182/NT70-A28619},
+	abstract = {Molten-salt breeder reactors (MSBR’s) are being developed by the Oak Ridge National Laboratory for generating low-cost power while extending the nation’s resources of fissionable fuel. The fluid fuel in these reactors, consisting of UF4 and ThF4 dissolved in fluorides of beryllium and lithium, is circulated through a reactor core moderated by graphite. Technology developments over the past 20 years have culminated in the successful operation of the 8-MW(th) MoltenSalt Reactor Experiment (MSRE), and have indicated that operation with a molten fuel is practical, that the salt is stable under reactor conditions, and that corrosion is very low. Processing of the MSRE fuel has demonstrated the MSR processing associated with high-performance converters. New fuel processing methods under development should permit MSR’s to operate as economical breeders. These features, combined with high thermal efficiency (44\%) and low primary system pressure, give MSR converters and breeders potentially favorable economic, fuel utilization, and safety characteristics. Further, these reactors can be initially fueled with 233U, 235U, or plutonium. The construction cost of an MSBR power plant is estimated to be about the same as that of light-water reactors. This could lend to power costs 0.5 to 1.0 mill/kWh less than those for light-water reactors. Achievement of economic molten-salt breeder reactors requires the construction and operation of several reactors of increasing size and their associated processing plants.},
+	number = {2},
+	urldate = {2018-01-23},
+	journal = {Nuclear Applications and Technology},
+	author = {Rosenthal, M. W. and Kasten, P. R. and Briggs, R. B.},
+	month = feb,
+	year = {1970},
+	pages = {107--117},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/SJ8BSHG9/Rosenthal et al. - 1970 - Molten-Salt Reactors—History, Status, and Potentia.pdf:application/pdf;Full Text PDF:/home/sunmyung/Zotero/storage/SSYKDSVM/Rosenthal et al. - 1970 - Molten-Salt Reactors—History, Status, and Potentia.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/7NZ5QDPF/NT70-A28619.html:text/html;Snapshot:/home/sunmyung/Zotero/storage/WBG97VAY/NT70-A28619.html:text/html}
+}
+
+@techreport{fanning_sas4a/sassys-1_2017,
+	title = {The {SAS4A}/{SASSYS}-1 {Safety} {Analysis} {Code} {System}, {Version} 5},
+	url = {http://www.osti.gov/servlets/purl/1352187/},
+	abstract = {The SAS4A/SASSYS-1 computer code is developed by Argonne National Laboratory for thermal, hydraulic, and neutronic analysis of power and flow transients in liquidmetal- cooled nuclear reactors (LMRs). SAS4A was developed to analyze severe core disruption accidents with coolant boiling and fuel melting and relocation, initiated by a very low probability coincidence of an accident precursor and failure of one or more safety systems. SASSYS-1, originally developed to address loss-of-decay-heat-removal accidents, has evolved into a tool for margin assessment in design basis accident (DBA) analysis and for consequence assessment in beyond-design-basis accident (BDBA) analysis. SAS4A contains detailed, mechanistic models of transient thermal, hydraulic, neutronic, and mechanical phenomena to describe the response of the reactor core, its coolant, fuel elements, and structural members to accident conditions. The core channel models in SAS4A provide the capability to analyze the initial phase of core disruptive accidents, through coolant heat-up and boiling, fuel element failure, and fuel melting and relocation. Originally developed to analyze oxide fuel clad with stainless steel, the models in SAS4A have been extended and specialized to metallic fuel with advanced alloy cladding. SASSYS-1 provides the capability to perform a detailed thermal/hydraulic simulation of the primary and secondary sodium coolant circuits and the balance-ofplant steam/water circuit. These sodium and steam circuit models include component models for heat exchangers, pumps, valves, turbines, and condensers, and thermal/hydraulic models of pipes and plena. SASSYS-1 also contains a plant protection and control system modeling capability, which provides digital representations of reactor, pump, and valve controllers and their response to input signal changes.},
+	language = {en},
+	number = {ANL/NE-16/19, 1352187},
+	urldate = {2018-01-19},
+	author = {Fanning, T. H. and Brunett, A. J. and Sumner, T.},
+	month = jan,
+	year = {2017},
+	doi = {10.2172/1352187}
+}
+
+@article{zhang_review_2018,
+	title = {Review of conceptual design and fundamental research of molten salt reactors in {China}},
+	volume = {42},
+	issn = {1099-114X},
+	url = {http://onlinelibrary.wiley.com/doi/10.1002/er.3979/abstract},
+	doi = {10.1002/er.3979},
+	abstract = {Molten salt reactor (MSR) as 1 candidate of the generation IV advanced nuclear power systems attracted more attention in China due to its top ranked in fuel cycle and thorium utilization. Two types of MSR concepts were studied and developed in parallel, namely the MSR with liquid fuel and that with solid fuel. Abundant fundamental research including the neutronics modeling, thermal-hydraulics modeling, safety analysis, material investigation, molten salts technologies etc. were carried out. Some analysis software such as COUPLE and FANCY were developed. Several experimental facilities like high-temperature fluoride salt experiment loop have been constructed. Some passive residual heat removal systems were designed, and 1 test facility is under construction. The key MSR techniques including the extraction and separation of molten salt and construction of N-base alloy have been mastered. Based on these fundamental research, Chinese Academy of Sciences has completed the design of thorium-based MSRs with solid fuel and liquid fuel and is promoting their construction in the near future. In China, future efforts should be paid to the material, online fuel processing, Th-U fuel cycle, component design, and construction and thermal-hydraulic experiments for MSR, which are rather challenging nowadays.},
+	language = {en},
+	number = {5},
+	urldate = {2018-01-19},
+	journal = {International Journal of Energy Research},
+	author = {Zhang, Dalin and Liu, Limin and Liu, Minghao and Xu, Rongshuan and Gong, Cheng and Zhang, Jun and Wang, Chenglong and Qiu, Suizheng and Su, Guanghui},
+	year = {2018},
+	keywords = {fundamental research, liquid fuel, solid fuel, thorium utilization},
+	pages = {1834--1848},
+	file = {Full Text:/home/sunmyung/Zotero/storage/HJ3PGQLF/Zhang et al. - 2018 - Review of conceptual design and fundamental resear.pdf:application/pdf;Full Text PDF:/home/sunmyung/Zotero/storage/NS7Z2PPK/Zhang et al. - Review of conceptual design and fundamental resear.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/F6ZGQ2BL/abstract.html:text/html;Snapshot:/home/sunmyung/Zotero/storage/MA5PMVXA/er.html:text/html}
+}
+
+@misc{github_build_2017,
+	title = {Build software better, together},
+	url = {https://github.com},
+	abstract = {GitHub is where people build software. More than 21 million people use GitHub to discover, fork, and contribute to over 58 million projects.},
+	urldate = {2017-05-11},
+	journal = {GitHub},
+	author = {{GitHub}},
+	year = {2017},
+	file = {Snapshot:/home/sunmyung/Zotero/storage/9UB445Q8/github.com.html:text/html}
+}
+
+@techreport{gif_generation_2008,
+	title = {Generation {IV} {International} {Forum} 2008 {Annual} {Report}},
+	institution = {Generation IV International Forum},
+	author = {{GIF}},
+	year = {2008}
+}
+
+@patent{leblanc_integral_2015,
+	title = {Integral molten salt reactor},
+	url = {http://www.google.com/patents/WO2015017928A1},
+	abstract = {Abstract: The present relates to the integration of the primary functional elements of graphite moderator and reactor vessel and/or primary heat exchangers and/or control rods into an integral molten salt nuclear reactor (IMSR). Once the design life of the IMSR is reached, for example, in the range of 3 to 10 years, it is disconnected, removed and replaced as a unit. The spent IMSR functions as the medium or long term storage of the radioactive graphite and/or heat exchangers and/or control rods and/or fuel salt contained in the vessel of the IMSR. The present also relates to a nuclear reactor that has a buffer salt surrounding the nuclear vessel. During normal operation of the nuclear reactor, the nuclear reactor operates at a temperature that is lower than the melting point of the buffer salt and the buffer salt acts as a thermal insulator. Upon loss of external cooling, the temperature of the nuclear reactor increases and melts the buffer salt, which can then transfer heat from the nuclear core to a cooled containment vessel.},
+	assignee = {Terrestrial Energy Inc.},
+	number = {WO2015017928 A1},
+	urldate = {2017-05-11},
+	author = {LeBlanc, David},
+	month = feb,
+	year = {2015}
+}
+
+@article{cammi_multi-physics_2011,
+	title = {A multi-physics modelling approach to the dynamics of {Molten} {Salt} {Reactors}},
+	volume = {38},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454911000582},
+	doi = {10.1016/j.anucene.2011.01.037},
+	abstract = {This paper presents a multi-physics modelling (MPM) approach developed for the study of the dynamics of the Molten Salt Reactor (MSR), which has been reconsidered as one of the future nuclear power plants in the framework of the Generation IV International Forum for its several potentialities. The proposed multi-physics modelling is aimed at the description of the coupling between heat transfer, fluid dynamics and neutronics characteristics in a typical MSR core channel, taking into account the spatial effects of the most relevant physical quantities. In particular, as far as molten salt thermo-hydrodynamics is concerned, Navier–Stokes equations are used with the turbulence treatment according to the RANS (Reynolds Averaged Navier–Stokes) scheme, while the heat transfer is taken into account through the energy balance equations for the fuel salt and the graphite. As far as neutronics is concerned, the two-group diffusion theory is adopted, where the group constants (computed by means of the neutron transport code NEWT of SCALE 5.1) are included into the model in order to describe the neutron flux and the delayed neutron precursor distributions, the system time constants, and the temperature feedback effects of both graphite and fuel salt. The developed MPM approach is implemented in the unified simulation environment offered by COMSOL Multiphysics®, and is applied to study the behaviour of the system in steady-state conditions and under several transients (i.e., reactivity insertion due to control rod movements, fuel mass flow rate variations due to the change of the pump working conditions, presence of periodic perturbations), pointing out some advantages offered with respect to the conventional approaches employed in literature for the MSRs.},
+	number = {6},
+	urldate = {2013-05-28},
+	journal = {Annals of Nuclear Energy},
+	author = {Cammi, Antonio and Di Marcello, Valentino and Luzzi, Lelio and Memoli, Vito and Ricotti, Marco Enrico},
+	month = jun,
+	year = {2011},
+	keywords = {MSR, atws, read, unread, molten salt reactor, Multi-physics modelling, Reactor dynamics, Thermo-hydrodynamics},
+	pages = {1356--1372},
+	annote = {RANS ke, excellent review of previous work},
+	file = {A_multi-physics_modelling_approach_to_the_dynamics_of_Molten_Sal.mobi:/home/sunmyung/Zotero/storage/JWIMI3QI/A_multi-physics_modelling_approach_to_the_dynamics_of_Molten_Sal.mobi:application/octet-stream;cammi_multi-physics_2011.pdf:/home/sunmyung/Zotero/storage/AHXUPQ4A/cammi_multi-physics_2011.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/6FQKN2CJ/Cammi et al. - 2011 - A multi-physics modelling approach to the dynamics.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/63AWQD57/S0306454911000582.html:text/html}
+}
+
+@article{mathieu_thorium_2006,
+	title = {The thorium molten salt reactor: {Moving} on from the {MSBR}},
+	volume = {48},
+	issn = {0149-1970},
+	shorttitle = {The thorium molten salt reactor},
+	url = {http://www.sciencedirect.com/science/article/pii/S0149197006000746},
+	doi = {10.1016/j.pnucene.2006.07.005},
+	abstract = {A re-evaluation of the molten salt breeder reactor concept has revealed problems related to its safety and to the complexity of the reprocessing considered. A reflection is carried out anew in view of finding innovative solutions leading to the thorium molten salt reactor concept. Several main constraints are established and serve as guides to parametric evaluations. These then give an understanding of the influence of important core parameters on the reactor's operation. The aim of this paper is to discuss this vast research domain and to single out the molten salt reactor configurations that deserve further evaluation.},
+	number = {7},
+	urldate = {2013-05-28},
+	journal = {Progress in Nuclear Energy},
+	author = {Mathieu, L. and Heuer, D. and Brissot, R. and Garzenne, C. and Le Brun, C. and Lecarpentier, D. and Liatard, E. and Loiseaux, J.-M. and Méplan, O. and Merle-Lucotte, E. and Nuttin, A. and Walle, E. and Wilson, J.},
+	month = sep,
+	year = {2006},
+	keywords = {Feedback coefficient, Neutronic, thorium cycle, read, breeding, generation IV, Nuclear Experiment},
+	pages = {664--679},
+	annote = {Claims reprocessing issues with traditional msr designs can be alleviated with thorium fuel.- What reprocessing issues?- What about thorium fixes this?- - "the thorium fuel cycle (Th -{\textgreater} 233U) which has the advantage of producing less minor actinides than the uranium -{\textgreater} plutonium fuel cycle (238 U -{\textgreater} 239 Pu) (Lecarpentier, 2001; Nuttin et al., 2005 )."- Are all MSR's liquid fuel?- - " Molten salt reactors (MSRs) are one of the systems retained by Generation IV. MSRs are based on a liquid fuel, so that their technology is fundamentally different from the solid fuel technologies currently in use."- Liquid fuel notes :- - "Because, in an MSR, the fuel is liquid, continuous extraction of the FPs is a possibility."- History/Basics/Background- - MSRE experiment at oak ridge (8MWth) led to the MSBR experiement which had online fuel reprocessing (removal of FPs). It was too complex and failed, in general.- - Also, it turns out that MSBR had a slightly positive feedback coefficient. Bad.- - Recall? dk/dT{\textbar}\_total must be negative.- - dk/dT\_total = dk/dT{\textbar}\_doppler + dk/dT{\textbar}\_density + dk/dT{\textbar}\_graphite- - Recall? The breeding ratio expresses the balance between the creation of 233 U through neutron capture on 232 Th and thedestruction of 233 U through fission or neutron capture.- - There is some "core graphite" in these designs. What does that look like? "a lattice of hexagonal elements"- - What does "eutectic" mean?- - is the salt the fuel? salt is the fuel SOLVENT. So, the fuel is dissolved in the salt…Beryllium- Brings the melting temperature down, but is crazy toxic and expensive. There are also "problems with its chemistry"Lithium- An LiF salt can help eliminate the need for Be.- - less tritium production- - note that the lithium used is enriched to be mostly (99.99…\%) 7Li.Conclusion- " Our results confirm that there is a problem with the feedback coefficients in the MSBR. In a thermal spectrum, it would be possible to reach an acceptable concept only after in depth investigations taking into account the effect of the salt (negative feedback coefficient) and of the graphite (which makes the global feedback coefficient positive) separately. For very thermalized spectra, the global coefficients are negative thanks to the large neutron losses in the moderator but this leads also to a very poor breeding ratio. Epithermal or fast neutron spectra thus seem more favorable since they combine good feedback coefficients with satisfactory breeding ratio. However they lead to severe problems with the graphite’s ability to withstand the irradiation. As a result, the solution that removes the moderating block seems especially attractive."},
+	file = {arXiv.org Snapshot:/home/sunmyung/Zotero/storage/BWFNNTBB/0506004.html:text/html;nucl-ex/0506004 PDF:/home/sunmyung/Zotero/storage/P88D4PAF/Mathieu et al. - 2005 - The Thorium Molten Salt Reactor  Moving on from t.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/4ENSAB4V/Mathieu et al. - 2006 - The thorium molten salt reactor Moving on from th.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/WFQ6DBDV/Mathieu et al. - 2006 - The thorium molten salt reactor Moving on from th.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/CSJWUU8C/Mathieu et al. - 2006 - The thorium molten salt reactor Moving on from th.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/EXG3AUMK/S0149197006000746.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/RGUXZFUN/S0149197006000746.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/X5WR4R55/S0149197006000746.html:text/html;thoriummsr.pdf:/home/sunmyung/Zotero/storage/6EDWBWGB/thoriummsr.pdf:application/pdf;thoriummsr.pdf:/home/sunmyung/Zotero/storage/R9UGK2VX/thoriummsr.pdf:application/pdf}
+}
+
+@article{moir_recommendations_2008,
+	title = {Recommendations for a restart of molten salt reactor development},
+	volume = {49},
+	issn = {0196-8904},
+	shorttitle = {{ICENES}’2007, 13th {International} {Conference} on {Emerging} {Nuclear} {Energy} {Systems}, {June} 3–8, 2007, İstanbul, {Turkiye}},
+	url = {http://www.sciencedirect.com/science/article/pii/S0196890407004268},
+	doi = {10.1016/j.enconman.2007.07.047},
+	abstract = {The concept of the molten salt reactor (MSR) refuses to go away. The Generation-IV process lists the MSR as one of the six concepts to be considered for extending fuel resources. Good fuel utilization and good economics are required to meet the often-cited goal of 10 TWe globally and 1 TWe for the US by non-carbon energy sources in this century by nuclear fission. Strong incentives for the molten salt reactor design are its good fuel utilization, good economics, amazing fuel flexibility and promised large benefits. It can:• use thorium or uranium; • be designed with lots of graphite to have a fairly thermal neutron spectrum or without graphite moderator to have an epithermal neutron spectrum; • fission uranium isotopes and plutonium isotopes; • produces less long-lived wastes than today’s reactors by a factor of 10–100; • operate with non-weapon grade fissile fuel, or in suitable sites it can operate with enrichment between reactor-grade and weapon grade fissile fuel; • be a breeder or near breeder; • operate at temperature \&gt;1100 °C if carbon composites are successfully developed. Enhancing 232U content in the uranium to over 500 ppm makes the fuel undesirable for weapons, but it should not detract from its economic use in liquid fuel reactors: a big advantage in nonproliferation. Economics of the MSR are enhanced by operating at low pressure and high temperature and may even lead to the preferred route to hydrogen production. The cost of the electricity produced from low enriched fuel averaged over the life of the entire process, has been predicted to be about 10\% lower than that from LWRs, and 20\% lower for high-enriched fuel, with uncertainties of about 10\%. The development cost has been estimated at about 1 B\$ (e.g., a 100 M\$/year base program for 10 years) not including construction of a series of reactors leading up to the deployment of multiple commercial units at an assumed cost of 9 B\$ (450 M\$/year over 20 years). A benefit of liquid fuel is that smaller power reactors can faithfully test features of larger reactors, thereby reducing the number of steps to commercial deployment. Assuming electricity is worth \$ 50 per MWe h, then 50 years of 10 TWe power level would be worth 200 trillion dollars. If the MSR could be developed and proven for 10 B\$ and would save 10\% over its alternative, the total savings over 50 years would be 20 trillion dollars: a good return on investment even considering discounted future savings. The incentives for the molten salt reactor are so strong and its relevance to our energy policy and national security are so compelling that one asks, “Why has the reactor not already been developed?”},
+	number = {7},
+	urldate = {2013-05-28},
+	journal = {Energy Conversion and Management},
+	author = {Moir, R.W.},
+	month = jul,
+	year = {2008},
+	keywords = {Deployment scenario, Economics, read, nonproliferation, Start-up fuel},
+	pages = {1849--1858},
+	annote = {Molten salt has good fuel utilization and low proliferation concern.
+Forsberg has a paper about MSR research needs.
+Denatured fuel MSRs are a different technology.This guy seems a bit over-opinionated, with a narrow perspective.},
+	file = {Recommendations_for_a_restart_of_molten_salt_reactor_development.mobi:/home/sunmyung/Zotero/storage/JEIKHSR9/Recommendations_for_a_restart_of_molten_salt_reactor_development.mobi:application/octet-stream;recommendations.pdf:/home/sunmyung/Zotero/storage/NTPNR55D/recommendations.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/F9DQRBDV/Moir - 2008 - Recommendations for a restart of molten salt react.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/3BWGHW7P/S0196890407004268.html:text/html}
+}
+
+@article{gehin_liquid_2016,
+	title = {Liquid {Fuel} {Molten} {Salt} {Reactors} for {Thorium} {Utilization}},
+	volume = {194},
+	issn = {00295450},
+	url = {https://doi.org/10.13182/NT15-124},
+	doi = {10.13182/NT15-124},
+	abstract = {Molten salt reactors (MSRs) represent a class of reactors that use liquid salt, usually fluoride based or chloride based, as either a coolant with a solid fuel (such as fluoride salt–cooled high-temperature reactors) or as a combined coolant and fuel with the fuel dissolved in a carrier salt. For liquid-fueled MSRs, the salt can be processed online or in a batch mode to allow for removal of fission products as well as for introduction of fissile fuel and fertile materials during reactor operation. The MSR is most commonly associated with the 233U/thorium fuel cycle, as the nuclear properties of 233U combined with the online removal of parasitic absorbers enable the design of a thermal-spectrum breeder reactor. However, MSR concepts have been developed using all neutron energy spectra (thermal, intermediate, fast, and mixed-spectrum zoned concepts) and with a variety of fuels including uranium, thorium, plutonium, and minor actinides. Early MSR work was supported by a significant research and development (R\&D) program that resulted in two experimental systems operating at Oak Ridge National Laboratory in the 1950s and 1960s: the Aircraft Reactor Experiment and the Molten Salt Reactor Experiment. Subsequent design studies in the 1970s focusing on thermal-spectrum thorium-fueled systems established reference concepts for two major design variants: (1) a molten salt breeder reactor (MSBR) with multiple configurations that could breed additional fissile material or maintain self-sustaining operation and (2) a denatured molten salt reactor (DMSR) with enhanced proliferation resistance. MSRs have been selected as one of the Generation IV systems, and development activity has been seen in fast-spectrum MSRs, waste-burning MSRs, and MSRs fueled with low-enriched uranium as well as in more traditional thorium fuel cycle–based MSRs. This paper provides a historical background of MSR R\&D efforts, surveys and summarizes many of the recent developments, and provides analysis comparing thorium-based MSRs by way of example.},
+	number = {2},
+	urldate = {2016-05-06},
+	journal = {Nuclear Technology},
+	author = {Gehin, Jess C. and Powers, Jeffery J.},
+	month = may,
+	year = {2016},
+	pages = {152--161},
+	annote = {dank tables with MSBR and DMSR
+waste stream,
+CF,
+lifetime,
+graphite replacement,
+burnup
+power level
+etc
+ 
+table of resource utilization},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/U5KHRRFR/Gehin and Powers - 2016 - Liquid Fuel Molten Salt Reactors for Thorium Utili.pdf:application/pdf;Full Text PDF:/home/sunmyung/Zotero/storage/V3GV9DHE/Gehin and Powers - 2016 - Liquid Fuel Molten Salt Reactors for Thorium Utili.pdf:application/pdf;Fulltext:/home/sunmyung/Zotero/storage/LT8KVIIL/scholar.html:text/html;Liquid Fuel Molten Salt Reactors for Thorium Utilization.pdf:/home/sunmyung/Zotero/storage/NG377NQN/Liquid Fuel Molten Salt Reactors for Thorium Utilization.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/N6N3FSCJ/NT15-124.html:text/html;Snapshot:/home/sunmyung/Zotero/storage/SKGAV2GK/NT15-124.html:text/html;Snapshot:/home/sunmyung/Zotero/storage/986LM99R/NT15-124.html:text/html}
+}
+
+@article{macpherson_molten_1985,
+	title = {The {Molten} {Salt} {Reactor} {Adventure}},
+	volume = {90},
+	issn = {ISSN 0029-5639},
+	doi = {10.13182/NSE90-374},
+	abstract = {A personal history of the development of molten salt reactors in the United States is presented. The initial goal was an aircraft propulsion reactor, and a molten fluoride-fueled Aircraft Reactor Experiment was operated at Oak Ridge National Laboratory in 1954. In 1956, the objective shifted to civilian nuclear power, and reactor concepts were developed using a circulating UF4-ThF4 fuel, graphite moderator, and Hastelloy N pressure boundary. The program culminated in the successful operation of the Molten Salt Reactor Experiment in 1965 to 1969. By then the Atomic Energy Commission’s goals had shifted to breeder development; the molten salt program supported on-site reprocessing development and study of various reactor arrangements that had potential to breed. Some commercial and foreign interest contributed to the program which, however, was terminated by the government in 1976. The current status of the technology and prospects for revived interest are summarized.},
+	language = {en},
+	number = {4},
+	urldate = {2013-09-06},
+	journal = {Nuclear Science and Engineering},
+	author = {MacPherson, H. G.},
+	month = aug,
+	year = {1985},
+	keywords = {unread},
+	pages = {374--380},
+	file = {[PDF] from moltensalt.org:/home/sunmyung/Zotero/storage/PSZWM3J8/MacPherson - 1985 - The Molten Salt Reactor Adventure.pdf:application/pdf;nse_v90_n4_pp374-380.pdf:/home/sunmyung/Zotero/storage/RGPUF2H9/nse_v90_n4_pp374-380.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/NAUGQK6J/NSE90-374.html:text/html;Snapshot:/home/sunmyung/Zotero/storage/7EEL6Q93/search.html:text/html}
+}
+
+@techreport{haubenreich_msre_1964,
+	title = {Msre {Design} and {Operations} {Report}. {Part} {Iii}. {Nuclear} {Analysis}},
+	url = {http://www.osti.gov/scitech/biblio/4114686},
+	language = {English},
+	number = {ORNL-TM-730},
+	urldate = {2016-09-20},
+	institution = {Oak Ridge National Lab., Tenn.},
+	author = {Haubenreich, P. N. and Engel, J. R. and Prince, B. E. and Claiborne, H. C.},
+	month = feb,
+	year = {1964},
+	keywords = {absorption, accidents, adsorption, alpha particles, beryllium, buildings, concretes, configuration, control elements, control systems, coolant loops, Criticality, degassing, delayed neutrons, density, distribution, enrichment, equations, excursions, failures, fertile materials, fissionable materials, Fuels, fused salts, gases, graphite, graphite moderator, heat transfer, high temperature, liquid flow, lithium, losses, low temperature, mass, materials testing, moderators, monitoring, msre, multiplication factors, neutron flux, neutron sources, neutrons, nuclear reactions, operation, personnel, planning, poisoning, power plant, reactor technology, Fission products},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/DMIDAWSC/Haubenreich et al. - 1964 - Msre Design and Operations Report. Part Iii. Nucle.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/64Z7NT6C/4114686.html:text/html}
+}
+
+@article{leppanen_calculation_2014,
+	title = {Calculation of effective point kinetics parameters in the {Serpent} 2 {Monte} {Carlo} code},
+	volume = {65},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454913005628},
+	doi = {10.1016/j.anucene.2013.10.032},
+	abstract = {This paper presents the methodology developed for the Serpent 2 Monte Carlo code for the calculation of adjoint-weighted reactor point kinetics parameters: effective generation time and delayed neutron fractions. The calculation routines were implemented at the Politecnico di Milano, and they are based on the iterated fission probability (IFP) method. The developed methodology is mainly intended for the modeling of small research reactor cores, and the results are validated by comparison to experimental data and MCNP5 calculations in 31 critical configurations.},
+	urldate = {2016-09-14},
+	journal = {Annals of Nuclear Energy},
+	author = {Leppänen, Jaakko and Aufiero, Manuele and Fridman, Emil and Rachamin, Reuven and van der Marck, Steven},
+	month = mar,
+	year = {2014},
+	keywords = {Monte Carlo, Adjoint-weighted time constants, Effective delayed neutron fraction, Effective generation time},
+	pages = {272--279},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/9I9C9CI7/Leppänen et al. - 2014 - Calculation of effective point kinetics parameters.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/BM8IV98C/S0306454913005628.html:text/html}
+}
+
+@article{rouch_preliminary_2014,
+	title = {Preliminary thermal–hydraulic core design of the {Molten} {Salt} {Fast} {Reactor} ({MSFR})},
+	volume = {64},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454913004829},
+	doi = {10.1016/j.anucene.2013.09.012},
+	abstract = {A thermal–hydraulics study of the core of the Molten Salt Fast Reactor (MSFR) is presented. The numerical simulations were carried-out using a Computation Fluid Dynamic code. The main objectives of the thermal–hydraulics studies are to design the core cavity walls in order to increase the overall flow mixing and to reduce the temperature peaking factors in the salt and on the core walls. The results of the CFD simulations show that for the chosen core design acceptable temperature distributions can be obtained by using a curved core cavity shape, inlets and outlets. The hot spot temperature is less than 10 °C above the average core outlet temperature and is located in the centre of the top wall of the core. The results show also a moderate level of sensitivity to the working point.},
+	urldate = {2016-08-22},
+	journal = {Annals of Nuclear Energy},
+	author = {Rouch, H. and Geoffroy, O. and Rubiolo, P. and Laureau, A. and Brovchenko, M. and Heuer, D. and Merle-Lucotte, E.},
+	month = feb,
+	year = {2014},
+	keywords = {CFD, Core cavity, Fuel salt temperature, MSFR, Thermal–hydraulics design},
+	pages = {449--456},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/SX2W3QA5/Rouch et al. - 2014 - Preliminary thermal–hydraulic core design of the M.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/8GBUHZAG/S0306454913004829.html:text/html}
+}
+
+@article{jones_prediction_1972,
+	title = {The prediction of laminarization with a two-equation model of turbulence},
+	volume = {15},
+	issn = {0017-9310},
+	url = {http://www.sciencedirect.com/science/article/pii/0017931072900762},
+	doi = {10.1016/0017-9310(72)90076-2},
+	abstract = {The paper presents a new model of turbulence in which the local turbulent viscosity is determined from the solution of transport equations for the turbulence kinetic energy and the energy dissipation rate. The major component of this work has been the provision of a suitable form of the model for regions where the turbulence Reynolds number is low. The model has been applied to the prediction of wall boundary-layer flows in which streamwise accelerations are so severe that the boundary layer reverts partially towards laminar. In all cases, the predicted hydrodynamic and heat-transfer development of the boundary layers is in close agreement with the measured behaviour. L'article présente un nouveau modèle de turbulence dans lequel la viscosité turbulente locale est déterminée à partir de la solution des équations de transport pour l'énergie cinétique de turbulence et la vitesse de dissipation d'énergie. La majeure partie de ce travail a été l'élaboration d'une forme adéquate du modèle pour des régions où le nombre de Reynolds de turbulence est faible. Le modèle a été appliqué à la prédiction des écoulements à couche limite à la paroi dans lesquels des accélérations longitudinales sont si fortes que la couche limite redevient partiellement laminaire. Dans tous les cas, le développement hydrodynamique et thermique prévu des couches limites est en parfait accord avec le comportement observé. Die Arbeit behandelt ein neuse Turbulenzmodell, bei dem die örtliche turbulente Zähigkeit aus der Lösung der Transportgleichungen für die kinetische Energie der Turbulenz und der Energiedissipation bestimmt wird. Der Hauptteil dieser Arbeit bestand darin, eine passende Form des Modells für Bereiche zu schaffen, in denen die Reynoldszahl der Turbulenz niedrig ist. Das Modell ist auf die Bestimmung von Wandgrenzschichtströmungen angewandt worden, bein denen so starke Beschleunigungen in Strömungsrichtung auftreten, dass die Grenzschicht teilweise in den laminaren Bereicht umschlägt. In allen Fällen ist die berechnete Entwicklung der hydrodynamischen und thermischen Grenzschicht in guter Übereinstimmung mit dem gemessenen Verhalten.},
+	number = {2},
+	urldate = {2016-08-19},
+	journal = {International Journal of Heat and Mass Transfer},
+	author = {Jones, W. P and Launder, B. E},
+	month = feb,
+	year = {1972},
+	pages = {301--314},
+	file = {Jones_Launder_Prediction_of_laminarization_with_two_equation_model_of_turbulence.pdf:/home/sunmyung/Zotero/storage/94WZ934Z/Jones_Launder_Prediction_of_laminarization_with_two_equation_model_of_turbulence.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/B8E6WRBI/0017931072900762.html:text/html}
+}
+
+@mastersthesis{pettersen_coupled_2016,
+	title = {Coupled multi-physics simulations of the {Molten} {Salt} {Fast} {Reactor} using coarse-mesh thermal-hydraulics and spatial neutronics},
+	url = {http://samofar.eu/wp-content/uploads/2016/11/MScThesis-eirikEidePettersen.pdf},
+	urldate = {2016-11-29},
+	school = {MSc thesis, September 2016 (PDF)},
+	author = {Pettersen, Eirik Eide and Mikityuk, Konstantin},
+	year = {2016},
+	file = {[PDF] samofar.eu:/home/sunmyung/Zotero/storage/XVIH74PK/Pettersen and Mikityuk - 2016 - Coupled multi-physics simulations of the Molten Sa.pdf:application/pdf;Fulltext:/home/sunmyung/Zotero/storage/PA885TB5/Pettersen and Mikityuk - 2016 - Coupled multi-physics simulations of the Molten Sa.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/S7SERYFF/Pettersen and Mikityuk - 2016 - Coupled multi-physics simulations of the Molten Sa.pdf:application/pdf}
+}
+
+@article{aufiero_extended_2013,
+	title = {An extended version of the {SERPENT}-2 code to investigate fuel burn-up and core material evolution of the {Molten} {Salt} {Fast} {Reactor}},
+	volume = {441},
+	issn = {0022-3115},
+	url = {http://www.sciencedirect.com/science/article/pii/S0022311513008507},
+	doi = {10.1016/j.jnucmat.2013.06.026},
+	abstract = {In this work, the Monte Carlo burn-up code SERPENT-2 has been extended and employed to study the material isotopic evolution of the Molten Salt Fast Reactor (MSFR).
+
+This promising GEN-IV nuclear reactor concept features peculiar characteristics such as the on-line fuel reprocessing, which prevents the use of commonly available burn-up codes. Besides, the presence of circulating nuclear fuel and radioactive streams from the core to the reprocessing plant requires a precise knowledge of the fuel isotopic composition during the plant operation.
+
+The developed extension of SERPENT-2 directly takes into account the effects of on-line fuel reprocessing on burn-up calculations and features a reactivity control algorithm. It is here assessed against a dedicated version of the deterministic ERANOS-based EQL3D procedure (PSI-Switzerland) and adopted to analyze the MSFR fuel salt isotopic evolution.
+
+Particular attention is devoted to study the effects of reprocessing time constants and efficiencies on the conversion ratio and the molar concentration of elements relevant for solubility issues (e.g., trivalent actinides and lanthanides). Quantities of interest for fuel handling and safety issues are investigated, including decay heat and activities of hazardous isotopes (neutron and high energy gamma emitters) in the core and in the reprocessing stream. The radiotoxicity generation is also analyzed for the MSFR nominal conditions.
+
+The production of helium and the depletion in tungsten content due to nuclear reactions are calculated for the nickel-based alloy selected as reactor structural material of the MSFR. These preliminary evaluations can be helpful in studying the radiation damage of both the primary salt container and the axial reflectors.},
+	number = {1–3},
+	urldate = {2017-01-04},
+	journal = {Journal of Nuclear Materials},
+	author = {Aufiero, M. and Cammi, A. and Fiorina, C. and Leppänen, J. and Luzzi, L. and Ricotti, M. E.},
+	month = oct,
+	year = {2013},
+	pages = {473--486},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/FK5H57EA/Aufiero et al. - 2013 - An extended version of the SERPENT-2 code to inves.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/GACISQTN/Aufiero et al. - 2013 - An extended version of the SERPENT-2 code to inves.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/VTCQESRU/S0022311513008507.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/GV4RYF2E/S0022311513008507.html:text/html}
+}
+
+@article{leppanen_use_2017,
+	title = {On the use of delta-tracking and the collision flux estimator in the {Serpent} 2 {Monte} {Carlo} particle transport code},
+	volume = {105},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454916311367},
+	doi = {10.1016/j.anucene.2017.03.006},
+	abstract = {The Serpent Monte Carlo code was originally developed for the purpose of spatial homogenization and other computational problems encountered in the field of reactor physics. However, during the past few years the implementation of new methodologies has allowed expanding the scope of applications to new fields, including radiation transport and fusion neutronics. These applications pose new challenges for the tracking routines and result estimators, originally developed for a very specific task. The purpose of this paper is to explain how the basic collision estimator based cell flux tally in Serpent 2 is implemented, and how it is applied for calculating integral reaction rates. The methodology and its limitations are demonstrated by an example, in which the tally is applied for calculating collision rates in a problem with very low physical collision density. It is concluded that Serpent has a lot of potential to expand its scope of applications beyond reactor physics, but in order to be applied for such problems it is important that the code users understand the underlying methods and their limitations.},
+	urldate = {2017-03-21},
+	journal = {Annals of Nuclear Energy},
+	author = {Leppänen, Jaakko},
+	month = jul,
+	year = {2017},
+	keywords = {Monte Carlo, Collision flux estimator, Delta-tracking, Transport simulation},
+	pages = {161--167},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/TJF3RXPK/Leppänen - 2017 - On the use of delta-tracking and the collision flu.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/GTMPG3QE/S0306454916311367.html:text/html}
+}
+
+@article{laureau_transient_2017,
+	title = {Transient coupled calculations of the {Molten} {Salt} {Fast} {Reactor} using the {Transient} {Fission} {Matrix} approach},
+	volume = {316},
+	issn = {0029-5493},
+	url = {http://www.sciencedirect.com/science/article/pii/S002954931730081X},
+	doi = {10.1016/j.nucengdes.2017.02.022},
+	abstract = {In this paper we present transient studies of the Molten Salt Fast Reactor (MSFR). This generation IV reactor is characterized by a liquid fuel circulating in the core cavity, requiring specific simulation tools. An innovative neutronic approach called “Transient Fission Matrix” is used to perform spatial kinetic calculations with a reduced computational cost through a pre-calculation of the Monte Carlo spatial and temporal response of the system. Coupled to this neutronic approach, the Computational Fluid Dynamics code OpenFOAM is used to model the complex flow pattern in the core. An accurate interpolation model developed to take into account the thermal hydraulics feedback on the neutronics including reactivity and neutron flux variation is presented. Finally different transient studies of the reactor in normal and accidental operating conditions are detailed such as reactivity insertion and load following capacities. The results of these studies illustrate the excellent behavior of the MSFR during such transients.},
+	number = {Supplement C},
+	urldate = {2017-03-18},
+	journal = {Nuclear Engineering and Design},
+	author = {Laureau, A. and Heuer, D. and Merle-Lucotte, E. and Rubiolo, P. R. and Allibert, M. and Aufiero, M.},
+	month = may,
+	year = {2017},
+	note = {JC0004},
+	keywords = {Neutronics, MSFR, Thermal hydraulics, Transient calculation, Transient Fission Matrix},
+	pages = {112--124},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/GEYY7UJ9/Laureau et al. - 2017 - Transient coupled calculations of the Molten Salt .pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/K5JUZTZ6/Laureau et al. - 2017 - Transient coupled calculations of the Molten Salt .pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/5B25JVQI/S002954931730081X.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/IKKCKIDB/S002954931730081X.html:text/html}
+}
+
+@misc{lindsay_moltres_2017,
+	address = {University of Illinois at Urbana-Champaign},
+	title = {Moltres, software for simulating {Molten} {Salt} {Reactors}},
+	shorttitle = {Moltres},
+	url = {https://github.com/arfc/moltres},
+	abstract = {arfc/moltres: Repository for Moltres, a code for simulating Molten Salt Reactors},
+	urldate = {2017-02-24},
+	author = {Lindsay, Alexander},
+	year = {2017},
+	note = {https://github.com/arfc/moltres},
+	file = {arfc/moltres\: Repository for Moltres, a code for simulating Molten Salt Reactors:/home/sunmyung/Zotero/storage/WGEZI8WJ/moltres.html:text/html}
+}
+
+@article{nagy_steady-state_2014,
+	title = {Steady-state and dynamic behavior of a moderated molten salt reactor},
+	volume = {64},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454913004179},
+	doi = {10.1016/j.anucene.2013.08.009},
+	abstract = {The moderated Molten Salt Reactor (MSR) is an attractive breeder reactor. However, the temperature feedback coefficient of such a system can be positive due to the contribution of the moderator, an effect that can only be avoided with special measures. A previous study (Nagy et al., 2010) aimed to find a core design that is a breeder and has negative overall temperature feedback coefficient. In this paper, a coupled calculation scheme, which includes the reactor physics, heat transfer and fluid dynamics calculations is introduced. It is used both for steady-state and for dynamic calculations to evaluate the safety of the core design which was selected from the results of the previous study. The calculated feedback coefficients on the salt and graphite temperatures, power and uranium concentration prove that the core design derived in the previous optimization study is safe because the temperature feedback coefficient of the core and of the power is sufficiently negative. Transient calculations are performed to show the inherent safety of the reactor in case of reactivity insertion. As it is shown, the response of the reactor to these transients is initially dominated by the strong negative feedback of the salt. In all the presented transients, the reactor power stabilizes and the temperature of the salt never approaches its boiling point.},
+	journal = {Annals of Nuclear Energy},
+	author = {Nagy, K. and Lathouwers, D. and T’Joen, C. G. A. and Kloosterman, J. L. and van der Hagen, T. H. J. J.},
+	month = feb,
+	year = {2014},
+	keywords = {Coupled calculations, Transient calculations},
+	pages = {365--379},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/92VTQVHJ/Nagy et al. - 2014 - Steady-state and dynamic behavior of a moderated m.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/EAGZXEWN/S0306454913004179.html:text/html}
+}
+
+@article{leppanen_serpent_2014,
+	title = {The {Serpent} {Monte} {Carlo} code: {Status}, development and applications in 2013},
+	volume = {82},
+	issn = {0306-4549},
+	shorttitle = {The {Serpent} {Monte} {Carlo} code},
+	doi = {10.1016/j.anucene.2014.08.024},
+	abstract = {The Serpent Monte Carlo reactor physics burnup calculation code has been developed at VTT Technical Research Centre of Finland since 2004, and is currently used in over 100 universities and research organizations around the world. This paper presents the brief history of the project, together with the currently available methods and capabilities and plans for future work. Typical user applications are introduced in the form of a summary review on Serpent-related publications over the past few years.},
+	urldate = {2017-04-10},
+	journal = {Annals of Nuclear Energy},
+	author = {Leppanen, Jaakko and Pusa, Maria and Viitanen, Tuomas and Valtavirta, Ville and Kaltiaisenaho, Toni},
+	month = aug,
+	year = {2014},
+	keywords = {Reactor physics, Monte Carlo, Burnup calculation, Homogenization},
+	pages = {142--150},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/83V2KXJ9/Leppänen et al. - 2015 - The Serpent Monte Carlo code Status, development .pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/VT4QRTXR/Leppänen et al. - 2015 - The Serpent Monte Carlo code Status, development .pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/AQAB5875/S0306454914004095.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/9AVEULJX/S0306454914004095.html:text/html}
+}
+
+@article{gaston_physics-based_2015,
+	series = {Multi-{Physics} {Modelling} of {LWR} {Static} and {Transient} {Behaviour}},
+	title = {Physics-based multiscale coupling for full core nuclear reactor simulation},
+	volume = {84},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S030645491400543X},
+	doi = {10.1016/j.anucene.2014.09.060},
+	abstract = {Numerical simulation of nuclear reactors is a key technology in the quest for improvements in efficiency, safety, and reliability of both existing and future reactor designs. Historically, simulation of an entire reactor was accomplished by linking together multiple existing codes that each simulated a subset of the relevant multiphysics phenomena. Recent advances in the MOOSE (Multiphysics Object Oriented Simulation Environment) framework have enabled a new approach: multiple domain-specific applications, all built on the same software framework, are efficiently linked to create a cohesive application. This is accomplished with a flexible coupling capability that allows for a variety of different data exchanges to occur simultaneously on high performance parallel computational hardware. Examples based on the KAIST-3A benchmark core, as well as a simplified Westinghouse AP-1000 configuration, demonstrate the power of this new framework for tackling—in a coupled, multiscale manner—crucial reactor phenomena such as CRUD-induced power shift and fuel shuffle.},
+	urldate = {2017-04-10},
+	journal = {Annals of Nuclear Energy},
+	author = {Gaston, Derek R. and Permann, Cody J. and Peterson, John W. and Slaughter, Andrew E. and Andrš, David and Wang, Yaqi and Short, Michael P. and Perez, Danielle M. and Tonks, Michael R. and Ortensi, Javier and Zou, Ling and Martineau, Richard C.},
+	month = oct,
+	year = {2015},
+	keywords = {Full core reactor simulation, Multiphysics, Multiphysics coupling},
+	pages = {45--54},
+	file = {Gaston et al. - 2015 - Physics-based multiscale coupling for full core nu.pdf:/home/sunmyung/Zotero/storage/K84PKGIK/Gaston et al. - 2015 - Physics-based multiscale coupling for full core nu.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/SGQXWGJV/Gaston et al. - 2015 - Physics-based multiscale coupling for full core nu.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/C4TXYTMN/Gaston et al. - 2015 - Physics-based multiscale coupling for full core nu.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/PI8FZ93W/S030645491400543X.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/K6WTZCEL/S030645491400543X.html:text/html}
+}
+
+@article{fiorina_modelling_2014,
+	title = {Modelling and analysis of the {MSFR} transient behaviour},
+	volume = {64},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454913004118},
+	doi = {10.1016/j.anucene.2013.08.003},
+	abstract = {Molten Salt Reactors (MSRs) were conceived at the early stages of nuclear energy in view of the favourable features fostered by a liquid fuel. They were developed as graphite-moderated thorium-fuelled breeder reactors till the seventies, when studies on this reactor concept were mostly abandoned in favour of the liquid–metal fast breeder concepts. A decade ago, the MSRs were included among the six GEN-IV systems and a core optimization process allowing for the GEN-IV main objectives led toward a fast-spectrum MSR concept (MSFR – Molten Salt Fast Reactor). Albeit advantageous in terms of U-233 breeding and/or radio-active waste burning, the new concept lacks the notable know-how available for the thermal-spectrum MSR technology. The present paper preliminarily investigates the MSR dynamics, based on the conceptual MSFR design currently available. A primary objective is to benchmark two different models of the MSFR primary circuit, both of them including a detailed and fully-coupled (node-wise) representation of turbulent fuel-salt flow, neutron diffusion, and delayed-neutron precursor diffusion and convection. A good agreement is generally observed between the adopted models, though some discrepancies exist in the temperature-field, with ensuing mild impacts on the reactor dynamics. The performed analyses are also used for a preliminary characterization of the MSFR steady-state and accidental transient response. Some points of enhancement needed in the MSFR conceptual design are identified, mainly related to in-core velocity and temperature fields. The reactor response following major accidental transient initiators suggests a generally benign behaviour of this reactor concept.},
+	number = {Supplement C},
+	urldate = {2017-10-03},
+	journal = {Annals of Nuclear Energy},
+	author = {Fiorina, Carlo and Lathouwers, Danny and Aufiero, Manuele and Cammi, Antonio and Guerrieri, Claudia and Kloosterman, Jan Leen and Luzzi, Lelio and Ricotti, Marco Enrico},
+	month = feb,
+	year = {2014},
+	keywords = {Safety, Molten Salt Reactor (MSR), Dynamics, Molten Salt Fast Reactor (MSFR)},
+	pages = {485--498},
+	annote = {2d rans},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/IXFXRASN/Fiorina et al. - 2014 - Modelling and analysis of the MSFR transient behav.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/XPVTBLQW/Fiorina et al. - 2014 - Modelling and analysis of the MSFR transient behav.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/8I8JU2JZ/Fiorina et al. - 2014 - Modelling and analysis of the MSFR transient behav.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/9WNRAF3E/S0306454913004118.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/U2ZUJ8KI/S0306454913004118.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/275TZZMW/S0306454913004118.html:text/html}
+}
+
+@article{kirk_libmesh_2006,
+	title = {{libMesh} : a {C}++ library for parallel adaptive mesh refinement/coarsening simulations},
+	volume = {22},
+	issn = {0177-0667, 1435-5663},
+	shorttitle = {{libMesh}},
+	url = {https://link.springer.com/article/10.1007/s00366-006-0049-3},
+	doi = {10.1007/s00366-006-0049-3},
+	abstract = {In this paper we describe the libMesh (http://libmesh.sourceforge.net) framework for parallel adaptive finite element applications. libMesh is an open-source software library that has been developed to facilitate serial and parallel simulation of multiscale, multiphysics applications using adaptive mesh refinement and coarsening strategies. The main software development is being carried out in the CFDLab (http://cfdlab.ae.utexas.edu) at the University of Texas, but as with other open-source software projects; contributions are being made elsewhere in the US and abroad. The main goals of this article are: (1) to provide a basic reference source that describes libMesh and the underlying philosophy and software design approach; (2) to give sufficient detail and references on the adaptive mesh refinement and coarsening (AMR/C) scheme for applications analysts and developers; and (3) to describe the parallel implementation and data structures with supporting discussion of domain decomposition, message passing, and details related to dynamic repartitioning for parallel AMR/C. Other aspects related to C++ programming paradigms, reusability for diverse applications, adaptive modeling, physics-independent error indicators, and similar concepts are briefly discussed. Finally, results from some applications using the library are presented and areas of future research are discussed.},
+	language = {en},
+	number = {3-4},
+	urldate = {2017-04-11},
+	journal = {Engineering with Computers},
+	author = {Kirk, Benjamin S. and Peterson, John W. and Stogner, Roy H. and Carey, Graham F.},
+	month = dec,
+	year = {2006},
+	pages = {237--254},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/2Z9B88E4/Kirk et al. - 2006 - libMesh a C++ library for parallel adaptive mesh .pdf:application/pdf;Kirk et al. - 2006 - libMesh  a C++ library for parallel adaptive mesh.pdf:/home/sunmyung/Zotero/storage/GLYFYTV8/Kirk et al. - 2006 - libMesh  a C++ library for parallel adaptive mesh.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/CJ6ZDS26/10.html:text/html}
+}
+
+@article{dehart_reactor_2011,
+	title = {Reactor {Physics} {Methods} and {Analysis} {Capabilities} in {SCALE}},
+	volume = {174},
+	url = {http://epubs.ans.org/?a=11720},
+	doi = {dx.doi.org/10.13182/NT174-196},
+	number = {2},
+	urldate = {2017-04-10},
+	journal = {Nuclear Technology},
+	author = {DeHart, Mark D. and Bowman, Stephen M.},
+	month = may,
+	year = {2011},
+	pages = {196--213},
+	file = {Snapshot:/home/sunmyung/Zotero/storage/BHMIBIJ9/epubs.ans.org.html:text/html}
+}
+
+@article{zanetti_geometric_2015,
+	title = {A {Geometric} {Multiscale} modelling approach to the analysis of {MSR} plant dynamics},
+	volume = {83},
+	issn = {0149-1970},
+	url = {https://www.sciencedirect.com/science/article/pii/S0149197015000487},
+	doi = {10.1016/j.pnucene.2015.02.014},
+	abstract = {In the framework of the Generation IV International Forum (GIF-IV), six innovative concepts of nuclear reactors have been proposed as suitable to guarantee a safe, sustainable and proliferation resistant source of nuclear energy. Among these reactors, a peculiar role is played by the Molten Salt Reactor (MSR), which is the only one with a liquid and circulating fuel. This feature leads to a complex and highly coupled behaviour, which requires careful investigations, as a consequence of some unusual features like the drift of Delayed Neutron Precursors (DNP) along the primary circuit and heat transfer with a heat-generating fluid. The inherently coupled dynamics of the MSRs asks for innovative approaches to perform reliable transient analyses. The node-wise implicitly-coupled solution of the Partial Differential Equations (PDE) that govern the different phenomena in a reactor would offer in this sense an ideal solution. However, such an approach (hereinafter referred to as Multi-Physics – MP) requires a huge amount of computational power. In this work, we propose and assess a Geometric Multiscale approach on MSR, addressing the core modelling with a 3-D MP approach and the remaining part of the system – e.g., the cooling loop – with simplified 0-D models based on Ordinary Differential Equations (ODE). The aim is to conjugate the accuracy of the MP modelling approach with acceptable computation loads. Reference is made to the Molten Salt Reactor Experiment (MSRE), due to the availability of a detailed design and experimental data that are used for assessment and preliminary validation of the developed simulation tool.},
+	number = {Supplement C},
+	urldate = {2017-02-08},
+	journal = {Progress in Nuclear Energy},
+	author = {Zanetti, Matteo and Cammi, Antonio and Fiorina, Carlo and Luzzi, Lelio},
+	month = aug,
+	year = {2015},
+	keywords = {Molten Salt Reactor (MSR), Geometric Multiscale approach, Molten Salt Reactor Experiment (MSRE), Multi-Physics Modelling, System dynamic behaviour},
+	pages = {82--98},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/JIPBQTRD/Zanetti et al. - 2015 - A Geometric Multiscale modelling approach to the a.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/ZDHUIY95/Zanetti et al. - 2015 - A Geometric Multiscale modelling approach to the a.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/NTTJSHEN/S0149197015000487.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/ZZT9I5TK/S0149197015000487.html:text/html}
+}
+
+@article{aufiero_development_2014,
+	title = {Development of an {OpenFOAM} model for the {Molten} {Salt} {Fast} {Reactor} transient analysis},
+	volume = {111},
+	issn = {0009-2509},
+	url = {http://www.sciencedirect.com/science/article/pii/S0009250914001146},
+	doi = {10.1016/j.ces.2014.03.003},
+	abstract = {In the paper, the development of a multiphysics model for the transient analysis of non-moderated Molten Salt Reactors is discussed. Particular attention is devoted to the description of the adopted time integration and physics coupling strategies. The proposed model features the adoption of an implicit Runge–Kutta scheme and the coupling among neutron diffusion, Reynolds-Averaged Navier–Stokes equations for mass and momentum conservation, and energy and delayed neutron precursor balance equations, in order to accurately catch thermal feedbacks on neutronics. The solver is aimed at performing fast-running simulations of the full-core three-dimensional Molten Salt Fast Reactor geometry. The neutronics modelling is assessed against Monte Carlo simulations and the results of a simplified case study are compared to those from multiphysics tools previously developed. As an example of the capability of the model, an unprotected MSFR single pump failure accidental scenario is simulated and discussed. The main purpose of the present model is to serve as fast-running computational tool in the phase of design optimization of fuel loop components. More in general, it is of valuable help in the study of reactor physics of circulating-fuel systems.},
+	journal = {Chemical Engineering Science},
+	author = {Aufiero, Manuele and Cammi, Antonio and Geoffroy, Olivier and Losa, Mario and Luzzi, Lelio and Ricotti, Marco E. and Rouch, Hervé},
+	month = may,
+	year = {2014},
+	keywords = {Reactor dynamics, Molten Salt Reactor (MSR), Multiphysics, Molten Salt Fast Reactor (MSFR), OpenFOAM},
+	pages = {390--401},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/GFZ6CW4E/Aufiero et al. - 2014 - Development of an OpenFOAM model for the Molten Sa.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/NI9HRTWS/Aufiero et al. - 2014 - Development of an OpenFOAM model for the Molten Sa.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/TGWQHMHK/S0009250914001146.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/L4BZULIM/S0009250914001146.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/YJ3GUNQ6/S0009250914001146.html:text/html}
+}
+
+@incollection{ho_molten_2013,
+	address = {Badajoz, Spain},
+	edition = {2013},
+	series = {Energy {Book} {Series}},
+	title = {Molten salt reactors},
+	isbn = {978-84-939843-7-3},
+	number = {1},
+	booktitle = {Materials and processes for energy: communicating current research and technological developments},
+	publisher = {Formatex Research Center},
+	author = {Ho, M. K. M. and Yeoh, G. H. and Braoudakis, G.},
+	editor = {Méndez-Vilas, A.},
+	year = {2013},
+	note = {http://www.formatex.info/energymaterialsbook/
+http://www.energymaterialsbook.org/chapters.html},
+	keywords = {FHR, MSR, read},
+	pages = {761--768},
+	annote = {Molten salt reactorsho\_molten\_2013FLiBe characteristics :- carries similar amount of heat per unit volume of water- remains liquid up to 1400°C- - good safety margins- - does not need pressurisation at high temperatures.- "very low" rate of evaporation (that is, low vapor pressure)- "low" neutron absorption cross section,- are transparent- resistant to damage ("on account of ionic bonds")- so, because of it's high melting point (458/459..) flibe is solid at room temperature. Does the reactor go solid as soon as the reaction stops, or does the decay heat keep it liquid for a while. If so, how long before it becomes liquid? That should be a simple analysis, but I don't know anything about thermal hydraulics…- An advantage of solid fuel is that the fission products are contained. A disadvantage, compared to liquid fuel, is that the burnup is limited by material properties of the fuel materials. (What is the burnup limit for the pebble in the FHR?)-  ‘denatured’  MEANS {\textless}20\% enrichment""" Advantageous characteristics of the basic molten-salt reactor include:1) a reactor in which a ‘liquid core’ can burn a variety of fuels: 233 UF4 , 235 UF4  or 239 PuF4. Fuel salt in the form of uranium fluoride or plutonium fluoride is dissolved in the molten salt coolant and undergoes fission in the reactor core.2) Since the fuel is already molten in the primary coolant, there is no possibility of fuel meltdown. The primary coolant, its fuel and fission products can be easily immobilised in the event of a reactor ‘scram’ due to the salt’s high freezing ({\textasciitilde}458°C) temperature and low vapour pressure (evaporation rate). In the event of an emergency shutdown, the coolant can be drained into separate sub-critical holding tanks.3) The fluoride salt is known as FLiBe; standing for Fluoride-Lithium-Beryllium. FLiBe has a melting temperature of {\textasciitilde}458°C and a boiling temperature of {\textasciitilde}1400°C. The primary coolant fuel salt has a molar composition of 70\% 7 LiF, 18\% BeF2  and a 12\% mixture of 235 UF4 , ThF4  and ZrF4 . The secondary coolant salt responsible for driving the turbine generators is composed of lithium fluoride and beryllium fluoride only and has a 2:1 lithium to beryllium ratio (Li2 BeF4 ).4) FLiBe has a similar volumetric heat capacity and a similar thermal conductivity compared to pressurized water. The higher boiling point and lower vapour pressure of FLiBe means MSRs operate at higher thermal efficiencies, and the ability to operate without pressurisation compared to current water-cooled PWRs.5) Unlike Na-K coolants of Fast Breeder Reactors, FLiBe will not violently react with water or burn in air.6) Since MSRs do not require a pressurised primary-containment or a large secondary containment building for steam capture as needed for PWRs, MSR reactor size and back-up safety systems can be reduced in volume and complexity.7) Costly PWR fuel-bundle fabrication is unnecessary for liquid fueled MSRs, reducing operational costs.8) With a molten core with liquid fuel, krypton and xenon poisons can be out-gassed and removed from the primary coolant during operation, avoiding the ceramic cracking and damage associated with UO2  pellet irradiation.9) A liquid fuel MSR works well when deployed in tandem with a reprocessing facility to maintain minimum fissile inventory in the core. Fuel reprocessing including refueling and waste removal can occur whilst the MSR remains at power (ie. on-the-fly reprocessing). Also, sufficiently low fission inventory in the salt can be maintained so that decay heat could be minimised after reactor shutdown.10) Since the primary cooling loop operates at a high temperature (700°C - 1000°C), it is possible to use Brayton cycle turbines that are compact and have the potential to deliver 45\% thermal-mechanical conversion efficiency.Challenges to be addressed for liquid-fuel molten salts reactors with FLiBe:1) the primary coolant loop will be highly radioactive due to fission products being in solution with the primary coolant salt. This will complicate maintenance procedures which would require the use of flushing salts and remote handling techniques.2) Beryllium is chemically toxic.3) lithium-7 must be +99.99\% pure and its isotopic separation from Lithium-6 is costly. Lithium 6 is unwanted for its transmutation into tritium upon neutron capture. The presence of tritium (an isotope of hydrogen) can degrade the structural integrity of the containment vessel.4) Close attention must be paid to the chemical composition of the salt to maintain a chemically reduced solution for deterring uranium out-precipitation. The out precipitation of uranium would lead to solid uranium depositing on the bottom of the reactor vessel, causing local hot spots that may affect the integrity of the primary containment vessel. One manner of control is to vary the mixture of UF4  to UF3  during operations to maintain a slight excess of fluorine molecules.5) As the fuel is burnt in the core, fission products will be produced. Each fission product and daughter decay products would react differently with the metal alloy containment vessel. More work needs to be done to understand the reaction between alloys and fission products.6) The benefit of having a primary coolant with a high melting point that will ‘freeze easily’ to immobilize waste could result in some operational challenges. Some areas of the reactor that loose heat easily – eg heat exchanger surfaces and long narrow tubing, must be sufficiently well designed so they don’t freeze over during reactor operation.7) FLiBe salts have the ability to maintain a liquid form up to 1400°C, allowing the possibility for very high temperature operations. The metallic alloys containing the liquid thus become the system’s weakest link. To exploit FLiBe’s advantages, new metallic alloys or non-metallics (eg. C-Si) resistant to both high temperatures and radiation need to be developed and qualified.Proponents of the MSR design often talk of using U-233, bred from thorium, as fuel. Characteristics of the thorium fuel cycle include:1) U-233 breeding by Th-232 neutron capture. Fast or thermal neutron capture by Th-232 produces Th-233 (halflife 22min) beta decaying to Pa-233 (half-life 27days) and beta decaying again to U-233 (half-life 1.59 x 105 years) following the Neptunium decay series.2) U-233 can be chemically separated from Pa-233 and Th-232 in contrast to costly U-235/U 238 isotopic separation.3) From a nuclear non-proliferation stand point using thorium / U-233 is preferable. The breeding of U-233 contains trace amounts of a hard-gamma emitter: Tl-208. This makes U-233 difficult to handle and easier to detect.4) The hard-gamma emitting decay products U-233 means they are difficult to handle and fabricate into dioxide pellet fuel. The use of U-233 is more straight-forward in MSRs which only require their dissolution in the primary coolant.5) The thorium fuel cycle produces less long-life radioactive waste compared to the U-235/U238 fuel cycle.6) Thorium reserves are plentiful; its relative abundance is 4 times that of natural uranium and has the potential to supply earth’s energy demands for thousands of years.},
+	file = {ho_molten_2013.pdf:/home/sunmyung/Zotero/storage/NXU753GF/ho_molten_2013.pdf:application/pdf}
+}
+
+@inproceedings{merle-lucotte_launching_2011,
+	title = {Launching the thorium fuel cycle with the {Molten} {Salt} {Fast} {Reactor}},
+	url = {https://www.researchgate.net/profile/Elsa_Merle-Lucotte/publication/280855626_Launching_the_thorium_fuel_cycle_with_the_Molten_Salt_Fast_Reactor/links/579f55c508ae5d5e1e17eccc.pdf},
+	urldate = {2017-09-15},
+	booktitle = {Proceedings of {ICAPP}},
+	author = {Merle-Lucotte, E. and Heuer, D. and Allibert, M. and Brovchenko, M. and Capellan, N. and Ghetta, V.},
+	year = {2011},
+	pages = {2--5},
+	annote = {Molten salt fast reactor with Th
+Equilibrium of U233 started MSFR
+Equilibrium of TRU started MSFR
+Radiotoxicity
+French Transition to Th / Closed
+Long-term stockpile
+ },
+	file = {[PDF] researchgate.net:/home/sunmyung/Zotero/storage/EN5T5AGG/Merle-Lucotte et al. - 2011 - Launching the thorium fuel cycle with the Molten S.pdf:application/pdf}
+}
+
+@techreport{transatomic_power_corporation_technical_2016,
+	address = {Cambridge, MA, United States},
+	type = {White {Paper}},
+	title = {Technical {White} {Paper}},
+	url = {http://www.transatomicpower.com/wp-content/uploads/2015/04/TAP-White-Paper-v2.1.pdf},
+	abstract = {Transatomic Power’s advanced molten salt reactor unlocks clean,
+safe, and low-cost nuclear energy. Our revolutionary design
+allows us to achieve a high fuel burnup in a compact system,
+solve the nuclear industry’s most pressing problems, and clear the
+way for advanced nuclear power’s global deployment.},
+	language = {English},
+	number = {2.1},
+	institution = {Transatomic Power Corporation},
+	author = {{Transatomic Power Corporation}},
 	month = nov,
+	year = {2016},
+	file = {Transatomic Power Corporation - 2016 - Technical White Paper.pdf:/home/sunmyung/Zotero/storage/556MUQ2G/Transatomic Power Corporation - 2016 - Technical White Paper.pdf:application/pdf}
+}
+
+@incollection{grape_10_2017,
+	title = {10 - {Nonproliferation} and safeguards aspects of the {MSR} fuel cycle},
+	isbn = {978-0-08-101126-3},
+	url = {https://www.sciencedirect.com/science/article/pii/B9780081011263000105},
+	abstract = {In this chapter the reader is introduced to the concepts of nonproliferation: safeguards and security. The identified threats to the peaceful nuclear fuel cycle as well as possible targets, and the existing nuclear safeguards system are discussed. The advantages and disadvantages of the molten salt reactor (MSR) fuel cycle in terms of nonproliferation are discussed and it is compared to that of the light-water reactor fuel cycle, which is widely implemented today.},
+	urldate = {2017-11-21},
+	booktitle = {Molten {Salt} {Reactors} and {Thorium} {Energy}},
+	publisher = {Woodhead Publishing},
+	author = {Grape, Sophie and Hellesen, Carl},
+	editor = {Dolan, Thomas J.},
+	year = {2017},
+	doi = {10.1016/B978-0-08-101126-3.00010-5},
+	keywords = {nonproliferation, proliferation threat, Nuclear, Safeguards},
+	pages = {261--279},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/DEVXYEHF/Grape and Hellesen - 2017 - 10 - Nonproliferation and safeguards aspects of th.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/7KZI9RWF/B9780081011263000105.html:text/html}
+}
+
+@incollection{yoshioka_7_2017,
+	title = {7 - {Materials}},
+	isbn = {978-0-08-101126-3},
+	url = {https://www.sciencedirect.com/science/article/pii/B9780081011263000075},
+	abstract = {This chapter discusses the following materials, which are specific to molten salt reactors (MSRs). The areas covered include: molten salt, solid fuels with molten salt coolants, thorium fuel cycle, moderators, and structural materials.
+Thorium fuel is also discussed in Chapters 1, Introduction and 9 Environment, waste, and resources, and reprocessing of liquid molten salt fuels is discussed in Chapter 8, Chemical processing of liquid fuel.},
+	urldate = {2017-11-21},
+	booktitle = {Molten {Salt} {Reactors} and {Thorium} {Energy}},
+	publisher = {Woodhead Publishing},
+	author = {Yoshioka, Ritsuo and Kinoshita, Motoyasu and Scott, Ian},
+	editor = {Dolan, Thomas J.},
+	year = {2017},
+	doi = {10.1016/B978-0-08-101126-3.00007-5},
+	keywords = {graphite, Fuel cycle, moderator, Hastelloy, structural material},
+	pages = {189--207},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/3U6LMML7/Yoshioka et al. - 2017 - 7 - Materials.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/HPYVQI5L/B9780081011263000075.html:text/html}
+}
+
+@incollection{dai_17_2017,
+	title = {17 - {Thorium} molten salt reactor nuclear energy system ({TMSR})},
+	isbn = {978-0-08-101126-3},
+	url = {https://www.sciencedirect.com/science/article/pii/B9780081011263000178},
+	abstract = {The thorium molten salt reactor nuclear energy system (TMSR) is designed for thorium-based nuclear energy utilization and hybrid nuclear energy application, based on a liquid-fueled thorium molten salt reactor (TMSR-LF) and a solid-fueled thorium molten salt reactor (TMSR-SF).},
+	urldate = {2017-11-21},
+	booktitle = {Molten {Salt} {Reactors} and {Thorium} {Energy}},
+	publisher = {Woodhead Publishing},
+	author = {Dai, Zhimin},
+	editor = {Dolan, Thomas J.},
+	year = {2017},
+	doi = {10.1016/B978-0-08-101126-3.00017-8},
+	keywords = {Molten salt reactor, hybrid nuclear energy application, thorium},
+	pages = {531--540},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/IUVWTXVJ/Dai - 2017 - 17 - Thorium molten salt reactor nuclear energy sy.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/QGM7UCAA/Dai - 2017 - 17 - Thorium molten salt reactor nuclear energy sy.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/SUYR248M/B9780081011263000178.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/4JZSFD3K/B9780081011263000178.html:text/html}
+}
+
+@incollection{dolan_1_2017,
+	title = {1 - {Introduction}},
+	isbn = {978-0-08-101126-3},
+	url = {https://www.sciencedirect.com/science/article/pii/B9780081011263000014},
+	abstract = {The United States demonstrated the feasibility of Molten Salt Reactors (MSRs) with the Aircraft Reactor Experiment (1954) and the Molten Salt Reactor Experiment (1965–69). Liquid fuel MSRs can avoid many of the problems of light water reactors (LWRs): fuel manufacture, fuel lifetime, refueling shutdowns, core melt (TMI accident), steam explosion (Chernobyl accident), hydrogen explosion (Fukushima Daiichi accident), and long-lived radioactive (actinide) waste disposal. Thorium fuel can be converted into U-233 fuel, instead of using U-235 from enrichment of natural uranium. One ton of ThO2 can generate as much energy as 293 tons of U3O8 and thorium is four times as abundant in the earth’s crust as uranium. Solid fuel MSRs could be similar to LWRs with molten salt coolant instead of water, so they could be developed quickly, but would lack the advantages of liquid fuel, which include no manufacture of fuel pellets, no fuel melt hazard, fuel burnup not limited by radiation damage, continuous refueling, actinide recycling, and fission product removal. The fuel processing plant must be developed to separate uranium, thorium, actinides, and fission products in a highly radioactive environment. Actinides generated by LWRs could be burned in MSRs, instead of being treated as radioactive wastes requiring geological disposal. Research on MSRs and thorium energy is underway in 23 countries, and reactor designs from several companies are described in this book.},
+	urldate = {2017-11-21},
+	booktitle = {Molten {Salt} {Reactors} and {Thorium} {Energy}},
+	publisher = {Woodhead Publishing},
+	author = {Dolan, Thomas J.},
+	year = {2017},
+	doi = {10.1016/B978-0-08-101126-3.00001-4},
+	keywords = {MSR, refueling, uranium, core melt, LWR, steam, wastes, hydrogen},
+	pages = {1--12},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/8KGGGEMH/Dolan - 2017 - 1 - Introduction.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/LKZSPXJI/B9780081011263000014.html:text/html}
+}
+
+@incollection{kloosterman_20_2017,
+	title = {20 - {Safety} assessment of the molten salt fast reactor ({SAMOFAR})},
+	isbn = {978-0-08-101126-3},
+	url = {https://www.sciencedirect.com/science/article/pii/B9780081011263000208},
+	abstract = {This chapter describes the goal, contents, and the consortium of the SAMOFAR project, which is currently the leading project in the European Union in the field of MSR research. It focuses on the safety assessment of the Molten Salt Fast Reactor and will eventually lead to an updated reactor design evaluated with a new integral safety method.},
+	urldate = {2017-11-21},
+	booktitle = {Molten {Salt} {Reactors} and {Thorium} {Energy}},
+	publisher = {Woodhead Publishing},
+	author = {Kloosterman, Jan L.},
+	editor = {Dolan, Thomas J.},
+	year = {2017},
+	doi = {10.1016/B978-0-08-101126-3.00020-8},
+	keywords = {Molten Salt Fast Reactor, Safety assessment},
+	pages = {565--570},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/7LLJFPR3/Kloosterman - 2017 - 20 - Safety assessment of the molten salt fast rea.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/6DWXAWQD/B9780081011263000208.html:text/html}
+}
+
+@inproceedings{doe_technology_2002,
+	title = {A technology roadmap for generation {IV} nuclear energy systems},
+	url = {https://www.gen-4.org/gif/jcms/c_40481/technology-roadmap},
+	booktitle = {Nuclear {Energy} {Research} {Advisory} {Committee} and the {Generation} {IV} {International} {Forum}},
+	author = {DoE, U. S.},
+	year = {2002},
+	pages = {48--52},
+	file = {genivroadmap2002.pdf:/home/sunmyung/Zotero/storage/75S9TRA6/genivroadmap2002.pdf:application/pdf}
+}
+
+@article{haubenreich_experience_1970,
+	title = {Experience with the {Molten}-{Salt} {Reactor} {Experiment}},
+	volume = {8},
+	issn = {00295450},
+	doi = {10.13182/NT8-2-118},
+	number = {2},
+	urldate = {2016-09-06},
+	journal = {Nuclear Technology},
+	author = {Haubenreich, Paul N. and Engel, J. R.},
+	month = feb,
+	year = {1970},
+	pages = {118--136},
+	file = {Haubenreich_Engel_MSREexperience.pdf:/home/sunmyung/Zotero/storage/6EIEWPDA/Haubenreich_Engel_MSREexperience.pdf:application/pdf}
+}
+
+@article{elsheikh_safety_2013,
+	title = {Safety assessment of molten salt reactors in comparison with light water reactors},
+	volume = {6},
+	issn = {1687-8507},
+	url = {http://www.sciencedirect.com/science/article/pii/S1687850713000101},
+	doi = {10.1016/j.jrras.2013.10.008},
+	abstract = {Molten salt reactors (MSRs) have a long history with the first design studies beginning in the 1950s at the Oak Ridge National Laboratory (ORNL). Traditionally these reactors are thought of as thermal breeder reactors running on the thorium to 233U cycle and the historical competitor to fast breeder reactors. In the recent years, there has been a growing interest in molten salt reactors, which have been considered in the framework of the Generation IV International Forum, because of their several potentialities and favorable features when compared with conventional solid-fueled reactors. MSRs meet many of the future goals of nuclear energy, in particular for what concerns an improved sustainability, an inherent safety with strong negative temperature coefficient of reactivity, stable coolant, low pressure operation that don not require expensive containment, easy to control, passive decay heat cooling and unique characteristics in terms of actinide burning and waste reduction, while benefiting from the past experience acquired with the molten salt technology. As the only liquid-fueled reactor concept, the safety basis, characteristics and licensing of an MSR are different from solid-uranium fueled light water reactors. In this paper, a historical review of the major plant systems in MSR is presented. The features of different safety characteristics of MSR power plant are reviewed and assessment in comparison to other solid fueled light water reactors LWRs.},
+	number = {2},
+	urldate = {2018-01-08},
+	journal = {Journal of Radiation Research and Applied Sciences},
+	author = {Elsheikh, Badawy M.},
+	month = oct,
+	year = {2013},
+	keywords = {LWR safety, Molten salt reactor safety, Nuclear reactor accident, Nuclear safety},
+	pages = {63--70},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/R4PU37EJ/Elsheikh - 2013 - Safety assessment of molten salt reactors in compa.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/FCI6DLR8/Elsheikh - 2013 - Safety assessment of molten salt reactors in compa.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/98N9YQRW/S1687850713000101.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/7SMEXTYL/S1687850713000101.html:text/html}
+}
+
+@article{lindsay_introduction_2018,
+	title = {Introduction to {Moltres}: {An} application for simulation of {Molten} {Salt} {Reactors}},
+	volume = {114},
+	issn = {0306-4549},
+	shorttitle = {Introduction to {Moltres}},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0306454917304760},
+	doi = {10.1016/j.anucene.2017.12.025},
+	abstract = {Moltres is a new physics application for modeling coupled physics in fluid-fuelled, molten salt reactors. This paper describes its neutronics model, thermal hydraulics model, and their coupling in the MOOSE framework. Neutron and precursor equations are implemented using an action system that allows use of an arbitrary number of groups with no change in the input card. Results for many-channel configurations in 2D-axisymmetric and 3D coordinates are presented and compared against other coupled models as well as the Molten Salt Reactor Experiment.},
+	language = {en},
+	urldate = {2018-01-08},
+	journal = {Annals of Nuclear Energy},
+	author = {Lindsay, Alexander and Ridley, Gavin and Rykhlevskii, Andrei and Huff, Kathryn},
+	month = apr,
+	year = {2018},
+	keywords = {Reactor physics, Nuclear fuel cycle, nuclear engineering, agent based modeling, Hydrologic contaminant transport, Object orientation, repository, Systems analysis, Simulation, Multiphysics, Finite elements, MOOSE, Parallel computing},
+	pages = {530--540},
+	annote = {2d prescribed},
+	file = {Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:/home/sunmyung/Zotero/storage/RCWUNGTP/Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:application/pdf;Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:/home/sunmyung/Zotero/storage/3GEC6NQ9/Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:application/pdf;Moltres.pdf:/home/sunmyung/Zotero/storage/4XDXRICB/Moltres.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/E2T9U5IX/Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/3DT9TEY3/S0306454917304760.html:text/html}
+}
+
+@article{bettis_design_1970,
+	title = {The {Design} and {Performance} {Features} of a {Single}-{Fluid} {Molten}-{Salt} {Breeder} {Reactor}},
+	volume = {8},
+	issn = {0550-3043},
+	url = {https://doi.org/10.13182/NT70-A28625},
+	doi = {10.13182/NT70-A28625},
+	abstract = {A conceptual design has been made of a single-fluid 1000 MW(e) Molten-Salt Breeder Reactor (MSBR) power station based on the capabilities of present technology. The reactor vessel is 22ft in diameter × 20 ft high and is fabricated of Hastelloy-N with graphite as the moderator and reflector. The fuel is 233U carried in a LiF-BeF2-ThF4 mixture which is molten above 930°F. Thorium is converted to 233U in excess of fissile burnup so that bred material is a plant product. The estimated fuel yield is 3.3\% per year.The estimated construction cost of the station is comparable to PWR total construction costs. The power production cost, including fuel-cycle and graphite replacement costs, with private utility financing, is estimated to be 0.5 to 1 mill/kWh less than that for present-day light-water reactors, largely due to the low fuel-cycle cost and high plant thermal efficiency.After engineering development of the fuel purification processes and large-scale components, a practical plant similar to the one described here appears to be feasible.},
+	number = {2},
+	urldate = {2017-12-12},
+	journal = {Nuclear Applications and Technology},
+	author = {Bettis, E. S. and Robertson, Roy C.},
+	month = feb,
+	year = {1970},
+	pages = {190--207},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/WG79G7B7/Bettis and Robertson - 1970 - The Design and Performance Features of a Single-Fl.pdf:application/pdf}
+}
+
+@article{kamei_recent_2012,
+	title = {Recent {Research} of {Thorium} {Molten}-{Salt} {Reactor} from a {Sustainability} {Viewpoint}},
+	volume = {4},
+	copyright = {http://creativecommons.org/licenses/by/3.0/},
+	url = {http://www.mdpi.com/2071-1050/4/10/2399},
+	doi = {10.3390/su4102399},
+	abstract = {The most important target of the concept “sustainability” is to achieve fairness between generations. Its expanding interpolation leads to achieve fairness within a generation. Thus, it is necessary to discuss the role of nuclear power from the viewpoint of this definition. The history of nuclear power has been the control of the nuclear fission reaction. Once this is obtained, then the economy of the system is required. On the other hand, it is also necessary to consider the internalization of the external diseconomy to avoid damage to human society caused by the economic activity itself, due to its limited capacity. An extreme example is waste. Thus, reducing radioactive waste resulting from nuclear power is essential. Nuclear non-proliferation must be guaranteed. Moreover, the FUKUSHIMA accident revealed that it is still not enough that human beings control nuclear reaction. Further, the most essential issue for sustaining use of one technology is human resources in manufacturing, operation, policy-making and education. Nuclear power will be able to satisfy the requirements of sustainability only when these subjects are addressed. The author will review recent activities of a thorium molten-salt reactor (MSR) as a cornerstone for a sustainable society and describe its objectives and forecasts.},
+	language = {en},
+	number = {10},
+	urldate = {2017-12-08},
+	journal = {Sustainability},
+	author = {Kamei, Takashi},
+	month = sep,
+	year = {2012},
+	keywords = {small modular reactor, molten-salt reactor, externality, rare earth},
+	pages = {2399--2418},
+	annote = {meta thoughts about sustainability
+much deep
+ },
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/Q54RA3YC/Kamei - 2012 - Recent Research of Thorium Molten-Salt Reactor fro.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/AMBQBKSD/htm.html:text/html}
+}
+
+@article{serp_molten_2014,
+	title = {The molten salt reactor ({MSR}) in generation {IV}: {Overview} and perspectives},
+	volume = {77},
+	issn = {0149-1970},
+	shorttitle = {The molten salt reactor ({MSR}) in generation {IV}},
+	url = {http://www.sciencedirect.com/science/article/pii/S0149197014000456},
+	doi = {10.1016/j.pnucene.2014.02.014},
+	abstract = {Molten Salt Reactors (MSR) with the fuel dissolved in the liquid salt and fluoride-salt-cooled High-temperature Reactors (FHR) have many research themes in common. This paper gives an overview of the international R\&D efforts on these reactor types carried out in the framework of Generation-IV. Many countries worldwide contribute to this reactor technology, among which the European Union, France, Japan, Russia and the USA, and for the past few years China and India have also contributed. In general, the international R\&D focuses on three main lines of research. The USA focuses on the FHR, which will be a nearer-term application of liquid salt as a reactor coolant, while China also focuses on solid fuel reactors as a precursor to molten salt reactors with liquid fuel and a thermal neutron spectrum. The EU, France and Russia are focusing on the development of a fast spectrum molten salt reactor capable of either breeding or transmutation of actinides from spent nuclear fuel. Future research topics focus on liquid salt technology and materials behavior, the fuel and fuel cycle chemistry and modeling, and the numerical simulation and safety design aspects of the reactor. MSR development attracts more and more attention every year, because it is generally considered as most sustainable of the six Generation-IV designs with intrinsic safety features. Continuing joint efforts are needed to advance common molten salt reactor technologies.},
+	number = {Supplement C},
+	urldate = {2017-10-22},
+	journal = {Progress in Nuclear Energy},
+	author = {Serp, Jerome and Allibert, Michel and Benes, Ondrej and Delpech, Sylvie and Feynberg, Olga and Ghetta, Véronique and Heuer, Daniel and Holcomb, David and Ignatiev, Victor and Kloosterman, Jan Leen and Luzzi, Lelio and Merle-Lucotte, Elsa and Uhlíř, Jan and Yoshioka, Ritsuo and Zhimin, Dai},
+	month = nov,
+	year = {2014},
+	keywords = {Fuel cycle, Molten salt reactor, Gen IV, Neutronic performance, Nuclear systems},
+	pages = {308--319},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/Q5WDR3ER/Serp et al. - 2014 - The molten salt reactor (MSR) in generation IV Ov.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/WWISZQDL/Serp et al. - 2014 - The molten salt reactor (MSR) in generation IV Ov.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/Q5UID2I9/Serp et al. - 2014 - The molten salt reactor (MSR) in generation IV Ov.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/ZRQWCMGZ/S0149197014000456.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/QGLMLNIW/S0149197014000456.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/FABGBG8S/S0149197014000456.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/DLCDIEEP/S0149197014000456.html:text/html}
+}
+
+@phdthesis{fiorina_molten_2013,
+	type = {{PhD}},
+	title = {The molten salt fast reactor as a fast spectrum candidate for thorium implementation},
+	url = {https://www.politesi.polimi.it/handle/10589/74324},
+	abstract = {The thesis work investigates the Molten Salt Fast Reactor (MSFR) technology as a possible route to combine the potential advantages of thorium use in Fast Reactors (FR) with the fuel cycle advantages fostered by a liquid fuel. The MSFR emerges as a promising reactor for its capability to operate as a flexible conversion ratio reactor. It shows good performances as U-233 breeder, though uncertainties exist on the U-233 capture cross-section in the neutron energy range of interest for the MSFR. Operation as a self-sustaining reactor fosters low consumption of natural resources, very limited waste generation, and simplified fuel management thanks to the liquid fuel. The MSFR also shows promising features in terms of radioactive waste transmutation thanks to the liquid fuel, the high specific power and the relatively hard spectrum. Safety aspects are investigated through analysis of the reactor safety parameters, and via prediction of the new reactor steady-state after accidental transient initiators. The MSFR inherent safety appears comparable to that of traditional FRs, especially considering its capability to withstand all major double-fault accidents. In addition, the MSFR presents only negative reactivity feedback coefficients, which is a unique feature among fast-spectrum reactors. The system thermal-hydraulics is also investigated in view of the internal heat generation in the working fluid. A correlation is proposed and application to the MSFR allows to exclude major impacts of decay heat on the MSFR out-of-core components, with a note of caution on the design of channels with low velocities and/or large diameters. In addition, a multi-physics model is developed to investigate the thermal-hydraulic behavior of the core, showing some points of enhancement needed in the current MSFR conceptual design. The same model is employed for investigating the reactor transient response to major accidental events, confirming the MSFR promising safety features pointed out with simpler approaches, but suggesting also possible problems related to the quick fuel temperature rise in case of a loss of heat sink.},
+	urldate = {2013-05-28},
+	school = {Politecnico Di Milano},
+	author = {Fiorina, Carlo},
+	month = mar,
+	year = {2013},
+	keywords = {unread},
+	file = {[PDF] from polimi.it:/home/sunmyung/Zotero/storage/NXBD45NV/FIORINA - 2013 - The molten salt fast reactor as a fast spectrum ca.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/GGQM6IZK/74324.html:text/html}
+}
+
+@techreport{oecd/nea_jeff-3.1.2_2014,
+	title = {The {JEFF}-3.1.2 {Nuclear} {Data} {Library}},
+	number = {JEFF Report 24, OECD/NEA Data Bank},
+	institution = {OECD/NEA},
+	author = {OECD/NEA},
 	year = {2014}
+}
+
+@article{ignatiev_molten_2014,
+	title = {Molten salt actinide recycler and transforming system without and with {Th}-{U} support: {Fuel} cycle flexibility and key material properties},
+	volume = {64},
+	issn = {0306-4549},
+	shorttitle = {Molten salt actinide recycler and transforming system without and with {Th}–{U} support},
+	doi = {10.1016/j.anucene.2013.09.004},
+	abstract = {A study is under progress to examine the feasibility of MOlten Salt Actinide Recycler and Transforming (MOSART) system without and with U–Th support fuelled with different compositions of transuranic elements (TRU) trifluorides from spent LWR fuel. New design options with homogeneous core and fuel salt with high enough solubility for transuranic elements trifluorides are being examined because of new goals. The paper has the main objective of presenting the fuel cycle flexibility of the MOSART system while accounting technical constrains and experimental data received in this study. A brief description is given of the experimental results on key physical and chemical properties of fuel salt and combined materials compatibility to satisfy MOSART system requirements.},
+	number = {Supplement C},
+	urldate = {2017-10-04},
+	journal = {Annals of Nuclear Energy},
+	author = {Ignatiev, V. and Feynberg, O. and Gnidoi, I. and Merzlyakov, A. and Surenkov, A. and Uglov, V. and Zagnitko, A. and Subbotin, V. and Sannikov, I. and Toropov, A. and Afonichkin, V. and Bovet, A. and Khokhlov, V. and Shishkin, V. and Kormilitsyn, M. and Lizin, A. and Osipenko, A.},
+	month = feb,
+	year = {2014},
+	keywords = {Combined materials compatibility, Core neutronic performance, Fuel cycle flexibility, Molten salt actinide recycler and transforming system, Physical and chemical properties, Salt chemistry control},
+	pages = {408--420},
+	file = {Ignatiev et al. - 2014 - Molten salt actinide recycler and transforming sys.pdf:/home/sunmyung/Zotero/storage/7CEI4FC7/Ignatiev et al. - 2014 - Molten salt actinide recycler and transforming sys.pdf:application/pdf}
+}
+
+@article{bettis_aircraft_1957,
+	title = {The {Aircraft} {Reactor} {Experiment}},
+	volume = {2},
+	abstract = {The ARE was operated successfully in November, 1954, at various power levels up to 2.5
+MWt. The maximum steady-state fuel temperature was 1580ºF (1130 K), and there was a
+differential temperature between the inlet and outlet in the NaF-ZrF4-UF4 fuel of 355ºF (200 K).
+The fuel system was in operation for 241 hr before the reactor first became critical and the nuclear
+operation extended over a period of 221 hr. The final 74 hr of operation were in the megawatt
+range and resulted in the production of 96 MW-hr of nuclear energy. Effects of various transient
+conditions on reactor operation were determined.},
+	number = {6},
+	journal = {Nuclear Science and Engineering},
+	author = {Bettis, E. S. and Cottrell, W.B. and Mann, E.R. and Meem, J.L. and Whitman, G.D.},
+	year = {1957},
+	pages = {841--853},
+	file = {NSE_ARE_Operation.pdf:/home/sunmyung/Zotero/storage/7UGTNXI5/NSE_ARE_Operation.pdf:application/pdf}
+}
+
+@article{delpech_reactor_2009,
+	series = {Fluorine \& {Nuclear} {Energy}},
+	title = {Reactor physic and reprocessing scheme for innovative molten salt reactor system},
+	volume = {130},
+	issn = {0022-1139},
+	url = {http://www.sciencedirect.com/science/article/pii/S0022113908002054},
+	doi = {10.1016/j.jfluchem.2008.07.009},
+	abstract = {The molten salt reactor is one of the six concepts retained by the Generation IV forum in 2001. Based on the MSRE and MSBR concepts developed by ORNL in the 60s which involve a liquid fuel constituted of fluorine molten salt at a temperature close to 600°C, new developments with innovative approach and technology have been realized which contribute to strongly improve the concept. The thorium breeder potentiality is closely related to the use of a liquid fuel which is able to be periodically treated. A reprocessing scheme has been established to treat used fuel by extraction of fission products. According to the Gen IV philosophy for closed cycle nuclear reactor, the actinides are sent back in the reactor core. In this way, the wastes radiotoxicity is strongly decreased and the use of natural resource is optimized. This paper describes an innovative reactor concept, the TMSR-NM (non-moderated thorium molten salt reactor), from the nuclear physic point of view and the different steps involving in the reprocessing scheme from the chemical point of view.},
+	language = {en},
+	number = {1},
+	urldate = {2018-02-09},
+	journal = {Journal of Fluorine Chemistry - J FLUORINE CHEM},
+	author = {Delpech, S. and Merle-Lucotte, E. and Heuer, D. and Allibert, M. and Ghetta, V. and Le-Brun, C. and Doligez, X. and Picard, G.},
+	month = jan,
+	year = {2009},
+	keywords = {Thorium fuel cycle, Molten salt reactor, Electrochemistry, Reactor physic, Pyrochemistry},
+	pages = {11--17},
+	file = {Delpech et al. - 2009 - Reactor physic and reprocessing scheme for innovat.pdf:/home/sunmyung/Zotero/storage/LT55IZ94/Delpech et al. - 2009 - Reactor physic and reprocessing scheme for innovat.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/A7CI75JN/Delpech et al. - 2009 - Reactor physic and reprocessing scheme for innovat.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/B9S54ZKY/Delpech et al. - 2009 - Reactor physic and reprocessing scheme for innovat.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/Z32IFZE3/S0022113908002054.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/FWJKF4PF/S0022113908002054.html:text/html}
+}
+
+@techreport{iaea_thorium_2005,
+	address = {Vienna, Austria},
+	title = {Thorium {Fuel} {Cycle} - {Potential} {Benefits} and {Challenges}},
+	url = {http://www-pub.iaea.org/books/IAEABooks/7192/Thorium-Fuel-Cycle-Potential-Benefits-and-Challenges},
+	abstract = {Thorium Fuel Cycle Potential Benefits and Challenges},
+	language = {English},
+	number = {IAEA-TECDOC-1450},
+	urldate = {2018-02-02},
+	institution = {Nuclear Fuel Cycle and Materials Section International Atomic Energy Agency},
+	author = {IAEA},
+	month = may,
+	year = {2005},
+	pages = {113},
+	annote = {non-proliferation
+ },
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/4SR2PB6K/IAEA - 2005 - Thorium Fuel Cycle - Potential Benefits and Challe.pdf:application/pdf;IAEA Report on Thorium Fuel Cycle--May 2005.pdf:/home/sunmyung/Zotero/storage/EI8HB6GT/IAEA Report on Thorium Fuel Cycle--May 2005.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/38XVA5P2/Thorium-Fuel-Cycle-Potential-Benefits-and-Challenges.html:text/html}
+}
+
+@article{krepel_dyn3d-msr_2007,
+	title = {{DYN3D}-{MSR} spatial dynamics code for molten salt reactors},
+	volume = {34},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454907000527},
+	doi = {10.1016/j.anucene.2006.12.011},
+	abstract = {The development of spatial dynamics code for molten salt reactors (MSRs) is reported in this paper. The graphite-moderated channel type MSR – one of the ‘Generation IV’ concepts – was selected for the numerical simulation. It has several peculiarities (e.g. the drift of delayed neutrons precursors), which disable the use of standard dynamics codes. Therefore, the own DYN3D-MSR code was developed. It is based on the light water reactor code DYN3D and it allows transients simulation by 3D neutronics and parallel channel thermal-hydraulics. The neutronics and thermal-hydraulics were modified for the MSR peculiarities, where the experience from DYN1D-MSR development was exploited. The code was validated on experimental results from the MSRE experiment done in Oak Ridge National Laboratory and by the comparison with other codes especially with the 1D version. However, by the 3D code transients can be simulated, where space-dependant efforts are relevant, like local blockage of fuel channels or local temperature perturbations.},
+	language = {en},
+	number = {6},
+	urldate = {2016-08-17},
+	journal = {Annals of Nuclear Energy},
+	author = {Krepel, Jiří and Rohde, Ulrich and Grundmann, Ulrich and Weiss, Frank-Peter},
+	month = jun,
+	year = {2007},
+	pages = {449--462},
+	annote = {1D TH example},
+	file = {Křepel et al. - 2007 - DYN3D-MSR spatial dynamics code for molten salt re.pdf:/home/sunmyung/Zotero/storage/AMVNY7E6/Křepel et al. - 2007 - DYN3D-MSR spatial dynamics code for molten salt re.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/T5JKV5U6/Křepel et al. - 2007 - DYN3D-MSR spatial dynamics code for molten salt re.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/Q24HJQHD/S0306454907000527.html:text/html}
+}
+
+@article{kophazi_development_2009,
+	title = {Development of a {Three}-{Dimensional} {Time}-{Dependent} {Calculation} {Scheme} for {Molten} {Salt} {Reactors} and {Validation} of the {Measurement} {Data} of the {Molten} {Salt} {Reactor} {Experiment}},
+	volume = {163},
+	abstract = {This paper presents the development, validation, and results of a three-dimensional, time- dependent, coupled-neutronics–thermal-hydraulic calculational scheme for channel-type molten salt re- actors (MSRs). The reactor physics part is based on diffusion theory, extended by a term representing the flow of the fuel through the core. The calculation of the temperature field is done by modeling all fuel channels, which are coupled to each other by a three-dimensional heat conduction equation. For the purpose of validation, the results of the MSR Experiment (MSRE) natural-circulation experiment and the thermal feedback coefficients of the reactor have been calculated and compared.
+With the aid of a code system developed to implement this scheme, calculations were carried out for the normal operating state of the MSRE and some debris-induced channel-blocking-incident transients. In the case of the MSRE, it is shown that the severity of such an incident strongly depends on the degree of channel blocking and that high-temperature gradients in the moderator can connect thermally the adjacent fuel channels. Results are included for an unblocking transient (i.e., the debris suddenly exits the core, and the fuel flow reverts to the normal operating pattern), and it was demonstrated that during the unblocking large power peaks can be induced.},
+	number = {2},
+	journal = {Nuclear Science and Engineering},
+	author = {Kophazi, J. and Lathouwers, D. and Kloosterman, J.L.},
+	year = {2009},
+	keywords = {unread, Molten Salt Reactor (MSR), 3D, reactor physics, Core, MSR Experiment (MSRE)},
+	pages = {118--131},
+	file = {Kópházi et al. - Development of a Three-Dimensional Time-Dependent .pdf:/home/sunmyung/Zotero/storage/ZIJ5Q643/Kópházi et al. - Development of a Three-Dimensional Time-Dependent .pdf:application/pdf}
+}
+
+@techreport{smith_assessment_1974,
+	title = {An assessment of a 2500 {MWe} molten chloride salt fast reactor},
+	language = {en},
+	number = {AEEW-R956},
+	institution = {United Kindom Atomic Energy Authority},
+	author = {Smith, J. and Simmons, W. E.},
+	month = aug,
+	year = {1974},
+	pages = {79},
+	file = {Fulltext:/home/sunmyung/Zotero/storage/CS6DLW4V/Smith and Simmons - 1974 - An assessment of a 2500 MWe molten chloride salt f.pdf:application/pdf;SIMMONS - AN ASSESSMENT OF A 2500 MWe MOLTEN CHLORIDE SALT F.pdf:/home/sunmyung/Zotero/storage/A4H5NGGH/SIMMONS - AN ASSESSMENT OF A 2500 MWe MOLTEN CHLORIDE SALT F.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/BTJQKB53/Smith and Simmons - 1974 - An assessment of a 2500 MWe molten chloride salt f.pdf:application/pdf}
+}
+
+@techreport{euratom_final_2015,
+	address = {France},
+	type = {Final report},
+	title = {Final {Report} {Summary} - {EVOL} ({Evaluation} and {Viability} of {Liquid} {Fuel} {Fast} {Reactor} {System}) {\textbar} {Report} {Summary} {\textbar} {EVOL} {\textbar} {FP7}{\textbar} {European} {Commission}},
+	url = {https://cordis.europa.eu/result/rcn/159411_en.html},
+	abstract = {Executive Summary:An innovative molten salt reactor concept, the MSFR (Molten Salt Fast Reactor) is developed by CNRS (France) since 2004. Based on the particularity of using a liquid fuel, this...},
+	language = {en},
+	number = {249696},
+	urldate = {2018-05-22},
+	institution = {EURATOM},
+	author = {EURATOM},
+	year = {2015},
+	file = {Final Report Summary - EVOL (Evaluation and Viabil.pdf:/home/sunmyung/Zotero/storage/HB992DYS/Final Report Summary - EVOL (Evaluation and Viabil.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/67KEHCS2/159411_en.html:text/html}
+}
+
+@article{chadwick_endf/b-vii.1_2011,
+	series = {Special {Issue} on {ENDF}/{B}-{VII}.1 {Library}},
+	title = {{ENDF}/{B}-{VII}.1 {Nuclear} {Data} for {Science} and {Technology}: {Cross} {Sections}, {Covariances}, {Fission} {Product} {Yields} and {Decay} {Data}},
+	volume = {112},
+	issn = {0090-3752},
+	shorttitle = {{ENDF}/{B}-{VII}.1 {Nuclear} {Data} for {Science} and {Technology}},
+	doi = {10.1016/j.nds.2011.11.002},
+	abstract = {The ENDF/B-VII.1 library is our latest recommended evaluated nuclear data file for use in nuclear science and technology applications, and incorporates advances made in the five years since the release of ENDF/B-VII.0. These advances focus on neutron cross sections, covariances, fission product yields and decay data, and represent work by the US Cross Section Evaluation Working Group (CSEWG) in nuclear data evaluation that utilizes developments in nuclear theory, modeling, simulation, and experiment. The principal advances in the new library are: (1) An increase in the breadth of neutron reaction cross section coverage, extending from 393 nuclides to 423 nuclides; (2) Covariance uncertainty data for 190 of the most important nuclides, as documented in companion papers in this edition; (3) R-matrix analyses of neutron reactions on light nuclei, including isotopes of He, Li, and Be; (4) Resonance parameter analyses at lower energies and statistical high energy reactions for isotopes of Cl, K, Ti, V, Mn, Cr, Ni, Zr and W; (5) Modifications to thermal neutron reactions on fission products (isotopes of Mo, Tc, Rh, Ag, Cs, Nd, Sm, Eu) and neutron absorber materials (Cd, Gd); (6) Improved minor actinide evaluations for isotopes of U, Np, Pu, and Am (we are not making changes to the major actinides 235,238U and 239Pu at this point, except for delayed neutron data and covariances, and instead we intend to update them after a further period of research in experiment and theory), and our adoption of JENDL-4.0 evaluations for isotopes of Cm, Bk, Cf, Es, Fm, and some other minor actinides; (7) Fission energy release evaluations; (8) Fission product yield advances for fission-spectrum neutrons and 14 MeV neutrons incident on 239Pu; and (9) A new decay data sublibrary. Integral validation testing of the ENDF/B-VII.1 library is provided for a variety of quantities: For nuclear criticality, the VII.1 library maintains the generally-good performance seen for VII.0 for a wide range of MCNP simulations of criticality benchmarks, with improved performance coming from new structural material evaluations, especially for Ti, Mn, Cr, Zr and W. For Be we see some improvements although the fast assembly data appear to be mutually inconsistent. Actinide cross section updates are also assessed through comparisons of fission and capture reaction rate measurements in critical assemblies and fast reactors, and improvements are evident. Maxwellian-averaged capture cross sections at 30 keV are also provided for astrophysics applications. We describe the cross section evaluations that have been updated for ENDF/B-VII.1 and the measured data and calculations that motivated the changes, and therefore this paper augments the ENDF/B-VII.0 publication [M. B. Chadwick, P. Obložinský, M. Herman, N. M. Greene, R. D. McKnight, D. L. Smith, P. G. Young, R. E. MacFarlane, G. M. Hale, S. C. Frankle, A. C. Kahler, T. Kawano, R. C. Little, D. G. Madland, P. Moller, R. D. Mosteller, P. R. Page, P. Talou, H. Trellue, M. C. White, W. B. Wilson, R. Arcilla, C. L. Dunford, S. F. Mughabghab, B. Pritychenko, D. Rochman, A. A. Sonzogni, C. R. Lubitz, T. H. Trumbull, J. P. Weinman, D. A. Br, D. E. Cullen, D. P. Heinrichs, D. P. McNabb, H. Derrien, M. E. Dunn, N. M. Larson, L. C. Leal, A. D. Carlson, R. C. Block, J. B. Briggs, E. T. Cheng, H. C. Huria, M. L. Zerkle, K. S. Kozier, A. Courcelle, V. Pronyaev, and S. C. van der Marck, “ENDF/B-VII.0: Next Generation Evaluated Nuclear Data Library for Nuclear Science and Technology,” Nuclear Data Sheets 107, 2931 (2006)].},
+	number = {12},
+	urldate = {2018-08-09},
+	journal = {Nuclear Data Sheets},
+	author = {Chadwick, M. B. and Herman, M. and Obložinský, P. and Dunn, M. E. and Danon, Y. and Kahler, A. C. and Smith, D. L. and Pritychenko, B. and Arbanas, G. and Arcilla, R. and Brewer, R. and Brown, D. A. and Capote, R. and Carlson, A. D. and Cho, Y. S. and Derrien, H. and Guber, K. and Hale, G. M. and Hoblit, S. and Holloway, S. and Johnson, T. D. and Kawano, T. and Kiedrowski, B. C. and Kim, H. and Kunieda, S. and Larson, N. M. and Leal, L. and Lestone, J. P. and Little, R. C. and McCutchan, E. A. and MacFarlane, R. E. and MacInnes, M. and Mattoon, C. M. and McKnight, R. D. and Mughabghab, S. F. and Nobre, G. P. A. and Palmiotti, G. and Palumbo, A. and Pigni, M. T. and Pronyaev, V. G. and Sayer, R. O. and Sonzogni, A. A. and Summers, N. C. and Talou, P. and Thompson, I. J. and Trkov, A. and Vogt, R. L. and van der Marck, S. C. and Wallner, A. and White, M. C. and Wiarda, D. and Young, P. G.},
+	month = dec,
+	year = {2011},
+	pages = {2887--2996},
+	file = {ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/6KGMGM5A/S009037521100113X.html:text/html}
+}
+
+@techreport{gif_technology_2002,
+	title = {A technology roadmap for generation {IV} nuclear energy systems},
+	number = {GIF-002-00},
+	institution = {US DOE Nuclear Energy Research Advisory Committee and the Generation IV International Forum},
+	author = {GIF},
+	year = {2002},
+	file = {GIF - 2002 - A technology roadmap for generation IV nuclear ene.pdf:/home/sunmyung/Zotero/storage/96XR9M9F/GIF - 2002 - A technology roadmap for generation IV nuclear ene.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/D2QET42Z/10021308008.html:text/html}
+}
+
+@book{massachusetts_institute_of_technology_future_2003,
+	address = {Boston MA},
+	title = {The {Future} of nuclear power: an interdisciplinary {MIT} {Study}.},
+	isbn = {978-0-615-12420-9},
+	shorttitle = {The {Future} of nuclear power},
+	language = {English},
+	publisher = {MIT},
+	author = {{Massachusetts Institute of Technology}},
+	year = {2003},
+	note = {OCLC: 53208528},
+	file = {nuclearpower-full.pdf:/home/sunmyung/Zotero/storage/QRUQM5MF/nuclearpower-full.pdf:application/pdf}
+}
+
+@article{petti_future_2018,
+	title = {The future of nuclear energy in a carbon-constrained world},
+	language = {en},
+	journal = {Massachusetts Institute of Technology Energy Initiative (MITEI)},
+	author = {Petti, David},
+	year = {2018},
+	pages = {272},
+	file = {The Future of Nuclear Energy in a Carbon-Constrain.pdf:/home/sunmyung/Zotero/storage/VIFFZS43/The Future of Nuclear Energy in a Carbon-Constrain.pdf:application/pdf;The Future of Nuclear Energy in a Carbon-Constrain.pdf:/home/sunmyung/Zotero/storage/R2ITYFBM/The Future of Nuclear Energy in a Carbon-Constrain.pdf:application/pdf}
+}
+
+@article{cervi_development_2019,
+	title = {Development of a multiphysics model for the study of fuel compressibility effects in the {Molten} {Salt} {Fast} {Reactor}},
+	volume = {193},
+	issn = {0009-2509},
+	url = {http://www.sciencedirect.com/science/article/pii/S0009250918306742},
+	doi = {10.1016/j.ces.2018.09.025},
+	abstract = {Compressible fluid dynamics is of great practical interest in many industrial applications, ranging from chemistry to aeronautical industry, and to nuclear field as well. At the same time, modelling and simulation of compressible flows is a very complex task, requiring the development of specific approaches, in order to describe the effect of pressure on the fluid velocity field. Compressibility effects become even more important in the study of two-phase flows, due to the presence of a gaseous phase. In addition, compressibility is also expected to have a significant impact on other physics, such as chemical or nuclear reactions occurring in the mixture. In this perspective, multiphysics represents a useful approach to address this complex problem, providing a way to catch all the different physics that come into play as well as the coupling between them. In this work, a multiphysics model is developed for the analysis of the generation IV Molten Salt Fast Reactor (MSFR), with a specific focus on the compressibility effects of the fluid that acts as fuel in the reactor. The fuel mixture compressibility is expected to have an important effect on the system dynamics, especially in very rapid super-prompt-critical transients. In addition, the presence of a helium bubbling system used for online fission product removal could modify the fuel mixture compressibility, further affecting the system transient behaviour. Therefore, the MSFR represents an application of concrete interest, inherent to the analysis of compressibility effects and to the development of suitable modelling approaches. An OpenFOAM solver is developed to handle the fuel compressibility, the presence of gas bubbles in the reactor as well as the coupling between the system neutronics and fluid dynamics. The outcomes of this analysis point out that the fuel compressibility plays a crucial role in the evolution of fast transients, introducing delays in the expansion feedbacks that strongly affect the system dynamics. Moreover, it is found that the gas bubbles significantly alter the fuel compressibility, yielding even larger differences compared to the incompressible approximation usually adopted in the current MSFR solvers.},
+	urldate = {2018-10-11},
+	journal = {Chemical Engineering Science},
+	author = {Cervi, E. and Lorenzi, S. and Cammi, A. and Luzzi, L.},
+	month = jan,
+	year = {2019},
+	keywords = {Reactor dynamics, Multiphysics, Molten Salt Fast Reactor (MSFR), OpenFOAM, Compressible fluid dynamics},
+	pages = {379--393},
+	file = {Fulltext:/home/sunmyung/Zotero/storage/WNYVUELP/S0009250918306742.html:text/html;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/WMQ8ZVWE/Cervi et al. - 2019 - Development of a multiphysics model for the study .pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/48G8AZZI/S0009250918306742.html:text/html;Snapshot:/home/sunmyung/Zotero/storage/P39Y9VFL/S0009250918306742.html:text/html}
+}
+
+@article{rykhlevskii_modeling_2019,
+	title = {Modeling and simulation of online reprocessing in the thorium-fueled molten salt breeder reactor},
+	volume = {128},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454919300350},
+	doi = {10.1016/j.anucene.2019.01.030},
+	abstract = {In the search for new ways to generate carbon-free, reliable base-load power, interest in advanced nuclear energy technologies, particularly Molten Salt Reactors (MSRs), has resurged with multiple new companies pursuing MSR commercialization. To further develop these MSR concepts, researchers need simulation tools for analyzing liquid-fueled MSR depletion and fuel processing. However, most contemporary nuclear reactor physics software is unable to perform high-fidelity full-core depletion calculations for a reactor design with online reprocessing. This paper introduces a Python package, SaltProc, which couples with the Monte Carlo code, SERPENT2 to simulate MSR online reprocessing by modeling the changing isotopic composition of MSR fuel salt. This work demonstrates SaltProc capabilities for a full-core, high-fidelity model of the commercial Molten Salt Breeder Reactor (MSBR) concept and verifies these results to results in the literature from independent, lower-fidelity analyses.},
+	urldate = {2019-01-25},
+	journal = {Annals of Nuclear Energy},
+	author = {Rykhlevskii, Andrei and Bae, Jin Whan and Huff, Kathryn D.},
+	month = jun,
+	year = {2019},
+	keywords = {Molten salt reactor, Reactor physics, Nuclear fuel cycle, nuclear engineering, Depletion, agent based modeling, Hydrologic contaminant transport, Object orientation, repository, Systems analysis, Simulation, Multiphysics, Finite elements, MOOSE, Parallel computing, Molten salt breeder reactor, Online reprocessing, Python, Salt treatment},
+	pages = {366--379},
+	file = {Rykhlevskii et al. - 2019 - Modeling and simulation of online reprocessing in .pdf:/home/sunmyung/Zotero/storage/IQPHC25M/Rykhlevskii et al. - 2019 - Modeling and simulation of online reprocessing in .pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/P6PJ667C/S0306454919300350.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/W5RDKFMS/S0306454919300350.html:text/html}
+}
+
+@misc{comsol_ab_comsol_2018,
+	address = {Stokholm, Sweden},
+	title = {{COMSOL} {Multiphysics}},
+	url = {www.comsol.com},
+	publisher = {COMSOL AB},
+	author = {COMSOL AB},
+	year = {2018}
+}
+
+@article{peterson_overview_2017,
+	title = {Overview of the {Incompressible} {Navier}-{Stokes} simulation capabilities in the {MOOSE} {Framework}},
+	url = {http://arxiv.org/abs/1710.08898},
+	abstract = {The Multiphysics Object Oriented Simulation Environment (MOOSE) framework is a high-performance, open source, C++ finite element toolkit developed at Idaho National Laboratory. MOOSE was created with the aim of assisting domain scientists and engineers in creating customizable, high-quality tools for multiphysics simulations. While the core MOOSE framework itself does not contain code for simulating any particular physical application, it is distributed with a number of physics "modules" which are tailored to solving e.g. heat conduction, phase field, and solid/fluid mechanics problems. In this report, we describe the basic equations, finite element formulations, software implementation, and regression/verification tests currently available in MOOSE's navier\_stokes module for solving the Incompressible Navier-Stokes (INS) equations.},
+	urldate = {2019-03-08},
+	journal = {arXiv:1710.08898 [math]},
+	author = {Peterson, John W. and Lindsay, Alexander D. and Kong, Fande},
+	month = oct,
+	year = {2017},
+	note = {arXiv: 1710.08898},
+	keywords = {65N30, Mathematics - Numerical Analysis},
+	annote = {Comment: 54 pages, 16 figures, includes peer reviewer revisions},
+	file = {arXiv\:1710.08898 PDF:/home/sunmyung/Zotero/storage/UHKRDGN5/Peterson et al. - 2017 - Overview of the Incompressible Navier-Stokes simul.pdf:application/pdf;arXiv.org Snapshot:/home/sunmyung/Zotero/storage/DIYPZSJQ/1710.html:text/html}
+}
+
+@article{cervi_development_2019-1,
+	title = {Development of an {SP3} neutron transport solver for the analysis of the {Molten} {Salt} {Fast} {Reactor}},
+	volume = {346},
+	issn = {0029-5493},
+	url = {http://www.sciencedirect.com/science/article/pii/S0029549319300354},
+	doi = {10.1016/j.nucengdes.2019.03.001},
+	abstract = {The aim of this paper is the extension of a multiphysics OpenFOAM solver for the analysis of the Molten Salt Fast Reactor (MSFR), developed in previous works (Cervi et al., 2017, 2018). In particular, the neutronics sub-solver is improved by implementing a new module based on the SP3 approximation of the neutron transport equation. The new module is successfully tested against a Monte Carlo model of the MSFR, in order to assess its correct implementation. Then, a neutronics analysis of the MSFR is carried out on a simplified axial-symmetric model of the reactor. Particular focus is devoted to the analysis of the MSFR helium bubbling system and its effect on reactivity. The presence of bubbles inside the reactor is handled with a two-fluid thermal-hydraulics module, previously implemented into the solver. The void reactivity coefficient is evaluated on the basis of the bubble spatial distribution calculated by the multiphysics solver. Then, the results are compared to simulations carried out with uniform bubble distributions, highlighting significant differences between the two approaches. The outcomes of this work constitute a step forward in the multiphysics analysis of the Molten Salt Fast Reactor and represent a useful starting point for the optimization of the MSFR helium bubbling system, as well as for the development of appropriate control strategies.},
+	urldate = {2019-03-23},
+	journal = {Nuclear Engineering and Design},
+	author = {Cervi, E. and Lorenzi, S. and Cammi, A. and Luzzi, L.},
+	month = may,
+	year = {2019},
+	keywords = {Neutron transport, Multiphysics, Molten Salt Fast Reactor (MSFR), OpenFOAM},
+	pages = {209--219},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/2U45NTZE/Cervi et al. - 2019 - Development of an SP3 neutron transport solver for.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/JDS5R3Y4/S0029549319300354.html:text/html}
+}
+
+@techreport{gif_technology_2014,
+	type = {Generation {IV} {International} {Forum}},
+	title = {Technology {Roadmap} {Update} for {Generation} {IV} {Nuclear} {Energy} {Systems}},
+	shorttitle = {{GIF} {Technology} {Roadmap}},
+	url = {https://www.gen-4.org/gif/upload/docs/application/pdf/2014-03/gif-tru2014.pdf},
+	language = {en},
+	number = {January 2014 Update},
+	institution = {OECD Nuclear Energy Agency},
+	author = {GIF},
+	month = jan,
+	year = {2014},
+	note = {https://www.gen-4.org/gif/upload/docs/application/pdf/2014-03/gif-tru2014.pdf},
+	pages = {66},
+	file = {Technology Roadmap Update for Generation IV Nuclea.pdf:/home/sunmyung/Zotero/storage/9LRH9PYP/Technology Roadmap Update for Generation IV Nuclea.pdf:application/pdf}
+}
+
+@techreport{iea_global_2019,
+	address = {Paris, France},
+	title = {Global {Energy} and {CO2} {Status} {Report} 2018},
+	shorttitle = {The latest trends in {Energy} and {Emissions} in 2018},
+	url = {https://webstore.iea.org/global-energy-co2-status-report-2018},
+	language = {en},
+	institution = {International Energy Agency},
+	author = {{IEA}},
+	month = mar,
+	year = {2019},
+	pages = {29},
+	file = {2018 - Global Energy and CO2 Status Report 2018.pdf:/home/sunmyung/Zotero/storage/Y7A8E5GK/2018 - Global Energy and CO2 Status Report 2018.pdf:application/pdf}
+}
+
+@article{brovchenko_neutronic_2019,
+	title = {Neutronic benchmark of the molten salt fast reactor in the frame of the {EVOL} and {MARS} collaborative projects},
+	volume = {5},
+	copyright = {© M. Brovchenko et al., published by EDP Sciences, 2019},
+	issn = {2491-9292},
+	url = {https://www.epj-n.org/articles/epjn/abs/2019/01/epjn180012/epjn180012.html},
+	doi = {10.1051/epjn/2018052},
+	abstract = {This paper describes the neutronic benchmarks and the results obtained by the various participants of the FP7 project EVOL and the ROSATOM project MARS. The aim of the benchmarks was two-fold: first to verify and validate each of the code packages of the project partners, adapted for liquid-fueled reactors, and second to check the dependence of the core characteristics to nuclear data set for application on a molten salt fast reactor (MSFR). The MSFR operates with the thorium fuel cycle and can be started with {\textless}sup{\textgreater}233{\textless}sup/{\textgreater}U-enriched U and/or TRU elements as initial fissile load. All three compositions were covered by the present benchmark. The calculations have confirmed that the MSFR has very favorable characteristics not present in other Gen4 fast reactors, like strong negative temperature and void reactivity coefficients, a low-fissile inventory, a reduced long-lived waste production and its burning capacities of nuclear waste produced in currently operational reactors.},
+	language = {en},
+	urldate = {2019-09-16},
+	journal = {EPJ Nuclear Sciences \& Technologies},
+	author = {Brovchenko, Mariya and Kloosterman, Jan-Leen and Luzzi, Lelio and Merle, Elsa and Heuer, Daniel and Laureau, Axel and Feynberg, Olga and Ignatiev, Victor and Aufiero, Manuele and Cammi, Antonio and Fiorina, Carlo and Alcaro, Fabio and Dulla, Sandra and Ravetto, Piero and Frima, Lodewijk and Lathouwers, Danny and Merk, Bruno},
+	month = jan,
+	year = {2019},
+	pages = {2},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/ET8QPY6L/Brovchenko et al. - 2019 - Neutronic benchmark of the molten salt fast reacto.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/XMFKGGX5/epjn180012.html:text/html}
+}
+
+@inproceedings{park_safety_2019,
+	address = {Seattle, WA, United States},
+	title = {Safety {Analysis} of the {Molten} {Salt} {Fast} {Reactor} {Fuel} {Composition} using {Moltres}},
+	url = {http://epubs.ans.org/?a=47030},
+	doi = {10.31224/osf.io/7ce89},
+	abstract = {The Molten Salt Fast Reactor (MSFR) has garnered much interest for its inherent safety and sustainbility features. The MSFR can adopt a closed thorium fuel cycle for sustainable operation through the breeding of 233 U from 232 Th. The fuel composition changes significantly over the course of its lifespan. In this study, we investigated the steady state and transient behavior of the MSFR using Moltres, a coupled neutronics/thermal-hydraulics code developed within the Multiphysics Object Oriented Simulation Environment (MOOSE) framework. Three different fuel compositions, start-up, early-life, and equilibrium, were examined for potentially dangerous core temperature excursions during a unprotected loss of heat sink (ULOHS) accident. The six-group and total neutron flux distributions showed good agreement with SERPENT and published MSFR results, while the temperature distribution and total power showed discrepancies which can be attributed toknown sources of error. For the transient behavior under the ULOHS scenario, while the transition time towards the new steady state core temperature is also in good agreement with existing MSFR simulations by Fiorina et al., Moltres under-estimated the temperature rise by a factor of ten, due to the same sources of error affecting the steady state results. While an MSFR loaded with start-up fuel composition operates at a higher temperature than with the other two fuel compositions, all three cases were shown to be inherently safe due to thestrong negative temperature feedback.},
+	urldate = {2019-11-05},
+	booktitle = {Proceedings of {GLOBAL} {International} {Fuel} {Cycle} {Conference}},
+	publisher = {American Nuclear Society},
+	author = {Park, Sun Myung and Rykhlevskii, Andrei and Huff, Kathryn},
+	month = sep,
+	year = {2019},
+	file = {Park et al. - 2019 - Safety Analysis of Molten Salt Fast Reactor Fuel C.pdf:/home/sunmyung/Zotero/storage/EXYUTUGW/Park et al. - 2019 - Safety Analysis of Molten Salt Fast Reactor Fuel C.pdf:application/pdf}
+}
+
+@misc{merle_concept_2017,
+	title = {Concept of {Molten} {Salt} {Fast} {Reactor}},
+	language = {en},
+	author = {Merle, Elsa},
+	year = {2017},
+	file = {Merle - 2017 - Concept of Molten Salt Fast Reactor.pdf:/home/sunmyung/Zotero/storage/DZP6CNWB/Merle - 2017 - Concept of Molten Salt Fast Reactor.pdf:application/pdf}
+}
+
+@techreport{satish_petsc_2019,
+	title = {{PETSc} {Users} {Manual}},
+	url = {https://www.mcs.anl.gov/petsc},
+	number = {ANL-95/11 - Revision 3.12},
+	institution = {Argonne National Laboratory},
+	author = {Satish, Balay and Shrirang, Abhyankar and Adams, Mark F. and Brown, Jed and Brune, Peter and Buschelman, Kris and Dalcin, Lisandro and Dener, Alp and Eijkhout, Victor and Gropp, William D. and Karpeyev, Dmitry and Kaushik, Dinesh and Knepley, Matthew G. and May, Dave A. and McInnes, Lois Curfman and Mills, Richard Tran and Munson, Todd and Rupp, Karl and Sanan, Patrick and Smith, Barry F. and Zampini, Stefano and Zhang, Hong},
+	year = {2019},
+	file = {manual.pdf:/home/sunmyung/Zotero/storage/4I5DK7WE/manual.pdf:application/pdf}
+}
+
+@misc{noauthor_trelis_2018,
+	address = {American Fork, UT},
+	title = {Trelis ({Version} 16.5)},
+	url = {http://csimsoft.com},
+	publisher = {csimsoft},
+	year = {2018}
+}
+
+@inproceedings{zhang_couple_2014,
+	title = {{COUPLE}, {A} {Time}-{Dependent} {Coupled} {Neutronics} and {Thermal}-{Hydraulics} {Code}, and its {Application} to {MSFR}},
+	url = {https://asmedigitalcollection.asme.org/ICONE/proceedings/ICONE22/45936/V003T05A019/255491},
+	doi = {10.1115/ICONE22-30609},
+	language = {en},
+	urldate = {2020-01-29},
+	publisher = {American Society of Mechanical Engineers Digital Collection},
+	author = {Zhang, Dalin and Zhai, Zhi-Gang and Rineiski, Andrei and Guo, Zhangpeng and Wang, Chenglong and Xiao, Yao and Qiu, Suizheng},
+	month = nov,
+	year = {2014},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/VUK7EPRC/Zhang et al. - 2014 - COUPLE, A Time-Dependent Coupled Neutronics and Th.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/PDPPHN33/255491.html:text/html}
+}
+
+@article{brovchenko_design-related_2013,
+	title = {Design-{Related} {Studies} for the {Preliminary} {Safety} {Assessment} of the {Molten} {Salt} {Fast} {Reactor}},
+	volume = {175},
+	doi = {10.13182/NSE12-70},
+	abstract = {Salt reactors are liquid fuel reactors so that they are flexible in operation, but they are very different from solid fuel reactors in the approach to safety. This study concentrates on the specific concept named Molten Salt Fast Reactor (MSFR). Since this new nuclear technology is in development, safety is an essential point to be considered all along the research and development studies. After a short description of the MSFR systems, necessary to device accidental scenarios, this paper will focus on the decay heat evaluation of such a reactor. Among different contributions, the decay heat of fission products in the MSFR is evaluated to be low (3\% of nominal power), mainly due to the reprocessing during the reactor operation. As a result, the contribution of the actinides is significant (0.5\% of nominal power). However, the decay heat of the fission products is important, and among the different uncertainty sources, the fission yield uncertainties are pointed out. The unprotected loss of heat sink transients are studied in this paper. It appears that slow transients are favorable ( {\textgreater}1 min) to minimize the temperature increase of the fuel salt. This work will be the basis of further safety studies as well as an essential parameter for the design of the draining system.},
+	journal = {Nuclear Science and Engineering},
+	author = {Brovchenko, Mariya and Heuer, Daniel and Merle, Elsa and Allibert, M. and Ghetta, Veronique and Laureau, Axel and Rubiolo, P.},
+	month = nov,
+	year = {2013},
+	pages = {329--339},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/ZGLHTVHA/Brovchenko et al. - 2013 - Design-Related Studies for the Preliminary Safety .pdf:application/pdf}
+}
+
+@article{aji_experimental_2020,
+	title = {An {Experimental} and {Numerical} {Study} of {Wall} {Effect} on {Freeze} {Valve} {Performance} in a {Molten} {Salt} {Reactor}},
+	volume = {6},
+	issn = {2332-8983},
+	url = {https://asmedigitalcollection.asme.org/nuclearengineering/article/6/2/021304/1065566/An-Experimental-and-Numerical-Study-of-Wall-Effect},
+	doi = {10.1115/1.4045180},
+	language = {en},
+	number = {2},
+	urldate = {2020-02-17},
+	journal = {Journal of Nuclear Engineering and Radiation Science},
+	author = {Aji, Indarta Kuncoro and Tatsuya, Tokushima and Kinoshita, Motoyasu and Okawa, Tomio},
+	month = apr,
+	year = {2020},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/RE75F4ZC/Aji et al. - 2020 - An Experimental and Numerical Study of Wall Effect.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/AKVDJVFM/An-Experimental-and-Numerical-Study-of-Wall-Effect.html:text/html}
+}
+
+@inproceedings{merle_optimized_2007,
+	title = {Optimized transition from the reactors of second and third generations to the {Thorium} {Molten} {Salt} {Reactor}},
+	abstract = {Molten salt reactors, in the configuration presented here and called Thorium Molten Salt Reactor (TMSR), are particularly well suited to fulfil the criteria chosen by the Generation IV forum, and may be operated in simplified and safe conditions in the Th/233U fuel cycle with fluoride salts. Amongst all MSR configurations in the thorium cycle, many studies have highlighted the configurations with no moderator in the core as simple and very promising. Since 233U does not exist on earth and is not being produced today, we aim at designing a critical MSR able to burn the Plutonium and the Minor Actinides produced in the current operating reactors, and consequently to convert this Plutonium into 233U. This leads to closing the current fuel cycle thanks to TMSRs started with transuranic elements on a Thorium base, i.e. started in the Th/Pu fuel cycle, similarly to fast neutron reactors operated in the U/Pu fuel cycle. We will detail optimizations of this transition between the reactors of second and third generations to the Thorium cycle. Such a transition is based on a fleet of TMSRs with no moderator in the core, including TMSRs started with Plutonium and TMSRs directly started with 233U. We developed parametric studies to optimize these TMSRs, amongst which the study presented here, based on one of the main TMSR parameters: the percentage of heavy nuclei in the fuel salt of the TMSR configuration, which modifies the moderation ratio of the reactor and thus influences both the initial fissile inventory and the spectrum of the reactor. We analyze the characteristics of each reactorconfiguration, in terms of deterministic safety parameters, fissile matter inventory, salt reprocessing, radiotoxicity and waste production, and finally deployment capacities.},
+	author = {Merle, Elsa and Heuer, Daniel and Allibert, M. and Ghetta, Veronique and Brun, C. and Mathieu, Ludovic and Brissot, R. and Liatard, E.},
+	month = may,
+	year = {2007},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/NHDHPHZR/Merle et al. - 2007 - Optimized transition from the reactors of second a.pdf:application/pdf}
+}
+
+@article{tiberga_results_2020,
+	title = {Results from a multi-physics numerical benchmark for codes dedicated to molten salt fast reactors},
+	volume = {142},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454920301262},
+	doi = {10.1016/j.anucene.2020.107428},
+	abstract = {Verification and validation of multi-physics codes dedicated to fast-spectrum molten salt reactors (MSR) is a very challenging task. Existing benchmarks are meant for single-physics codes, while experimental data for validation are absent. This is concerning, given the importance numerical simulations have in the development of fast MSR designs. Here, we propose the use of a coupled numerical benchmark specifically designed to assess the physics-coupling capabilities of the aforementioned codes. The benchmark focuses on the specific characteristics of fast MSRs and features a step-by-step approach, where physical phenomena are gradually coupled to easily identify sources of error. We collect and compare the results obtained during the benchmarking campaign of four multi-physics tools developed within the SAMOFAR project. Results show excellent agreement for all the steps of the benchmark. The benchmark generality and the broad spectrum of results provided constitute a useful tool for the testing and development of similar multi-physics codes.},
+	language = {en},
+	urldate = {2020-03-17},
+	journal = {Annals of Nuclear Energy},
+	author = {Tiberga, Marco and de Oliveira, Rodrigo Gonzalez Gonzaga and Cervi, Eric and Blanco, Juan Antonio and Lorenzi, Stefano and Aufiero, Manuele and Lathouwers, Danny and Rubiolo, Pablo},
+	month = jul,
+	year = {2020},
+	keywords = {Neutronics, Molten salt reactor, Benchmark, Thermal-hydraulics, Multi-physics, Code-to-code comparison, Fast-spectrum},
+	pages = {107428},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/7AYW94UF/Tiberga et al. - 2020 - Results from a multi-physics numerical benchmark f.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/4NR9AK9R/S0306454920301262.html:text/html}
+}
+
+@article{dittus_heat_1930,
+	title = {Heat transfer in automobile radiators of the tubular type},
+	volume = {2},
+	url = {http://www.sciencedirect.com/science/article/pii/073519338590003X},
+	language = {en},
+	number = {13},
+	urldate = {2020-06-28},
+	journal = {University of California Publications in Engineering},
+	author = {Dittus, F. W. and Boelter, L. M. K.},
+	month = oct,
+	year = {1930},
+	pages = {443--461},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/32CHLSWJ/Dittus and Boelter - 1985 - Heat transfer in automobile radiators of the tubul.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/NACS27ES/073519338590003X.html:text/html}
+}
+
+@incollection{mcmichael_global_2004,
+	title = {Global {Climate} {Change} ({Chapter} 20)},
+	url = {https://www.unscn.org/en/resource-center/archive/climate-change-and-nutrition-archive?idnews=1494},
+	language = {en},
+	urldate = {2020-06-12},
+	booktitle = {Comparative {Quantification} of {Health} {Risks}},
+	publisher = {World Health Organization},
+	author = {McMichael, Anthony J. and Campbell-Lendrum, Diarmid and Kovats, Sari and Edwards, Sally and Wilkinson, Paul and Wilson, Theresa and Nicholls, Robert and Hales, Simon and Tanser, Frank and Le Sueur, David and Schlesinger, Michael and Andronova, Natasha},
+	year = {2004},
+	pages = {1543--1649},
+	file = {Snapshot:/home/sunmyung/Zotero/storage/26V8H7TG/climate-change-and-nutrition-archive.html:text/html}
+}
+
+@misc{us_department_of_commerce_global_2020,
+	title = {Global {Monitoring} {Laboratory} - {Carbon} {Cycle} {Greenhouse} {Gases}},
+	url = {https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html#global},
+	abstract = {The Global Monitoring Laboratory conducts research on greenhouse gas and carbon cycle feedbacks, changes in clouds, aerosols, and surface radiation, and recovery of stratospheric ozone.},
+	language = {EN-US},
+	urldate = {2020-06-12},
+	author = {US Department of Commerce, NOAA},
+	year = {2020},
+	note = {Library Catalog: www.esrl.noaa.gov},
+	file = {Snapshot:/home/sunmyung/Zotero/storage/9BI38IX5/global.html:text/html}
+}
+
+@techreport{graham_development_2019,
+	title = {Development of {Molten} {Salt} {Reactor} {Modeling} and {Simulation} {Capabilities} in {VERA}},
+	url = {https://www.osti.gov/biblio/1559657-development-molten-salt-reactor-modeling-simulation-capabilities-vera},
+	abstract = {The U.S. Department of Energy's Office of Scientific and Technical Information},
+	language = {English},
+	urldate = {2020-06-28},
+	institution = {Oak Ridge National Lab. (ORNL), Oak Ridge, TN (United States)},
+	author = {Graham, Aaron (ORCID:0000000232458441) and Collins, Benjamin S. (ORCID:0000000241918868) and Salko Jr, Robert (ORCID:0000000253566679) and Taylor, Robert Z. and Gentry, Cole A. (ORCID:0000000237730707)},
+	month = sep,
+	year = {2019},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/MXBR8DZ9/Graham et al. - 2019 - Development of Molten Salt Reactor Modeling and Si.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/6UQXW5EZ/1559657-development-molten-salt-reactor-modeling-simulation-capabilities-vera.html:text/html}
+}
+
+@article{moir_cost_2002,
+	title = {Cost of {Electricity} from {Molten} {Salt} {Reactors}},
+	volume = {138},
+	issn = {0029-5450},
+	url = {https://doi.org/10.13182/NT02-A3281},
+	doi = {10.13182/NT02-A3281},
+	abstract = {The cost of electricity is estimated for a molten salt reactor based on evaluations at the Oak Ridge National Laboratory (ORNL) and compared to the ORNL pressurized water reactor and coal plant estimates of the same pre-1980 vintage plants. The results were 3.8, 4.1, and 4.2 ¢/kWh for the molten salt reactor, pressurized water reactor, and coal. Surprisingly, such cost estimates have never before been published for the molten salt reactor.},
+	number = {1},
+	urldate = {2020-06-30},
+	journal = {Nuclear Technology},
+	author = {Moir, R. W.},
+	month = apr,
+	year = {2002},
+	note = {Publisher: Taylor \& Francis
+\_eprint: https://doi.org/10.13182/NT02-A3281},
+	pages = {93--95},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/P44YDAUT/Moir - 2002 - Cost of Electricity from Molten Salt Reactors.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/AGWM8DBI/NT02-A3281.html:text/html}
+}
+
+@incollection{bartosiewicz_612_2019,
+	title = {6.1.2 - {Large}-eddy simulation: {Application} to liquid metal fluid flow and heat transfer},
+	isbn = {978-0-08-101980-1},
+	shorttitle = {6.1.2 - {Large}-eddy simulation},
+	url = {http://www.sciencedirect.com/science/article/pii/B978008101980100017X},
+	language = {en},
+	urldate = {2020-07-03},
+	booktitle = {Thermal {Hydraulics} {Aspects} of {Liquid} {Metal} {Cooled} {Nuclear} {Reactors}},
+	publisher = {Woodhead Publishing},
+	author = {Bartosiewicz, Y. and Duponcheel, M.},
+	editor = {Roelofs, Ferry},
+	month = jan,
+	year = {2019},
+	doi = {10.1016/B978-0-08-101980-1.00017-X},
+	pages = {245--271},
+	file = {ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/7MXRDHG9/B978008101980100017X.html:text/html}
+}
+
+@article{moorthi_review_2018,
+	title = {A review of sub-channel thermal hydraulic codes for nuclear reactor core and future directions},
+	volume = {332},
+	issn = {0029-5493},
+	url = {http://www.sciencedirect.com/science/article/pii/S0029549318302681},
+	doi = {10.1016/j.nucengdes.2018.03.012},
+	abstract = {Thermal hydraulic analysis of nuclear reactor core is mainly performed using the sub-channel analysis codes to estimate different thermal hydraulic safety margins. The safety margins and the operating power limits of nuclear reactor core under different conditions of primary system i.e. system pressure, coolant inlet temperature, coolant flow rate and thermal power and its distributions are considered as the key parameters for sub-channel analysis. Considering the complexity of rod bundle geometry, different turbulent scales and due to their limitations of computational resources, performing the full scale computational fluid dynamic (CFD) analysis of nuclear reactor core is a cumbersome and time consuming task. Hence, the thermal hydraulic safety margins of most of the reactors operating in the world are carried out using the sub-channel analysis codes. In these codes, the governing equations of mass, momentum and energy are solved in control volumes which are connected in both radial and axial directions. The flow distributions in the rod bundle geometry are estimated by considering lateral momentum balance and the inter channel mixing models to account for the cross flow between the adjacent sub-channels. The accurate estimations of the local conditions of the sub-channels are required to predict fuel temperature, critical heat flux ratio (CHFR) and critical power ratio (CPR). In this paper, various experiments conducted on the different geometries of sub-channels related inter sub-channel mixing in rod bundles are identified. A comprehensive review of sub-channel thermal hydraulic codes used for the analysis of nuclear reactor core is presented. This review covers various aspects of experimental, analytical and computational works related to rod bundles carried out in the past and brings out future directions derived from earlier research works.},
+	language = {en},
+	urldate = {2020-07-10},
+	journal = {Nuclear Engineering and Design},
+	author = {Moorthi, A. and Kumar Sharma, Anil and Velusamy, K.},
+	month = jun,
+	year = {2018},
+	keywords = {Thermal hydraulics, COBRA, Rod bundle, Sub-channel},
+	pages = {329--344},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/LFCRK9G5/Moorthi et al. - 2018 - A review of sub-channel thermal hydraulic codes fo.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/TLAKYQNQ/S0029549318302681.html:text/html}
+}
+
+@book{wilcox_turbulence_2006,
+	title = {Turbulence {Modeling} for {CFD}},
+	isbn = {978-1-928729-08-2},
+	language = {en},
+	publisher = {DCW Industries},
+	author = {Wilcox, David C.},
+	year = {2006},
+	note = {Google-Books-ID: tFNNPgAACAAJ}
+}
+
+@book{ott_introductory_1985,
+	title = {Introductory nuclear reactor dynamics},
+	isbn = {978-0-89448-029-4},
+	abstract = {This text presents the theory and methods of prediction that are the heart of nuclear reactor safety. Time-dependent reactor behavior is explained in both mathematical and physical terms. This book also explains the logic behind the working formulas and calculational methods for reactor transients and illustrates typical dynamic responses. The classical concept of point kinetics is developed in three steps, with discussion of various solutions to kinetics problems. Each chapter includes homework problems and review questions.},
+	language = {en},
+	publisher = {American Nuclear Society},
+	author = {Ott, Karl Otto and Neuhold, Robert J.},
+	month = dec,
+	year = {1985},
+	note = {Google-Books-ID: 3yVPAQAAIAAJ},
+	keywords = {Technology \& Engineering / Power Resources / Nuclear, Nuclear reactors, Nuclear reactor kinetics, Science / Life Sciences / Cytology}
+}
+
+@techreport{nrc_trace_2007,
+	title = {{TRACE} {V5}.0 {User}'s {Manual}},
+	url = {https://www.nrc.gov/docs/ML1200/ML120060239.pdf},
+	urldate = {2020-07-22},
+	author = {NRC},
+	year = {2007},
+	file = {ML120060239.pdf:/home/sunmyung/Zotero/storage/VSTVM8S7/ML120060239.pdf:application/pdf}
+}
+
+@article{brown_thermal-hydraulic_2020,
+	title = {Thermal-{Hydraulic} and {Neutronic} {Phenomena} {Important} in {Modeling} and {Simulation} of {Liquid}-{Fuel} {Molten} {Salt} {Reactors}},
+	volume = {206},
+	issn = {0029-5450},
+	url = {https://doi.org/10.1080/00295450.2019.1590077},
+	doi = {10.1080/00295450.2019.1590077},
+	abstract = {We discuss liquid-fuel molten salt (cooled) reactors (MSRs); how they will operate under normal, transient, and accident conditions; and the results of an expert elicitation to determine the corresponding thermal-hydraulic and neutronic phenomena important to understanding their behavior. Identifying these phenomena will enable the U.S. Nuclear Regulatory Commission (NRC), U.S. Department of Energy, and industry to develop or identify modeling functionalities and tools required to carry out confirmatory and licensing analyses that examine the validity and accuracy of an applicant’s calculations and help determine the margin of safety in plant design. The NRC frequently does an expert elicitation using a Phenomena Identification and Ranking Table (PIRT) to identify and evaluate the state of knowledge of important modeling phenomena. However, few details about the design of these reactors and the sequence of events during accidents are known, so the process used was considered a preliminary PIRT. A panel comprising a group of subject matter experts met to define phenomena that would need to be modeled and considered the impact/importance of each phenomenon with respect to specific figures of merit (FoMs) (e.g., salt temperature, velocity, and composition). Each FoM reflected a potential impact on radionuclide release or loss of a barrier to release. The panel considered what the path forward might be with respect to being able to model the phenomenon in a simulation code. Results are explained for both thermal and fast spectrum designs, with an emphasis on the thermal-hydraulic takeaways.It was concluded that compared to light water reactors, the lack of high-pressure operation, energetic break flow, depressurization, and quench front tracking may simplify some aspects of an MSR analysis. However, MSRs have new phenomena both for a license applicant and NRC confirmatory analysis. There is a need for enhanced understanding of physical properties for MSRs that encompass several individual thermophysical properties, including thermal conductivity, viscosity, specific heat, density, optical properties, thermodynamic properties, volatilities, solubilities, etc. Salt composition is closely linked to both these properties and the neutronics of the system. Additionally, the large number of MSR concepts and system designs means that there is wide variation in the potential modeling needs for these systems.},
+	number = {2},
+	urldate = {2021-01-07},
+	journal = {Nuclear Technology},
+	author = {Brown, Nicholas R. and Diamond, David J. and Bajorek, Stephen and Denning, Richard},
+	month = feb,
+	year = {2020},
+	note = {Publisher: Taylor \& Francis
+\_eprint: https://doi.org/10.1080/00295450.2019.1590077},
+	keywords = {flouride-salt–cooled high-temperature reactors, advanced reactors, molten salt (cooled) reactors, Phenomena Identification and Ranking Table},
+	pages = {322--338},
+	file = {Full Text PDF:/home/sunmyung/Zotero/storage/PRGZCZHZ/Brown et al. - 2020 - Thermal-Hydraulic and Neutronic Phenomena Importan.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/6YN78NFY/00295450.2019.html:text/html}
+}
+
+@unpublished{diamond_phenomena_2018,
+	title = {Phenomena {Important} in {Modeling} and {Simulation} of {Molten} {Salt} {Reactors}.},
+	language = {en},
+	author = {Diamond, David J. and Brown, Nicholas and Denning, Richard and Bajorek, Stephen},
+	month = apr,
+	year = {2018},
+	file = {Phenomena Important in Modeling and Simulation of .pdf:/home/sunmyung/Zotero/storage/9QC54KIH/Phenomena Important in Modeling and Simulation of .pdf:application/pdf}
+}
+
+@article{wang_review_2020,
+	title = {Review on neutronic/thermal-hydraulic coupling simulation methods for nuclear reactor analysis},
+	volume = {137},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454919306759},
+	doi = {10.1016/j.anucene.2019.107165},
+	abstract = {In an operating nuclear reactor system, various physical phenomena of different properties are intimately linked. These multiphysics phenomena include neutronics (N), thermal-hydraulics (TH), materials science, and other subjects. Among them, the interaction between neutronics and thermal-hydraulics is of great significance in reactor design and safety analysis. In this work, different N/TH coupling methods are reviewed, including loose and tight coupling. For the studies on loose coupling, in which two physical fields are decoupled, the current research status is summarized and classified based on the coupling methods of neutronics and thermal-hydraulics. The studies of tight coupling are introduced based on multiphysics coupling platforms. The investigation shows that the number and objectives of loose coupling studies are more abundant and extensive than those of tight coupling. This indicates that loose coupling strategies are the mainstream coupling solutions in recent research. Furthermore, the solution approaches of N/TH coupling are reviewed with respect to the aspects of performance improvement and application studies, including the operator splitting (OS), Picard iteration, and Jacobian-Free Newton–Krylov (JFNK) methods. A comprehensive study of the solution approaches shows that most of the current loose coupling numerical simulations adopt the Picard iteration method, because it has higher calculation accuracy than the OS method. In contrast to the decoupling approaches such as the OS and Picard iteration methods, the JFNK method updates all physical quantities synchronously, which makes it more accurate. Hence, there are broad application prospects for N/TH tight coupling of the JFNK method.},
+	language = {en},
+	urldate = {2021-01-12},
+	journal = {Annals of Nuclear Energy},
+	author = {Wang, Jincheng and Wang, Qin and Ding, Ming},
+	month = mar,
+	year = {2020},
+	keywords = {JFNK method, Loose coupling method, N/TH coupling method, Operator splitting method, Picard iteration method, Tight coupling method},
+	pages = {107165},
+	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/F5VHAFBU/Wang et al. - 2020 - Review on neutronicthermal-hydraulic coupling sim.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/QKBQWM8B/S0306454919306759.html:text/html}
+}
+
+@misc{cordis_severe_nodate,
+	title = {Severe {Accident} {Modeling} and {Safety} {Assessment} for {Fluid}-fuel {Energy} {Reactors} {\textbar} {SAMOSAFER} {Project} {\textbar} {H2020} {\textbar} {CORDIS} {\textbar} {European} {Commission}},
+	url = {https://cordis.europa.eu/project/id/847527},
+	urldate = {2021-01-28},
+	author = {CORDIS},
+	file = {Severe Accident Modeling and Safety Assessment for Fluid-fuel Energy Reactors | SAMOSAFER Project | H2020 | CORDIS | European Commission:/home/sunmyung/Zotero/storage/5QDPPWYC/847527.html:text/html}
+}
+
+@misc{office_of_nuclear_energy_advanced_nodate,
+	title = {Advanced {Reactor} {Demonstration} {Program}},
+	url = {https://www.energy.gov/ne/nuclear-reactor-technologies/advanced-reactor-demonstration-program},
+	abstract = {Advanced Reactor Demonstration Program},
+	language = {en},
+	urldate = {2021-01-28},
+	journal = {Energy.gov},
+	author = {Office of Nuclear Energy},
+	file = {Snapshot:/home/sunmyung/Zotero/storage/XQBTMHYZ/advanced-reactor-demonstration-program.html:text/html}
+}
+
+@techreport{koning_jeff-31_2006,
+	title = {The {JEFF}-3.1 nuclear data library: {JEFF} report 21},
+	shorttitle = {The {JEFF}-3.1 nuclear data library},
+	language = {en},
+	number = {21},
+	institution = {OECD Nuclear Energy Agency},
+	author = {Koning, Arjan and Forrest, Robin and Kellett, Mark and Mills, Robert and Henriksson, Hans and Rugama, Yolanda},
+	year = {2006},
+	note = {OCLC: 1039431841},
+	file = {Koning and OECD Nuclear Energy Agency - 2006 - The JEFF-3.1 nuclear data library JEFF report 21.pdf:/home/sunmyung/Zotero/storage/KNHM5TBB/Koning and OECD Nuclear Energy Agency - 2006 - The JEFF-3.1 nuclear data library JEFF report 21.pdf:application/pdf}
 }

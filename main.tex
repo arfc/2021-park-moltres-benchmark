@@ -1,14 +1,12 @@
-\documentclass[review]{elsarticle}
+\documentclass[5p]{elsarticle}
 
 \usepackage{multirow}
 \usepackage{lineno}
 \usepackage{xspace}
-\usepackage{threeparttable}
-\usepackage{subfig}
 \modulolinenumbers[5]
 
 %% Journal name here
-\journal{FIXME: The Journal Name Goes Here}
+\journal{Annals of Nuclear Energy}
 
 %% `Elsevier LaTeX' style
 \bibliographystyle{elsarticle-num}
@@ -20,7 +18,15 @@
 \usepackage{microtype} % improves typography for PDF
 \usepackage{hhline}
 \usepackage{amsmath}
-\usepackage{subfig}
+
+\usepackage{graphicx} % allows inclusion of graphics
+\graphicspath{{./images/}}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{siunitx}
+\usepackage{diagbox}
 
 \usepackage{booktabs}
 \usepackage{threeparttable, tablefootnote}
@@ -53,7 +59,8 @@
 
 \begin{document}
 \begin{frontmatter}
-\title{FIXME: The Title Goes Here}
+\title{Verification of Moltres for Multiphysics Simulations of Fast-Spectrum
+Molten Salt Reactors}
 
 %\date{}                     % uncomment if you don't need date to appear
 
@@ -64,12 +71,11 @@
 \input{institutions}
 
 \begin{keyword}
-FIXME \sep
-key words \sep
-go here \sep
-like: \sep 
-simulation \sep
-spent nuclear fuel 
+Molten salt reactor \sep
+Reactor physics \sep
+Coupled multiphysics \sep
+Code-to-code verification \sep
+MOOSE
 \end{keyword}
 
 \input{abstract}
@@ -80,7 +86,8 @@ spent nuclear fuel
 \linenumbers
 
 \input{introduction}
-\input{methods}
+\input{background}
+%\input{methods}
 \input{results}
 \input{conclusion}
 \input{acks}
