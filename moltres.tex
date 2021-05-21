@@ -34,6 +34,20 @@ back into the reactor core, coupling the aforementioned \gls{DNP} drift
 to incompressible Navier-Stokes velocity flows, and a decay heat model to
 simulate decay heat from fission products.
 
+\subsection{Neutronics model}
+
+To perform neutronics calculation, Moltres requires homogenized group constant
+data from dedicated neutronics software such as SCALE or Serpent 2. Moltres' 
+Github repository contains a Python script which reads SCALE or Serpent 2
+output text files and rewrites relevant group constant data into a
+Moltres-compatible JSON format. There is on-going work to create a similar
+script that can parse OpenMC output data.
+
+For the neutron flux, Moltres solves the following multigroup neutron
+diffusion:
+%
+
+
 For this study, we coupled Moltres'
 neutronics capabilities with \gls{MOOSE}'s incompressible Navier-Stokes
 capabilities \cite{peterson_overview_2017} to
