@@ -1,0 +1,60 @@
+\section{Moltres Model}
+
+Moltres \cite{lindsay_introduction_2018} is an open-source, \gls{MOOSE}-based
+``application'' designed for multiphysics simulations of \glspl{MSR}. The goal
+of making Moltres open-source is to promote quality through transparency and
+ease of peer review. The source code \cite{lindsay_moltres_2017} is available
+on GitHub \cite{github_build_2017}. Moltres leverages on \texttt{git} for
+version control, and integrated testing to protect existing capabilities while
+concurrently supporting continued code development. Moltres depends on the
+\gls{MOOSE} finite element framework for its meshing and parallel, nonlinear
+NEWTON-based solver capabilities. Therefore,
+Moltres by default has access to tight coupling methods with implicit
+time-stepping. Users can also opt to decouple problems for loosely coupled
+solves depending on their specific needs. Furthermore, applications within the
+\gls{MOOSE} framework share the same programming
+interfaces; this commonality simplifies the work required to tightly couple
+different physics over a wide range of length and time scales. For \gls{MSR}
+simulations in Moltres such as those in this paper, we coupled Moltres'
+\gls{MSR} modeling capabilities with \gls{MOOSE}'s \textit{Navier-Stokes} and
+\textit{Heat Conduction} physics modules \cite{peterson_overview_2017} for
+general thermal-hydraulics modeling. Together with these physics modules,
+Moltres solves the multigroup neutron diffusion equations, for an arbitrary
+number of energy and precursor groups, and thermal-hydraulics equations
+simultaneously on the same mesh.
+
+In a previous work, Lindsay et al. \cite{lindsay_introduction_2018}
+demonstrated Moltres' \gls{MSR} neutronics modeling capabilities with 1D salt
+flow in 2D-axisymmetric and 3D models of the \gls{MSRE}. The neutron flux and
+temperature distributions showed good qualitative agreement with legacy
+\gls{MSRE} data albeit with some minor quantitative discrepancies due to some
+simplifications and assumptions in the reactor geometry. Moltres has
+since undergone further development to support the looping of \gls{DNP} drift
+back into the reactor core, coupling the aforementioned \gls{DNP} drift
+to incompressible Navier-Stokes velocity flows, and a decay heat model to
+simulate decay heat from fission products.
+
+For this study, we coupled Moltres'
+neutronics capabilities with \gls{MOOSE}'s incompressible Navier-Stokes
+capabilities \cite{peterson_overview_2017} to
+model precursor drift and thermal-hydraulics. We performed all simulations
+except Step 1.4 using the Preconditioned \gls{JFNK} method with all physics
+fully coupled. Step 1.4 required a transient solve on the thermal-hydraulics
+portion of the problem to resolve the coupling between lid-driven flow and
+buoyancy effects. We then loosely coupled the thermal-hydraulics transient
+solve to the neutronics steady-state criticality solve. For future work, we
+could explore and determine the appropriate initial conditions or \gls{MOOSE}'s
+nonlinear solver settings to circumvent this issue.
+
+For this study, we discretized the problem domain into a 200 by 200 structured
+mesh, resulting in uniform mesh elements of dimensions 1cm by 1cm. We
+approximated most of the relevant variables, i.e. neutron fluxes, velocity
+components, pressure, and temperature, using first-order Lagrange shape
+functions. The only exception is the precursor concentration variables, which
+we approximated using zeroth-order monomial shape functions and solved using
+the Discontinuous Galerkin finite element method to eliminate spurious
+numerical oscillations arising from the high Schmidt number flow. As for the
+high Reynolds number flow, we stabilized the incompressible Navier-Stokes
+equations using the streamline upwind Petrov-Galerkin and pressure-stabilizing
+Petrov-Galerkin stabilization methods \cite{peterson_overview_2017} provided in
+\gls{MOOSE}.
