@@ -1,13 +1,21 @@
-\section{CNRS Multiphysics Benchmark}
+\section{Model Description}
 
-The ``CNRS benchmark'' \cite{tiberga_results_2020} is a numerical benchmark for
-multiphysics software dedicated to modeling \glspl{MSR}. It consists of three
-``phases'' and eight ``steps'' in total. Each step is a well-defined subproblem
-for systematically assessing the capabilities of \gls{MSR} software and
-pinpointing the source of discrepancies between software. Phase 0 consists
-single-physics problems in fluid dynamics, neutronics, and temperature,
-respectively. Phase 1 consists of coupled, steady-state eigenvalue problems.
-Lastly, Phase 2 consists of a coupled, transient scenario.
+%% Contents
+% Description of benchmark
+% Timestepping, mesh, group constants
+% Coupling details for each Step where applicable
+
+\subsection{CNRS multiphysics benchmark}
+
+The \textit{CNRS benchmark} \cite{tiberga_results_2020} is a numerical
+benchmark for multiphysics software dedicated to modeling \glspl{MSR}. It
+consists of three \textit{phases} and eight \textit{steps} in total. Each
+\textit{step} is a well-defined subproblem for systematically assessing the
+capabilities of \gls{MSR} software and pinpointing the source of discrepancies
+between software. \textit{Phase 0} consists single-physics problems in fluid
+dynamics, neutronics, and temperature, respectively. \textit{Phase 1} consists
+of coupled, steady-state eigenvalue problems. Lastly, \textit{Phase 2} consists
+of a coupled, transient scenario.
 
 The domain geometry is a 2m by 2m square cavity filled with LiF-BeF$_2$-UF$_4$
 molten salt at an initial temperature of 900K \cite{tiberga_results_2020}.
@@ -31,11 +39,11 @@ cooling with the following volumetric heat sink equation:
 Tiberga et al. \cite{tiberga_results_2020} used Serpent 2
 \cite{leppanen_serpent_2014} with the JEFF-3.1 library
 \cite{koning_jeff-31_2006} to generate multigroup neutronics data for the
-LiF-BeF$_2$-UF$_4$ salt in the domain at 900K. They condensed the neutronics
-data into six energy groups and eight precursor groups. Their paper contains
-all relevant data \cite{tiberga_results_2020}. The benchmark prescribes the
-following equations to govern the temperature dependence in the cross sections
-and the neutron diffusion coefficients:
+LiF-BeF$_2$-UF$_4$ salt in the domain at 900K, condensed into six energy groups
+and eight precursor groups. We direct readers to their paper for all of the
+group constant data \cite{tiberga_results_2020}. In addition, the benchmark
+prescribes the following equations to govern the temperature dependence in the
+cross sections and the neutron diffusion coefficients:
 %
 \begin{align}
     \Sigma_i (T) &= \Sigma_i(T_{ref})
@@ -147,3 +155,29 @@ The following subsections briefly detail each benchmark subproblem.
 	\end{tabular}
 	\label{table:benchmark}
 \end{table*}
+
+\subsection{Modeling approach}
+
+For this study, we coupled Moltres with \gls{MOOSE}'s
+incompressible Navier-Stokes module \cite{peterson_overview_2017} to
+model precursor drift and thermal-hydraulics. We performed all simulations
+except Step 1.4 using the Preconditioned \gls{JFNK} method with all physics
+fully coupled. Step 1.4 required a transient solve on the thermal-hydraulics
+portion of the problem to resolve the coupling between lid-driven flow and
+buoyancy effects. We then loosely coupled the thermal-hydraulics transient
+solve to the neutronics steady-state criticality solve. For future work, we
+could explore and determine the appropriate initial conditions or \gls{MOOSE}'s
+nonlinear solver settings to circumvent this issue.
+
+For this study, we discretized the problem domain into a 200 by 200 structured
+mesh, resulting in uniform mesh elements of dimensions 1cm by 1cm. We
+approximated most of the relevant variables, i.e. neutron fluxes, velocity
+components, pressure, and temperature, using first-order Lagrange shape
+functions. The only exception is the precursor concentration variables, which
+we approximated using zeroth-order monomial shape functions and solved using
+the Discontinuous Galerkin finite element method to eliminate spurious
+numerical oscillations arising from the high Schmidt number flow. As for the
+high Reynolds number flow, we stabilized the incompressible Navier-Stokes
+equations using the streamline upwind Petrov-Galerkin and pressure-stabilizing
+Petrov-Galerkin stabilization methods \cite{peterson_overview_2017} provided in
+\gls{MOOSE}.
