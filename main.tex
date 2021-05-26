@@ -1,4 +1,4 @@
-\documentclass[review]{elsarticle}
+\documentclass[preprint,review,authoryear]{elsarticle}
 
 \usepackage{multirow}
 \usepackage{lineno}
@@ -9,7 +9,7 @@
 \journal{Annals of Nuclear Energy}
 
 %% `Elsevier LaTeX' style
-\bibliographystyle{elsarticle-num}
+\bibliographystyle{elsarticle-harv}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% packages and definitions (optional)
@@ -48,7 +48,7 @@
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 % hyperref %
-\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
 % after hyperref %
 \usepackage{cleveref}
 \usepackage{datatool}
@@ -83,14 +83,14 @@ MOOSE
 \glsresetall
 
 %% Shows line numbers
-\linenumbers
+%\linenumbers
 
 \input{introduction}
 \input{moltres}
 \input{benchmark}
 %\input{results}
 %\input{conclusion}
-\input{acks}
+\input{acknowledgements}
 
 \bibliography{bibliography}
 

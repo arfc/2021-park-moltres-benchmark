@@ -11,11 +11,23 @@ The \textit{CNRS benchmark} \cite{tiberga_results_2020} is a numerical
 benchmark for multiphysics software dedicated to modeling \glspl{MSR}. It
 consists of three \textit{phases} and eight \textit{steps} in total. Each
 \textit{step} is a well-defined subproblem for systematically assessing the
-capabilities of \gls{MSR} software and pinpointing the source of discrepancies
+capabilities of \gls{MSR} software and pinpointing sources of discrepancies
 between software. \textit{Phase 0} consists single-physics problems in fluid
 dynamics, neutronics, and temperature, respectively. \textit{Phase 1} consists
-of coupled, steady-state eigenvalue problems. Lastly, \textit{Phase 2} consists
-of a coupled, transient scenario.
+of coupled, steady-state neutronics problems for the multiplication
+factor. Lastly, \textit{Phase 2} consists of a coupled, transient problem to
+solve for the transient behavior of the system.
+
+\begin{figure}[htb!]
+	\begin{center}
+		\includegraphics[width=.8\textwidth]{geometry}
+	\end{center}
+	\caption{2 m by 2 m domain of the \textit{CNRS benchmark}. $U_{lid}$
+	represents the velocity along the top boundary. Various quantities are
+	measured along the centerlines AA' and BB' for comparison. From Tiberga et
+	al. \cite{tiberga_results_2020}.}
+	\label{fig:geometry}
+\end{figure}
 
 The domain geometry is a 2m by 2m square cavity filled with LiF-BeF$_2$-UF$_4$
 molten salt at an initial temperature of 900K \cite{tiberga_results_2020}.
