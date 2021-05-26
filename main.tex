@@ -1,4 +1,4 @@
-\documentclass[preprint,review,authoryear]{elsarticle}
+\documentclass[review,authoryear]{elsarticle}
 
 \usepackage{multirow}
 \usepackage{lineno}
@@ -48,12 +48,13 @@
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 % hyperref %
-\usepackage{hyperref}
+\usepackage[colorlinks=false]{hyperref}
 % after hyperref %
 \usepackage{cleveref}
 \usepackage{datatool}
 \usepackage[acronym,toc]{glossaries}
 \include{acros}
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}
 
 \makeglossaries
 
@@ -88,8 +89,8 @@ MOOSE
 \input{introduction}
 \input{moltres}
 \input{benchmark}
-%\input{results}
-%\input{conclusion}
+\input{results}
+\input{conclusion}
 \input{acknowledgements}
 
 \bibliography{bibliography}

@@ -6,11 +6,11 @@
 % Neutronics description
 % Thermal-hydraulics description
 
-Moltres \cite{lindsay_introduction_2018} is an open-source, \gls{MOOSE}-based
+Moltres \citep{lindsay_introduction_2018} is an open-source, \gls{MOOSE}- based
 ``application'' designed for multiphysics simulations of \glspl{MSR}. The goal
 of making Moltres open-source is to promote quality through transparency and
-ease of peer review. The source code \cite{lindsay_moltres_2017} is available
-on GitHub \cite{github_build_2017}. Moltres leverages on \texttt{git} for
+ease of peer review. The source code \citep{lindsay_moltres_2017} is available
+on GitHub \citep{github_build_2017}. Moltres leverages on \texttt{git} for
 version control, and integrated testing to protect existing capabilities while
 concurrently supporting continued code development. Moltres depends on the
 \gls{MOOSE} finite element framework for its meshing and parallel, nonlinear
@@ -23,13 +23,13 @@ interfaces; this commonality simplifies the work required to tightly couple
 different physics over a wide range of length and time scales. For \gls{MSR}
 simulations in Moltres such as those in this paper, we coupled Moltres'
 \gls{MSR} modeling capabilities with \gls{MOOSE}'s \textit{Navier-Stokes} and
-\textit{Heat Conduction} physics modules \cite{peterson_overview_2017} for
+\textit{Heat Conduction} physics modules \citep{peterson_overview_2017} for
 general thermal-hydraulics modeling. Together with these physics modules,
 Moltres solves the multigroup neutron diffusion equations, for an arbitrary
 number of energy and precursor groups, and thermal-hydraulics equations
 simultaneously on the same mesh.
 
-In a previous work, Lindsay et al. \cite{lindsay_introduction_2018}
+In a previous work, \cite{lindsay_introduction_2018}
 demonstrated Moltres' \gls{MSR} neutronics modeling capabilities with 1D salt
 flow in 2D-axisymmetric and 3D models of the \gls{MSRE}. The neutron flux and
 temperature distributions showed good qualitative agreement with legacy
@@ -42,7 +42,7 @@ simulate decay heat from fission products.
 
 To perform neutronics calculations, Moltres requires homogenized group constant
 data from dedicated high-fidelity neutronics software such as SCALE
-\cite{dehart_reactor_2011} or Serpent 2 \cite{leppanen_serpent_2014}. Users can
+\citep{dehart_reactor_2011} or Serpent 2 \citep{leppanen_serpent_2014}. Users can
 run a Python script in Moltres' Github repository which automatically reads
 user-provided SCALE or Serpent 2 output data files and creates
 Moltres-compatible JSON files containing all required group constant data.
@@ -55,10 +55,9 @@ the multigroup neutron diffusion equations given by:
 \begin{align}
     \frac{1}{v_g} \frac{\partial \phi_g}{\partial t} =& \nabla \cdot D_g
     \nabla \phi_g - \Sigma^r_g \phi_g +
-    \sum^G_{g' \neq g} \Sigma^s_{g' \rightarrow g} \phi_{g'} + \chi^p_g
-    \sum^G_{g'=1} \left( 1-\beta \right) \nu \Sigma^f_{g'} \phi_{g'} \nonumber
-    \\
-    &+ \chi^d_g \sum^I_i \lambda_i C_i, \label{eq:neut} \\
+    \sum^G_{g' \neq g} \Sigma^s_{g' \rightarrow g} \phi_{g'} \nonumber \\
+    &+ \chi^p_g \sum^G_{g'=1} \left( 1-\beta \right) \nu \Sigma^f_{g'}
+    \phi_{g'} + \chi^d_g \sum^I_i \lambda_i C_i, \label{eq:neut} \\
     %
     \intertext{where}
     v_g =& \text{ average speed of neutrons in group $g$ [cm$\cdot$s$^{-1}$],} 
@@ -66,24 +65,25 @@ the multigroup neutron diffusion equations given by:
     \phi_g =& \text{ neutron flux in group $g$ [cm$^{-2}\cdot$s$^{-1}$],}
     \nonumber \\
     t =& \text{ time [s],} \nonumber \\
-    D_g =& \text{ diffusion coefficient of neutrons in group $g$
-    [cm$^2\cdot$s$^{-1}$],} \nonumber \\
-    \Sigma^r_g =& \text{ macroscopic cross section for removal of neutrons
-    from} \nonumber \\
-    &\text{ group $g$ [cm$^{-1}$],} \nonumber \\
+    D_g =& \text{ diffusion coefficient of neutrons in} \nonumber \\
+    &\text{ group $g$ [cm$^2\cdot$s$^{-1}$],} \nonumber \\
+    \Sigma^r_g =& \text{ macroscopic cross section for removal of} \nonumber \\
+    &\text{ neutrons from group $g$ [cm$^{-1}$],} \nonumber \\
     \Sigma^s_{g' \rightarrow g} =& \text{ macroscopic cross section of
-    scattering from groups $g'$ to $g$ [cm$^{-1}$],} \nonumber \\
-    \chi^p_g =& \text{ prompt fission spectrum for neutrons in group $g$ [ - ],
-    } \nonumber \\
+    scattering from} \nonumber \\
+    &\text{ groups $g'$ to $g$ [cm$^{-1}$],} \nonumber \\
+    \chi^p_g =& \text{ prompt fission spectrum for neutrons in} \nonumber \\
+    &\text{ group $g$ [ - ],} \nonumber \\
     G =& \text{ total number of discrete neutron groups [ - ],} \nonumber \\
-    \nu =& \text{ average number of neutrons produced per fission [ - ],}
+    \nu =& \text{ average number of neutrons produced per} \nonumber \\
+    &\text{ fission [ - ],} \nonumber \\
+    \Sigma^f_{g} =& \text{ macroscopic fission cross section for neutron}
     \nonumber \\
-    \Sigma^f_{g} =& \text{ macroscopic fission cross section for neutron in
-    group $g$ [cm$^{-1}$],} \nonumber \\
-    \chi^d_g =& \text{ delayed fission spectrum for neutrons in group $g$
-    [ - ],} \nonumber \\
-    I =& \text{ total number of delayed neutron precursor groups [ - ],}
-    \nonumber \\
+    &\text{ in group $g$ [cm$^{-1}$],} \nonumber \\
+    \chi^d_g =& \text{ delayed fission spectrum for neutrons in} \nonumber \\
+    &\text{ group $g$ [ - ],} \nonumber \\
+    I =& \text{ total number of delayed neutron precursor} \nonumber \\
+    &\text{ groups [ - ],} \nonumber \\
     \beta =& \text{ total delayed neutron fraction [ - ].} \nonumber
 \end{align}
 
@@ -100,17 +100,16 @@ governed by the following equation:
     \intertext{where}
     \beta_i =& \text{ delayed neutron fraction of precursor group $i$ [ - ],}
     \nonumber \\
-    \lambda_i =& \text{ average decay constant of delayed neutron precursors
-    in} \nonumber \\
-    &\text{ precursor group $i$ [s$^{-1}$],} \nonumber \\
-    C_i =& \text{ concentration of delayed neutron precursors in precursor}
+    \lambda_i =& \text{ average decay constant of delayed neutron} \nonumber \\
+    &\text{ precursors in precursor group $i$ [s$^{-1}$],} \nonumber \\
+    C_i =& \text{ concentration of delayed neutron precursors in}
     \nonumber \\
-    &\text{ group $i$ [cm$^{-3}$],} \nonumber \\
+    &\text{ precursor group $i$ [cm$^{-3}$],} \nonumber \\
     \vec{u} =& \text{ molten salt flow velocity vector [cm$\cdot$s$^{-1}$],}
     \nonumber \\
-    D_{\text{P}} =& \text{ effective diffusion coefficient of the delayed
-    neutron} \nonumber \\
-    &\text{ precursors [cm$^2\cdot$s$^{-1}$].} \nonumber
+    D_{\text{P}} =& \text{ effective diffusion coefficient of the delayed}
+    \nonumber \\
+    &\text{ neutron precursors [cm$^2\cdot$s$^{-1}$].} \nonumber
 \end{align}
 
 The last two terms in Equation \ref{eq:dnp} represent the advection and
@@ -126,16 +125,16 @@ a fission heat source term given by:
     \label{eq:temp} \\
     %
     \intertext{where}
-    Q_f =& \sum^G_{g=1} \epsilon_g \Sigma_g^f
-    \phi_g = \text{ fission heat source [W$\cdot$m$^{-3}\cdot$s$^{-1}$],}
-    \label{eq:source} \\
+    Q_f =& \sum^G_{g=1} \epsilon_g \Sigma_g^f \phi_g \nonumber \\
+    =& \text{ fission heat source [W$\cdot$m$^{-3}\cdot$s$^{-1}$],} \nonumber
+    \\
     \rho =& \text{ density of the molten salt [kg$\cdot$m$^{-3}$],}
     \nonumber \\
-    c_p =& \text{ specific heat capacity of molten salt
-    [J$\cdot$kg$^{-1}\cdot$K$^{-1}$],} \nonumber \\
+    c_p =& \text{ specific heat capacity of molten salt} \nonumber \\
+    &\text{ [J$\cdot$kg$^{-1}\cdot$K$^{-1}$],} \nonumber \\
     T =& \text{ temperature of molten salt [K]} \nonumber \\
-    k =& \text{ effective thermal conductivity of molten salt
-    [W$\cdot$m$^{-1}\cdot$K$^{-1}$].} \nonumber
+    k =& \text{ effective thermal conductivity of molten salt} \nonumber \\
+    &\text{ [W$\cdot$m$^{-1}\cdot$K$^{-1}$].} \nonumber
 \end{align}
 
 Lastly, the governing equations for the incompressible Navier-Stokes flow are
@@ -144,8 +143,8 @@ given by:
 \begin{align}
     \rho \frac{\partial \vec{u}}{\partial t} =&
     -\rho (\vec{u}
-    \cdot \nabla) \vec{u} - \nabla p + \mu \nabla \cdot \nabla^2 \vec{u}
-    + \alpha \vec{g} \rho \left(T - T_{\text{ref}} \right)
+    \cdot \nabla) \vec{u} - \nabla p + \mu \nabla^2 \vec{u}
+    + \rho \alpha \vec{g} \left(T - T_{\text{ref}} \right)
     \label{eq:momemtum} \\
     %
     \nabla \cdot \vec{u} =& 0
@@ -156,9 +155,9 @@ given by:
     \alpha =& \text{ coefficient of thermal expansion [K$^{-1}$],} \nonumber \\
     \vec{g} =& \text{ gravitational force vector [N$\cdot$m$^{-3}$],} \nonumber
     \\
-    T_{\text{ref}} =& \text{ reference temperature at which the nominal
-    density} \nonumber \\
-    &\text{ is provided [K].} \nonumber
+    T_{\text{ref}} =& \text{ reference temperature at which the nominal}
+    \nonumber \\
+    &\text{ density is provided [K].} \nonumber
     \nonumber
 \end{align}
 

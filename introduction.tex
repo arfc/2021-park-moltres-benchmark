@@ -31,14 +31,14 @@ solving each individual set of physics separately, while tight
 coupling methods involve solving the coupled sets of physics simultaneously.
 Loosely coupled methods for reactor simulations typically decouple the
 neutronics calculations from the thermal-hydraulics calculations
-\cite{wang_review_2020}. Examples for loose coupling and tight coupling methods
+\citep{wang_review_2020}. Examples for loose coupling and tight coupling methods
 are the Picard iteration method and \gls{JFNK} method, respectively. Tight
 coupling methods may seem more computationally
 intensive but with appropriate preconditioning methods, they can be as
-competitive as or faster than loose coupling \cite{wang_review_2020}.
+competitive as or faster than loose coupling \citep{wang_review_2020}.
 Tight coupling methods also boast higher accuracy and better convergence rates
 for some strongly coupled problems such as the coupled neutronics and
-thermal-hydraulics in \glspl{MSR} \cite{lindsay_introduction_2018}. On the
+thermal-hydraulics in \glspl{MSR} \citep{lindsay_introduction_2018}. On the
 other hand, loosely coupled methods benefit from the relative ease of software
 implementation and the extensive pool of code validation and verification in
 existing literature for well-established single-physics reactor software. Users
@@ -47,7 +47,7 @@ careful tuning of simulation parameters such as timestep sizes.
 
 This paper presents benchmarking results from Moltres, a coupled
 neutronics/ thermal-hydraulics simulation software for \glspl{MSR}. Moltres is
-built on the \gls{MOOSE} \cite{gaston_physics-based_2015} finite element
+built on the \gls{MOOSE} \citep{gaston_physics-based_2015} finite element
 framework which provides various tools for performing fully-coupled,
 NEWTON-based solves. Software benchmarking exercises are important as they
 provide a common basis of comparison between software developed by different

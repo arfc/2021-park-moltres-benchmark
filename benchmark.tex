@@ -7,36 +7,37 @@
 
 \subsection{CNRS multiphysics benchmark}
 
-The \textit{CNRS benchmark} \cite{tiberga_results_2020} is a numerical
+The \textit{CNRS benchmark} \citep{tiberga_results_2020} is a numerical
 benchmark for multiphysics software dedicated to modeling \glspl{MSR}. It
 consists of three \textit{phases} and eight \textit{steps} in total. Each
 \textit{step} is a well-defined subproblem for systematically assessing the
 capabilities of \gls{MSR} software and pinpointing sources of discrepancies
 between software. \textit{Phase 0} consists single-physics problems in fluid
 dynamics, neutronics, and temperature, respectively. \textit{Phase 1} consists
-of coupled, steady-state neutronics problems for the multiplication
-factor. Lastly, \textit{Phase 2} consists of a coupled, transient problem to
-solve for the transient behavior of the system.
+of coupled, steady-state problems. Lastly, \textit{Phase 2} consists of a
+coupled, time-dependent problem.
 
 \begin{figure}[htb!]
 	\begin{center}
-		\includegraphics[width=.8\textwidth]{geometry}
+		\includegraphics[width=.8\columnwidth]{geometry}
 	\end{center}
 	\caption{2 m by 2 m domain of the \textit{CNRS benchmark}. $U_{lid}$
 	represents the velocity along the top boundary. Various quantities are
-	measured along the centerlines AA' and BB' for comparison. From Tiberga et
-	al. \cite{tiberga_results_2020}.}
+	measured along the centerlines AA' and BB' for comparison. From
+	\cite{tiberga_results_2020}.}
 	\label{fig:geometry}
 \end{figure}
 
-The domain geometry is a 2m by 2m square cavity filled with LiF-BeF$_2$-UF$_4$
-molten salt at an initial temperature of 900K \cite{tiberga_results_2020}.
-Standard vacuum boundary conditions apply for neutron flux along the
-boundaries, with homogeneous boundary conditions for delayed neutron
-precursors. No-slip boundary conditions apply for flow in the cavity, except
-the top boundary when the subproblem imposes forced convection via lid-driven
-cavity flow. For temperature, all boundaries are insulated and we simulate salt
-cooling with the following volumetric heat sink equation:
+As shown in Figure \ref{fig:geometry}, the domain geometry is a 2m by 2m square
+cavity filled with LiF-BeF$_2$-UF$_4$ molten salt at an initial temperature of
+900K \citep{tiberga_results_2020}.
+Standard vacuum boundary conditions apply for neutron flux along all
+boundaries, whereby outgoing neutrons are considered lost, while homogeneous
+boundary conditions apply for delayed neutron precursors. No-slip boundary
+conditions apply for velocity variables in the cavity, except along the top
+boundary when the subproblem imposes forced flow in the form of lid-driven
+cavity flow. For the temperature variable, all boundaries are insulated and we
+simulate salt cooling with the following volumetric heat sink equation:
 %
 \begin{align}
     q'''(\vec{r}) &= \gamma \left(900 - T(\vec{r})\right), \label{eq:heat}
@@ -48,12 +49,12 @@ cooling with the following volumetric heat sink equation:
     T(\vec{r}) &= \mbox{temperature at point $(\vec{r})$ [K].} \nonumber
 \end{align}
 
-Tiberga et al. \cite{tiberga_results_2020} used Serpent 2
-\cite{leppanen_serpent_2014} with the JEFF-3.1 library
-\cite{koning_jeff-31_2006} to generate multigroup neutronics data for the
+\cite{tiberga_results_2020} used Serpent 2
+\citep{leppanen_serpent_2014} with the JEFF-3.1 library
+\citep{koning_jeff-31_2006} to generate multigroup neutronics data for the
 LiF-BeF$_2$-UF$_4$ salt in the domain at 900K, condensed into six energy groups
-and eight precursor groups. We direct readers to their paper for all of the
-group constant data \cite{tiberga_results_2020}. In addition, the benchmark
+and eight precursor groups. We direct readers to their paper for the
+group constant data \citep{tiberga_results_2020}. In addition, the benchmark
 prescribes the following equations to govern the temperature dependence in the
 cross sections and the neutron diffusion coefficients:
 %
@@ -72,16 +73,16 @@ cross sections and the neutron diffusion coefficients:
     T_{ref} &= \mbox{reference temperature} = 900\mbox{ K}. \nonumber
 \end{align}
 
-The benchmark also prescribes for incompressible Navier-Stokes and the
+The benchmark also prescribes for incompressible Navier-Stokes flow and the
 Boussinesq approximation for buoyancy when evaluating the salt flow in the
 domain, but places no restrictions on the type of neutronics model.
-The following subsections briefly detail each benchmark subproblem.
+Table \ref{table:benchmark} briefly details each benchmark subproblem.
 
-\begin{table*}[t!]
+\begin{table*}[htb!]
 	\caption{Description of each benchmark subproblem.}
 	\centering
 	\small
-	\setlength\tabcolsep{2.5pt}
+	\setlength\tabcolsep{2.2pt}
 	\begin{tabular}{p{33mm} p{65mm} l p{40mm}<{\centering}}
 		\toprule
 		Step & Description & Input parameters & Observables \\
@@ -163,6 +164,22 @@ The following subsections briefly detail each benchmark subproblem.
 		    U_{lid} &= [0, 0.5] \mbox{ m$\cdot$s$^{-1}$}
         \end{aligned}$
         & $\rho - \rho_{s_{0.2}}$; \\
+        \midrule
+        Step 2.1: Forced convection transient & Solve for the
+        power gain and phase shift (Bode diagrams) in response to a uniform
+        perturbation in the volumetric heat transfer $\gamma$ according to a
+        sine wave of amplitude 10\% and frequency $f \in [0.0125, 0.025, 0.05,
+        0.1, 0.2, 0.4, 0.8]$ Hz &
+		$\begin{aligned}[t]
+		    \gamma &= 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$} \\
+		    P &= [0, 1] \mbox{ GW} \\
+		    U_{lid} &= [0, 0.5] \mbox{ m$\cdot$s$^{-1}$}
+        \end{aligned}$ &
+        $\begin{aligned}
+            \text{gain} =& \frac{\left(P_{max} - P_{avg}\right)/P_{avg}}{
+            \left(\gamma_{max} - \gamma_{avg}\right)/\gamma_{avg}}; \\
+            \text{phase}& \text{ shift} = \theta_P - \theta_\gamma;
+        \end{aligned}$ \\
 		\bottomrule
 	\end{tabular}
 	\label{table:benchmark}
@@ -171,7 +188,7 @@ The following subsections briefly detail each benchmark subproblem.
 \subsection{Modeling approach}
 
 For this study, we coupled Moltres with \gls{MOOSE}'s
-incompressible Navier-Stokes module \cite{peterson_overview_2017} to
+incompressible Navier-Stokes module \citep{peterson_overview_2017} to
 model precursor drift and thermal-hydraulics. We performed all simulations
 except Step 1.4 using the Preconditioned \gls{JFNK} method with all physics
 fully coupled. Step 1.4 required a transient solve on the thermal-hydraulics
@@ -191,5 +208,5 @@ the Discontinuous Galerkin finite element method to eliminate spurious
 numerical oscillations arising from the high Schmidt number flow. As for the
 high Reynolds number flow, we stabilized the incompressible Navier-Stokes
 equations using the streamline upwind Petrov-Galerkin and pressure-stabilizing
-Petrov-Galerkin stabilization methods \cite{peterson_overview_2017} provided in
-\gls{MOOSE}.
+Petrov-Galerkin stabilization methods \citep{peterson_overview_2017} provided
+in \gls{MOOSE}.
