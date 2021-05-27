@@ -1,4 +1,4 @@
-\section{Moltres}
+\section{Moltres} \label{sec:moltres}
 
 %% Contents
 % General description of Moltres and MOOSE
@@ -6,7 +6,7 @@
 % Neutronics description
 % Thermal-hydraulics description
 
-Moltres \citep{lindsay_introduction_2018} is an open-source, \gls{MOOSE}- based
+Moltres \citep{lindsay_introduction_2018} is an open-source, \gls{MOOSE}-based
 ``application'' designed for multiphysics simulations of \glspl{MSR}. The goal
 of making Moltres open-source is to promote quality through transparency and
 ease of peer review. The source code \citep{lindsay_moltres_2017} is available
@@ -164,4 +164,8 @@ given by:
 In this work, we also used PSPG and SUPG stabilization methods to combat
 instabilities in the temperature and velocity fields. We refer readers to
 \cite{peterson_overview_2017} for details on the implementation of these
-methods in \gls{MOOSE}'s Navier-Stokes module.
+methods in \gls{MOOSE}'s Navier-Stokes module. Moltres solves all the
+aforementioned partial differential equations with the \gls{FEM} except for the
+\gls{DNP} equation which Moltres solves with the \gls{DFEM} to avoid
+instabilities in the \gls{DNP} distribution without the need for stabilization
+methods.

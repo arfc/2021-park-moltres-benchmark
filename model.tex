@@ -1,4 +1,4 @@
-\section{Model Description}
+\section{Model Description} \label{sec:model}
 
 %% Contents
 % Description of benchmark
@@ -34,7 +34,7 @@ cavity filled with LiF-BeF$_2$-UF$_4$ molten salt at an initial temperature of
 Standard vacuum boundary conditions apply for neutron flux along all
 boundaries, whereby outgoing neutrons are considered lost, while homogeneous
 boundary conditions apply for delayed neutron precursors. No-slip boundary
-conditions apply for velocity variables in the cavity, except along the top
+conditions apply for velocity variables in the cavity*, except along the top
 boundary when the subproblem imposes forced flow in the form of lid-driven
 cavity flow. For the temperature variable, all boundaries are insulated and we
 simulate salt cooling with the following volumetric heat sink equation:
@@ -165,7 +165,7 @@ Table \ref{table:benchmark} briefly details each benchmark subproblem.
         \end{aligned}$
         & $\rho - \rho_{s_{0.2}}$; \\
         \midrule
-        Step 2.1: Forced convection transient & Solve for the
+        Step 2.1: Forced convection transient & Solve* for the
         power gain and phase shift (Bode diagrams) in response to a uniform
         perturbation in the volumetric heat transfer $\gamma$ according to a
         sine wave of amplitude 10\% and frequency $f \in [0.0125, 0.025, 0.05,
@@ -187,16 +187,27 @@ Table \ref{table:benchmark} briefly details each benchmark subproblem.
 
 \subsection{Modeling approach}
 
-For this study, we coupled Moltres with \gls{MOOSE}'s
-incompressible Navier-Stokes module \citep{peterson_overview_2017} to
-model precursor drift and thermal-hydraulics. We performed all simulations
-except Step 1.4 using the Preconditioned \gls{JFNK} method with all physics
-fully coupled. Step 1.4 required a transient solve on the thermal-hydraulics
-portion of the problem to resolve the coupling between lid-driven flow and
-buoyancy effects. We then loosely coupled the thermal-hydraulics transient
-solve to the neutronics steady-state criticality solve. For future work, we
-could explore and determine the appropriate initial conditions or \gls{MOOSE}'s
-nonlinear solver settings to circumvent this issue.
+% Timestepping, mesh, group constants
+% Coupling details for each Step where applicable
+
+For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
+of 200 by 200 elements. Thus, the dimensions of each element is 0.01m by 0.01m.
+We approximated the neutron flux, temperature,
+velocity, and pressure variables are using first-order shape functions within
+each element, and the \gls{DNP} variables using zeroth-order shape functions.
+We took the group constant data directly from \cite{tiberga_results_2020} and
+rewrote it into a Moltres-compatible format without any other modifications.
+
+As mentioned in Section \ref{sec:moltres}, \gls{MOOSE}'s \textit{Navier-Stokes}
+and \textit{Heat Conduction} modules provide some of the capabilities for
+modeling incompressible flow and heat transfer. We performed all simulations
+using the Preconditioned \gls{JFNK} solver from the \gls{MOOSE} framework.
+\textit{Steps 1.3} and \textit{1.4} required loose coupling between
+neutronics and thermal-hydraulics due to the unique
+problem setup involving an eigenvalue problem in neutronics and a steady-state
+problem in thermal-hydraulics simultaneously. All other
+\textit{Steps} in \textit{Phases 1} and \textit{2} were solved with all physics
+fully coupled in a single Newton method solve.
 
 For this study, we discretized the problem domain into a 200 by 200 structured
 mesh, resulting in uniform mesh elements of dimensions 1cm by 1cm. We
