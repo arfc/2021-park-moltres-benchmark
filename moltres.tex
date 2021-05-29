@@ -42,11 +42,11 @@ simulate decay heat from fission products.
 
 To perform neutronics calculations, Moltres requires homogenized group constant
 data from dedicated high-fidelity neutronics software such as SCALE
-\citep{dehart_reactor_2011} or Serpent 2 \citep{leppanen_serpent_2014}. Users can
-run a Python script in Moltres' Github repository which automatically reads
+\citep{dehart_reactor_2011} or Serpent 2 \citep{leppanen_serpent_2014}. Users
+can run a Python script in Moltres' Github repository which automatically reads
 user-provided SCALE or Serpent 2 output data files and creates
-Moltres-compatible JSON files containing all required group constant data.
-There are on-going efforts to produce a similar script for parsing OpenMC
+Moltres-compatible JSON or text files containing all required group constant
+data. There are on-going efforts to produce a similar script for parsing OpenMC
 output data.
 
 Moltres solves for the neutron fluxes governed by
@@ -161,11 +161,12 @@ given by:
     \nonumber
 \end{align}
 
-In this work, we also used PSPG and SUPG stabilization methods to combat
-instabilities in the temperature and velocity fields. We refer readers to
-\cite{peterson_overview_2017} for details on the implementation of these
-methods in \gls{MOOSE}'s Navier-Stokes module. Moltres solves all the
-aforementioned partial differential equations with the \gls{FEM} except for the
-\gls{DNP} equation which Moltres solves with the \gls{DFEM} to avoid
-instabilities in the \gls{DNP} distribution without the need for stabilization
-methods.
+\gls{MOOSE}'s \textit{Navier-Stokes} module also provides stabilization methods
+to eliminate numerical node-to-node oscillations commonly observed when
+resolving advection-dominated flows using continuous Galerkin methods. We refer
+readers to \cite{peterson_overview_2017} for details on the implementation of
+these methods in \gls{MOOSE}'s Navier-Stokes module. Moltres handles all the
+aforementioned partial differential equations via the continuous finite-element
+treatment except for the \gls{DNP} equation which Moltres solves via the
+discontinuous finite element method to avoid instabilities in the \gls{DNP}
+distribution without the need for stabilization methods.
