@@ -170,3 +170,64 @@ aforementioned partial differential equations via the continuous finite-element
 treatment except for the \gls{DNP} equation which Moltres solves via the
 discontinuous finite element method to avoid instabilities in the \gls{DNP}
 distribution without the need for stabilization methods.
+
+\subsection{Modeling approach}
+
+% Timestepping, mesh, group constants
+% Coupling details for each Step where applicable
+
+For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
+of 200 by 200 elements. Thus, the dimensions of each mesh element are 0.01m by
+0.01m. We
+approximated most of the relevant variables, i.e. neutron fluxes, velocity
+components, pressure, and temperature, using first-order Lagrange shape
+functions. The only exception is the precursor concentration variables, which
+we approximated using zeroth-order monomial shape functions and solved using
+\gls{DFEM}. We took the group constant data directly from
+\cite{tiberga_results_2020} and rewrote it into the Moltres-compatible text
+format without any other modifications.
+
+As mentioned in Section \ref{sec:moltres}, \gls{MOOSE}'s \textit{Navier-Stokes}
+and \textit{Heat Conduction} modules provide some of the capabilities for
+modeling incompressible flow and heat transfer. In particular, we stabilized
+the incompressible flow and temperature governing equations using the
+streamline upwind Petrov-Galerkin and pressure-stabilizing Petrov-Galerkin
+stabilization methods \citep{peterson_overview_2017} implemented in
+\gls{MOOSE}. Without these stabilization techniques, we observed spurious
+numerical oscillations in the velocity and temperature. These oscillations are
+commonly reported when using finite element methods to solve
+advection-dominated flow and lid-driven cavity problems with corner
+singularities where different boundary conditions meet
+\citep{kuhlmann_lid-driven_2018}.
+
+We performed all simulations using the Preconditioned \gls{JFNK} solver from
+the \gls{MOOSE} framework. The coupled steady-state problems in
+\textit{Steps 1.3} and \textit{1.4} required loose coupling between neutronics
+and thermal-hydraulics due to the unique problem setup involving an eigenvalue
+problem for the neutron multiplication factor and a standard steady-state
+problem in thermal-hydraulics simultaneously. All other multiphysics problems
+in \textit{Steps} in \textit{Phases 1} and \textit{2} were fully coupled
+within the same \gls{JFNK} solve.
+
+For the time-dependent cases in \textit{Step 2.1}, we used a second-order
+implicit Backward Differential Formula (BDF2) time-stepping scheme and fixed
+the timestep sizes at 1/200 of the period of the corresponding driving
+frequencies as shown in Table \ref{table:timestep}. The only exception is the
+0.8 Hz case as a timestep size of 0.4s required more than one hundred nonlinear
+iterations to converge in each timestep.
+
+\begin{table}[htb!]
+    \caption{Timestep sizes used for the time-dependent cases in
+    \textit{Step 2}.}
+	\centering
+	\setlength\tabcolsep{2.5pt}
+	\begin{tabular}{l S S S S S S S}
+	    \toprule
+	    Frequency [Hz] & 0.0125 & 0.025 & 0.05 & 0.1 & 0.2 & 0.4 & 0.8 \\
+	    \midrule
+	    Timestep size [s] & 0.2 & 0.2 & 0.1 & 0.05 & 0.025 & 0.0125 & 0.00625
+	    \\
+	    \bottomrule
+	\end{tabular}
+	\label{table:timestep}
+\end{table}
