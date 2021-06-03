@@ -6,6 +6,11 @@
 % Neutronics description
 % Thermal-hydraulics description
 
+In this section, we describe the Moltres, the \gls{MSR} simulation tool, and
+the specific modeling approach for simulating the benchmark cases in Moltres.
+
+\subsection{Description of Moltres}
+
 Moltres \citep{lindsay_introduction_2018} is an open-source, \gls{MOOSE}-based
 ``application'' designed for multiphysics simulations of \glspl{MSR}. The goal
 of making Moltres open-source is to promote quality through transparency and
@@ -173,9 +178,6 @@ distribution without the need for stabilization methods.
 
 \subsection{Modeling approach}
 
-% Timestepping, mesh, group constants
-% Coupling details for each Step where applicable
-
 For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
 of 200 by 200 elements. Thus, the dimensions of each mesh element are 0.01m by
 0.01m. We
@@ -213,8 +215,13 @@ For the time-dependent cases in \textit{Step 2.1}, we used a second-order
 implicit Backward Differential Formula (BDF2) time-stepping scheme and fixed
 the timestep sizes at 1/200 of the period of the corresponding driving
 frequencies as shown in Table \ref{table:timestep}. The only exception is the
-0.8 Hz case as a timestep size of 0.4s required more than one hundred nonlinear
-iterations to converge in each timestep.
+0.0125 Hz case as a timestep size of 0.4s required more than one hundred
+nonlinear iterations to converge in each timestep. We assumed the systems
+reached asymptotic behavior when the magnitudes of neighboring power peaks
+differed by less than 0.001\% for at least ten wavelengths. Under this
+assumption, the phase shift
+measurements between neighboring waves always converged, within the precision
+governed by the timestep sizes, before the magnitudes of the power peaks.
 
 \begin{table}[htb!]
     \caption{Timestep sizes used for the time-dependent cases in

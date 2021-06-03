@@ -5,15 +5,14 @@ benchmark for multiphysics software dedicated to modeling \glspl{MSR}. It
 consists of three Phases and eight Steps in total. Each
 Step is a well-defined subproblem for systematically assessing the
 capabilities of \gls{MSR} software and pinpointing sources of discrepancies
-between software. Phase 0 consists single-physics problems in fluid
+between software. Phase 0 consists three single-physics problems in fluid
 dynamics, neutronics, and temperature, respectively. Phase 1 consists
-of coupled, steady-state problems. Lastly, Phase 2 consists of a
+of four coupled, steady-state problems. Lastly, Phase 2 consists of one
 coupled, time-dependent problem.
 
 \begin{figure}[htb!]
-	\begin{center}
-		\includegraphics[width=.8\columnwidth]{geometry}
-	\end{center}
+	\centering
+	\includegraphics[width=.8\columnwidth]{geometry}
 	\caption{2 m by 2 m domain of the \textit{CNRS benchmark}. $U_{lid}$
 	represents the velocity along the top boundary. Various quantities are
 	measured along the centerlines AA' and BB' for comparison. From
@@ -240,12 +239,13 @@ configuration is made exactly critical by scaling the neutron source terms,
 from fission and \gls{DNP} decay, by the inverse of the criticality eigenvalue
 solution from Step 1.4.
 
-$\gamma$ is uniformly perturbed according to a sine wave of amplitude 10\% and
-frequencies $f \in [0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8]$ given as:
+$\gamma$ is uniformly perturbed according to small-amplitude sine waves given
+as:
 \begin{align}
     \gamma =& \gamma_0 \left[ 1 + 0.1\sin\left(2 \pi f \right) \right], \\
     \intertext{where}
-    \gamma_0 =& 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$}.
+    \gamma_0 =& 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$}, \nonumber \\
+    f \in& [0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8]. \nonumber
 \end{align}
 
 \subsubsection*{Initial conditions}
@@ -261,110 +261,3 @@ frequencies $f \in [0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8]$ given as:
     \left(\gamma_{max} - \gamma_{avg}\right)/\gamma_{avg}}$
     \item Power phase shift $=\theta_P - \theta_\gamma$
 \end{itemize}
-
-\begin{table}[p!]
-	\caption{Description of each benchmark subproblem.}
-	\centering
-	\small
-	\setlength\tabcolsep{2.2pt}
-	\begin{tabular}{p{25mm} p{73mm} l p{40mm}<{\centering}}
-		\toprule
-		Step & Description & Input parameters & Observables \\
-		\midrule
-		Step 0.1: Velocity field & Solve for the steady-state incompressible
-		flow solution from lid-driven cavity flow. &
-		$\begin{aligned}[t]
-		    U_{lid} &= 0.5 \mbox{ m$\cdot$s$^{-1}$}
-        \end{aligned}$
-        & $(u_x, u_y)$ along AA' and BB'; \\
-        \midrule
-        Step 0.2: Neutronics & Solve for the fission rate density
-        $\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})$ and reactivity $\rho$
-        in a static, isothermal fuel configuration. &
-		$\begin{aligned}[t]
-		    U_{lid} &= 0 \mbox{ m$\cdot$s$^{-1}$} \\
-		    T &= 900 \mbox{ K} \\
-		    P &= 1 \mbox{ GW}
-        \end{aligned}$
-        & $\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})$ along AA'; \newline
-        $\rho$; \\
-        \midrule
-        Step 0.3: Temperature & Solve for the temperature distribution $T$
-        arising from the velocity field $(u_x, u_y)_{s_{0.1}}$ and fission heat
-        generation $Q_{s_{0.2}}$ from Steps
-        0.1 and 0.2, respectively, and a volumetric heat sink (Equation
-        \ref{eq:heat}). &
-		$\begin{aligned}[t]
-		    (u_x, u_y) &= (u_x, u_y)_{s_{0.1}} \\
-		    Q &= Q_{s_{0.2}} \\
-		    \gamma &= 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$}
-        \end{aligned}$
-        & $T$ along AA' and BB'; \\
-        \midrule
-        Step 1.1: Circulating fuel & Solve for the delayed neutron source
-        distribution $\sum_j \lambda_j C_j$ and reactivity $\rho$ in a
-        non-static, isothermal fuel configuration. &
-		$\begin{aligned}[t]
-		    (u_x, u_y) &= (u_x, u_y)_{s_{0.1}} \\
-		    T &= 900 \mbox{ K} \\
-		    P &= 1 \mbox{ GW}
-        \end{aligned}$
-        & $\sum_j \lambda_j C_j$ along AA' and BB'; \newline $\rho -
-        \rho_{s_{0.2}}$; \\
-        \midrule
-        Step 1.2: Power coupling & Solve for the temperature distribution $T$,
-        reactivity $\rho$, and fission rate density
-        $\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})$ under the fixed velocity field
-        from Step 0.1. &
-		$\begin{aligned}[t]
-		    (u_x, u_y) &= (u_x, u_y)_{s_{0.1}} \\
-		    P &= 1 \mbox{ GW} \\
-		    \gamma &= 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$}
-        \end{aligned}$
-        & $T$ along AA' and BB'; \newline $\rho - \rho_{s_{1.1}}$; \newline
-        $\sum^G_i \Sigma_{f,i} \phi_i(\vec{r}) -
-        \left[\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})\right]_{s_{0.2}}$; \\
-        \midrule
-        Step 1.3: Buoyancy & Solve for the velocity components $(u_x, u_y)$,
-        temperature distribution $T$, delayed neutron source
-        distribution $\sum_j \lambda_j C_j$, and
-        reactivity $\rho$ in a fully coupled system. &
-		$\begin{aligned}[t]
-		    P &= 1 \mbox{ GW} \\
-		    U_{lid} &= 0 \mbox{ m$\cdot$s$^{-1}$} \\
-		    \gamma &= 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$}
-        \end{aligned}$
-        & $(u_x, u_y)$ along AA' and BB'; \newline $T$ along AA' and BB';
-        \newline $\sum_j \lambda_j C_j$ along AA' and BB'; \newline
-        $\rho - \rho_{s_{0.2}}$; \\
-        \midrule
-        Step 1.4: Full coupling & Solve for the
-        reactivity $\rho$ in a fully coupled system with both external
-        momemtum-driven flow and buoyancy effects and various permutations of
-        $P$ and $U_{lid}$ values.  &
-		$\begin{aligned}[t]
-		    \gamma &= 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$} \\
-		    P &= [0, 1] \mbox{ GW} \\
-		    U_{lid} &= [0, 0.5] \mbox{ m$\cdot$s$^{-1}$}
-        \end{aligned}$
-        & $\rho - \rho_{s_{0.2}}$; \\
-        \midrule
-        Step 2.1: Forced convection transient & Solve for the
-        power gain and phase shift (Bode diagrams) in response to a uniform
-        perturbation in the volumetric heat transfer $\gamma$ according to a
-        sine wave of amplitude 10\% and frequency $f \in [0.0125, 0.025, 0.05,
-        0.1, 0.2, 0.4, 0.8]$ Hz. &
-		$\begin{aligned}[t]
-		    \gamma &= 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$} \\
-		    P &= [0, 1] \mbox{ GW} \\
-		    U_{lid} &= [0, 0.5] \mbox{ m$\cdot$s$^{-1}$}
-        \end{aligned}$ &
-        $\begin{aligned}[t]
-            \text{gain} =& \frac{\left(P_{max} - P_{avg}\right)/P_{avg}}{
-            \left(\gamma_{max} - \gamma_{avg}\right)/\gamma_{avg}}; \\
-            \text{phase}& \text{ shift} = \theta_P - \theta_\gamma;
-        \end{aligned}$ \\
-		\bottomrule
-	\end{tabular}
-	\label{table:benchmark}
-\end{table}
