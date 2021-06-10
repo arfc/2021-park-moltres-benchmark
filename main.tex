@@ -1,17 +1,29 @@
-\documentclass[review]{elsarticle}
+\documentclass[preprint,5p,twocolumn,authoryear]{elsarticle}
+
+%% \documentclass[preprint,12pt,authoryear]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times,authoryear]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
 
 \usepackage{multirow}
 \usepackage{lineno}
 \usepackage{xspace}
-\usepackage{threeparttable}
-\usepackage{subfig}
 \modulolinenumbers[5]
 
 %% Journal name here
-\journal{FIXME: The Journal Name Goes Here}
+\journal{Annals of Nuclear Energy}
 
 %% `Elsevier LaTeX' style
-\bibliographystyle{elsarticle-num}
+\bibliographystyle{elsarticle-harv}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% packages and definitions (optional)
@@ -20,7 +32,15 @@
 \usepackage{microtype} % improves typography for PDF
 \usepackage{hhline}
 \usepackage{amsmath}
-\usepackage{subfig}
+
+\usepackage{graphicx} % allows inclusion of graphics
+\graphicspath{{./images/}}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{siunitx}
+\usepackage{diagbox}
 
 \usepackage{booktabs}
 \usepackage{threeparttable, tablefootnote}
@@ -42,20 +62,22 @@
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 % hyperref %
-\usepackage[hidelinks]{hyperref}
+\usepackage[colorlinks=false]{hyperref}
 % after hyperref %
 \usepackage{cleveref}
 \usepackage{datatool}
 \usepackage[acronym,toc]{glossaries}
 \include{acros}
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}
 
 \makeglossaries
 
 \begin{document}
 \begin{frontmatter}
-\title{FIXME: The Title Goes Here}
+\title{Verification of Moltres for Multiphysics Simulations of Fast-Spectrum
+Molten Salt Reactors}
 
-%\date{}                     % uncomment if you don't need date to appear
+%\date{}                     % uncomment if you need date to appear
 
 % Authors
 \input{authors}
@@ -64,12 +86,11 @@
 \input{institutions}
 
 \begin{keyword}
-FIXME \sep
-key words \sep
-go here \sep
-like: \sep 
-simulation \sep
-spent nuclear fuel 
+Molten salt reactor \sep
+Reactor physics \sep
+Coupled multiphysics \sep
+Code-to-code verification \sep
+MOOSE
 \end{keyword}
 
 \input{abstract}
@@ -77,13 +98,14 @@ spent nuclear fuel
 \glsresetall
 
 %% Shows line numbers
-\linenumbers
+%\linenumbers
 
 \input{introduction}
-\input{methods}
+\input{benchmark}
+\input{moltres}
 \input{results}
 \input{conclusion}
-\input{acks}
+\input{acknowledgements}
 
 \bibliography{bibliography}
 

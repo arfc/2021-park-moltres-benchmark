@@ -1,0 +1,241 @@
+\section{Moltres} \label{sec:moltres}
+
+%% Contents
+% General description of Moltres and MOOSE
+% Group constant data required from SCALE/Serpent
+% Neutronics description
+% Thermal-hydraulics description
+
+In this section, we describe the Moltres, the \gls{MSR} simulation tool, and
+the specific modeling approach for simulating the benchmark cases in Moltres.
+
+\subsection{Description of Moltres}
+
+Moltres \citep{lindsay_introduction_2018} is an open-source, \gls{MOOSE}-based
+``application'' designed for multiphysics simulations of \glspl{MSR}. The goal
+of making Moltres open-source is to promote quality through transparency and
+ease of peer review. The source code \citep{lindsay_moltres_2017} is available
+on GitHub \citep{github_build_2017}. Moltres leverages on \texttt{git} for
+version control, and integrated testing to protect existing capabilities while
+concurrently supporting continued code development. Moltres depends on the
+\gls{MOOSE} finite element framework for its meshing and parallel, nonlinear
+NEWTON-based solver capabilities. Therefore,
+Moltres by default has access to tight coupling methods with implicit
+time-stepping. Users can also opt to decouple problems for loosely coupled
+solves depending on their specific needs. Furthermore, applications within the
+\gls{MOOSE} framework share the same programming
+interfaces; this commonality simplifies the work required to tightly couple
+different physics over a wide range of length and time scales. For \gls{MSR}
+simulations in Moltres such as those in this paper, we coupled Moltres'
+\gls{MSR} modeling capabilities with \gls{MOOSE}'s \textit{Navier-Stokes} and
+\textit{Heat Conduction} physics modules \citep{peterson_overview_2017} for
+general thermal-hydraulics modeling. Together with these physics modules,
+Moltres solves the multigroup neutron diffusion equations, for an arbitrary
+number of energy and precursor groups, and thermal-hydraulics equations
+simultaneously on the same mesh.
+
+In a previous work, \cite{lindsay_introduction_2018}
+demonstrated Moltres' \gls{MSR} neutronics modeling capabilities with 1D salt
+flow in 2D-axisymmetric and 3D models of the \gls{MSRE}. The neutron flux and
+temperature distributions showed good qualitative agreement with legacy
+\gls{MSRE} data albeit with some minor quantitative discrepancies due to
+simplifications and assumptions in the reactor geometry. Moltres has
+since undergone further development to support the looping of \gls{DNP} drift
+back into the reactor core, coupling the aforementioned \gls{DNP} drift
+to incompressible Navier-Stokes velocity flows, and a decay heat model to
+simulate decay heat from fission products.
+
+To perform neutronics calculations, Moltres requires homogenized group constant
+data from dedicated high-fidelity neutronics software such as SCALE
+\citep{dehart_reactor_2011} or Serpent 2 \citep{leppanen_serpent_2014}. Users
+can run a Python script in Moltres' Github repository which automatically reads
+user-provided SCALE or Serpent 2 output data files and creates
+Moltres-compatible JSON or text files containing all required group constant
+data. There are on-going efforts to produce a similar script for parsing OpenMC
+output data.
+
+Moltres solves for the neutron fluxes governed by
+the multigroup neutron diffusion equations given by:
+%
+\begin{align}
+    \frac{1}{v_g} \frac{\partial \phi_g}{\partial t} =& \nabla \cdot D_g
+    \nabla \phi_g - \Sigma^r_g \phi_g +
+    \sum^G_{g' \neq g} \Sigma^s_{g' \rightarrow g} \phi_{g'} \nonumber \\
+    &+ \chi^p_g \sum^G_{g'=1} \left( 1-\beta \right) \nu \Sigma^f_{g'}
+    \phi_{g'} + \chi^d_g \sum^I_i \lambda_i C_i, \label{eq:neut} \\
+    %
+    \intertext{where}
+    v_g =& \text{ average speed of neutrons in group $g$ [cm$\cdot$s$^{-1}$],} 
+    \nonumber \\
+    \phi_g =& \text{ neutron flux in group $g$ [cm$^{-2}\cdot$s$^{-1}$],}
+    \nonumber \\
+    t =& \text{ time [s],} \nonumber \\
+    D_g =& \text{ diffusion coefficient of neutrons in} \nonumber \\
+    &\text{ group $g$ [cm$^2\cdot$s$^{-1}$],} \nonumber \\
+    \Sigma^r_g =& \text{ macroscopic cross section for removal of} \nonumber \\
+    &\text{ neutrons from group $g$ [cm$^{-1}$],} \nonumber \\
+    \Sigma^s_{g' \rightarrow g} =& \text{ macroscopic cross section of
+    scattering from} \nonumber \\
+    &\text{ groups $g'$ to $g$ [cm$^{-1}$],} \nonumber \\
+    \chi^p_g =& \text{ prompt fission spectrum for neutrons in} \nonumber \\
+    &\text{ group $g$ [ - ],} \nonumber \\
+    G =& \text{ total number of discrete neutron groups [ - ],} \nonumber \\
+    \nu =& \text{ average number of neutrons produced per} \nonumber \\
+    &\text{ fission [ - ],} \nonumber \\
+    \Sigma^f_{g} =& \text{ macroscopic fission cross section for neutron}
+    \nonumber \\
+    &\text{ in group $g$ [cm$^{-1}$],} \nonumber \\
+    \chi^d_g =& \text{ delayed fission spectrum for neutrons in} \nonumber \\
+    &\text{ group $g$ [ - ],} \nonumber \\
+    I =& \text{ total number of delayed neutron precursor} \nonumber \\
+    &\text{ groups [ - ],} \nonumber \\
+    \beta =& \text{ total delayed neutron fraction [ - ].} \nonumber
+\end{align}
+
+While Moltres is generally unit-agnostic, we use the CGS system here because
+the length units for the neutron cross section data from SCALE and Serpent 2
+are provided in centimeters. The delayed neutron precursor concentrations are
+governed by the following equation:
+%
+\begin{align}
+    \frac{\partial C_i}{\partial t} =& \beta_i \sum^G_{g'=1} \nu \Sigma^f_{g'}
+    \phi_{g'} - \lambda_i C_i - \vec{u} \cdot \nabla C_i + \nabla \cdot
+    D_{\text{P}} \nabla C_i, \label{eq:dnp} \\
+    %
+    \intertext{where}
+    \beta_i =& \text{ delayed neutron fraction of precursor group $i$ [ - ],}
+    \nonumber \\
+    \lambda_i =& \text{ average decay constant of delayed neutron} \nonumber \\
+    &\text{ precursors in precursor group $i$ [s$^{-1}$],} \nonumber \\
+    C_i =& \text{ concentration of delayed neutron precursors in}
+    \nonumber \\
+    &\text{ precursor group $i$ [cm$^{-3}$],} \nonumber \\
+    \vec{u} =& \text{ molten salt flow velocity vector [cm$\cdot$s$^{-1}$],}
+    \nonumber \\
+    D_{\text{P}} =& \text{ effective diffusion coefficient of the delayed}
+    \nonumber \\
+    &\text{ neutron precursors [cm$^2\cdot$s$^{-1}$].} \nonumber
+\end{align}
+
+The last two terms in Equation \ref{eq:dnp} represent the advection and
+diffusion terms, respectively, to model the movement of \gls{DNP} in
+liquid-fuel \glspl{MSR}.
+
+The governing equation for temperature is an advection-diffusion equation with
+a fission heat source term given by:
+%
+\begin{align}
+    \rho c_{p} \frac{\partial T}{\partial t} =& - \rho c_p \vec{u}
+    \cdot \nabla T + \nabla \cdot \left(k \nabla T \right) + Q_f
+    \label{eq:temp} \\
+    %
+    \intertext{where}
+    Q_f =& \sum^G_{g=1} \epsilon_g \Sigma_g^f \phi_g \nonumber \\
+    =& \text{ fission heat source [W$\cdot$m$^{-3}\cdot$s$^{-1}$],} \nonumber
+    \\
+    \rho =& \text{ density of the molten salt [kg$\cdot$m$^{-3}$],}
+    \nonumber \\
+    c_p =& \text{ specific heat capacity of molten salt} \nonumber \\
+    &\text{ [J$\cdot$kg$^{-1}\cdot$K$^{-1}$],} \nonumber \\
+    T =& \text{ temperature of molten salt [K]} \nonumber \\
+    k =& \text{ effective thermal conductivity of molten salt} \nonumber \\
+    &\text{ [W$\cdot$m$^{-1}\cdot$K$^{-1}$].} \nonumber
+\end{align}
+
+Lastly, the governing equations for the incompressible Navier-Stokes flow are
+given by:
+%
+\begin{align}
+    \rho \frac{\partial \vec{u}}{\partial t} =&
+    -\rho (\vec{u}
+    \cdot \nabla) \vec{u} - \nabla p + \mu \nabla^2 \vec{u}
+    + \rho \alpha \vec{g} \left(T - T_{\text{ref}} \right)
+    \label{eq:momemtum} \\
+    %
+    \nabla \cdot \vec{u} =& 0
+    \label{eq:divergence}
+    \intertext{where}
+    p =& \text{ pressure [Pa],} \nonumber \\
+    \mu =& \text{ dynamic viscosity [Pa$\cdot$s],} \nonumber \\
+    \alpha =& \text{ coefficient of thermal expansion [K$^{-1}$],} \nonumber \\
+    \vec{g} =& \text{ gravitational force vector [N$\cdot$m$^{-3}$],} \nonumber
+    \\
+    T_{\text{ref}} =& \text{ reference temperature at which the nominal}
+    \nonumber \\
+    &\text{ density is provided [K].} \nonumber
+    \nonumber
+\end{align}
+
+\gls{MOOSE}'s \textit{Navier-Stokes} module also provides stabilization methods
+to eliminate numerical node-to-node oscillations commonly observed when
+resolving advection-dominated flows using continuous Galerkin methods. We refer
+readers to \cite{peterson_overview_2017} for details on the implementation of
+these methods in \gls{MOOSE}'s Navier-Stokes module. Moltres handles all the
+aforementioned partial differential equations via the continuous finite-element
+treatment except for the \gls{DNP} equation which Moltres solves via the
+discontinuous finite element method to avoid instabilities in the \gls{DNP}
+distribution without the need for stabilization methods.
+
+\subsection{Modeling approach}
+
+For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
+of 200 by 200 elements. Thus, the dimensions of each mesh element are 0.01m by
+0.01m. We
+approximated most of the relevant variables, i.e. neutron fluxes, velocity
+components, pressure, and temperature, using first-order Lagrange shape
+functions. The only exception is the precursor concentration variables, which
+we approximated using zeroth-order monomial shape functions and solved using
+\gls{DFEM}. We took the group constant data directly from
+\cite{tiberga_results_2020} and rewrote it into the Moltres-compatible text
+format without any other modifications.
+
+As mentioned in Section \ref{sec:moltres}, \gls{MOOSE}'s \textit{Navier-Stokes}
+and \textit{Heat Conduction} modules provide some of the capabilities for
+modeling incompressible flow and heat transfer. In particular, we stabilized
+the incompressible flow and temperature governing equations using the
+\gls{SUPG} and \gls{PSPG}
+stabilization methods \citep{peterson_overview_2017} implemented in
+\gls{MOOSE}. Without these stabilization techniques, we observed spurious
+numerical oscillations in the velocity and temperature. These oscillations are
+commonly reported when using finite element methods to solve
+advection-dominated flow and lid-driven cavity problems with corner
+singularities where different boundary conditions meet
+\citep{kuhlmann_lid-driven_2018}.
+
+We performed all simulations using the Preconditioned \gls{JFNK} solver from
+the \gls{MOOSE} framework. The coupled steady-state problems in
+\textit{Steps 1.3} and \textit{1.4} required loose coupling between neutronics
+and thermal-hydraulics due to the unique problem setup involving an eigenvalue
+problem for the neutron multiplication factor and a standard steady-state
+problem in thermal-hydraulics simultaneously. All other multiphysics problems
+in \textit{Steps} in \textit{Phases 1} and \textit{2} were fully coupled
+within the same \gls{JFNK} solve.
+
+For the time-dependent cases in \textit{Step 2.1}, we used a second-order
+implicit Backward Differential Formula (BDF2) time-stepping scheme and fixed
+the timestep sizes at 1/200 of the period of the corresponding driving
+frequencies as shown in Table \ref{table:timestep}. The only exception is the
+0.0125 Hz case as a timestep size of 0.4s required more than one hundred
+nonlinear iterations to converge in each timestep. We assumed the systems
+reached asymptotic behavior when the magnitudes of neighboring power peaks
+differed by less than 0.001\% for at least ten wavelengths. Under this
+assumption, the phase shift
+measurements between neighboring waves always converged, within the precision
+governed by the timestep sizes, before the magnitudes of the power peaks.
+
+\begin{table}[htb!]
+    \caption{Timestep sizes used for the time-dependent cases in
+    \textit{Step 2}.}
+    \footnotesize
+	\centering
+	\setlength\tabcolsep{2.5pt}
+	\begin{tabular}{l l l l l l l l}
+	    \toprule
+	    Frequency [Hz] & 0.0125 & 0.025 & 0.05 & 0.1 & 0.2 & 0.4 & 0.8 \\
+	    \midrule
+	    Timestep size [s] & 0.2 & 0.2 & 0.1 & 0.05 & 0.025 & 0.0125 & 0.00625
+	    \\
+	    \bottomrule
+	\end{tabular}
+	\label{table:timestep}
+\end{table}
