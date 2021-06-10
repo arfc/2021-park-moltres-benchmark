@@ -76,38 +76,38 @@ and the corresponding average discrepancy values from the benchmark
 values are on the same order of magnitude as those from the benchmark,
 except the discrepancy value for $T$ along centerline BB' which is marginally
 higher at 0.164\% compared to 0.083\% from the benchmark average. However, we
-note in Figure \ref{fig:0.3} that the $T$ distribution from Moltres shows good
-agreement with the corresponding distributions from the CNRS-$SP_3$ and
-TUD-$S_6$ results.
-%This
-%exception is a natural consequence of having the $T$ distribution calculations
-%in Step 0.3 depend on the velocity field and neutron flux from the previous 
-%Steps; the $T$ distributions, as shown in Figure \ref{fig:0.3}, show visibly
-%less overlap (around $y=0.75$ m) compared to the $u_x$ and fission rate density
-%distributions in Figures \ref{fig:0.1} and \ref{fig:0.2}, respectively.
+note in Figure \ref{fig:0.3} that the $T$ distribution from Moltres is almost
+identical to the corresponding distributions from CNRS-$SP_3$ and TUD-$S_6$.
 
 Table \ref{table:temp} shows the temperature values from Moltres and the
-benchmark at nine equidistant points along centerlines AA' and BB'. Unlike the
-general trend seen in Figure \ref{fig:0.3}, the
-temperature value for Moltres at the end of centerline BB', on the top
-boundary, deviated significantly (912 K from Moltres
-vs. ~935 K from the benchmark) because this point along the top boundary is
-directly downstream of the discontinuous velocity boundary condition on the
-top-left corner of the domain. Without the SUPG and PSPG stabilization schemes,
-the singularity would produce spurious oscillations which extended well into
-the interior region of the domain. 
+benchmark at nine equidistant points along centerlines AA' and BB'. Similar to
+Figure \ref{fig:0.3}, most temperature values from Moltres fall within the
+corresponding range of values from the benchmark with the exception of the
+value at the coordinates (1, 2); Moltres underpredicts the temperature at 912.3
+K compared to the benchmark values which range between 930.3 K
+and 948.1 K. This point on the top boundary lies directly
+downstream of
+the velocity boundary condition discontinuity at the top-left corner.
+In general, corner singularities are generally difficult to approximate with
+Galerkin methods \citep{kuhlmann_lid-driven_2018}.
+The \gls{SUPG} stabilization scheme dampens numerical oscillations by
+introducing pointwise artificial thermal diffusivity which depends strongly on
+the inverse of local velocity magnitude \citep{peterson_overview_2017}.
+Therefore, while the \gls{SUPG} scheme was very effective in eliminating
+spurious numerical oscillations everywhere else, it provides little damping
+along the top boundary due to the relatively large non-zero velocity boundary
+condition. On the other hand, the temperature values in the rest of the domain
+and the average discrepancies of the other variables show that Moltres can
+still accurately reproduce the expected results and the temperature deviations
+along the top boundary do not impact the overall integrity of our results.
 
-Finite element methods struggles with
-the velocity boundary condition discontinuity on the top left corner of the
-domain. As such, we observe the temperature deviation
-directly downstream of the discontinuity. However, we note that all other
-temperature values agree closely with the benchmark data. 
-
-We also observe in table \ref{table:rho} that the reactivity $\rho$ value of
+Lastly, we observe in table \ref{table:rho} that the reactivity $\rho$ value of
 465.6 pcm from Moltres falls well within the range of $\rho$ values from the
-benchmark. Moltres' $rho$ value agrees closest to the results from the software
-packages which adopted the neutron diffusion and theoretical-equivalent models,
-namely the CNRS-$SP_1$, Polimi, PSI, and TUD-$S_2$ software.
+benchmark which range from 353.7 pcm up to 578.1 pcm. Moltres' $\rho$ value
+agrees closest to the results from the
+software packages, namely CNRS-$SP_1$, Polimi, PSI, and TUD-$S_2$, which adopt
+the neutron diffusion model or theoretically-equivalent models such as $SP_1$
+and $S_2$ neutron transport models).
 
 \begin{table}[h!]
 	\caption{Discrepancy values for the results from Phase 0.}
@@ -203,34 +203,30 @@ namely the CNRS-$SP_1$, Polimi, PSI, and TUD-$S_2$ software.
 
 \subsection{Phase 1 results \& discussion}
 
-Figure \ref{fig:color} shows the typical temperature distribution and velocity
-streamlines from running a fully coupled problem in Step 1.4. 
 Table \ref{table:disc1} shows the discrepancy values from Moltres for Steps
 1.1, 1.2, and 1.3,
 and the corresponding average discrepancy values from the benchmark
 \citep{tiberga_results_2020}. The subsequent subsections discuss the results
 for each benchmark step.
-%
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=\columnwidth]{full-coupled}
-  \caption{The temperature distribution in the domain for the fully coupled
-  system (Step 1.4) with buoyancy effects, $P = 1$ GW, and $U_{lid} = 0.5$
-  m$\cdot$s$^{-1}$. The lines correspond to the streamlines of the velocity
-  field.}
-  \label{fig:color}
-\end{figure}
 
 \subsubsection{Step 1.1: Circulating fuel}
 
-Moltres performs relatively worse than the benchmark average, but the
-discrepancies are still on the same order of magnitude. We attribute this to
-the same zeroth-order shape function approximation for the precursor
-concentration mentioned in Step 0.2.
+Figure \ref{fig:1.1} shows the delayed neutron source distribution along BB'.
+Moltres produces similar results to the benchmark average as the
+discrepancies in the delayed neutron source along both centerlines in Table
+\ref{table:disc1} are on
+the same order of magnitude. We also note that approximating the delayed
+neutron precursor concentrations with the zeroth-order discontinuous finite
+element method does not noticeably impact the overall accuracy because it is
+similar to first-order finite volume methods which also use constant test
+functions to approximate the solution.
 
-On the other hand, we observe in Table \ref{table:rho} that the change in
+In Table \ref{table:rho}, we also observe that the change in
 $\rho$ relative to Step 0.2 falls within the reported range of $\rho$ values
-from the benchmark.
+from the benchmark. Unlike the absolute reactivity values in Step 0.2, the
+change in reactivity values are much closer in agreement among all software
+packages regardless of the type of neutronics model as most values fall between
+-62 and -63 pcm.
 
 %
 \begin{figure}[h!]
@@ -279,13 +275,16 @@ from the benchmark.
 
 \subsubsection{Step 1.2: Power coupling}
 
-For this step, Moltres performed better than the benchmark average except
-the temperature distribution along BB', the cause of which we
-addressed in Step 0.3. The smaller discrepancy in the change in fission rate
-density indicates that Moltres is on average more self-consistent since this
-quantity measures the difference between two sets of data from the same
-software. From Table \ref{table:rho}, Moltres also reports a change in $\rho$,
-relative to Step 1.1, that falls within the range of benchmark values.
+Figure \ref{fig:1.2} shows the temperature distribution and the change in
+fission rate density along AA' from Step 1.2. Similar to Step 0.3, the
+temperature distribution from Moltres agrees closest to CNRS-$SP_3$ and
+TUD-$S_2$. Table \ref{table:disc1} reports the same trends we observed in Phase
+0; the average discrepancy in temperature along BB' from Moltres for Step 1.2
+is marginally higher than the benchmark while the average discrepancy in the
+fission rate density is on the same order of magnitude as the benchmark.
+From Table \ref{table:rho}, Moltres also reports a change in $\rho$,
+relative to Step 1.1, that, like Steps 0.2 and 1.1, falls within the range of
+benchmark values.
 %
 \begin{figure*}[h!]
 	\centering
@@ -298,19 +297,24 @@ relative to Step 1.1, that falls within the range of benchmark values.
 
 \subsubsection{Step 1.3: Buoyancy}
 
-Moltres performs reasonably well in Step 1.3, with smaller
-discrepancies in most of the velocity components and temperature distribution
-than the benchmark average. Moltres bucks the trend for discrepancies
-in the delayed neutron source as the discrepancy along AA' is
-noticeably worse than the benchmark average, but Moltres performs relatively
-better along BB'. In Table \ref{table:rho}, we observe once again that the
-change in $\rho$ in Moltres falls within the range of benchmark values.
+Figure \ref{fig:1.3} shows the vertical velocity component, temperature, and
+delayed neutron source distributions along AA. As with all previous plots,
+Moltres reproduces the correct trend in all three physical
+parameters. From Table \ref{table:disc1}, we observe that the average
+discrepancy value of 0.070\% for the temperature distribution along BB' is much
+closer to the benchmark value of 0.080\% because there is no forced, non-zero
+flow from the top boundary and consequently no numerical oscillations which
+could affect the temperature distribution.
+
+In Table \ref{table:rho}, we observe once again that the change in $\rho$ in
+Moltres (-1207.7 pcm) falls within the range of reported benchmark values and
+matches the software from TUD-$S_2$ (-1208.5 pcm) the closest.
 %
 \begin{figure*}[h!]
 	\centering
-	\includegraphics[width=.8\columnwidth]{1-3-vel-plot}
-	\includegraphics[width=.8\columnwidth]{1-3-temp-plot}
-	\includegraphics[width=.8\columnwidth]{1-3-dnp-plot}
+	\includegraphics[width=.64\columnwidth]{1-3-vel-plot}
+	\includegraphics[width=.67\columnwidth]{1-3-temp-plot}
+	\includegraphics[width=.67\columnwidth]{1-3-dnp-plot}
 	\caption{Step 1.3 - Vertical velocity component, temperature distribution,
 	and delayed neutron source along AA'.}
 	\label{fig:1.3}
@@ -318,17 +322,29 @@ change in $\rho$ in Moltres falls within the range of benchmark values.
 
 \subsubsection{Step 1.4: Full coupling}
 
+Figure \ref{fig:color} shows the 2D temperature distribution and velocity
+streamlines from Step 1.4 with $U_{lid} = 0.5$ m$\cdot$s$^{-1}$ and $P = 1$ GW.
 Table \ref{table:full} shows the change in $\rho$ under the various $U_{lid}$
 and $P$ values. We refer readers to Tiberga et al.'s paper
 \citep{tiberga_results_2020} for the benchmark's corresponding values.
 The results from Moltres all fall within the range of benchmark values for all
 cases. Furthermore, the $\Delta\rho$ values are all within 1.1 pcm of the
 corresponding values from the TUD-S$_2$ model in the benchmark paper. Given
-that the $S_2$ discrete ordinates method is qualitatively similar to the
-multigroup neutron diffusion method, this shows that Moltres is
-consistent to the benchmark within the limitations brought about by the neutron
-diffusion method.
+that the $S_2$ discrete ordinates method is theoretically equivalent to the
+multigroup neutron diffusion method, this indicates that Moltres is
+consistent with the benchmark outside of differences from the neutronics
+models.
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\columnwidth]{full-coupled}
+  \caption{The temperature distribution in the domain for the fully coupled
+  system (Step 1.4) with buoyancy effects, $P = 1$ GW, and $U_{lid} = 0.5$
+  m$\cdot$s$^{-1}$. The lines correspond to the streamlines of the velocity
+  field.}
+  \label{fig:color}
+\end{figure}
+%
 \begin{table}[htbp!]
 	\caption{Reactivity change in Step 1.4, relative to Step 0.2 under various
 	$U_{lid}$ and $P$ values.}
@@ -351,12 +367,8 @@ diffusion method.
 	\end{tabular}
 	\label{table:full}
 \end{table}
-
-\subsection{Phase 2 results \& discussion}
-
-\subsubsection{Step 2.1: Forced convection transient}
 %
-\begin{figure*}[h!]
+\begin{figure*}[htb!]
 	\centering
 	\includegraphics[width=.8\columnwidth]{2-1-gain-plot}
 	\includegraphics[width=.8\columnwidth]{2-1-phase-plot}
@@ -364,4 +376,50 @@ diffusion method.
 	the fully coupled system.}
 	\label{fig:2.1}
 \end{figure*}
+
+\subsection{Phase 2 results \& discussion}
+
+Transient analysis represents a challenging, yet essential part of reactor
+safety analysis. A reactor has different timescales for different physical
+phenomena; prompt neutron lifetimes are on the order of microseconds
+while advective heat transfer is relevant in timescales on the order of
+seconds. Additionally, the half-lives of delayed neutron precursors vary from
+milliseconds up to tens of seconds. Obtaining accurate solutions requires tight
+coupling between the neutronics and thermal-hydraulics to adequately capture
+the strong interactions between them and a sufficiently small timestep to
+minimize time discretization errors. The following subsection discusses the
+results from the Step 2.1 transient problem.
+
+\subsubsection{Step 2.1: Forced convection transient}
+
+Figure \ref{fig:2.1} shows the Bode gain and phase shift plots of the response
+in power output in the fully coupled system. Along with the average discrepancy
+values from Table \ref{table:disc2}, the results show that Moltres is
+consistent with the benchmark. The gain data points from all \gls{MSR} software
+are in good agreement. Moltres reports an average discrepancy value of 0.496\%,
+slightly lower than the benchmark average of 0.587\%. On the other hand, the
+phase shift data points show greater spread over the various driving
+frequencies. We ascribe this to the different timestepping schemes and timestep
+sizes among the different software packages. Even with a precision of
+$\pm0.9^\circ$ for each phase shift value from Moltres, equivalent to half the
+timestep size, Moltres accurately reproduces the correct trend with a lower
+average discrepancy (1.741\%) than the benchmark average (2.176\%).
+%
+\begin{table}[htb!]
+	\caption{Discrepancy values for the results from Step 2.1.}
+	\centering
+	\footnotesize
+	\begin{tabular}{l l S S}
+		\toprule
+		\multirow{2}{*}{\textbf{Step}} & \multirow{2}{*}{\textbf{Observable}} & \multicolumn{2}{c}{\textbf{Discrepancies [\%]}} \\
+		& & {Moltres} & {Benchmark} \\
+		\midrule
+		\multirow{2}{*}{2.1} & Gain & 0.496 & 0.587 \\
+		\cmidrule{2-4}
+		& Phase shift & 1.741 & 2.176\\
+		\bottomrule
+	\end{tabular}
+	\label{table:disc2}
+\end{table}
+
 

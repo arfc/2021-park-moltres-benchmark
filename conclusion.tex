@@ -6,16 +6,17 @@ CNRS numerical benchmark \citep{tiberga_results_2020} for multi-physics,
 software through subproblems involving single-physics and coupled
 neutronics/thermal-hydraulics.
 
-The results showed that Moltres is mostly consistent with the other software
+The results showed that Moltres is consistent with the other software
 presented in the benchmark paper. The percentage discrepancies in the various
 neutronics, velocity, and temperature quantities mostly fall within the same
 order of magnitude. Minor deviations in the temperature in Steps 0.3 and 1.2 
 stem from the discontinuous velocity
-boundaries on the top corners in the lid-driven cavity flow, while minor
-deviations in the flux and delayed neutron source in Steps 0.2, 0.3, and 1.1
-stem from the zeroth-order shape function approximation on the precursor
-concentration. The results from Moltres agree closest to the TUD-S$_2$ model
+boundaries on the top corners in the lid-driven cavity flow. We have shown that
+these deviations are limited to the top boundary of the domain and they do not
+affect the rest of the physical parameters. The results from
+Moltres agree closest to the TUD-S$_2$ model
 from the benchmark, which implements the $S_2$ discrete ordinates method for
-neutron transport.
-
-% Future work: Compare tight vs full coupling for transient problems
+neutron transport on a uniform structured mesh with a \gls{DFEM}-based solver.
+These features make Moltres the most similar to the TUD-$S_2$ model as compared
+to the other models which use different neutron transport models, non-uniform
+mesh and/or finite volume method solvers.

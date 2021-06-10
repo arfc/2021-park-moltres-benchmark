@@ -193,7 +193,7 @@ As mentioned in Section \ref{sec:moltres}, \gls{MOOSE}'s \textit{Navier-Stokes}
 and \textit{Heat Conduction} modules provide some of the capabilities for
 modeling incompressible flow and heat transfer. In particular, we stabilized
 the incompressible flow and temperature governing equations using the
-streamline upwind Petrov-Galerkin and pressure-stabilizing Petrov-Galerkin
+\gls{SUPG} and \gls{PSPG}
 stabilization methods \citep{peterson_overview_2017} implemented in
 \gls{MOOSE}. Without these stabilization techniques, we observed spurious
 numerical oscillations in the velocity and temperature. These oscillations are
