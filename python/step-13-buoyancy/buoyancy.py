@@ -8,7 +8,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc
+from common_func import get_disc, get_benchmark_ave_disc
 
 # Data
 pre_elemental = pd.read_csv('buoyancy_out_ntsApp0_csv_pre_elemental_0054.csv')
@@ -114,28 +114,13 @@ for i in range(len(x)):
 
 # %% Benchmark discrepancy
 
-ave_aa_pre = 0
-ave_bb_pre = 0
-ave_aa_temp = 0
-ave_bb_temp = 0
-ave_aa_ux = 0
-ave_aa_uy = 0
-ave_bb_uy = 0
-for i in range(6):
-    ave_aa_pre += get_disc(benchmark_aa_pre[:][i+1], benchmark_aa_pre)
-    ave_bb_pre += get_disc(benchmark_bb_pre[:][i+1], benchmark_bb_pre)
-    ave_aa_temp += get_disc(benchmark_aa_temp[:][i+1], benchmark_aa_temp)
-    ave_bb_temp += get_disc(benchmark_bb_temp[:][i+1], benchmark_bb_temp)
-    ave_aa_ux += get_disc(benchmark_aa_ux[:][i+1], benchmark_aa_ux)
-    ave_aa_uy += get_disc(benchmark_aa_uy[:][i+1], benchmark_aa_uy)
-    ave_bb_uy += get_disc(benchmark_bb_uy[:][i+1], benchmark_bb_uy)
-ave_aa_pre /= 6
-ave_bb_pre /= 6
-ave_aa_temp /= 6
-ave_bb_temp /= 6
-ave_aa_ux /= 6
-ave_aa_uy /= 6
-ave_bb_uy /= 6
+ave_aa_pre = get_benchmark_ave_disc(benchmark_aa_pre)
+ave_bb_pre = get_benchmark_ave_disc(benchmark_bb_pre)
+ave_aa_temp = get_benchmark_ave_disc(benchmark_aa_temp)
+ave_bb_temp = get_benchmark_ave_disc(benchmark_bb_temp)
+ave_aa_ux = get_benchmark_ave_disc(benchmark_aa_ux)
+ave_aa_uy = get_benchmark_ave_disc(benchmark_aa_uy)
+ave_bb_uy = get_benchmark_ave_disc(benchmark_bb_uy)
 
 print("Benchmark average discrepancy in delayed neutron source along AA' = " +
       str(ave_aa_pre*100) + " %")
@@ -219,14 +204,3 @@ ax.set_xlabel(r'$x$ [m]')
 ax.set_ylabel(r'$u_y$ [m$\cdot$s$^{-1}$]')
 plt.tight_layout()
 plt.savefig('1-3-vel-plot.png', dpi=400)
-
-# %% Table data
-
-print(aa_pre)
-print(bb_pre)
-print(aa_temp)
-print(bb_temp)
-print(aa_ux)
-print(bb_ux)
-print(aa_uy)
-print(bb_uy)

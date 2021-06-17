@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc
+from common_func import get_disc, get_benchmark_ave_disc
 
 # Data
 aa = pd.read_csv('vel-field_csv_aa_0002.csv')
@@ -28,19 +28,10 @@ print("Discrepancy in uy along AA' = " + str(disc_aa_uy*100) + " %")
 print("Discrepancy in ux along BB' = " + str(disc_bb_ux*100) + " %")
 print("Discrepancy in uy along BB' = " + str(disc_bb_uy*100) + " %")
 
-ave_aa_ux = 0
-ave_aa_uy = 0
-ave_bb_ux = 0
-ave_bb_uy = 0
-for i in range(4):
-    ave_aa_ux += get_disc(benchmark_aa_ux[:][i+1], benchmark_aa_ux)
-    ave_aa_uy += get_disc(benchmark_aa_uy[:][i+1], benchmark_aa_uy)
-    ave_bb_ux += get_disc(benchmark_bb_ux[:][i+1], benchmark_bb_ux)
-    ave_bb_uy += get_disc(benchmark_bb_uy[:][i+1], benchmark_bb_uy)
-ave_aa_ux /= 4
-ave_aa_uy /= 4
-ave_bb_ux /= 4
-ave_bb_uy /= 4
+ave_aa_ux = get_benchmark_ave_disc(benchmark_aa_ux)
+ave_aa_uy = get_benchmark_ave_disc(benchmark_aa_uy)
+ave_bb_ux = get_benchmark_ave_disc(benchmark_bb_ux)
+ave_bb_uy = get_benchmark_ave_disc(benchmark_bb_uy)
 
 print("Benchmark average discrepancy in ux along AA' = " +
       str(ave_aa_ux*100) + " %")
@@ -80,22 +71,3 @@ ax.set_ylim(0, 2)
 ax.set_xlabel(r'$u_x$ [m$\cdot$s$^{-1}$]')
 ax.set_ylabel(r'$y$ [m]')
 plt.savefig('0-1-vel-plot.png', dpi=400)
-
-# %% Table data
-
-x = np.arange(0, 201, 25)
-aa_ux = np.zeros(len(x))
-aa_uy = np.zeros(len(x))
-bb_ux = np.zeros(len(x))
-bb_uy = np.zeros(len(x))
-
-for i in range(len(x)):
-    aa_ux[i] = aa['vel_x'][x[i]]
-    aa_uy[i] = aa['vel_y'][x[i]]
-    bb_ux[i] = bb['vel_x'][x[i]]
-    bb_uy[i] = bb['vel_y'][x[i]]
-
-print(aa_ux)
-print(aa_uy)
-print(bb_ux)
-print(bb_uy)

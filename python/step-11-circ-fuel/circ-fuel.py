@@ -8,7 +8,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc
+from common_func import get_disc, get_benchmark_ave_disc
 
 # Data
 pre_elemental = pd.read_csv('circ-fuel_csv_pre_elemental_0002.csv')
@@ -49,13 +49,8 @@ print("Discrepancy in delayed neutron source along AA' = " +
 print("Discrepancy in delayed neutron source along BB' = " +
       str(disc_bb_pre[0]*100) + " %")
 
-ave_aa = 0
-ave_bb = 0
-for i in range(6):
-    ave_aa += get_disc(benchmark_aa[:][i+1], benchmark_aa)
-    ave_bb += get_disc(benchmark_bb[:][i+1], benchmark_bb)
-ave_aa /= 6
-ave_bb /= 6
+ave_aa = get_benchmark_ave_disc(benchmark_aa)
+ave_bb = get_benchmark_ave_disc(benchmark_bb)
 
 print("Benchmark average discrepancy in delayed neutron source along AA' = " +
       str(ave_aa*100) + " %")
@@ -91,16 +86,3 @@ ax.set_ylim(0, 2)
 ax.set_ylabel(r'$y$ [m]')
 ax.set_xlabel(r'Delayed neutron source [m$^{-3}\cdot$s$^{-1}$]')
 plt.savefig('1-1-dnp-plot.png', dpi=400)
-
-# %% Table data
-
-x = np.arange(0, 201, 25)
-aa_pre = np.zeros(len(x))
-bb_pre = np.zeros(len(x))
-
-for i in range(len(x)):
-    aa_pre[i] = pre_aa[x[i]]
-    bb_pre[i] = pre_bb[x[i]]
-
-print(aa_pre)
-print(bb_pre)

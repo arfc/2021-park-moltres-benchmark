@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc
+from common_func import get_disc, get_benchmark_ave_disc
 
 # Data
 aa = pd.read_csv('temp_csv_aa_0002.csv')
@@ -24,13 +24,8 @@ print("Discrepancy in temperature along AA' = " +
 print("Discrepancy in temperature along BB' = " +
       str(disc_bb*100) + " %")
 
-ave_aa = 0
-ave_bb = 0
-for i in range(6):
-    ave_aa += get_disc(benchmark_aa[:][i+1], benchmark_aa)
-    ave_bb += get_disc(benchmark_bb[:][i+1], benchmark_bb)
-ave_aa /= 6
-ave_bb /= 6
+ave_aa = get_benchmark_ave_disc(benchmark_aa)
+ave_bb = get_benchmark_ave_disc(benchmark_bb)
 
 print("Benchmark average discrepancy in temperature along AA' = " +
       str(ave_aa*100) + " %")
@@ -49,7 +44,7 @@ plt.rc('ytick', labelsize=11)    # fontsize of the tick labels
 plt.rc('legend', fontsize=12)    # legend fontsize
 plt.rc('figure', titlesize=12)  # fontsize of the figure title
 
-fig, ax = plt.subplots(figsize=[6,5])
+fig, ax = plt.subplots(figsize=[6, 5])
 ax.plot(bb['temp'], y, label='Moltres', color='tab:blue')
 ax.plot(benchmark_bb[:][2], y, label='CNRS-SP$_3$', color='tab:orange',
         linestyle='--')
@@ -66,16 +61,3 @@ ax.set_ylim(0, 2)
 ax.set_xlabel(r'$T$ [K]')
 ax.set_ylabel(r'$y$ [m]')
 plt.savefig('0-3-temp-plot.png', dpi=400)
-
-# %% Table data
-
-x = np.arange(0, 201, 25)
-aa_temp = np.zeros(len(x))
-bb_temp = np.zeros(len(x))
-
-for i in range(len(x)):
-    aa_temp[i] = aa['temp'][x[i]]
-    bb_temp[i] = bb['temp'][x[i]]
-
-print(aa_temp)
-print(bb_temp)

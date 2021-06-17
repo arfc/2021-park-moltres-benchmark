@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc
+from common_func import get_disc, get_benchmark_ave_disc
 
 # Data
 aa = pd.read_csv('nts_csv_aa_0002.csv')
@@ -29,10 +29,7 @@ disc_aa = get_disc(fiss, benchmark_aa)
 print("Discrepancy in fission rate along AA' = " +
       str(disc_aa*100) + " %")
 
-ave_aa = 0
-for i in range(6):
-    ave_aa += get_disc(benchmark_aa[:][i+1], benchmark_aa)
-ave_aa /= 6
+ave_aa = get_benchmark_ave_disc(benchmark_aa)
 
 print("Benchmark average discrepancy in fission rate along AA' = " +
       str(ave_aa*100) + " %")
@@ -66,12 +63,3 @@ ax.set_ylim(0, 2e19)
 ax.set_xlabel(r'$x$ [m]')
 ax.set_ylabel(r'Fission rate density [m$^{-3}\cdot$s$^{-1}$]')
 plt.savefig('0-2-fiss-plot.png', dpi=400)
-
-# %% Table data
-
-x = np.arange(0, 201, 25)
-discrete = np.zeros(len(x))
-for i in range(len(x)):
-    discrete[i] = fiss[x[i]]
-
-print(discrete)

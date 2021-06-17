@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc
+from common_func import get_disc, get_benchmark_ave_disc
 
 # Data
 flux_aa = pd.read_csv('power-coupling_csv_flux_aa_0003.csv')
@@ -65,19 +65,10 @@ print("Discrepancy in temperature along AA' = " +
 print("Discrepancy in temperature along BB' = " +
       str(disc_bb_temp*100) + " %")
 
-ave_aa_fiss = 0
-ave_bb_fiss = 0
-ave_aa_temp = 0
-ave_bb_temp = 0
-for i in range(6):
-    ave_aa_fiss += get_disc(benchmark_aa_fiss[:][i+1], benchmark_aa_fiss)
-    ave_bb_fiss += get_disc(benchmark_bb_fiss[:][i+1], benchmark_bb_fiss)
-    ave_aa_temp += get_disc(benchmark_aa_temp[:][i+1], benchmark_aa_temp)
-    ave_bb_temp += get_disc(benchmark_bb_temp[:][i+1], benchmark_bb_temp)
-ave_aa_fiss /= 6
-ave_bb_fiss /= 6
-ave_aa_temp /= 6
-ave_bb_temp /= 6
+ave_aa_fiss = get_benchmark_ave_disc(benchmark_aa_fiss)
+ave_bb_fiss = get_benchmark_ave_disc(benchmark_bb_fiss)
+ave_aa_temp = get_benchmark_ave_disc(benchmark_aa_temp)
+ave_bb_temp = get_benchmark_ave_disc(benchmark_bb_temp)
 
 print("Benchmark average discrepancy in fission rate along AA' = " +
       str(ave_aa_fiss*100) + " %")
@@ -87,28 +78,6 @@ print("Benchmark average discrepancy in temperature along AA' = " +
       str(ave_aa_temp*100) + " %")
 print("Benchmark average discrepancy in temperature along BB' = " +
       str(ave_bb_temp*100) + " %")
-
-# Discrete
-x = np.arange(0, 201, 25)
-discrete_aa = np.zeros(len(x))
-discrete_bb = np.zeros(len(x))
-for i in range(len(x)):
-    discrete_aa[i] = fiss_aa[x[i]]
-    discrete_bb[i] = fiss_bb[x[i]]
-
-print(discrete_aa)
-print(discrete_bb)
-
-x = np.arange(0, 201, 25)
-aa_temp = np.zeros(len(x))
-bb_temp = np.zeros(len(x))
-
-for i in range(len(x)):
-    aa_temp[i] = temp_aa['temp'][x[i]]
-    bb_temp[i] = temp_bb['temp'][x[i]]
-
-print(aa_temp)
-print(bb_temp)
 
 # Plot
 x = np.linspace(0, 2, 201)
