@@ -56,28 +56,29 @@ disc_bb_fiss = get_disc(fiss_bb, benchmark_bb_fiss)
 disc_aa_temp = get_disc(temp_aa['temp'], benchmark_aa_temp)
 disc_bb_temp = get_disc(temp_bb['temp'], benchmark_bb_temp)
 
-print("Discrepancy in fission rate along AA' = " +
-      str(disc_aa_fiss*100) + " %")
-print("Discrepancy in fission rate along BB' = " +
-      str(disc_bb_fiss*100) + " %")
-print("Discrepancy in temperature along AA' = " +
-      str(disc_aa_temp*100) + " %")
-print("Discrepancy in temperature along BB' = " +
-      str(disc_bb_temp*100) + " %")
-
 ave_aa_fiss = get_benchmark_ave_disc(benchmark_aa_fiss)
 ave_bb_fiss = get_benchmark_ave_disc(benchmark_bb_fiss)
 ave_aa_temp = get_benchmark_ave_disc(benchmark_aa_temp)
 ave_bb_temp = get_benchmark_ave_disc(benchmark_bb_temp)
 
-print("Benchmark average discrepancy in fission rate along AA' = " +
-      str(ave_aa_fiss*100) + " %")
-print("Benchmark average discrepancy in fission rate along BB' = " +
-      str(ave_bb_fiss*100) + " %")
-print("Benchmark average discrepancy in temperature along AA' = " +
-      str(ave_aa_temp*100) + " %")
-print("Benchmark average discrepancy in temperature along BB' = " +
-      str(ave_bb_temp*100) + " %")
+f = open('power-coupling.txt', 'w')
+f.write("Discrepancy in fission rate along AA' = " +
+        str(disc_aa_fiss*100) + " %\n")
+f.write("Discrepancy in fission rate along BB' = " +
+        str(disc_bb_fiss*100) + " %\n")
+f.write("Discrepancy in temperature along AA' = " +
+        str(disc_aa_temp*100) + " %\n")
+f.write("Discrepancy in temperature along BB' = " +
+        str(disc_bb_temp*100) + " %\n")
+f.write("Benchmark average discrepancy in fission rate along AA' = " +
+        str(ave_aa_fiss*100) + " %\n")
+f.write("Benchmark average discrepancy in fission rate along BB' = " +
+        str(ave_bb_fiss*100) + " %\n")
+f.write("Benchmark average discrepancy in temperature along AA' = " +
+        str(ave_aa_temp*100) + " %\n")
+f.write("Benchmark average discrepancy in temperature along BB' = " +
+        str(ave_bb_temp*100) + " %\n")
+f.close()
 
 # Plot
 x = np.linspace(0, 2, 201)

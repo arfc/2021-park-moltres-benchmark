@@ -23,24 +23,25 @@ disc_aa_uy = get_disc(aa['vel_y'] / 100, benchmark_aa_uy)
 disc_bb_ux = get_disc(bb['vel_x'] / 100, benchmark_bb_ux)
 disc_bb_uy = get_disc(bb['vel_y'] / 100, benchmark_bb_uy)
 
-print("Discrepancy in ux along AA' = " + str(disc_aa_ux*100) + " %")
-print("Discrepancy in uy along AA' = " + str(disc_aa_uy*100) + " %")
-print("Discrepancy in ux along BB' = " + str(disc_bb_ux*100) + " %")
-print("Discrepancy in uy along BB' = " + str(disc_bb_uy*100) + " %")
-
 ave_aa_ux = get_benchmark_ave_disc(benchmark_aa_ux)
 ave_aa_uy = get_benchmark_ave_disc(benchmark_aa_uy)
 ave_bb_ux = get_benchmark_ave_disc(benchmark_bb_ux)
 ave_bb_uy = get_benchmark_ave_disc(benchmark_bb_uy)
 
-print("Benchmark average discrepancy in ux along AA' = " +
-      str(ave_aa_ux*100) + " %")
-print("Benchmark average discrepancy in uy along AA' = " +
-      str(ave_aa_uy*100) + " %")
-print("Benchmark average discrepancy in uy along BB' = " +
-      str(ave_bb_ux*100) + " %")
-print("Benchmark average discrepancy in uy along BB' = " +
-      str(ave_bb_uy*100) + " %")
+f = open('vel-field.txt', 'w')
+f.write("Discrepancy in ux along AA' = " + str(disc_aa_ux*100) + " %")
+f.write("Discrepancy in uy along AA' = " + str(disc_aa_uy*100) + " %")
+f.write("Discrepancy in ux along BB' = " + str(disc_bb_ux*100) + " %")
+f.write("Discrepancy in uy along BB' = " + str(disc_bb_uy*100) + " %")
+f.write("Benchmark average discrepancy in ux along AA' = " +
+        str(ave_aa_ux*100) + " %\n")
+f.write("Benchmark average discrepancy in uy along AA' = " +
+        str(ave_aa_uy*100) + " %\n")
+f.write("Benchmark average discrepancy in uy along BB' = " +
+        str(ave_bb_ux*100) + " %\n")
+f.write("Benchmark average discrepancy in uy along BB' = " +
+        str(ave_bb_uy*100) + " %\n")
+f.close()
 
 # %% Plot
 y = np.linspace(0, 2, 201)

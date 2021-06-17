@@ -57,11 +57,6 @@ pre_bb[-1] = pre_func(1, 1.995) + (pre_func(1, 1.995) - pre_func(1, 1.985)) / 2
 disc_aa_pre = get_disc(pre_aa, benchmark_aa_pre)
 disc_bb_pre = get_disc(pre_bb, benchmark_bb_pre)
 
-print("Discrepancy in delayed neutron source along AA' = " +
-      str(disc_aa_pre*100) + " %")
-print("Discrepancy in delayed neutron source along BB' = " +
-      str(disc_bb_pre[0]*100) + " %")
-
 x = np.arange(0, 201, 25)
 aa_pre = np.zeros(len(x))
 bb_pre = np.zeros(len(x))
@@ -75,11 +70,6 @@ for i in range(len(x)):
 # Calculate % discrepancy
 disc_aa_temp = get_disc(temp_aa['temp'], benchmark_aa_temp)
 disc_bb_temp = get_disc(temp_bb['temp'], benchmark_bb_temp)
-
-print("Discrepancy in temperature along AA' = " +
-      str(disc_aa_temp*100) + " %")
-print("Discrepancy in temperature along BB' = " +
-      str(disc_bb_temp*100) + " %")
 
 x = np.arange(0, 201, 25)
 aa_temp = np.zeros(len(x))
@@ -95,10 +85,6 @@ for i in range(len(x)):
 disc_aa_ux = get_disc(vel_aa['vel_x'] / 100, benchmark_aa_ux)
 disc_aa_uy = get_disc(vel_aa['vel_y'] / 100, benchmark_aa_uy)
 disc_bb_uy = get_disc(vel_bb['vel_y'] / 100, benchmark_bb_uy)
-
-print("Discrepancy in ux along AA' = " + str(disc_aa_ux*100) + " %")
-print("Discrepancy in uy along AA' = " + str(disc_aa_uy*100) + " %")
-print("Discrepancy in uy along BB' = " + str(disc_bb_uy*100) + " %")
 
 x = np.arange(0, 201, 25)
 aa_ux = np.zeros(len(x))
@@ -122,20 +108,33 @@ ave_aa_ux = get_benchmark_ave_disc(benchmark_aa_ux)
 ave_aa_uy = get_benchmark_ave_disc(benchmark_aa_uy)
 ave_bb_uy = get_benchmark_ave_disc(benchmark_bb_uy)
 
-print("Benchmark average discrepancy in delayed neutron source along AA' = " +
-      str(ave_aa_pre*100) + " %")
-print("Benchmark average discrepancy in delayed neutron source along BB' = " +
-      str(ave_bb_pre*100) + " %")
-print("Benchmark average discrepancy in temperature along AA' = " +
-      str(ave_aa_temp*100) + " %")
-print("Benchmark average discrepancy in temperature along BB' = " +
-      str(ave_bb_temp*100) + " %")
-print("Benchmark average discrepancy in ux along AA' = " +
-      str(ave_aa_ux*100) + " %")
-print("Benchmark average discrepancy in uy along AA' = " +
-      str(ave_aa_uy*100) + " %")
-print("Benchmark average discrepancy in uy along BB' = " +
-      str(ave_bb_uy*100) + " %")
+f = open('buoyancy.txt', 'w')
+f.write("Discrepancy in delayed neutron source along AA' = " +
+        str(disc_aa_pre*100) + " %\n")
+f.write("Discrepancy in delayed neutron source along BB' = " +
+        str(disc_bb_pre[0]*100) + " %\n")
+f.write("Discrepancy in temperature along AA' = " +
+        str(disc_aa_temp*100) + " %\n")
+f.write("Discrepancy in temperature along BB' = " +
+        str(disc_bb_temp*100) + " %\n")
+f.write("Discrepancy in ux along AA' = " + str(disc_aa_ux*100) + " %\n")
+f.write("Discrepancy in uy along AA' = " + str(disc_aa_uy*100) + " %\n")
+f.write("Discrepancy in uy along BB' = " + str(disc_bb_uy*100) + " %\n")
+f.write("Benchmark average discrepancy in delayed neutron source along AA' = "
+        + str(ave_aa_pre*100) + " %\n")
+f.write("Benchmark average discrepancy in delayed neutron source along BB' = "
+        + str(ave_bb_pre*100) + " %\n")
+f.write("Benchmark average discrepancy in temperature along AA' = " +
+        str(ave_aa_temp*100) + " %\n")
+f.write("Benchmark average discrepancy in temperature along BB' = " +
+        str(ave_bb_temp*100) + " %\n")
+f.write("Benchmark average discrepancy in ux along AA' = " +
+        str(ave_aa_ux*100) + " %\n")
+f.write("Benchmark average discrepancy in uy along AA' = " +
+        str(ave_aa_uy*100) + " %\n")
+f.write("Benchmark average discrepancy in uy along BB' = " +
+        str(ave_bb_uy*100) + " %\n")
+f.close()
 
 # %% Plot
 

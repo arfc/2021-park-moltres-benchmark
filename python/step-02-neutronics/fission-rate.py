@@ -26,13 +26,14 @@ for i in range(6):
 # Calculate % discrepancy
 disc_aa = get_disc(fiss, benchmark_aa)
 
-print("Discrepancy in fission rate along AA' = " +
-      str(disc_aa*100) + " %")
-
 ave_aa = get_benchmark_ave_disc(benchmark_aa)
 
-print("Benchmark average discrepancy in fission rate along AA' = " +
-      str(ave_aa*100) + " %")
+f = open('fission-rate.txt', 'w')
+f.write("Discrepancy in fission rate along AA' = " +
+        str(disc_aa*100) + " %\n")
+f.write("Benchmark average discrepancy in fission rate along AA' = " +
+        str(ave_aa*100) + " %\n")
+f.close()
 
 # %% Plot
 x = np.linspace(0, 2, 201)

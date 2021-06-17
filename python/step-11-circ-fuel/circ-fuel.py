@@ -44,18 +44,19 @@ pre_bb[-1] = pre_func(1, 1.995) + (pre_func(1, 1.995) - pre_func(1, 1.985)) / 2
 disc_aa_pre = get_disc(pre_aa, benchmark_aa)
 disc_bb_pre = get_disc(pre_bb, benchmark_bb)
 
-print("Discrepancy in delayed neutron source along AA' = " +
-      str(disc_aa_pre*100) + " %")
-print("Discrepancy in delayed neutron source along BB' = " +
-      str(disc_bb_pre[0]*100) + " %")
-
 ave_aa = get_benchmark_ave_disc(benchmark_aa)
 ave_bb = get_benchmark_ave_disc(benchmark_bb)
 
-print("Benchmark average discrepancy in delayed neutron source along AA' = " +
-      str(ave_aa*100) + " %")
-print("Benchmark average discrepancy in delayed neutron source along BB' = " +
-      str(ave_bb*100) + " %")
+f = open('circ-fuel.txt', 'w')
+f.write("Discrepancy in delayed neutron source along AA' = " +
+        str(disc_aa_pre*100) + " %\n")
+f.write("Discrepancy in delayed neutron source along BB' = " +
+        str(disc_bb_pre[0]*100) + " %\n")
+f.write("Benchmark average discrepancy in delayed neutron source along AA' = "
+        + str(ave_aa*100) + " %\n")
+f.write("Benchmark average discrepancy in delayed neutron source along BB' = "
+        + str(ave_bb*100) + " %\n")
+f.close()
 
 # %% Plot
 y = np.linspace(0, 2, 201)

@@ -19,18 +19,19 @@ benchmark_bb = pd.read_csv('T_BB', delim_whitespace=True, header=None)
 disc_aa = get_disc(aa['temp'], benchmark_aa)
 disc_bb = get_disc(bb['temp'], benchmark_bb)
 
-print("Discrepancy in temperature along AA' = " +
-      str(disc_aa*100) + " %")
-print("Discrepancy in temperature along BB' = " +
-      str(disc_bb*100) + " %")
-
 ave_aa = get_benchmark_ave_disc(benchmark_aa)
 ave_bb = get_benchmark_ave_disc(benchmark_bb)
 
-print("Benchmark average discrepancy in temperature along AA' = " +
-      str(ave_aa*100) + " %")
-print("Benchmark average discrepancy in temperature along BB' = " +
-      str(ave_bb*100) + " %")
+f = open('temp.txt', 'w')
+f.write("Discrepancy in temperature along AA' = " +
+        str(disc_aa*100) + " %\n")
+f.write("Discrepancy in temperature along BB' = " +
+        str(disc_bb*100) + " %\n")
+f.write("Benchmark average discrepancy in temperature along AA' = " +
+        str(ave_aa*100) + " %\n")
+f.write("Benchmark average discrepancy in temperature along BB' = " +
+        str(ave_bb*100) + " %\n")
+f.close()
 
 # %% Plot
 y = np.linspace(0, 2, 201)

@@ -13,3 +13,10 @@ Required python packages include:
 - Pandas
 - Matplotlib
 - Scipy
+
+The python scripts generate txt files which contain the average discrepancy
+values for Moltres for the given observables. e.g. ```vel-field.py```
+generates ```vel-field.txt``` which contains the average discrepancy values
+for ux and uy along centerlines AA' and BB'.
+
+The python scripts also generate the plots that we use in the manuscript.
