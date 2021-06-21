@@ -24,7 +24,7 @@ comments and the corresponding edits. Each new round
 of revisions should be covered in a separate TeX
 file.
 
-The `python` directory holds all output data files from the Moltres simulations
+The `python` directory holds all of the output data files from the Moltres simulations
 and the python scripts for postprocessing and generating the plots for the
 journal article.
 
