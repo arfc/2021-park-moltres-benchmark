@@ -1,14 +1,13 @@
 # journal-article-template
-This repository contains a template for journal
-articles published by Elsevier. This template
-repository is largely derived from the github
-repository for the paper "Synergistic Spent Nuclear
-Fuel Dynamics Within the European Union" by Bae et
-al., and initialized from that repository to preserve
-the original git and contribution histories.
+This repository contains the relevant files for the "Verification of Moltres
+for Multiphysics Simulations of Fast-Spectrum Molten Salt Reactors" manuscript
+to be submitted to Annals of Nuclear Energy. This work presents code-to-code
+verification of Moltres in the context of the CNRS benchmark which is a
+numerical multiphysics benchmark for software dedicated to modeling
+fast-spectrum molten salt reactors.
 
 # Outline
-The top-level directory should contain all TeX files for
+The top-level directory contains all TeX files for
 the journal article itself.
 
 The `graph-abs` directory holds all files for the
@@ -25,22 +24,9 @@ comments and the corresponding edits. Each new round
 of revisions should be covered in a separate TeX
 file.
 
-# To review
-The ``elsarticle`` format supports convenient options for viewing.
-
-To view the article in a "review" format, modify the first line of the
-``main.tex`` file so that it reads
-
-``\documentclass[review]{elsarticle}``
-
-To view the article in a "final print" format, modify the first line of
-``main.tex`` file so that it reads
-
-``\documentclass[3p, twocolumn]{elsarticle}``
-
-``elsarticle`` supports other formats that can be read about
-[here](https://www.elsevier.com/__data/assets/pdf_file/0008/56843/elsdoc-1.pdf)
+The `python` directory holds all of the output data files from the Moltres simulations
+and the python scripts for postprocessing and generating the plots for the
+journal article.
 
 # To compile
-Run `make` after making appropriate edits to the
-`main.tex` file and adding content to other tex files as needed.
+Run `make` from the base directory.
