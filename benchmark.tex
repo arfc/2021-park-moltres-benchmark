@@ -1,6 +1,6 @@
-\section{CNRS multiphysics benchmark} \label{sec:benchmark}
+\section{CNRS Benchmark} \label{sec:benchmark}
 
-The \textit{CNRS benchmark} \citep{tiberga_results_2020} is a numerical
+The CNRS Benchmark \citep{tiberga_results_2020} is a numerical
 benchmark for multiphysics software dedicated to modeling \glspl{MSR}. It
 consists of three Phases and eight Steps in total. Each
 Step is a well-defined subproblem for systematically assessing the
@@ -13,7 +13,7 @@ coupled, time-dependent problem.
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=.7\columnwidth]{geometry}
-	\caption{2 m by 2 m domain of the \textit{CNRS benchmark}. $U_{lid}$
+	\caption{2 m by 2 m domain of the CNRS Benchmark. $U_{lid}$
 	represents the velocity along the top boundary. Various quantities are
 	measured along the centerlines AA' and BB' for comparison. From
 	\cite{tiberga_results_2020}.}
@@ -24,7 +24,7 @@ As shown in Figure \ref{fig:geometry}, the domain geometry is a 2m by 2m square
 cavity filled with LiF-BeF$_2$-UF$_4$ molten salt at an initial temperature of
 900K \citep{tiberga_results_2020}.
 Standard vacuum boundary conditions apply for neutron flux along all
-boundaries, whereby outgoing neutrons are considered lost, while homogeneous
+boundaries whereby outgoing neutrons are considered lost, while homogeneous
 boundary conditions apply for delayed neutron precursors. No-slip boundary
 conditions apply for velocity variables in the cavity, except along the top
 boundary when the subproblem imposes forced flow in the form of lid-driven
@@ -38,17 +38,17 @@ simulate salt cooling with the following volumetric heat sink equation:
     \nonumber \\
     \gamma &= \mbox{heat transfer coefficient [W$\cdot$m$^{-3}\cdot$K$^{-1}$],}
     \nonumber \\
-    T(\vec{r}) &= \mbox{temperature at point $(\vec{r})$ [K].} \nonumber
+    T(\vec{r}) &= \mbox{temperature at point $\vec{r}$ [K].} \nonumber
 \end{align}
 
 \cite{tiberga_results_2020} used Serpent 2
 \citep{leppanen_serpent_2014} with the JEFF-3.1 library
 \citep{koning_jeff-31_2006} to generate multigroup neutronics data for the
-LiF-BeF$_2$-UF$_4$ salt in the domain at 900K, condensed into six energy groups
-and eight precursor groups. We direct readers to their paper for the
-group constant data \citep{tiberga_results_2020}. In addition, the benchmark
-prescribes the following equations to govern the temperature dependence in the
-cross sections and the neutron diffusion coefficients:
+LiF-BeF$_2$-UF$_4$ salt in the domain at 900K, which they condensed into six
+energy groups and eight precursor groups. We direct readers to their paper for
+the group constant data \citep{tiberga_results_2020}. In addition, the
+benchmark prescribes the following equations to govern the temperature
+dependence in the cross sections and the neutron diffusion coefficients:
 %
 \begin{align}
     \Sigma_i (T) &= \Sigma_i(T_{ref})
@@ -178,12 +178,12 @@ loop.
     \item Temperature distribution, $T$, along AA' and BB'
     \item Reactivity change from Step 1.1, $\rho_{s_{1.2}} - \rho_{s_{1.1}}$
     \item Change in fission rate density along AA' and BB' with respect to the
-    corresponding solution from Step 0.2, $\sum^G_i \Sigma_{f,i} \phi_i(\vec{r}) - \left[\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})\right]_{s_{0.2}}$
+    corresponding solution from Step 0.2, $\left[\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})\right]_{s_{1.2}} - \left[\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})\right]_{s_{0.2}}$
 \end{itemize}
 
 \subsubsection{Step 1.3: Buoyancy}
 
-Building on the previous step, this step replaces the fixed velocity field with
+Building on the previous step, we now replace the fixed velocity field with
 buoyancy-driven flow arising from the temperature gradients. In turn, the flow
 affects the neutron fluxes and temperature distributions through the advection
 of \glspl{DNP} and temperature.
@@ -213,8 +213,8 @@ simulations are solved for a range of $U_{lid}$ and $P$ values given here.
 
 \subsubsection*{Input parameters}
 \begin{itemize}
-    \item $U_{lid} \in [0, 0.1, 0.2, 0.3, 0.4, 0.5]$ m$\cdot$s$^{-1}$
-    \item $P \in [0.2, 0.4, 0.6, 0.8, 1]$ GW
+    \item $U_{lid} \in \left\lbrace 0, 0.1, 0.2, 0.3, 0.4, 0.5 \right\rbrace $ m$\cdot$s$^{-1}$
+    \item $P \in \left\lbrace 0.2, 0.4, 0.6, 0.8, 1 \right\rbrace $ GW
     \item Heat transfer coefficient, $\gamma = 10^6$ W$\cdot$m$^{-3}\cdot$K$^{-1}$
 \end{itemize}
 %
@@ -245,7 +245,8 @@ as:
     \gamma =& \gamma_0 \left[ 1 + 0.1\sin\left(2 \pi f \right) \right], \\
     \intertext{where}
     \gamma_0 =& 10^6 \mbox{ W$\cdot$m$^{-3}\cdot$K$^{-1}$}, \nonumber \\
-    f \in& [0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8]. \nonumber
+    f \in& \left\lbrace 0.0125, 0.025, 0.05, 0.1, 0.2, 0.4, 0.8 \right\rbrace 
+    \mbox{ Hz.} \nonumber
 \end{align}
 
 \subsubsection*{Initial conditions}
