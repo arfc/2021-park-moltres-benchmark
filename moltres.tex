@@ -6,35 +6,12 @@ Moltres.
 
 \subsection{Description of Moltres} \label{sec:description-of-moltres}
 
-Moltres \citep{lindsay_introduction_2018} is an open-source, \gls{MOOSE}-based
-\citep{gaston_physics-based_2015}
-application designed for multiphysics simulations of \glspl{MSR}. The goal
-of making Moltres open-source is to promote quality through transparency and
-ease of peer review. The source code \citep{lindsay_moltres_2017} is available
-on GitHub \citep{github_build_2017}. Moltres leverages \texttt{git} for
-version control, and integrated testing to protect existing capabilities while
-concurrently supporting continued code development. Moltres depends on the
-\gls{MOOSE} finite element framework for its meshing and parallel, nonlinear
-Newton-Krylov solver capabilities. Therefore Moltres, by default, has access to
-\textit{strong coupling} methods with implicit time-stepping.
-\textit{Strong coupling} in the context of numerical methods refers to
-solving multiple physics represented by multiple equations simultaneously.
-Users can also opt to separate different physics through
-\textit{tight coupling} in which multiphysics coupling is achieved by
-fixed-point iterations.
-
-Furthermore, applications within the
-\gls{MOOSE} framework share the same programming
-interface; this commonality simplifies the work required to strongly couple
-different physics together to solve novel multiphysics problems. For \gls{MSR}
-simulations in Moltres such as those in this paper, we coupled Moltres'
-\gls{MSR} modeling capabilities with \gls{MOOSE}'s ``Navier-Stokes'' and
-``Heat Conduction'' physics modules \citep{peterson_overview_2018} for
-general thermal-hydraulics modeling. Together with these modules,
-Moltres solves the multigroup neutron diffusion equations, for an arbitrary
-number of energy and precursor groups, and thermal-hydraulics equations
-simultaneously on the same mesh.
-
+Moltres is a coupled neutronics and thermal-hydraulics application for
+simulating \glspl{MSR}. Together with \gls{MOOSE}'s ``Navier-Stokes'' and
+``Heat Conduction'' modules, Moltres solves the multigroup neutron diffusion
+equations, for an arbitrary number of energy and precursor groups, and
+thermal-hydraulics equations simultaneously on the same mesh (or separately
+through fixed-point iterations if desired).
 In a previous work, \cite{lindsay_introduction_2018}
 demonstrated Moltres' \gls{MSR} neutronics modeling capabilities with 1D salt
 flow in 2D-axisymmetric and 3D models of the \gls{MSRE}. The neutron flux and
