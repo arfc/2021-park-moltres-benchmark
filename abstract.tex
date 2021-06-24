@@ -2,22 +2,18 @@
 Moltres is a multiphysics application for modeling strongly coupled neutronics
 and thermal-hydraulics in liquid-fueled molten salt reactors (MSR). This paper
 verifies Moltres' multiphysics MSR modeling capabilities by presenting
-results from Moltres in the context of the CNRS benchmark, a
+results from Moltres in the context of the ``CNRS benchmark'', a
 multiphysics numerical benchmark for software dedicated to modeling
 fast-spectrum MSRs. The benchmark involves several steady-state and transient
 subproblems of modeling
 neutronics and thermal-hydraulics in a square cavity filled with U$^{233}$-based
 molten salt fuel. The results show that Moltres is consistent with the other
 software packages published with the CNRS benchmark. The average percentage
-discrepancies calculated from the various physical parameters such as
-temperature and fission rate density are mostly on the same order of magnitude
-as the benchmark average. The temperature distribution shows minor deviations
-due to discontinuous velocity boundary conditions on the top-left corner of the
-lid-driven cavity flow. However, these deviations are limited to the boundary
-values along the top of the domain and they do not noticeably impact the
-overall results. As expected, Moltres agrees closest to the coupled multiphysics
-package consisting of PHANTOM-$S_N$ and DGFlows from the Delft University of
-Technology given the similiarities in the implementations of the neutronics,
-meshing scheme, and the numerical methods for solving the multiphysics
-differential equations.
+discrepancies calculated for various physical parameters, including velocity,
+temperature, and fission rate density, are on similar orders of magnitudes
+to the corresponding average discrepancies from the benchmark. Out of all the
+participating multiphysics tools in the CNRS benchmark,
+Moltres agrees closest to the in-house multiphysics tool from the
+Delft University of Technology due to similiarities in the numerical solution
+techniques and meshing schemes for the benchmark calculations.
 \end{abstract}

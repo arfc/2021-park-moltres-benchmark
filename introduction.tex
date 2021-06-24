@@ -1,16 +1,14 @@
 \section{Introduction} \label{sec:intro}
 
-\glspl{MSR} have attracted increasing research interest over the past two
-decades. Some of the
-current research programs funding \gls{MSR} development include the
-\gls{SAMOSAFER} project in the EU \citep{cordis_severe_nodate}, the TMSR
-program in China \citep{dai_17_2017}, and the \gls{ARDP} in the US
-\citep{doe_office_2021}. These programs include efforts towards developing
+\glspl{MSR} have attracted increasing interest over the past two
+decades with various on-going research programs funding \gls{MSR} development
+in the EU \citep{cordis_severe_nodate}, China \citep{dai_17_2017}, and the US
+\citep{doe_office_2021}. These programs include efforts to develop
 reactor analysis software specifically tuned for \glspl{MSR}. Reactor
 analysis software are important tools in reactor development because
-they help inform design choices in line with overarching goals, such as
+they help inform design choices in-line with
 maximizing safety, reducing proliferation risks, and improving fuel
-efficiency, for the latest generation of advanced reactors.
+efficiency in the next generation of advanced reactors.
 
 Liquid-fuel \glspl{MSR} present new challenges in computational reactor
 safety analysis arising from the liquid fuel form. \glspl{MSR} feature strong
@@ -21,37 +19,119 @@ unexpected changes in coolant flow and temperature greatly affect reactor
 power and vice versa. Additionally, \gls{MSR} simulation software must include
 capabilities to model the movement of delayed neutron precursors
 and heat generation in the coolant; these physical phenomena are typically
-absent in solid-fuel reactors.
+absent in solid-fuel reactors. The movement of delayed neutron precursors
+impacts the effective delayed neutron fraction in the core and consequently
+also impacts the transient behavior of the reactor.
 
-Numerical methods for solving coupled multiphysics problems fall under two
-general categories: loose coupling and tight coupling methods. Loose coupling
-methods involve decoupling multiphysics problems through assumptions and/or
-solving each individual set of physics separately, while tight
-coupling methods involve solving the coupled sets of physics simultaneously.
-Loosely coupled methods for reactor simulations typically decouple the
-neutronics calculations from the thermal-hydraulics calculations
-\citep{wang_review_2020}. Examples for loose coupling and tight coupling methods
-are the Picard iteration method and \gls{JFNK} method, respectively. Tight
-coupling methods may seem more computationally
-intensive but with appropriate preconditioning methods, they can be as
-competitive as or faster than loose coupling \citep{wang_review_2020}.
-Tight coupling methods also boast higher accuracy and better convergence rates
-for some strongly coupled problems such as the coupled neutronics and
-thermal-hydraulics in \glspl{MSR} \citep{lindsay_introduction_2018}. On the
-other hand, loosely coupled methods benefit from the relative ease of software
-implementation and the extensive pool of code validation and verification in
-existing literature for well-established single-physics reactor software. Users
-can also mitigate the impact on accuracy and convergence rates through
-careful tuning of simulation parameters such as timestep sizes.
+In recent years, several simulation tools have been developed for full-core
+modeling of fast-spectrum \glspl{MSR}. One approach involves coupling
+single-physics neutronics and thermal-hydraulics software via a script which
+handles data transfers between the software. For example, researchers at
+the Delft University of Technology coupled 3D neutron diffusion software
+DALTON \citep{boer_validation_2010} and CFD software HEAT
+\citep{de_zwaan_static_2007} to perform a safety analysis of the \gls{MSFR}
+\citep{fiorina_modelling_2014}. In a later effort from the same institute,
+\cite{tiberga_discontinuous_2019} coupled PHANTOM-$S_N$ and DGFlows
+in their participation in the
+CNRS Benchmark study \citep{tiberga_results_2020}. Another multiphysics
+package was developed at the Paul Scherrer Institute (PSI) coupling
+thermal-hydraulics system software TRACE \citep{nrc_trace_2007} with the nodal
+neutron diffusion software PARCS \citep{downar_parcs_2010} for the safety
+analysis of the \gls{MSFR} \citep{pettersen_coupled_2016}. With modern
+advancements in computing hardware and growing access to high-performance
+computing, others \citep{laureau_transient_2017,blanco_neutronic_2020} have
+developed multiphysics packages coupling CFD software
+OpenFOAM with Monte Carlo particle transport software Serpent 2, thus allowing
+for high-fidelity neutronics calculations in transient reactor analyses.
+
+Another approach towards creating \gls{MSR} simulation tools involves
+developing stand-alone multiphysics software which can perform both
+neutronics and thermal-hydraulics calculations. Among earlier efforts,
+\cite{nicolino_coupled_2008} and \cite{zhang_development_2009} recognized the
+need for more robust multiphysics coupling techniques and higher-fidelity
+thermal hydraulics solutions to accurately capture complex flow profiles in
+pool-type \glspl{MSR}. They each independently developed unnamed multiphysics
+simulation tools and demonstrated their tools with non-moderated \gls{MSR}
+designs. Later, \cite{li_transient_2015} demonstrated the steady-state and
+transient analysis capabilities of COUPLE, a neutronics and thermal-hydraulics
+software developed at the Karlsruhe Institute of Technology.  Others opted to
+leverage general multiphysics software platforms such as OpenFOAM
+\citep{openfoam_openfoam_2021} and \gls{MOOSE}
+\citep{gaston_physics-based_2015}.
+Several parallel efforts at various European institutes have developed coupled
+neutronics and thermal-hydraulics tools in OpenFOAM. These tools share some
+similarities such as implementing the $SP_N$ simplified $P_N$ neutron transport
+model and leveraging OpenFOAM's turbulent flow modeling capabilities.
+Differences include the aforementioned external coupling capability with
+Serpent 2 from the Centre national de la scientifique (CNRS)
+\citep{blanco_neutronic_2020}, fuel compressibility modeling and helium bubble
+tracking capability from Politecnico di Milano (PoliMi)
+\citep{cervi_development_2019}, and fuel performance analysis capability from
+PSI \citep{fiorina_creation_2018}. Within the modular MOOSE finite element
+framework, \gls{MSR} simulation tools include Moltres
+\citep{lindsay_introduction_2018}, the subject of this work and Rattlesnake
+\citep{wang_rattlesnake_2021}, both of which rely on MOOSE's built-in
+incompressible flow physics module. Rattlesnake is primarily a radiation
+transport application but the MOOSE framework facilitates multiphysics coupling
+with other MOOSE-based applications such as Pronghorn for thermal-hydraulics
+such that all applications share the same data structure, thus eliminating
+computational costs from external data transfers and optionally allowing for
+all physics to be solved simultaneously instead of sequentially through
+fixed-point iterations. Similarly, Moltres benefits from the highly-integrated
+cross compatibility within the ``ecosystem'' of MOOSE-based applications.
+
+%Numerical methods for solving coupled multiphysics problems fall under two
+%general categories: loose coupling and tight coupling methods. Loose coupling
+%methods involve decoupling multiphysics problems through assumptions and/or
+%solving each individual set of physics separately, while tight
+%coupling methods involve solving the coupled sets of physics simultaneously.
+%Loosely coupled methods for reactor simulations typically decouple the
+%neutronics calculations from the thermal-hydraulics calculations
+%\citep{wang_review_2020}. Examples for loose coupling and tight coupling methods
+%are the Picard iteration method and \gls{JFNK} method, respectively. Tight
+%coupling methods may seem more computationally
+%intensive, but with appropriate preconditioning methods they can be 
+%competitive with loose coupling \citep{wang_review_2020}.
+%Tight coupling methods also boast higher accuracy and better convergence rates
+%for some strongly coupled problems such as the coupled neutronics and
+%thermal-hydraulics in \glspl{MSR} \citep{lindsay_introduction_2018}. On the
+%other hand, loosely coupled methods benefit from the relative ease of software
+%implementation and the extensive pool of code validation and verification in
+%existing literature for well-established single-physics reactor software. Users
+%can also mitigate the impact on accuracy and convergence rates through
+%careful tuning of simulation parameters such as timestep sizes.
 
 This paper presents benchmarking results from Moltres, a coupled
-neutronics/thermal-hydraulics simulation software for \glspl{MSR}. Moltres is
-built on the \gls{MOOSE} \citep{gaston_physics-based_2015} finite element
-framework which provides various tools for performing fully-coupled,
-NEWTON-based solves. Software benchmarking exercises are important as they
-provide a common basis of comparison between software developed by different
-groups of people for solving the same or similar computational problems.
-Code-to-code verification of new software helps to build confidence in the
-software among researchers and other stakeholders. This trust promotes
-research collaboration and advances the study of more complicated problems that
-feature the same underlying physics/mechanisms we test in benchmarks.
+neutronics and thermal-hydraulics simulation software for \glspl{MSR}. Moltres
+is an open-source, \gls{MOOSE}-based application designed for multiphysics
+simulations of \glspl{MSR}. The goal of making Moltres open-source is to
+promote quality and participation through transparency and
+ease of peer review. The source code \citep{lindsay_moltres_2017} is available
+on GitHub \citep{github_build_2017}. Moltres leverages \texttt{git} for
+version control, and integrated testing to protect existing capabilities while
+concurrently supporting continued code development. Moltres depends on the
+\gls{MOOSE} finite element framework for its meshing and parallel, nonlinear
+Newton-Krylov solver capabilities. Therefore Moltres, by default, has access to
+\textit{strong coupling} methods with implicit time-stepping.
+\textit{Strong coupling} in the context of numerical methods refers to
+solving multiple physics represented by multiple equations simultaneously.
+Users also have the flexibility of separating different physics through
+\textit{tight coupling} in which multiphysics coupling is achieved by
+fixed-point iterations.
+
+The mutual compatibility among different physics applications within the
+\gls{MOOSE} framework simplifies the work required to strongly couple
+different physics together to solve novel multiphysics problems. For \gls{MSR}
+simulations in Moltres such as those in this paper, we coupled Moltres'
+\gls{MSR} modeling capabilities with \gls{MOOSE}'s ``Navier-Stokes'' and
+``Heat Conduction'' physics modules \citep{peterson_overview_2018} for
+general thermal-hydraulics modeling.
+
+The benchmark of interest in this work is the CNRS Benchmark
+\citep{tiberga_results_2020} for fast-spectrum \gls{MSR} simulation tools.
+Software benchmarks are important as
+they provide a common basis of comparison between different software designed
+to solve similar computational problems within the same application areas.
+Rigorous code-to-code verification of reactor physics software is especially
+important given the implications on reactor safety and the risks of high
+radioactivity exposure in nuclear accident scenarios.

@@ -86,4 +86,33 @@ ax.set_xlim(0, 2.5e17)
 ax.set_ylim(0, 2)
 ax.set_ylabel(r'$y$ [m]')
 ax.set_xlabel(r'Delayed neutron source [m$^{-3}\cdot$s$^{-1}$]')
-plt.savefig('1-1-dnp-plot.png', dpi=400)
+plt.savefig('1-1-dnp-y-plot.png', dpi=400)
+
+x = np.linspace(0, 2, 201)
+code = ['CNRS-SP1', 'CNRS-SP3', 'Polimi-Diff', 'PSI-Diff', 'TUD-S2', 'TUD-S6']
+
+plt.rc('font', size=12)          # controls default text sizes
+plt.rc('axes', titlesize=12)     # fontsize of the axes title
+plt.rc('axes', labelsize=12)    # fontsize of the x and y labels
+plt.rc('xtick', labelsize=11)    # fontsize of the tick labels
+plt.rc('ytick', labelsize=11)    # fontsize of the tick labels
+plt.rc('legend', fontsize=12)    # legend fontsize
+plt.rc('figure', titlesize=12)  # fontsize of the figure title
+
+fig, ax = plt.subplots(figsize=[6, 5])
+ax.plot(x, pre_aa, label='Moltres', color='tab:blue')
+ax.plot(x, benchmark_aa[:][2], label='CNRS-SP$_3$', color='tab:orange',
+        linestyle='--')
+ax.plot(x, benchmark_aa[:][3], label='Polimi', color='tab:green',
+        linestyle=':')
+ax.plot(x, benchmark_aa[:][4], label='PSI', color='tab:red',
+        linestyle='-.')
+ax.plot(x, benchmark_aa[:][6], label='TUD-S$_6$', color='tab:cyan',
+        linestyle=(0, (3, 1, 1, 1, 1, 1)))
+ax.legend()
+ax.grid(which='both')
+ax.set_ylim(0, 2.5e17)
+ax.set_xlim(0, 2)
+ax.set_xlabel(r'$x$ [m]')
+ax.set_ylabel(r'Delayed neutron source [m$^{-3}\cdot$s$^{-1}$]')
+plt.savefig('1-1-dnp-x-plot.png', dpi=400)
