@@ -41,28 +41,28 @@ change in reactivity results from Steps 0.2, 1.1, 1.2, and
 
 \subsection{Phase 0 results \& discussion}
 %
-\begin{figure}[tb]
+\begin{figure}[htb]
 	\centering
     \includegraphics[width=.8\columnwidth]{0-1-vel-plot}
 	\caption{Step 0.1 - Horizontal velocity component along BB'.}
 	\label{fig:0.1}
 \end{figure}
 %
-\begin{figure}[tb]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=.8\columnwidth]{0-2-fiss-plot}
 	\caption{Step 0.2 - Fission rate density along AA'.}
 	\label{fig:0.2}
 \end{figure}
 %
-\begin{figure}[tb]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=.8\columnwidth]{0-3-temp-plot}
 	\caption{Step 0.3 - Temperature distribution along BB'.}
 	\label{fig:0.3}
 \end{figure}
 %
-\begin{table}[tb]
+\begin{table}[htb]
 	\caption{Discrepancy values for the results from Phase 0.}
 	\centering
 	\footnotesize
@@ -126,7 +126,7 @@ and the average discrepancies of the other variables show that Moltres can
 still accurately reproduce the expected results and the temperature deviations
 along the top boundary do not impact the overall integrity of our results.
 
-\begin{table*}[tb]
+\begin{table*}[htb]
 	\caption{Temperature distribution along centerlines $AA'$ and $BB'$.}
 	\centering
 	\footnotesize
@@ -163,7 +163,7 @@ along the top boundary do not impact the overall integrity of our results.
 	\label{table:temp}
 \end{table*}
 %
-\begin{table}[tb]
+\begin{table}[htb]
     \caption{Reactivity $\rho$ and change in reactivity
     $\left(\rho_a - \rho_b\right)$ values from Steps 0.2, 1.1,
     1.2, and 1.3. All units are in pcm.}
@@ -199,6 +199,8 @@ software packages, namely CNRS-$SP_1$, Polimi, PSI, and TUD-$S_2$, which adopt
 the neutron diffusion model or theoretically-equivalent models such as $SP_1$
 and $S_2$ neutron transport models).
 
+\FloatBarrier
+
 \subsection{Phase 1 results \& discussion}
 
 Table \ref{table:disc1} shows the discrepancy values from Moltres for Steps
@@ -209,7 +211,7 @@ for each benchmark step.
 
 \subsubsection{Step 1.1: Circulating fuel}
 %
-\begin{figure*}[tb]
+\begin{figure*}[htb]
 	\centering
     \includegraphics[width=.8\columnwidth]{1-1-dnp-x-plot}
     \includegraphics[width=.8\columnwidth]{1-1-dnp-y-plot}
@@ -231,7 +233,7 @@ $\rho$ relative to Step 0.2 is $-62.7$ pcm for Moltres and this value is
 consistent with the $-63$ to $-62$ pcm range that most of the benchmark values
 fall in.
 %
-\begin{table*}[tb]
+\begin{table*}[htb]
 	\caption{Discrepancy values for the results from Phase 1.}
 	\centering
 	\footnotesize
@@ -268,7 +270,7 @@ fall in.
 	\label{table:disc1}
 \end{table*}
 %
-\begin{figure*}[tb]
+\begin{figure*}[htb]
 	\centering
 	\includegraphics[width=.8\columnwidth]{1-2-temp-plot}
 	\includegraphics[width=.8\columnwidth]{1-2-fiss-plot}
@@ -276,6 +278,8 @@ fall in.
 	density along AA'.}
 	\label{fig:1.2}
 \end{figure*}
+
+\FloatBarrier
 
 \subsubsection{Step 1.2: Power coupling}
 
@@ -306,7 +310,7 @@ In Table \ref{table:rho}, we observe that the change in $\rho$ in
 Moltres (-1207.7 pcm) falls within the range of reported benchmark values and
 matches the software from TUD-$S_2$ (-1208.5 pcm) the closest.
 %
-\begin{figure*}[tb]
+\begin{figure*}[htb]
 	\centering
 	\includegraphics[width=.64\columnwidth]{1-3-vel-plot}
 	\includegraphics[width=.67\columnwidth]{1-3-temp-plot}
@@ -315,6 +319,8 @@ matches the software from TUD-$S_2$ (-1208.5 pcm) the closest.
 	and delayed neutron source along AA'.}
 	\label{fig:1.3}
 \end{figure*}
+
+\FloatBarrier
 
 \subsubsection{Step 1.4: Full coupling}
 
@@ -331,7 +337,7 @@ multigroup neutron diffusion method, this indicates that Moltres is
 consistent with the benchmark outside of differences from the neutronics
 models.
 
-\begin{figure}[tb]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\columnwidth]{full-coupled}
   \caption{The temperature distribution in the domain for the fully coupled
@@ -341,7 +347,7 @@ models.
   \label{fig:color}
 \end{figure}
 %
-\begin{table}[tb]
+\begin{table}[htb]
 	\caption{Reactivity change in Step 1.4, relative to Step 0.2 under various
 	$U_{lid}$ and $P$ values.}
 	\centering
@@ -363,8 +369,10 @@ models.
 	\end{tabular}
 	\label{table:full}
 \end{table}
-%
-\begin{table}[tb]
+
+\FloatBarrier
+
+\begin{table}[htb]
 	\caption{Discrepancy values for the results from Step 2.1.}
 	\centering
 	\footnotesize
@@ -381,7 +389,7 @@ models.
 	\label{table:disc2}
 \end{table}
 %
-\begin{figure*}[tb]
+\begin{figure*}[htb]
 	\centering
 	\includegraphics[width=.8\columnwidth]{2-1-gain-plot}
 	\includegraphics[width=.8\columnwidth]{2-1-phase-plot}
@@ -417,3 +425,5 @@ sizes among the different software packages. Even with a precision of
 $\pm0.9^\circ$ for each phase shift value, Moltres accurately reproduces the
 correct trend with a lower average discrepancy (1.741\%) than the benchmark
 average (2.176\%).
+
+\FloatBarrier
