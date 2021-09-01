@@ -5,42 +5,44 @@ decades with various on-going research programs funding \gls{MSR} development
 in the EU \citep{cordis_severe_nodate}, China \citep{dai_17_2017}, and the US
 \citep{doe_office_2021}. These programs include efforts to develop
 reactor analysis software specifically tuned for \glspl{MSR}. Reactor
-analysis software are important tools in reactor development because
-they help inform design choices in-line with
+analysis software inform design choices aligned with
 maximizing safety, reducing proliferation risks, and improving fuel
 efficiency in the next generation of advanced reactors.
 
-Liquid-fuel \glspl{MSR} present new challenges in computational reactor
-safety analysis arising from the liquid fuel form. \glspl{MSR} feature strong
-negative reactivity feedback in the primary coolant which holds the dissolved
-fissile material. The feedback causes strong and near-instantaneous
+Liquid-fueled \glspl{MSR} present new challenges in computational reactor
+safety analysis arising from fuel movement. \glspl{MSR} feature strong
+negative temperature reactivity feedback in the primary fuel salt. The feedback
+causes strong and near-instantaneous
 interactions between reactor power and thermal-hydraulics. Thus,
 unexpected changes in coolant flow and temperature greatly affect reactor
 power and vice versa. Additionally, \gls{MSR} simulation software must include
 capabilities to model the movement of delayed neutron precursors
-and heat generation in the coolant; these physical phenomena are typically
+and heat generation in the fuel salt; these physical phenomena are
 absent in solid-fuel reactors. The movement of delayed neutron precursors
 impacts the effective delayed neutron fraction in the core and consequently
-also impacts the transient behavior of the reactor.
+also impacts the transient behavior of the reactor. At the same time, the fuel
+salt serves a dual role of generating fission heat and cooling the reactor
+core, which leads to stronger coupling between heat generation and salt flow
+dynamics.
 
 In recent years, several simulation tools have been developed for full-core
-modeling of fast-spectrum \glspl{MSR}. One approach involves coupling
-single-physics neutronics and thermal-hydraulics software via a script which
-handles data transfers between the software. For example, researchers at
+modeling of fast-spectrum \glspl{MSR}. Loosely coupled approaches involves
+coupling separate single-physics neutronics and thermal-hydraulics software via a script
+which handles data transfers between the software. For example, researchers at
 the Delft University of Technology coupled 3D neutron diffusion software
 DALTON \citep{boer_validation_2010} and CFD software HEAT
 \citep{de_zwaan_static_2007} to perform a safety analysis of the \gls{MSFR}
 \citep{fiorina_modelling_2014}. In a later effort from the same institute,
 \cite{tiberga_discontinuous_2019} coupled PHANTOM-$S_N$ and DGFlows
 in their participation in the
-CNRS Benchmark study \citep{tiberga_results_2020}. Another multiphysics
+\gls{CNRS} Benchmark study \citep{tiberga_results_2020}. Another multiphysics
 package was developed at the Paul Scherrer Institute (PSI) coupling
-thermal-hydraulics system software TRACE \citep{nrc_trace_2007} with the nodal
-neutron diffusion software PARCS \citep{downar_parcs_2010} for the safety
-analysis of the \gls{MSFR} \citep{pettersen_coupled_2016}. With modern
+thermal-hydraulics system software \gls{TRACE} \citep{nrc_trace_2007} with the
+nodal neutron diffusion software \gls{PARCS} \citep{downar_parcs_2010} for the
+safety analysis of the \gls{MSFR} \citep{pettersen_coupled_2016}. With modern
 advancements in computing hardware and growing access to high-performance
 computing, others \citep{laureau_transient_2017,blanco_neutronic_2020} have
-developed multiphysics packages coupling CFD software
+developed multiphysics packages coupling \gls{CFD} software
 OpenFOAM with Monte Carlo particle transport software Serpent 2, thus allowing
 for high-fidelity neutronics calculations in transient reactor analyses.
 

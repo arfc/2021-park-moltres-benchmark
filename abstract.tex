@@ -1,19 +1,23 @@
 \begin{abstract}
-Moltres is a multiphysics application for modeling strongly coupled neutronics
-and thermal-hydraulics in liquid-fueled molten salt reactors (MSR). This paper
-verifies Moltres' multiphysics MSR modeling capabilities by presenting
-results from Moltres in the context of the ``CNRS benchmark'', a
-multiphysics numerical benchmark for software dedicated to modeling
+Modeling strongly coupled neutronics and thermal-hydraulics in the
+liquid-fueled \glspl{MSR} requires robust and flexible multiphysics software
+for accurate simulations at reasonable computational costs. In this paper, we
+present Moltres and its neutronics and thermal-hydraulics modeling capabilities
+relevant to multiphysics reactor analysis. As a MOOSE-based application, Moltres
+provides various multiphysics coupling schemes and time-stepping methods,
+including robust fully coupled solves with implicit time-stepping. We verify
+Moltres' \gls{MSR} modeling capabilities in the context of the \gls{CNRS}
+benchmark, a multiphysics numerical benchmark for software dedicated to modeling
 fast-spectrum MSRs. The benchmark involves several steady-state and transient
-subproblems of modeling
-neutronics and thermal-hydraulics in a square cavity filled with U$^{233}$-based
-molten salt fuel. The results show that Moltres is consistent with the other
-software packages published with the CNRS benchmark. The average percentage
-discrepancies calculated for various physical parameters, including velocity,
-temperature, and fission rate density, are on similar orders of magnitudes
-to the corresponding average discrepancies from the benchmark. Among the
+subproblems of modeling neutronics and thermal-hydraulics in a square cavity
+filled with U$^{233}$-based molten salt fuel.
+The results show that Moltres is consistent with the participating
+software packages published with the CNRS benchmark.
+Relevant discrepancy values of measured neutronics and thermal-hydraulics
+quantities from Moltres fell within similar orders of magnitude compared with
+the published data. Among the
 participating multiphysics tools in the CNRS benchmark,
 Moltres agrees closest to the in-house multiphysics tool from the
-Delft University of Technology due to similiarities in the numerical solution
+Delft University of Technology due to similarities in the numerical solution
 techniques and meshing schemes for the benchmark calculations.
 \end{abstract}
