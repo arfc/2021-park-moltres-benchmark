@@ -1,18 +1,22 @@
 \section{Moltres} \label{sec:moltres}
 
-In this section, we describe Moltres, the \gls{MSR} simulation tool, and
-the specific modeling approach for simulating the CNRS Benchmark cases in
-Moltres.
+In this section, we describe Moltres \cite{lindsay_introduction_2018}, the
+multiphysics reactor simulation tool, and the specific modeling approach for
+simulating the CNRS Benchmark cases in Moltres. Much of Moltres' development
+focuses on meeting the needs of \gls{MSR} multiphysics.
 
 \subsection{Description of Moltres} \label{sec:description-of-moltres}
 
-Moltres is a coupled neutronics and thermal-hydraulics application for
-simulating \glspl{MSR}. Together with \gls{MOOSE}'s ``Navier-Stokes'' and
-``Heat Conduction'' modules, Moltres solves the multigroup neutron diffusion
+Moltres models coupled neutronics and thermal-hydraulics in reactors. While
+generally applicable to most reactor concepts, much of
+Moltres' development focuses on meeting the needs of \gls{MSR} multiphysics.
+Together with \gls{MOOSE}'s \cite{permann_moose_2020} \texttt{Heat Conduction}
+and \texttt{Navier-Stokes} \cite{peterson_overview_2018} modules, Moltres
+solves the multigroup neutron diffusion
 equations, for an arbitrary number of energy and precursor groups, and
 thermal-hydraulics equations simultaneously on the same mesh (or separately
 through fixed-point iterations if desired).
-In a previous work, \cite{lindsay_introduction_2018}
+In a previous work, Lindsay et al. \cite{lindsay_introduction_2018}
 demonstrated Moltres' \gls{MSR} neutronics modeling capabilities with 1D salt
 flow in 2D-axisymmetric and 3D models of the \gls{MSRE}. The neutron flux and
 temperature distributions agreed qualitatively with legacy
@@ -25,11 +29,11 @@ and 3) a decay heat model to simulate decay heat from fission products.
 
 To perform neutronics calculations, Moltres requires homogenized group constant
 data from dedicated high-fidelity neutronics software such as SCALE
-\citep{dehart_reactor_2011} or Serpent 2 \citep{leppanen_serpent_2014}. Users
+\cite{dehart_reactor_2011} or Serpent 2 \cite{leppanen_serpent_2014}. Users
 can run a Python script in Moltres' Github repository which automatically reads
 user-provided SCALE or Serpent 2 output data files and creates
 Moltres-compatible JSON or text files containing all required group constant
-data. There are on-going efforts to produce a similar script for parsing OpenMC
+data. There are ongoing efforts to produce a similar script for parsing OpenMC
 output data.
 
 Moltres solves for the neutron fluxes governed by
@@ -147,9 +151,9 @@ given by:
 The velocity components, temperature, and delayed neutron precursor
 distributions are all susceptible to numerical node-to-node oscillations
 commonly observed when resolving advection-dominated transport using continuous
-Galerkin methods \citep{kuhlmann_lid-driven_2018}.
+Galerkin methods \cite{kuhlmann_lid-driven_2018}.
 \gls{MOOSE}'s Navier-Stokes module provides the
-\gls{SUPG} stabilization scheme \citep{brooks_streamline_1982} for the velocity
+\gls{SUPG} stabilization scheme \cite{brooks_streamline_1982} for the velocity
 and temperature variables to combat these oscillations. We
 refer readers to \cite{peterson_overview_2018} for details on the
 implementation of these methods in \gls{MOOSE}'s Navier-Stokes module. On the 
@@ -160,8 +164,9 @@ element solver to circumvent the numerical instability issue.
 \subsection{Modeling approach}
 
 For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
-of 200 by 200 elements. Thus, the dimensions of each mesh element are 0.01m by
-0.01m. For nuclear data, we converted the group constant data provided by
+of 200$\times$200 elements. Thus, the dimensions of each mesh element are
+0.01m$\times$0.01m. For nuclear data, we converted the group constant data
+provided by Tiberga et al.
 \cite{tiberga_results_2020} into a Moltres-compatible text format. Next, we
 discretized most of the relevant variables, i.e. neutron fluxes, velocity
 components, pressure, and temperature, using continuous, first-order Lagrange
@@ -171,38 +176,36 @@ using \gls{DFEM}. We interpolated the resulting discontinuous,
 cell-centered precursor values to obtain the node-centered values for results
 analysis.
 
-As mentioned in Section \ref{sec:moltres}, \gls{MOOSE}'s Navier-Stokes
-and Heat Conduction modules provide some of the capabilities for
+As mentioned in Section \ref{sec:moltres}, \gls{MOOSE}'s \texttt{Navier-Stokes}
+and \texttt{Heat Conduction} modules provide some of the capabilities for
 modeling incompressible flow and heat transfer. In particular, we stabilized
 the incompressible flow and temperature governing equations using the
 \gls{SUPG} stabilization method implemented in \gls{MOOSE}
-\citep{peterson_overview_2018}. Without \gls{SUPG} stabilization, we
+\cite{peterson_overview_2018}. Without \gls{SUPG} stabilization, we
 observed spurious numerical oscillations in the velocity and temperature near
 the top boundary due to the singularity on the top left corner where different
 velocity boundary conditions meet. We also applied the \gls{PSPG} stabilization
-scheme \citep{hughes_new_1986} from the Navier-Stokes module
-\citep{peterson_overview_2018}
+scheme \cite{hughes_new_1986} from the Navier-Stokes module
+\cite{peterson_overview_2018}
 which enables equal-order discretizations in the velocity and pressure
 variables. Equal-order discretizations with \gls{PSPG} are computationally
 cheaper and more convenient to work with than implementing higher-order
 velocity discretizations for stability without \gls{PSPG}
-\citep{chapelle_inf-sup_1993}.
+\cite{chapelle_inf-sup_1993}.
 
 We performed all eigenvalue calculations in Steps 0.2, 1.1, 1.2, 1.3, and 1.4
 using the inverse power method solver in \gls{MOOSE}. All other Steps
 were performed using the Preconditioned Newton-Krylov solver
-\citep{gaston_physics-based_2015}. The coupled steady-state problems in
-Steps 1.2, 1.3, and 1.4 required \textit{tight coupling} between neutronics
-and thermal-hydraulics through fixed-point iterations due to the unique problem
+\cite{gaston_physics-based_2015}. The coupled steady-state problems in
+Steps 1.2, 1.3, and 1.4 required segregated solvers for the neutronics
+and thermal-hydraulics, respectively, due to the unique problem
 setups involving an eigenvalue problem for the neutron multiplication factor
 and a steady-state problem in thermal-hydraulics simultaneously.
 
 For the time-dependent cases in Step 2.1, we used a second-order
 implicit Backward Differential Formula (BDF2) time-stepping scheme and fixed
 the timestep sizes at 1/200 the period of the corresponding driving
-frequencies as shown in Table \ref{table:timestep}. The only exception is the
-0.0125 Hz case as a timestep size of 0.4s required more than one hundred
-nonlinear iterations to converge in each timestep. We assumed the systems
+frequencies as shown in Table \ref{table:timestep}.  We assumed the systems
 reached asymptotic behavior when the magnitudes of neighboring power peaks
 differed by less than 0.001\% for at least ten wavelengths. Under this
 assumption, the phase shift measurements between adjacent waves always
@@ -241,15 +244,15 @@ $S_N$ discrete ordinates neutron transport methods, respectively.
     \citep{tiberga_results_2020}.}
     \footnotesize
     \centering
-    \begin{tabular}{l p{4cm} p{3cm} p{1.7cm} l}
+    \begin{tabular}{p{2.7cm} p{4cm} p{3cm} p{1.7cm} l}
         \toprule
         Software & Institute & Numerical method & Mesh & Neutronics model \\
         \midrule
-        OpenFOAM & Centre national de la recherche scientifique (CNRS) & Finite volume & 200 by 200 \newline Non-uniform & $SP_1$ \& $SP_3$ \\
-        OpenFOAM & Politecnico de Milano (PoliMi) & Finite volume & 400 by 400 \newline Uniform & Neutron diffusion \\
-        GeN-Foam & Paul Scherrer Institute (PSI) & Finite volume & 200 by 200 \newline Non-uniform & Neutron diffusion \\
-        PHANTOM-$S_N$+DGFlows & Delft University of Technology (TUD) & Discontinuous finite \newline element & 50 by 50 \newline Uniform & $S_2$ \& $S_6$ \\
-        Moltres (This work) & University of Illinois at Urbana-Champaign (UIUC) & Continuous \& discontinuous finite element & 200 by 200 \newline Uniform & Neutron diffusion \\
+        OpenFOAM & Centre national de la recherche scientifique (CNRS) & Finite volume & 200$\times$200 \newline Non-uniform & $SP_1$ \& $SP_3$ \\
+        OpenFOAM & Politecnico de Milano (PoliMi) & Finite volume & 400$\times$400 \newline Uniform & Neutron diffusion \\
+        GeN-Foam & Paul Scherrer Institute (PSI) & Finite volume & 200$\times$200 \newline Non-uniform & Neutron diffusion \\
+        PHANTOM-$S_N$+ \newline DGFlows & Delft University of Technology (TUD) & Discontinuous finite \newline element & 50$\times$50 \newline Uniform & $S_2$ \& $S_6$ \\
+        Moltres (This work) & University of Illinois at Urbana-Champaign (UIUC) & Continuous \& discontinuous finite element & 200$\times$200 \newline Uniform & Neutron diffusion \\
         \bottomrule
     \end{tabular}
     \label{table:software}
