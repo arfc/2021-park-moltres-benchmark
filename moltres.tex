@@ -75,8 +75,8 @@ the multigroup neutron diffusion equations given by:
 \end{align}
 
 While Moltres is generally unit-agnostic, we use the CGS system here because
-the length units for the neutron cross section data from SCALE and Serpent 2
-are provided in centimeters. The delayed neutron precursor concentrations are
+the length units of the neutron cross section data from SCALE and Serpent 2
+are in centimeters. The delayed neutron precursor concentrations are
 governed by the following equation:
 %
 \begin{align}
@@ -161,7 +161,7 @@ other hand, we discretized the delayed neutron precursor variables using
 discontinuous shape functions supported by \gls{MOOSE}'s discontinuous finite
 element solver to circumvent the numerical instability issue.
 
-\subsection{Modeling approach}
+\subsection{Modeling approach} \label{sec:model}
 
 For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
 of 200$\times$200 elements. Thus, the dimensions of each mesh element are
@@ -173,7 +173,7 @@ components, pressure, and temperature, using continuous, first-order Lagrange
 shape functions. The only exception is the precursor concentration variables,
 which we discretized using zeroth-order monomial shape functions and solved
 using \gls{DFEM}. We interpolated the resulting discontinuous,
-cell-centered precursor values to obtain the node-centered values for results
+cell-centered precursor values to obtain the nodal values for results
 analysis.
 
 As mentioned in Section \ref{sec:moltres}, \gls{MOOSE}'s \texttt{Navier-Stokes}

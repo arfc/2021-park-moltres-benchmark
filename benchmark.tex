@@ -13,14 +13,14 @@ coupled, time-dependent problem.
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=.7\columnwidth]{geometry}
-	\caption{2 m by 2 m domain of the CNRS Benchmark. $U_{lid}$
+	\caption{2m$\times$2m 2D domain of the CNRS Benchmark. $U_{lid}$
 	represents the velocity along the top boundary. Various quantities are
 	measured along the centerlines AA' and BB' for comparison. From Tiberga et
 	al. \cite{tiberga_results_2020}.}
 	\label{fig:geometry}
 \end{figure}
 
-As shown in Figure \ref{fig:geometry}, the domain geometry is a 2m $\times$ 2m
+As shown in Figure \ref{fig:geometry}, the domain geometry is a 2m$\times$2m
 square cavity filled with LiF-BeF$_2$-UF$_4$ molten salt at an initial
 temperature of 900K \cite{tiberga_results_2020}.
 Standard vacuum boundary conditions apply for neutron flux along all
@@ -68,12 +68,12 @@ dependence in the cross sections and the neutron diffusion coefficients:
 The benchmark also prescribes incompressible Navier-Stokes flow with the
 Boussinesq approximation for evaluating the salt flow in the
 domain, but places no restrictions on the type of neutronics model.
-The following subsections briefly detail each benchmark Step problem. Table
+The following subsections briefly detail each benchmark step. Table
 \ref{table:benchmark} lists the relevant input parameters and observables for
-each problem.
+each step.
 
 \begin{table*}[tp!]
-	\caption{Input parameters and observables of each benchmark subproblem.}
+	\caption{Input parameters and observables of each benchmark step.}
 	\centering
 	\footnotesize
 	\begin{tabular}{p{.05\textwidth} p{.35\textwidth} p{.6\textwidth}}
@@ -308,7 +308,7 @@ as:
 
 The benchmark defines power gain as:
 \begin{align}
-    \mbox{Power gain } =& \frac{\left(P_{max} - P_{avg}\right)/P_{avg}}{
+    \mbox{Power gain} =& \frac{\left(P_{max} - P_{avg}\right)/P_{avg}}{
     \left(\gamma_{max} - \gamma_{avg}\right)/\gamma_{avg}}
 \end{align}
 %
