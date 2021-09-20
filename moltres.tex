@@ -48,18 +48,18 @@ the multigroup neutron diffusion equations given by:
     \phi_{g'} + \chi^d_g \sum^I_i \lambda_i C_i \label{eq:neut} \\
     %
     \shortintertext{where}
-    v_g =& \text{ average speed of neutrons in group $g$ [cm$\cdot$s$^{-1}$],} 
+    v_g =& \text{ average speed of neutrons in group $g$,} 
     \nonumber \\
-    \phi_g =& \text{ neutron flux in group $g$ [cm$^{-2}\cdot$s$^{-1}$],}
+    \phi_g =& \text{ neutron flux in group $g$,}
     \nonumber \\
-    t =& \text{ time [s],} \nonumber \\
+    t =& \text{ time,} \nonumber \\
     D_g =& \text{ diffusion coefficient of neutrons in} \nonumber \\
-    &\text{ group $g$ [cm$^2\cdot$s$^{-1}$],} \nonumber \\
+    &\text{ group $g$,} \nonumber \\
     \Sigma^r_g =& \text{ macroscopic cross section for removal of} \nonumber \\
-    &\text{ neutrons from group $g$ [cm$^{-1}$],} \nonumber \\
+    &\text{ neutrons from group $g$,} \nonumber \\
     \Sigma^s_{g' \rightarrow g} =& \text{ macroscopic cross section of
     scattering from} \nonumber \\
-    &\text{ groups $g'$ to $g$ [cm$^{-1}$],} \nonumber \\
+    &\text{ groups $g'$ to $g$,} \nonumber \\
     \chi^p_g =& \text{ prompt fission spectrum for neutrons in} \nonumber \\
     &\text{ group $g$,} \nonumber \\
     G =& \text{ total number of discrete neutron groups,} \nonumber \\
@@ -67,17 +67,15 @@ the multigroup neutron diffusion equations given by:
     &\text{ fission,} \nonumber \\
     \Sigma^f_{g} =& \text{ macroscopic fission cross section for neutron}
     \nonumber \\
-    &\text{ in group $g$ [cm$^{-1}$],} \nonumber \\
+    &\text{ in group $g$,} \nonumber \\
     \chi^d_g =& \text{ delayed fission spectrum for neutrons in} \nonumber \\
     &\text{ group $g$,} \nonumber \\
     I =& \text{ total number of delayed neutron precursor} \nonumber \\
     &\text{ groups,} \nonumber \\
-    \beta =& \text{ total delayed neutron fraction [ - ].} \nonumber
+    \beta =& \text{ total delayed neutron fraction.} \nonumber
 \end{align}
 
-While Moltres is generally unit-agnostic, we use the CGS system here because
-the length units of the neutron cross section data from SCALE and Serpent 2
-are in centimeters. The delayed neutron precursor concentrations are
+The delayed neutron precursor concentrations are
 governed by the following equation:
 %
 \begin{align}
@@ -89,15 +87,15 @@ governed by the following equation:
     \beta_i =& \text{ delayed neutron fraction of precursor group $i$,}
     \nonumber \\
     \lambda_i =& \text{ average decay constant of delayed neutron} \nonumber \\
-    &\text{ precursors in precursor group $i$ [s$^{-1}$],} \nonumber \\
+    &\text{ precursors in precursor group $i$,} \nonumber \\
     C_i =& \text{ concentration of delayed neutron precursors in}
     \nonumber \\
-    &\text{ precursor group $i$ [cm$^{-3}$],} \nonumber \\
-    \vec{u} =& \text{ molten salt flow velocity vector [cm$\cdot$s$^{-1}$],}
+    &\text{ precursor group $i$,} \nonumber \\
+    \vec{u} =& \text{ molten salt flow velocity vector,}
     \nonumber \\
     D_{\text{P}} =& \text{ effective diffusion coefficient of the delayed}
     \nonumber \\
-    &\text{ neutron precursors [cm$^2\cdot$s$^{-1}$].} \nonumber
+    &\text{ neutron precursors.} \nonumber
 \end{align}
 
 The last two terms in Equation \ref{eq:dnp} represent the advection and
@@ -114,15 +112,13 @@ a fission heat source term given by:
     %
     \shortintertext{where}
     Q_f =& \sum^G_{g=1} \epsilon_g \Sigma_g^f \phi_g \nonumber \\
-    =& \text{ fission heat source [W$\cdot$m$^{-3}\cdot$s$^{-1}$],} \nonumber
+    =& \text{ fission heat source,} \nonumber
     \\
-    \rho =& \text{ density of the molten salt [kg$\cdot$m$^{-3}$],}
+    \rho =& \text{ density of the molten salt,}
     \nonumber \\
-    c_p =& \text{ specific heat capacity of molten salt} \nonumber \\
-    &\text{ [J$\cdot$kg$^{-1}\cdot$K$^{-1}$],} \nonumber \\
-    T =& \text{ temperature of molten salt [K]} \nonumber \\
-    k =& \text{ effective thermal conductivity of molten salt} \nonumber \\
-    &\text{ [W$\cdot$m$^{-1}\cdot$K$^{-1}$].} \nonumber
+    c_p =& \text{ specific heat capacity of molten salt,} \nonumber \\
+    T =& \text{ temperature of molten salt,} \nonumber \\
+    k =& \text{ effective thermal conductivity of molten salt.} \nonumber \\
 \end{align}
 
 Lastly, the governing equations for the incompressible Navier-Stokes flow are
@@ -138,14 +134,14 @@ given by:
     \nabla \cdot \vec{u} =& 0
     \label{eq:divergence}
     \shortintertext{where}
-    p =& \text{ pressure [Pa],} \nonumber \\
-    \mu =& \text{ dynamic viscosity [Pa$\cdot$s],} \nonumber \\
-    \alpha =& \text{ coefficient of thermal expansion [K$^{-1}$],} \nonumber \\
-    \vec{g} =& \text{ gravitational force vector [N$\cdot$m$^{-3}$],} \nonumber
+    p =& \text{ pressure,} \nonumber \\
+    \mu =& \text{ dynamic viscosity,} \nonumber \\
+    \alpha =& \text{ coefficient of thermal expansion,} \nonumber \\
+    \vec{g} =& \text{ gravitational force vector,} \nonumber
     \\
     T_{\text{ref}} =& \text{ reference temperature at which the nominal}
     \nonumber \\
-    &\text{ density is provided [K].} \nonumber
+    &\text{ density is provided.} \nonumber
     \nonumber
 \end{align}
 
@@ -251,9 +247,9 @@ the participants from \gls{PoliMi} and \gls{TUD} employed uniform meshes.
     specifications for the CNRS Benchmark simulations
     \cite{tiberga_results_2020}.}
     \centering
-    \begin{tabular}{p{4.2cm} p{7cm} p{3.3cm} p{2cm} p{2.6cm}}
+    \begin{tabular}{p{4.2cm} p{7cm} p{3.3cm} p{2cm} p{2.7cm}}
         \toprule
-        Software & Institute ( & Numerical method & Mesh & Neutronics model \\
+        Software & Institute & Numerical method & Mesh & Neutronics model \\
         \midrule
         OpenFOAM & Centre national de la recherche scientifique (CNRS) & Finite volume & 200$\times$200 \newline Non-uniform & $SP_1$ \& $SP_3$ \\
         OpenFOAM & Politecnico di Milano (PoliMi) & Finite volume & 400$\times$400 \newline Uniform & Neutron diffusion \\
