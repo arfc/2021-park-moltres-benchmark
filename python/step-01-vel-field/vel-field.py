@@ -29,10 +29,10 @@ ave_bb_ux = get_benchmark_ave_disc(benchmark_bb_ux)
 ave_bb_uy = get_benchmark_ave_disc(benchmark_bb_uy)
 
 f = open('vel-field.txt', 'w')
-f.write("Discrepancy in ux along AA' = " + str(disc_aa_ux*100) + " %")
-f.write("Discrepancy in uy along AA' = " + str(disc_aa_uy*100) + " %")
-f.write("Discrepancy in ux along BB' = " + str(disc_bb_ux*100) + " %")
-f.write("Discrepancy in uy along BB' = " + str(disc_bb_uy*100) + " %")
+f.write("Discrepancy in ux along AA' = " + str(disc_aa_ux*100) + " %\n")
+f.write("Discrepancy in uy along AA' = " + str(disc_aa_uy*100) + " %\n")
+f.write("Discrepancy in ux along BB' = " + str(disc_bb_ux*100) + " %\n")
+f.write("Discrepancy in uy along BB' = " + str(disc_bb_uy*100) + " %\n")
 f.write("Benchmark average discrepancy in ux along AA' = " +
         str(ave_aa_ux*100) + " %\n")
 f.write("Benchmark average discrepancy in uy along AA' = " +
