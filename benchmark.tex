@@ -1,6 +1,6 @@
 \section{CNRS Benchmark} \label{sec:benchmark}
 
-The \gls{CNRS} Benchmark \cite{tiberga_results_2020} is a numerical
+The CNRS Benchmark \cite{tiberga_results_2020} is a numerical
 benchmark for multiphysics software dedicated to modeling \glspl{MSR}. It
 consists of three Phases and eight Steps in total. Each
 Step is a well-defined subproblem for systematically assessing the
@@ -76,7 +76,7 @@ each step.
 	\caption{Input parameters and observables of each benchmark step.}
 	\centering
 	\footnotesize
-	\begin{tabular}{p{.05\textwidth} p{.35\textwidth} p{.6\textwidth}}
+	\begin{tabular}{p{.05\textwidth} p{.4\textwidth} p{.6\textwidth}}
 		\toprule
 		\textbf{Step} & \textbf{Input parameters} & \textbf{Observables} \\
 		\midrule
@@ -103,7 +103,7 @@ each step.
 		\begin{itemize}[nosep,noitemsep,left=0pt,
 		                before={\begin{minipage}[t]{\hsize}},
                         after ={\end{minipage}}]
-		    \item Fission rate density $\sum^G_g \Sigma_{f,g} \phi_g(\vec{r})$ along AA'
+		    \item Fission rate density $\sum^6_g \Sigma_{f,g} \phi_g(\vec{r})$ along AA'
             \item Reactivity $\rho$
 		\end{itemize}\vspace*{-\baselineskip}\mbox{} \\
         \midrule
@@ -111,8 +111,10 @@ each step.
         \begin{itemize}[nosep,noitemsep,left=0pt,
 		                before={\begin{minipage}[t]{\hsize}},
                         after ={\end{minipage}}]
-		    \item Fixed flow field from Step 0.1
-		    \item Fixed heat source distribution from Step 0.2
+		    \item Fixed flow field from Step 0.1 for
+		    $U_{lid} = 0.5$ m$\cdot$s$^{-1}$
+		    \item Fixed heat source distribution
+		    $\sum^6_{g} \epsilon_g \Sigma_{f,g} \phi_g(\vec{r})$ from Step 0.2
 		    \item $\gamma = 10^6$ W$\cdot$m$^{-3}\cdot$K$^{-1}$
 		\end{itemize} &
 		\begin{itemize}[nosep,noitemsep,left=0pt,
@@ -125,23 +127,25 @@ each step.
         \begin{itemize}[nosep,noitemsep,left=0pt,
 		                before={\begin{minipage}[t]{\hsize}},
                         after ={\end{minipage}}]
-		    \item Fixed flow field from Step 0.1
+		    \item Fixed flow field from Step 0.1 for
+		    $U_{lid} = 0.5$ m$\cdot$s$^{-1}$
 		    \item $T = 900$ K
 		    \item $P = 1$ GW
 		\end{itemize} &
 		\begin{itemize}[nosep,noitemsep,left=0pt,
 		                before={\begin{minipage}[t]{\hsize}},
                         after ={\end{minipage}}]
-		    \item Delayed neutron source $\sum_j \lambda_j C_j$ along AA' and BB'
-		    \item Reactivity change from Step 0.2 $\Delta \rho = \rho
-        - \rho_{s_{0.2}}$
+		    \item Delayed neutron source $\sum^8_i \lambda_i C_i$ along AA' and BB'
+		    \item Reactivity change between Step 1.1 and Step 0.2,
+		    $\Delta \rho = \rho - \rho_{s_{0.2}}$
 		\end{itemize}\vspace*{-\baselineskip}\mbox{} \\
         \midrule
         1.2 &
         \begin{itemize}[nosep,noitemsep,left=0pt,
 		                before={\begin{minipage}[t]{\hsize}},
                         after ={\end{minipage}}]
-		    \item Fixed flow field from Step 0.1
+		    \item Fixed flow field from Step 0.1 for
+		    $U_{lid} = 0.5$ m$\cdot$s$^{-1}$
 		    \item $P = 1$ GW
 		    \item $\gamma = 10^6$ W$\cdot$m$^{-3}\cdot$K$^{-1}$
 		\end{itemize}\vspace*{-\baselineskip}\mbox{} &
@@ -149,11 +153,11 @@ each step.
 		                before={\begin{minipage}[t]{\hsize}},
                         after ={\end{minipage}}]
 		    \item Temperature $T$ along AA' and BB'
-            \item Reactivity change from Step 1.1 $\Delta\rho = \rho -
-        \rho_{s_{1.1}}$
+            \item Reactivity change between Step 1.2 and Step 1.1,
+            $\Delta\rho = \rho - \rho_{s_{1.1}}$
             \item Change in fission rate density
-        $\sum^G_g \Sigma_{f,g} \phi_g(\vec{r}) -
-        \left[\sum^G_g \Sigma_{f,g} \phi_g(\vec{r})\right]_{s_{0.2}}$
+            $\sum^6_g \Sigma_{f,g} \phi_g(\vec{r}) -
+            \left[\sum^6_g \Sigma_{f,g} \phi_g(\vec{r})\right]_{s_{0.2}}$
 		\end{itemize} \\
         \midrule
         1.3 &
@@ -169,7 +173,7 @@ each step.
                         after ={\end{minipage}}]
 		    \item Velocity components $(u_x, u_y)$ along AA' and BB'
             \item Temperature $T$ along AA' and BB'
-            \item Delayed neutron source $\sum_j \lambda_j C_j$ along AA' and BB'
+            \item Delayed neutron source $\sum^8_i \lambda_i C_i$ along AA' and BB'
             \item Reactivity change from Step 0.2
         $\Delta\rho = \rho - \rho_{s_{0.2}}$
 		\end{itemize} \\
@@ -186,8 +190,9 @@ each step.
 		\begin{itemize}[nosep,noitemsep,left=0pt,
 		                before={\begin{minipage}[t]{\hsize}},
                         after ={\end{minipage}}]
-		    \item Reactivity change from Step 0.2 $\Delta\rho = \rho
-		    - \rho_{s_{0.2}}$
+		    \item Reactivity change between Step 1.4 and Step 0.2,
+		    $\Delta\rho = \rho - \rho_{s_{0.2}}$, for all permutations of $P$
+		    and $U_{lid}$ values
 		\end{itemize}\vspace*{-\baselineskip}\mbox{} \\
         \midrule
         2.1 &
@@ -195,7 +200,7 @@ each step.
 		                before={\begin{minipage}[t]{\hsize}},
                         after ={\end{minipage}}]
 		    \item $\gamma = 10^6$ W$\cdot$m$^{-3}\cdot$K$^{-1}$
-            \item Steady-state solution from Step 1.4 with $U_{lid} = 0.5$
+            \item Steady-state solution from Step 1.4 for $U_{lid} = 0.5$
         m$\cdot$s$^{-1}$ and $P = 1.0$ GW
 		\end{itemize} &
 		\begin{itemize}[nosep,noitemsep,left=0pt,
@@ -228,14 +233,36 @@ rate density and effective multiplication factor $k_{eff}$. The total power $P$
 is fixed to normalize the neutron fluxes. This step also aims
 to identify deviations in results attributable to differences in neutronics
 models and approximations. The total power $P$ is fixed to normalize the
-neutron fluxes.
+neutron fluxes. For neutronics models conforming to the six neutron energy
+group structure provided by Tiberga et al. \cite{tiberga_results_2020},
+fission rate density is calculated as:
+%
+\begin{align}
+    \text{Fission rate density} =& \sum^6_g \Sigma_{f,g} \phi_g(\vec{r})
+    \shortintertext{where}
+    \Sigma_{f,g} =& \text{ macroscopic fission cross section for neutron}
+    \nonumber \\
+    &\text{ in group $g$,} \nonumber \\
+    \phi_g =& \text{ neutron flux in group $g$.} \nonumber
+\end{align}
 
 \subsubsection{Step 0.3: Temperature}
 
 This step assesses passive scalar transport capability for determining the
 temperature distribution independently from
 the fluid flow and neutronics problems by imposing fixed velocity and fission
-heat source distributions from Steps 0.1 and 0.2, respectively.
+heat source distributions from Steps 0.1 and 0.2, respectively. Similar to the
+fission rate density, the heat source distribution in six-group neutronics
+models is calculated as:
+%
+\begin{align}
+    \text{Heat source distribution} =& \sum^6_{g} \epsilon_g \Sigma_{f,g}
+    \phi_g(\vec{r})
+    \shortintertext{where}
+    \epsilon_g =& \text{ average fission energy released by neutrons}
+    \nonumber \\
+    &\text{ in group $g$.} \nonumber
+\end{align}
 
 \subsection{Phase 1: Steady-state coupling}
 
@@ -249,7 +276,18 @@ criticality eigenvalue problems.
 This step investigates effects of fuel salt flow on the neutronics,
 namely the reactivity loss from the movement of precursors. The delayed neutron
 precursors are allowed to drift under the fixed velocity field from Step 0.1
-while keeping the temperature $T$ fixed at 900 K. 
+while keeping the temperature $T$ fixed at 900 K. With eight precursor groups,
+the delayed neutron source is calculated as:
+%
+\begin{align}
+    \text{Delayed neutron source} =& \sum^8_i \lambda_i C_i
+    \shortintertext{where}
+    \lambda_i =& \text{ average decay constant of delayed neutron} \nonumber \\
+    &\text{ precursors in precursor group $i$,} \nonumber \\
+    C_i =& \text{ concentration of delayed neutron precursors in}
+    \nonumber \\
+    &\text{ precursor group $i$.} \nonumber
+\end{align}
 
 \subsubsection{Step 1.2: Power coupling}
 
@@ -298,6 +336,7 @@ solution from Step 1.4.
 
 $\gamma$ is uniformly perturbed according to small-amplitude sine waves given
 as:
+%
 \begin{align}
     \gamma =& \gamma_0 \left[ 1 + 0.1\sin\left(2 \pi f \right) \right]
     \shortintertext{where}
@@ -307,6 +346,7 @@ as:
 \end{align}
 
 The benchmark defines power gain as:
+%
 \begin{align}
     \mbox{Power gain} =& \frac{\left(P_{max} - P_{avg}\right)/P_{avg}}{
     \left(\gamma_{max} - \gamma_{avg}\right)/\gamma_{avg}}
