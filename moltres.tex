@@ -103,22 +103,23 @@ diffusion terms, respectively, to model the movement of \gls{DNP} in
 liquid-fuel \glspl{MSR}.
 
 The governing equation for temperature is an advection-diffusion equation with
-a fission heat source term given by:
+a fission heat source term $Q_f$ given by:
 %
 \begin{align}
     \rho c_{p} \frac{\partial T}{\partial t} =& - \rho c_p \vec{u}
     \cdot \nabla T + \nabla \cdot \left(k \nabla T \right) + Q_f
-    \label{eq:temp} \\
-    %
+    \label{eq:temp}
+    \shortintertext{and}
+    Q_f =& \sum^G_{g=1} \epsilon_g \Sigma_g^f \phi_g
     \shortintertext{where}
-    Q_f =& \sum^G_{g=1} \epsilon_g \Sigma_g^f \phi_g \nonumber \\
-    =& \text{ fission heat source,} \nonumber
-    \\
     \rho =& \text{ density of the molten salt,}
     \nonumber \\
     c_p =& \text{ specific heat capacity of molten salt,} \nonumber \\
     T =& \text{ temperature of molten salt,} \nonumber \\
-    k =& \text{ effective thermal conductivity of molten salt.} \nonumber \\
+    k =& \text{ effective thermal conductivity of molten salt,} \nonumber \\
+    Q_f =& \text{ fission heat source,} \nonumber \\
+    \epsilon_g =& \text{ average fission energy released by neutrons in group
+    $g$.} \nonumber
 \end{align}
 
 Lastly, the governing equations for the incompressible Navier-Stokes flow are
@@ -192,9 +193,18 @@ cheaper and more convenient to work with than implementing higher-order
 velocity discretizations for stability without \gls{PSPG}
 \cite{chapelle_inf-sup_1993}.
 
+We performed all eigenvalue calculations in Steps 0.2, 1.1, 1.2, 1.3, and 1.4
+using the inverse power method solver in \gls{MOOSE}. All other Steps
+were performed using the Preconditioned Newton-Krylov solver
+\cite{gaston_physics-based_2015}. The coupled steady-state problems in
+Steps 1.2, 1.3, and 1.4 required segregated solvers for the neutronics
+and the thermal-hydraulics due to the unique problem
+setups involving an eigenvalue problem for the neutron multiplication factor
+and a steady-state problem in thermal-hydraulics simultaneously.
+
 \begin{table}[tb]
     \caption{Timestep sizes used for the time-dependent cases in
-    Step 2.}
+    Step 2.1, corresponding to 1/200th of the perturbation period.}
 	\centering
 	\setlength\tabcolsep{2.5pt}
 	\begin{tabular}{l l l l l l l l}
@@ -208,20 +218,11 @@ velocity discretizations for stability without \gls{PSPG}
 	\label{table:timestep}
 \end{table}
 
-We performed all eigenvalue calculations in Steps 0.2, 1.1, 1.2, 1.3, and 1.4
-using the inverse power method solver in \gls{MOOSE}. All other Steps
-were performed using the Preconditioned Newton-Krylov solver
-\cite{gaston_physics-based_2015}. The coupled steady-state problems in
-Steps 1.2, 1.3, and 1.4 required segregated solvers for the neutronics
-and the thermal-hydraulics due to the unique problem
-setups involving an eigenvalue problem for the neutron multiplication factor
-and a steady-state problem in thermal-hydraulics simultaneously.
-
 For the time-dependent cases in Step 2.1, we employed fully coupled solves with
 a second-order implicit Backward Differential Formula (BDF2) time-stepping
 scheme. For each driving frequency in the heat transfer coefficient, we set the
 timestep sizes to 1/200th of the perturbation period. Table
-\ref{table:timestep} shows the timestep sizes for clarity. We assumed the
+\ref{table:timestep} shows the timestep sizes. We assumed the
 systems reached asymptotic behavior when the magnitudes of neighboring power
 peaks differed by less than 0.001\% for at least ten wavelengths. Under this
 assumption, the phase shift measurements between adjacent waves always
@@ -229,7 +230,7 @@ converged before the magnitude measurements of the power peaks.
 
 Table \ref{table:software} compares the numerical methods, meshing schemes, and
 neutronics models of Moltres and the four participating software packages in
-the \gls{CNRS} benchmark paper \cite{tiberga_results_2020}. The $SP_N$ and
+the CNRS benchmark paper \cite{tiberga_results_2020}. The $SP_N$ and
 $S_N$ neutronics models refer to the simplified $P_N$ spherical harmonics and
 $S_N$ discrete ordinates neutron transport models, respectively. Based on the
 solvers and methods of solution, Moltres is most similar to the
