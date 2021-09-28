@@ -134,7 +134,7 @@
 	author = {Leppanen, Jaakko and Pusa, Maria and Viitanen, Tuomas and Valtavirta, Ville and Kaltiaisenaho, Toni},
 	month = aug,
 	year = {2014},
-	keywords = {Reactor physics, Monte Carlo, Burnup calculation, Homogenization},
+	keywords = {Burnup calculation, Homogenization, Monte Carlo, Reactor physics},
 	pages = {142--150},
 	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/83V2KXJ9/Leppänen et al. - 2015 - The Serpent Monte Carlo code Status, development .pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/VT4QRTXR/Leppänen et al. - 2015 - The Serpent Monte Carlo code Status, development .pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/AQAB5875/S0306454914004095.html:text/html;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/9AVEULJX/S0306454914004095.html:text/html},
 }
@@ -289,7 +289,7 @@
 	author = {Lindsay, Alexander and Ridley, Gavin and Rykhlevskii, Andrei and Huff, Kathryn},
 	month = apr,
 	year = {2018},
-	keywords = {Reactor physics, Nuclear fuel cycle, nuclear engineering, agent based modeling, Hydrologic contaminant transport, Object orientation, repository, Systems analysis, Simulation, Multiphysics, Finite elements, MOOSE, Parallel computing},
+	keywords = {agent based modeling, Finite elements, Hydrologic contaminant transport, MOOSE, Multiphysics, nuclear engineering, Nuclear fuel cycle, Object orientation, Parallel computing, Reactor physics, repository, Simulation, Systems analysis},
 	pages = {530--540},
 	annote = {2d prescribed},
 	file = {Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:/home/sunmyung/Zotero/storage/RCWUNGTP/Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:application/pdf;Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:/home/sunmyung/Zotero/storage/3GEC6NQ9/Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:application/pdf;Moltres.pdf:/home/sunmyung/Zotero/storage/4XDXRICB/Moltres.pdf:application/pdf;ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/E2T9U5IX/Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/3DT9TEY3/S0306454917304760.html:text/html},
@@ -315,6 +315,34 @@ With the aid of a code system developed to implement this scheme, calculations w
 	keywords = {unread, Molten Salt Reactor (MSR), 3D, reactor physics, Core, MSR Experiment (MSRE)},
 	pages = {118--131},
 	file = {Kópházi et al. - Development of a Three-Dimensional Time-Dependent .pdf:/home/sunmyung/Zotero/storage/ZIJ5Q643/Kópházi et al. - Development of a Three-Dimensional Time-Dependent .pdf:application/pdf},
+}
+
+@inproceedings{aufiero_testing_2018,
+	address = {Philadelphia, Pennsylvania},
+	series = {Reactor {Physics}: {General}—{I}},
+	title = {Testing and {Verification} of {Multiphysics} {Tools} for {Fast}-{Spectrum} {MSRs}: {The} {CNRS} {Benchmark}},
+	volume = {118},
+	shorttitle = {Testing and {Verification} of {Multiphysics} {Tools} for {Fast}-{Spectrum} {MSRs}},
+	url = {http://ansannual.org/wp-content/2018/Data/pdfs/382-25331.pdf},
+	abstract = {Liquid fuel Molten Salt Reactors (MSRs) feature peculiar physical
+phenomena that are not present in solid fuel reactors. Some of
+these phenomena are not correctly resolved by legacy reactor physics
+tools, and require specific treatments. Recently, research activities
+within several collaborative projects related to MSRs design (e.g.,
+see [1], [2]) lead to development of a number of different numerical
+tools for the coupled neutronics and thermal/hydraulics analysis of
+such systems. Unfortunately, especially in case of non-moderated,
+fast-spectrum MSRs, very few experimental data are available for
+an accurate process of verification and validation of the developed
+codes.},
+	language = {English},
+	booktitle = {Transactions of the {American} {Nuclear} {Society}},
+	publisher = {American Nuclear Society},
+	author = {Aufiero, Manuele and Rubiolo, Pablo},
+	month = jun,
+	year = {2018},
+	pages = {837--840},
+	file = {Fulltext:/home/sunmyung/Zotero/storage/HUGQPFM3/Aufiero and Rubiolo - Testing and Verification of Multiphysics Tools for.pdf:application/pdf;Snapshot:/home/sunmyung/Zotero/storage/SXY5L3Q3/Aufiero and Rubiolo - Testing and Verification of Multiphysics Tools for.pdf:application/pdf},
 }
 
 @techreport{euratom_final_2015,
@@ -694,8 +722,11 @@ With the aid of a code system developed to implement this scheme, calculations w
 }
 
 @inproceedings{tiberga_discontinuous_2019,
+	address = {Portland, OR},
 	title = {A {DISCONTINUOUS} {GALERKIN} {FEM} {MULTI}-{PHYSICS} {SOLVER} {FOR} {THE} {MOLTEN} {SALT} {FAST} {REACTOR}},
 	abstract = {Numerical simulations of fast MSRs constitute a challenging task. In fact, classical codes employed in reactor physics cannot be used, and new dedicated multi-physics tools must be developed, to capture the unique features of these systems: the strong coupling between neutronics and thermal-hydraulics due to the use of a liquid fuel, the effects on reactor kinetics induced by the precursors drift, the internal heat generation, and the shape of the core having no fuel pins as a repeated structure. In this work, we present a novel multi-physics tool being developed at TU Delft. The coupling is realized between an SN radiation transport code (PHANTOM-SN) and a RANS solver (DGFlows). Both in-house tools are based on a Discontinuous Galerkin Finite Element space discretization, characterized by local conservation, high-order accuracy, and allowing for high geometric flexibility. Implicit discretization in time is performed adopting Backward Differentiation Formulae. Cross sections are computed on an element base, starting from the local average temperature and a set of libraries generated at reference temperatures with Monte Carlo or deterministic codes. Comparison of the results obtained performing a suitable numerical benchmark created at LPSC/CNRS/Grenoble with those available in literature shows that the multi-physics tool is able to capture the unique phenomena characterizing fast liquid-fueled systems.},
+	booktitle = {Proceedings of the {International} {Conference} on {Mathematics} and {Computational} {Methods} applied to {Nuclear} {Science} and {Engineering} ({M}\&{C} 2019)},
+	publisher = {American Nuclear Society},
 	author = {Tiberga, Marco and Lathouwers, D. and Kloosterman, Jan},
 	month = aug,
 	year = {2019},
@@ -806,4 +837,19 @@ With the aid of a code system developed to implement this scheme, calculations w
 	keywords = {Multiphysics, Parallel, Finite-element, Framework, Multiscale},
 	pages = {100430},
 	file = {ScienceDirect Full Text PDF:/home/sunmyung/Zotero/storage/Q27QTRPG/Permann et al. - 2020 - MOOSE Enabling massively parallel multiphysics si.pdf:application/pdf;ScienceDirect Snapshot:/home/sunmyung/Zotero/storage/ZGBGE5S9/S2352711019302973.html:text/html},
+}
+
+@misc{park_results_2021,
+	title = {Results from {Moltres} for the {CNRS} {Benchmark}},
+	url = {https://zenodo.org/record/5534964},
+	abstract = {Raw data from running the CNRS benchmark with Moltres.},
+	language = {eng},
+	urldate = {2021-09-28},
+	publisher = {Zenodo},
+	author = {Park, Sun Myung and Munk, Madicken and Huff, Kathryn D.},
+	month = sep,
+	year = {2021},
+	doi = {10.5281/zenodo.5534964},
+	note = {Type: dataset},
+	file = {Zenodo Snapshot:/home/sunmyung/Zotero/storage/ME29K27S/5534964.html:text/html},
 }

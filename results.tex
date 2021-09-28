@@ -51,8 +51,14 @@ in the benchmark paper for every observable along AA' or BB' in Figures
 \ref{fig:0.1}, \ref{fig:0.2}, \ref{fig:0.3}, \ref{fig:1.1}, \ref{fig:1.2},
 \ref{fig:1.3}, and \ref{fig:2.1} for a qualitative comparison of the results
 from Moltres and the benchmark participants. Given the significant overlap in
-the plot curves, these figures omit results from
-CNRS-$SP_1$ and TUD-$S_2$ to reduce cluttering. Table
+the plot curves, these figures omit results from CNRS-$SP_1$ and TUD-$S_2$ to
+reduce cluttering. Readers may also refer to
+\ref{appendix:tables} for tables of observable values at nine equidistant
+points along AA' and BB' from Moltres and the benchmark participants. We
+provide these tables for ease of review and a direct comparison to
+corresponding data tables from \cite{tiberga_results_2020}. The full dataset
+of all observable results used in this results analysis is
+available at \cite{park_results_2021}. Lastly, Table
 \ref{table:rho} reports all reactivity and change in reactivity results from
 Steps 0.2, 1.1, 1.2, and 1.3.
 
@@ -89,19 +95,18 @@ Steps 0.2, 1.1, 1.2, and 1.3.
 		& & & {Moltres} & {Benchmark} \\
 		\midrule
 		\multirow{4}{*}{0.1} &
-		\multirow{2}{*}{$u_x$ [m$\cdot$s$^{-1}$]} & AA' & 0.247 & 0.253 \\
+		\multirow{2}{*}{$u_x$} & AA' & 0.247 & 0.253 \\
 		& & BB' & 0.266 & 0.318 \\
 		\cmidrule{2-5}
-		& \multirow{2}{*}{$u_y$ [m$\cdot$s$^{-1}$]} & AA' & 0.540 & 0.598
+		& \multirow{2}{*}{$u_y$} & AA' & 0.540 & 0.598
 		\\
 		& & BB' & 0.468 & 0.795 \\
 		\midrule
 		{0.2} &
-		{$\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})$
-		[m$^{-3}\cdot$s$^{-1}$]} & AA' & 0.313 & 0.285 \\
+		{$\sum^6_g \Sigma_{f,g} \phi_g(\vec{r})$} & AA' & 0.313 & 0.285 \\
 		\midrule
 		\multirow{2}{*}{0.3} &
-		\multirow{2}{*}{$T$ [K]} & AA' & 0.090 & 0.085 \\
+		\multirow{2}{*}{$T$} & AA' & 0.090 & 0.085 \\
 		& & BB' & 0.164 & 0.083 \\
 		\bottomrule
 	\end{tabular}
@@ -117,11 +122,16 @@ field, fission rate density, and temperature, respectively. Table
 the corresponding average discrepancy values from the benchmark participants
 \cite{tiberga_results_2020}. Moltres performs very well as all discrepancy
 values are on the same order of magnitude as those from the benchmark
-participants. However, the discrepancy value for $T$ along centerline BB'
-is marginally
+participants.
+
+The discrepancy value for $T$ along centerline BB' in
+Step 0.3 is marginally
 higher at 0.164\% compared to 0.083\% from the benchmark average. We
 note in Figure \ref{fig:0.3} that the $T$ distribution from Moltres is almost
-identical to the corresponding distributions from CNRS-$SP_3$ and TUD-$S_6$.
+identical to the corresponding distributions from CNRS-$SP_3$ and TUD-$S_6$
+along most of centerline BB'. However, Figure \ref{fig:0.3-zoom} shows
+significant spread in the $T$ distributions from all software packages near the
+top boundary at $y = 2.0$ m. 
 
 Table \ref{table:temp} shows the temperature values from Moltres and the
 benchmark at nine equidistant points along centerlines AA' and BB'. Similar to
@@ -145,43 +155,21 @@ and the average discrepancies of the other variables show that Moltres can
 still accurately reproduce the expected results and the temperature deviations
 along the top boundary do not impact the overall integrity of our results.
 
-\begin{table*}[htb]
-	\caption{Temperature distribution along centerlines $AA'$ and $BB'$ from
-	Step 0.3.}
+Lastly, we observe in table \ref{table:rho} that the reactivity $\rho$ value of
+465.6 pcm from Moltres falls well within the range of $\rho$ values from the
+benchmark which range from 353.7 pcm up to 578.1 pcm. Given that Moltres 
+adopts the neutron diffusion model, our $\rho$ value agrees closest to the
+results from the software packages which also adopt the neutron diffusion model
+or theoretically-equivalent models such as the $SP_1$ and $S_2$ neutron
+transport models, namely CNRS-$SP_1$, PoliMi, PSI, and TUD-$S_2$.
+
+\begin{figure}[htb]
 	\centering
-	\footnotesize
-	\setlength\tabcolsep{1.5pt}
- 	\hspace*{-2cm}
-	\begin{tabular}{c c c c c c c c c c c}
-		\toprule
-		\multirow{2}{*}{\textbf{Observable}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{9}{c}{\textbf{Results along $AA'$} (point coordinates are expressed in m)} \\
-		& & {(0,1)} & {(0.25,1)} & {(0.5,1)} & {(0.75,1)} & {(1,1)} & {(1.25,1)} & {(1.5,1)} & {(1.75,1)} & {(2,1)} \\
-		\midrule
-		\multirow{7}{*}{$T$ [K]} & Moltres & 9.251E+02 & 1.194E+03 & 1.357E+03 & 1.361E+03 &
-		1.303E+03 & 1.224E+03 & 1.131E+03 & 1.035E+03 & 9.251E+02 \\
-		& CNRS-$SP_1$ & 9.253E+02 & 1.194E+03 & 1.358E+03 & 1.363E+03 & 1.305E+03 & 1.224E+03 & 1.131E+03 & 1.034E+03 & 9.251E+02 \\
-		& CNRS-$SP_3$ & 9.236E+02 & 1.194E+03 & 1.357E+03 & 1.361E+03 & 1.304E+03 & 1.224E+03 & 1.131E+03 & 1.034E+03 & 9.235E+02 \\
-		& PoliMi & 9.253E+02 & 1.196E+03 & 1.361E+03 & 1.364E+03 & 1.305E+03 & 1.224E+03 & 1.132E+03 & 1.035E+03 & 9.252E+02 \\
-		& PSI & 9.253E+02 & 1.196E+03 & 1.356E+03 & 1.363E+03 & 1.306E+03 & 1.226E+03 & 1.133E+03 & 1.037E+03 & 9.252E+02 \\
-		& TUD-$S_2$ & 9.212E+02 & 1.194E+03 & 1.359E+03 & 1.364E+03 & 1.305E+03 & 1.224E+03 & 1.131E+03 & 1.032E+03 & 9.225E+02 \\
-		& TUD-$S_6$ & 9.219E+02 & 1.194E+03 & 1.356E+03 & 1.360E+03 & 1.303E+03 & 1.223E+03 & 1.131E+03 & 1.034E+03 & 9.233E+02 \\
-		\midrule
-		\midrule
-		\multirow{2}{*}{\textbf{Observable}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{9}{c}{\textbf{Results along $BB'$} (point coordinates are expressed in m)} \\
-		& & {(1,0)} & {(1,0.25)} & {(1,0.5)} & {(1,0.75)} & {(1,1)} & {(1,1.25)} & {(1,1.5)} & {(1,1.75)} & {(1,2)} \\
-		\midrule
-		\multirow{7}{*}{$T$ [K]} & Moltres & 9.251E+02 & 1.140E+03 & 1.272E+03 & 1.303E+03 &
-		1.303E+03 & 1.313E+03 & 1.320E+03 & 1.264E+03 & 9.123E+02 \\
-		& CNRS-$SP_1$ & 9.252E+02 & 1.139E+03 & 1.273E+03 & 1.305E+03 & 1.305E+03 & 1.314E+03 & 1.321E+03 & 1.265E+03 & 9.322E+02 \\
-		& CNRS-$SP_3$ & 9.236E+02 & 1.140E+03 & 1.272E+03 & 1.304E+03 & 1.304E+03 & 1.313E+03 & 1.320E+03 & 1.265E+03 & 9.322E+02 \\
-		& PoliMi & 9.253E+02 & 1.140E+03 & 1.275E+03 & 1.307E+03 & 1.305E+03 & 1.313E+03 & 1.321E+03 & 1.265E+03 & 9.303E+02 \\
-		& PSI & 9.252E+02 & 1.139E+03 & 1.273E+03 & 1.307E+03 & 1.306E+03 & 1.312E+03 & 1.319E+03 & 1.263E+03 & 9.481E+02 \\
-		& TUD-$S_2$ & 9.215E+02 & 1.139E+03 & 1.273E+03 & 1.305E+03 & 1.305E+03 & 1.315E+03 & 1.322E+03 & 1.265E+03 & 9.374E+02 \\
-		& TUD-$S_6$ & 9.222E+02 & 1.140E+03 & 1.272E+03 & 1.303E+03 & 1.303E+03 & 1.312E+03 & 1.319E+03 & 1.264E+03 & 9.390E+02 \\
-		\bottomrule
-	\end{tabular}
-	\label{table:temp}
-\end{table*}
+	\includegraphics[width=.8\columnwidth]{0-3-temp-plot-zoom}
+	\caption{Step 0.3 - Temperature distribution along BB' for y = 1.9 m to
+	y = 2 m.}
+	\label{fig:0.3-zoom}
+\end{figure}
 %
 \begin{table}[htb]
     \caption{Reactivity $\rho$ and change in reactivity
@@ -202,7 +190,7 @@ along the top boundary do not impact the overall integrity of our results.
         Moltres     & 465.6 & -62.7 & -1142.2 & -1207.7 \\
         CNRS-$SP_1$ & 411.3 & -62.5 & -1152.0 & -1220.5 \\
         CNRS-$SP_3$ & 353.7 & -62.6 & -1152.7 & -1220.7 \\
-        Polimi      & 421.2 & -62.0 & -1161.0 & -1227.0 \\
+        PoliMi      & 421.2 & -62.0 & -1161.0 & -1227.0 \\
         PSI         & 411.7 & -63.0 & -1154.8 & -1219.6 \\
         TUD-$S_2$   & 482.6 & -62.0 & -1145.2 & -1208.5 \\
         TUD-$S_6$   & 578.1 & -60.7 & -1122.0 & -1184.4 \\
@@ -210,14 +198,6 @@ along the top boundary do not impact the overall integrity of our results.
     \end{tabular}
     \label{table:rho}
 \end{table}
-
-Lastly, we observe in table \ref{table:rho} that the reactivity $\rho$ value of
-465.6 pcm from Moltres falls well within the range of $\rho$ values from the
-benchmark which range from 353.7 pcm up to 578.1 pcm. Given that Moltres 
-adopts the neutron diffusion model, our $\rho$ value agrees closest to the
-results from the software packages which also adopt the neutron diffusion model
-or theoretically-equivalent models such as the $SP_1$ and $S_2$ neutron
-transport models, namely CNRS-$SP_1$, PoliMi, PSI, and TUD-$S_2$.
 
 \FloatBarrier
 
@@ -227,7 +207,7 @@ Table \ref{table:disc1} shows the discrepancy values from Moltres relative to
 the average of the benchmark participants for Steps 1.1, 1.2, and 1.3,
 and the corresponding average discrepancy values from the benchmark
 \cite{tiberga_results_2020}. The subsequent subsections discuss the results
-for each benchmark step.
+for each benchmark step in Phase 1.
 %
 \begin{table*}[htb]
 	\caption{Discrepancy values from Moltres and the average discrepancy values
@@ -240,27 +220,27 @@ for each benchmark step.
 		& & & {Moltres} & {Benchmark} \\
 		\midrule
 		\multirow{2}{*}{1.1} &
-		\multirow{2}{*}{$\sum_j \lambda_j C_j$ [m$^{-3}\cdot$s$^{upgrade-1}$]} & AA' & 0.603 & 0.346 \\
+		\multirow{2}{*}{$\sum_i \lambda_i C_i$} & AA' & 0.603 & 0.346 \\
 		& & BB' & 0.327 & 0.294 \\
 		\midrule
 		\multirow{4}{*}{1.2} &
-		\multirow{2}{*}{$T$ [K]} & AA' & 0.076 & 0.095 \\
+		\multirow{2}{*}{$T$} & AA' & 0.076 & 0.095 \\
 		& & BB' & 0.179 & 0.089 \\
 		\cmidrule{2-5}
-		& \multirow{2}{*}{\footnotesize $\Delta\left[\sum^G_i \Sigma_{f,i} \phi_i(\vec{r})
-		\right]_{s_{1.2}-s_{0.2}}$ [m$^{-3}\cdot$s$^{-1}$]} & AA' & 1.110 & 1.576 \\
+		& \multirow{2}{*}{\footnotesize $\Delta\left[\sum^6_g \Sigma_{f,g} \phi_g(\vec{r})
+		\right]_{s_{1.2}-s_{0.2}}$} & AA' & 1.110 & 1.576 \\
 		& & BB' & 1.089 & 1.133 \\
 		\midrule
 		\multirow{7}{*}{1.3} &
-		{$u_x$ [m$\cdot$s$^{-1}$]} & AA' & 0.123 & 0.691 \\
+		{$u_x$} & AA' & 0.123 & 0.691 \\
 		\cmidrule{2-5}
-		& \multirow{2}{*}{$u_y$ [m$\cdot$s$^{-1}$]} & AA' & 0.237 & 0.329 \\
+		& \multirow{2}{*}{$u_y$} & AA' & 0.237 & 0.329 \\
 		& & BB' & 0.238 & 0.356 \\
 		\cmidrule{2-5}
-		& \multirow{2}{*}{$T$ [K]} & AA' & 0.064 & 0.057 \\
+		& \multirow{2}{*}{$T$} & AA' & 0.064 & 0.057 \\
 		& & BB' & 0.070 & 0.080 \\
 		\cmidrule{2-5}
-		& \multirow{2}{*}{$\sum_j \lambda_j C_j$ [m$^{-3}\cdot$s$^{-1}$]} & AA' & 1.043 & 0.460 \\
+		& \multirow{2}{*}{$\sum_i \lambda_i C_i$} & AA' & 1.043 & 0.460 \\
 		& & BB' & 0.462 & 1.194 \\
 		\bottomrule
 	\end{tabular}
@@ -400,7 +380,7 @@ neutronics models.
 		\multirow{2}{*}{\textbf{Step}} & \multirow{2}{*}{\textbf{Observable}} & \multicolumn{2}{c}{\textbf{Discrepancies [\%]}} \\
 		& & {Moltres} & {Benchmark} \\
 		\midrule
-		\multirow{2}{*}{2.1} & Gain & 0.496 & 0.587 \\
+		\multirow{2}{*}{2.1} & Gain & 0.493 & 0.587 \\
 		\cmidrule{2-4}
 		& Phase shift & 1.741 & 2.176\\
 		\bottomrule
@@ -419,16 +399,9 @@ neutronics models.
 
 \subsection{Phase 2 results \& discussion}
 
-%Transient analysis represents a challenging, yet essential, part of reactor
-%safety analysis. A reactor has different timescales for different physical
-%phenomena; prompt neutron lifetimes are on the order of microseconds
-%while advective heat transfer is relevant in timescales on the order of
-%seconds. Additionally, the half-lives of delayed neutron precursors vary from
-%milliseconds up to tens of seconds. Obtaining accurate solutions requires tight
-%coupling between the neutronics and thermal-hydraulics to adequately capture
-%the strong interactions between them and a sufficiently small timestep to
-%minimize time discretization errors. The following subsection discusses the
-%results from the Step 2.1 transient problem.
+Lastly, the following subsection discusses the results for the transient cases
+in Step 2.1 which involve measuring the response in power output to periodic
+perturbations in the heat transfer coefficient.
 
 \subsubsection{Step 2.1: Forced convection transient}
 
@@ -439,10 +412,11 @@ consistent with the benchmark. The gain data points from all \gls{MSR} software
 agree closely with one another. Moltres reports an average discrepancy value of
 0.496\%, slightly lower than the benchmark average of 0.587\%. On the other
 hand, the phase shift data points show greater spread over the various driving
-frequencies. We ascribe this to the different timestepping schemes and timestep
-sizes among the different software packages. Even with a precision of
+frequencies. We note the different timestepping schemes and timestep
+sizes among the different software packages which is likely responsible for
+the variations in the phase shift. Even with a precision of
 $\pm0.9^\circ$ for each phase shift value, Moltres accurately reproduces the
 correct trend with a lower average discrepancy (1.741\%) than the benchmark
-average (2.176\%).
+participants' average (2.176\%).
 
 \FloatBarrier
