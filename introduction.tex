@@ -30,15 +30,18 @@ In recent years, several simulation tools have been developed for full-core
 modeling of fast-spectrum \glspl{MSR}. \textit{Tightly coupled} approaches
 through segregated solvers involve coupling separate single-physics neutronics
 and thermal-hydraulics software. For example, researchers at
-the \gls{TUD} coupled the 3D neutron diffusion software
-DALTON \cite{boer_validation_2010} and the CFD software HEAT
+the \gls{TUD} coupled the 3D neutron diffusion software DALTON
+\cite{boer_validation_2010} and the CFD software HEAT
 \cite{de_zwaan_static_2007} to perform a safety analysis of the \gls{MSFR}
 \cite{fiorina_modelling_2014}. In a later effort from the same institute,
 Tiberga et al. \cite{tiberga_discontinuous_2019} coupled PHANTOM-$S_N$ and
-DGFlows in their participation in the
-\gls{CNRS} Benchmark study \cite{tiberga_results_2020}. Another multiphysics
-package was developed at the Paul Scherrer Institute (PSI) coupling the
-thermal-hydraulics system software \gls{TRACE} \cite{nrc_trace_2007} with the
+DGFlows in their participation in the CNRS benchmark study
+\cite{tiberga_results_2020}. The CNRS benchmark, named after the \gls{CNRS}
+where it was originally developed, facilitates code-to-code verification of
+\gls{MSR} multiphysics software \cite{aufiero_testing_2018}. Another
+multiphysics package was developed at the Paul Scherrer Institute (PSI)
+coupling the thermal-hydraulics system software \gls{TRACE}
+\cite{nrc_trace_2007} with the
 nodal neutron diffusion software \gls{PARCS} \cite{downar_parcs_2010} for the
 safety analysis of the \gls{MSFR} \cite{pettersen_coupled_2016}. Coupling
 single-physics software to form an integrated multiphysics tool allows
@@ -57,7 +60,7 @@ calculations in transient reactor analyses. Laureau et al.
 operators to conventional fission matrices typically used to accelerate source
 convergence in Monte Carlo neutronics solves. The \gls{TFM} method
 pre-calculates three \glspl{TFM} of the reactor system in Serpent 2 and
-interpolates the matrices during the actual transient calculations to
+interpolates the matrix values during the actual transient calculations to
 incorporate the effects of temperature-induced density change and Doppler
 effect on the neutron cross sections and ultimately the neutron flux. Blanco
 \cite{blanco_neutronic_2020} took a more computationally intensive approach of
@@ -125,7 +128,7 @@ within the ecosystem of MOOSE-based applications. Abou-Jaoude et al.
 \cite{abou-jaoude_coupled_2020} coupled Rattlesnake with Pronghorn, another
 MOOSE-based application for advanced reactor thermal-hydraulics modeling, to
 demonstrate several steady-state \gls{MSR} simulation capabilities defined in
-the \gls{CNRS} benchmark. Lindsay et al.
+the CNRS benchmark. Lindsay et al.
 \cite{lindsay_introduction_2018} first demonstrated Moltres' \gls{MSR} modeling
 capabilities on 2D axisymmetric and 3D Cartesian models of the \gls{MSRE} with
 fixed velocity flow on a fully coupled neutronics and thermal-hydraulics solve.
