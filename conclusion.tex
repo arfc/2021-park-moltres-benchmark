@@ -1,24 +1,46 @@
 \section{Conclusions}
 
-In this study, we performed code-to-code verification on Moltres based on the
-CNRS Benchmark \citep{tiberga_results_2020} for multi-physics,
-\gls{MSR} simulation software. The benchmark assesses simulation
-software through subproblems involving single-physics and coupled
-neutronics/thermal-hydraulics.
+\glspl{MSR} feature significant multiphysics interactions which present
+computational challenges for many existing multiphysics reactor analysis
+software. This paper presents code-to-code verification of Moltres
+capabilities in modeling such multiphysics phenomena in fast-spectrum
+\glspl{MSR} based on the CNRS benchmark \cite{tiberga_results_2020}.
+The CNRS benchmark assesses multiphysics \gls{MSR} simulation
+software through several steps involving single-physics and coupled
+neutronics/thermal-hydraulics problems.
 
-The results showed that Moltres is consistent with the other software
-presented in the benchmark paper. The percentage discrepancies in the various
+The results showed that Moltres is consistent with the participating software
+presented in the CNRS benchmark paper for the modeling of important phenomena
+in fast-spectrum \glspl{MSR}. The percentage discrepancies in the various
 neutronics, velocity, and temperature quantities mostly fall within the same
 order of magnitude. Minor deviations in the temperature in Steps 0.3 and 1.2 
 stem from the discontinuous velocity
 boundaries on the top corners in the lid-driven cavity flow. We have shown that
 these deviations are limited to the top boundary of the domain and do not
 affect the rest of the physical parameters. The results from
-Moltres agree closest with the TUD-S$_2$ model
-from the benchmark, which implements the $S_2$ discrete ordinates method for
+Moltres agree closest with the TUD-S$_2$ software package, which implements the
+$S_2$ discrete ordinates method for
 neutron transport on a uniform structured mesh with a \gls{DFEM}-based solver.
 These features make Moltres the most similar to the TUD-$S_2$ model as compared
-to the other models which use different neutron transport models, non-uniform
-mesh and/or finite volume method solvers.
+to the other models which employ different neutron transport models,
+non-uniform meshes, and/or finite volume-based solvers. 
+
+This work verifies Moltres' capabilities for future work involving modeling and
+simulation of fast-spectrum \glspl{MSR} with Moltres. Fast-spectrum \glspl{MSR}
+under consideration for modeling with Moltres include the European \gls{MSFR}
+as a continuation of work done in \cite{park_advancement_2020}, and
+TerraPower's \gls{MCFR} \cite{terrapower_terrapower_2021} from publicly
+available design specifications. Moltres can play an important role in
+supporting further \gls{MSR} development through enabling transient accident
+safety analysis and design optimization studies on an open-source platform.
+An ongoing research project involves employing Moltres as a
+surrogate model for machine learning-based reactor design optimization.
+We note that Moltres also supports modeling solid-fueled reactors such as the
+\gls{HTGR} by disabling the precursor drift functionality as demonstrated by
+\cite{fairhurst-agosta_multi-physics_2020}. Future work pertaining to
+further Moltres development include introducing an intermediate-fidelity
+turbulence model for highly turbulent flows in \glspl{MSR}, improving
+neutronics accuracy in heterogenous geometries, and enhancing the general
+computational performance of existing features.
 
 \FloatBarrier
