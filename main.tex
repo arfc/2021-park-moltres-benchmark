@@ -1,4 +1,4 @@
-\documentclass[5p,twocolumn,authoryear]{elsarticle}
+\documentclass[review]{elsarticle}
 
 %% \documentclass[preprint,12pt,authoryear]{elsarticle}
 
@@ -32,6 +32,8 @@
 \usepackage{microtype} % improves typography for PDF
 \usepackage{hhline}
 \usepackage{amsmath}
+\usepackage{mathtools}
+\allowdisplaybreaks % allow page breaks in math environments
 
 \usepackage{graphicx} % allows inclusion of graphics
 \graphicspath{{./images/}}
@@ -41,11 +43,12 @@
 \usepackage{placeins}
 \usepackage{siunitx}
 \usepackage{diagbox}
+\usepackage{courier}
 
-\usepackage{booktabs}
 \usepackage{threeparttable, tablefootnote}
 
 \usepackage{tabularx}
+\usepackage{pdflscape}
 
 %% Special typesetting for Cyclus
 \newcommand{\Cyclus}{\textsc{Cyclus}\xspace}%
@@ -88,8 +91,10 @@ Molten Salt Reactors}
 \begin{keyword}
 Molten salt reactor \sep
 Reactor physics \sep
-Coupled multiphysics \sep
-Code-to-code verification \sep
+Multiphysics \sep
+Open-source \sep
+Software verification \sep
+Moltres \sep
 MOOSE
 \end{keyword}
 
@@ -111,7 +116,7 @@ MOOSE
 
 % Prof. Huff discourages appendices in journal articles.
 % But, if you must, include one like so:
-%\pagebreak
-%\input{appendix}
+\pagebreak
+\input{appendix}
 
 \end{document}

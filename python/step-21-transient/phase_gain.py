@@ -18,6 +18,8 @@ benchmark_gain = pd.read_csv('gain',
                              delim_whitespace=True,
                              header=None)
 
+# %% Phase shift and gain
+
 # Calculate phase and gain from Moltres data
 freq = np.array([.0125, .025, .05, .1, .2, .4, .8])
 phase = np.zeros(len(freq))
@@ -31,17 +33,11 @@ for i in range(1, len(freq)+1):
 
     coords, troughs = signal.find_peaks(-df['powernorm'], height=-1e7)
     p_ave = sum(df['powernorm'][-400:]) / 400
-#    print(p_ave)
     gain[i-1] = (peaks['peak_heights'][-1] - p_ave) / p_ave / .1
 
 # Calculate % discrepancy
 disc_phase = get_disc(phase[::-1], benchmark_phase)
 disc_gain = get_disc(gain[::-1], benchmark_gain)
-
-print("Discrepancy in phase shift = " +
-      str(disc_phase*100) + " %")
-print("Discrepancy in gain = " +
-      str(disc_gain*100) + " %")
 
 ave_phase = 0
 ave_gain = 0
@@ -51,10 +47,16 @@ for i in range(6):
 ave_phase /= 6
 ave_gain /= 6
 
-print("Benchmark average discrepancy in phase shift = " +
-      str(ave_phase*100) + " %")
-print("Benchmark average discrepancy in gain = " +
-      str(ave_gain*100) + " %")
+f = open('phase_gain.txt', 'w')
+f.write("Discrepancy in phase shift = " +
+        str(disc_phase*100) + " %\n")
+f.write("Discrepancy in gain = " +
+        str(disc_gain*100) + " %\n")
+f.write("Benchmark average discrepancy in phase shift = " +
+        str(ave_phase*100) + " %\n")
+f.write("Benchmark average discrepancy in gain = " +
+        str(ave_gain*100) + " %\n")
+f.close()
 
 # Plot
 x = np.linspace(0, 2, 201)
