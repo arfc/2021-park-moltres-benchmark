@@ -2,8 +2,8 @@
 
 The CNRS Benchmark \cite{tiberga_results_2020} is a numerical
 benchmark for multiphysics software dedicated to modeling \glspl{MSR}. It
-consists of three Phases and eight Steps in total. Each
-Step is a well-defined subproblem for systematically assessing the
+consists of three phases and eight steps in total. Each
+step is a well-defined subproblem for systematically assessing the
 capabilities of \gls{MSR} software and pinpointing sources of discrepancies
 between software. Phase 0 consists three single-physics problems in fluid
 dynamics, neutronics, and temperature, respectively. Phase 1 consists
@@ -27,7 +27,8 @@ Standard vacuum boundary conditions apply for neutron flux along all
 boundaries whereby outgoing neutrons are considered lost, while homogeneous
 boundary conditions apply for delayed neutron precursors. No-slip boundary
 conditions apply for velocity variables in the cavity, except along the top
-boundary when the subproblem imposes forced flow in the form of lid-driven
+boundary for Steps 0.1, 0.3, 1.1, 1.2, and 1.4 which impose forced flow in the
+form of lid-driven
 cavity flow. For the temperature variable, all boundaries are insulated and we
 simulate salt cooling with the following volumetric heat sink equation:
 %
@@ -52,7 +53,8 @@ dependence in the cross sections and the neutron diffusion coefficients:
 %
 \begin{align}
     \Sigma_i (T) &= \Sigma_i(T_{ref})
-    \frac{\rho_{fuel}(T)}{\rho_{fuel}(T_{ref})} \\
+    \frac{\rho_{fuel}(T)}{\rho_{fuel}(T_{ref})}
+    \shortintertext{and}
     D (T) &= D(T_{ref})
     \frac{\rho_{fuel}(T_{ref})}{\rho_{fuel}(T)}
     \shortintertext{where}
@@ -68,9 +70,8 @@ dependence in the cross sections and the neutron diffusion coefficients:
 The benchmark also prescribes incompressible Navier-Stokes flow with the
 Boussinesq approximation for evaluating the salt flow in the
 domain, but does not restrict the type of neutronics model.
-The following subsections briefly detail each benchmark step. Table
-\ref{table:benchmark} lists the relevant input parameters and observables for
-each step.
+The following subsections briefly detail each benchmark step, with Table
+\ref{table:benchmark} listing the relevant input parameters and observables.
 
 \begin{table*}[tp!]
 	\caption{Input parameters and observables of each benchmark step.}
@@ -229,8 +230,7 @@ velocity field for Steps 0.3, 1.1, and 1.2.
 
 This step tests neutronics capabilities through a criticality eigenvalue
 problem in a static, isothermal fuel configuration by solving for the fission
-rate density and effective multiplication factor $k_{eff}$. The total power $P$
-is fixed to normalize the neutron fluxes. This step also aims
+rate density and effective multiplication factor $k_{eff}$. This step also aims
 to identify deviations in results attributable to differences in neutronics
 models and approximations. The total power $P$ is fixed to normalize the
 neutron fluxes. For neutronics models conforming to the six neutron energy
@@ -300,10 +300,10 @@ velocity field from Step 0.1 and a volumetric heat sink described by Equation
 
 \subsubsection{Step 1.3: Buoyancy}
 
-Building on the previous step, this step replaces the fixed velocity field with
+Building on the previous step, we replace the fixed velocity field with
 buoyancy-driven flow arising from the temperature gradients for a fully-coupled
-multiphysics problem without forced flow. Barring any major discrepancy in the
-previous steps, this step assesses the capability to reproduce the correct
+multiphysics problem without forced flow. Barring any major discrepancies in
+the previous steps, this step assesses the capability to reproduce the correct
 buoyancy-driven flow profile and the subsequent effects on the neutronics and
 temperature distribution due to precursor drift and fuel density reactivity
 feedback.
