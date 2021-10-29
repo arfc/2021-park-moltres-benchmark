@@ -2,17 +2,17 @@
 
 In this section, we compare the results from Moltres for each CNRS Benchmark
 step to the results in the benchmark paper \cite{tiberga_results_2020}.
-The benchmark paper reports results from four different \gls{MSR} simulation
-software packages. The software packages from \gls{CNRS} and \gls{TUD}
+The software packages from \gls{CNRS} and \gls{TUD}
 each report two sets of results arising from different angular discretizations
 in their neutronics models for Steps 0.2, 1.1, 1.2, 1.3, 1.4, and 2.1. These
 sets of results are labeled as CNRS-$SP_1$ and
 CNRS-$SP_3$; and TUD-$S_2$ and TUD-$S_6$, respectively. The
 authors performed code-to-code verification by sampling observable values at
-201 equidistant points along the centerlines AA' and/or BB' and reporting the
+201 equidistant points along the centerlines AA' and BB' and reporting the
 discrepancy $\epsilon_c$ of each observable from each software
-(indexed by $c$) for each measured observable $Q_c$ relative to the average of
-that same observable $Q_{avg}$ from all participating software.
+(indexed by $c$) for each measured observable $Q_c$ (not to be confused with
+fission heat source $Q_f$), relative to the average of
+that same observable $Q_{avg}$ from all participating software. Variables
 $\epsilon_c$ and $Q_{avg}$ are calculated as:
 %
 \begin{align}
@@ -37,10 +37,10 @@ The average discrepancy $\epsilon$ over all software is calculated as:
 
 We adopted the averaged values $\epsilon$ and $Q_{avg}$ directly from the
 reference work \cite{tiberga_results_2020} without including our results
-from Moltres. We note that the benchmark does not provide a reference solution
-and a significantly erroneous value from one of the software packages could
-heavily skew the discrepancy values. Nevertheless, the benchmark authors have
-shown remarkably good agreement among their software packages.
+in the calculations. We note that the benchmark does not provide a reference
+solution and a significantly erroneous value from one of the software packages
+could heavily skew the discrepancy values. Nevertheless, the benchmark paper
+reports good agreement among their software packages.
 
 For observables measured along the centerlines AA' and/or BB', Tables
 \ref{table:disc0} and \ref{table:disc1} report the discrepancy $\epsilon_c$ of
@@ -65,17 +65,17 @@ Steps 0.2, 1.1, 1.2, and 1.3.
 \begin{figure}[h]
 	\centering
     \includegraphics[width=.8\columnwidth]{0-1-vel-plot}
-	\caption{Step 0.1 - Horizontal velocity component along BB'.}
+	\caption{Step 0.1 \textemdash\ Horizontal velocity component along BB'.}
 	\label{fig:0.1}
 \end{figure}
 %
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=.8\columnwidth]{0-2-fiss-plot}
-	\caption{Step 0.2 - Fission rate density along AA'.}
+	\caption{Step 0.2 \textemdash\ Fission rate density along AA'.}
 	\label{fig:0.2}
 	\includegraphics[width=.8\columnwidth]{0-3-temp-plot}
-	\caption{Step 0.3 - Temperature distribution along BB'.}
+	\caption{Step 0.3 \textemdash\ Temperature distribution along BB'.}
 	\label{fig:0.3}
 \end{figure}
 %
@@ -114,7 +114,7 @@ Steps 0.2, 1.1, 1.2, and 1.3.
 
 Figures \ref{fig:0.1}, \ref{fig:0.2}, and \ref{fig:0.3} show that Moltres
 accurately reproduced all three sets of results in Phase 0 for the velocity
-field, fission rate density, and temperature, respectively. Table
+field, fission rate density, and temperature. Table
 \ref{table:disc0} reports the discrepancy values from Moltres for Phase 0 and
 the corresponding average discrepancy values from the benchmark participants
 \cite{tiberga_results_2020}. Moltres performs very well as all discrepancy
@@ -148,8 +148,8 @@ along the top boundary do not impact the overall integrity of our results.
 \begin{figure}[htb]
 	\centering
 	\includegraphics[width=.8\columnwidth]{0-3-temp-plot-zoom}
-	\caption{Step 0.3 - Temperature distribution along BB' for y = 1.9 m to
-	y = 2 m.}
+	\caption{Step 0.3 \textemdash\ Temperature distribution along BB' for y = 1.94 m to
+	y = 2.00 m.}
 	\label{fig:0.3-zoom}
 \end{figure}
 
@@ -254,7 +254,7 @@ participants' values fall in.
 	\centering
     \includegraphics[width=.8\columnwidth]{1-1-dnp-x-plot}
     \includegraphics[width=.8\columnwidth]{1-1-dnp-y-plot}
-	\caption{Step 1.1 - Delayed neutron source along AA' (top) and BB'
+	\caption{Step 1.1 \textemdash\ Delayed neutron source along AA' (top) and BB'
 	(bottom).}
 	\label{fig:1.1}
 \end{figure}
@@ -263,7 +263,7 @@ participants' values fall in.
 	\centering
 	\includegraphics[width=.8\columnwidth]{1-2-temp-plot}
 	\includegraphics[width=.8\columnwidth]{1-2-fiss-plot}
-	\caption{Step 1.2 - Temperature distribution and change in fission rate
+	\caption{Step 1.2 \textemdash\ Temperature distribution and change in fission rate
 	density along AA'.}
 	\label{fig:1.2}
 \end{figure*}
@@ -307,7 +307,7 @@ respective software.
 	\includegraphics[width=.6\columnwidth]{1-3-vel-plot}
 	\includegraphics[width=.6\columnwidth]{1-3-temp-plot}
 	\includegraphics[width=.6\columnwidth]{1-3-dnp-plot}
-	\caption{Step 1.3 - Vertical velocity component, temperature distribution,
+	\caption{Step 1.3 \textemdash\ Vertical velocity component, temperature distribution,
 	and delayed neutron source along AA'.}
 	\label{fig:1.3}
 \end{figure*}
@@ -348,7 +348,7 @@ neutronics models.
 	\setlength\tabcolsep{1.5pt}
 	\begin{tabular}{c c c c c c}
 		\toprule
-		& \multicolumn{5}{c}{$\rho - \rho_{s0.2}$ [pcm]} \\
+		& \multicolumn{5}{c}{$\rho_{s1.4} - \rho_{s0.2}$ [pcm]} \\
 		\midrule
 		{\backslashbox{$U_{lid}$ [m$\cdot$s$^{-1}$]}{$P$ [GW]}} & 0.2 & 0.4 & 0.6 & 0.8 & 1.0 \\
 		\midrule
@@ -386,7 +386,7 @@ neutronics models.
 	\centering
 	\includegraphics[width=.8\columnwidth]{2-1-gain-plot}
 	\includegraphics[width=.8\columnwidth]{2-1-phase-plot}
-	\caption{Step 2.1 - Bode gain and phase plots of the frequency response of
+	\caption{Step 2.1 \textemdash\ Bode gain and phase plots of the frequency response of
 	the fully coupled system.}
 	\label{fig:2.1}
 \end{figure*}

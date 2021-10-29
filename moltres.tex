@@ -164,14 +164,13 @@ element solver to circumvent the numerical instability issue.
 
 For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
 of 200$\times$200 elements. Thus, the dimensions of each mesh element are
-0.01m$\times$0.01m. For nuclear data, we converted the group constant data
-provided by Tiberga et al.
-\cite{tiberga_results_2020} into a Moltres-compatible text format. Next, we
+0.01m$\times$0.01m. We adopt the group constant data
+provided by Tiberga et al. \cite{tiberga_results_2020}. Next, we
 discretized most of the relevant variables, i.e. neutron fluxes, velocity
-components, pressure, and temperature, using continuous, first-order Lagrange
+components, pressure, and temperature, using continuous, first-order, Lagrange
 shape functions. The only exception is the precursor concentration variables,
 which we discretized using zeroth-order monomial shape functions and solved
-using \gls{DFEM}. We interpolated the resulting discontinuous,
+using a \gls{DFEM}. We interpolated the resulting discontinuous,
 cell-centered precursor values to obtain the nodal values for results
 analysis.
 
