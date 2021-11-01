@@ -156,3 +156,10 @@ ax.set_ylim(-100, 0)
 ax.set_xlabel(r'$f$ [Hz]')
 ax.set_ylabel(r'Phase shift [$^\circ$]')
 plt.savefig('2-1-phase-plot.png', dpi=400)
+
+# %% Write tsv
+
+df = pd.DataFrame({'f (Hz)': np.around(freq, decimals=4),
+                   'gain': gain,
+                   'phase_shift [deg]': np.around(phase, decimals=2)})
+df.to_csv('moltres_2.1_gain_phaseshift', index=False, sep='\t')

@@ -72,3 +72,15 @@ ax.set_ylim(0, 2)
 ax.set_xlabel(r'$u_x$ [m$\cdot$s$^{-1}$]')
 ax.set_ylabel(r'$y$ [m]')
 plt.savefig('0-1-vel-plot.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'ux (m/s)': aa['vel_x'] / 100,
+                      'uy (m/s)': aa['vel_y'] / 100})
+bb_df = pd.DataFrame({'y (m)': np.around(coords, decimals=2),
+                      'ux (m/s)': bb['vel_x'] / 100,
+                      'uy (m/s)': bb['vel_y'] / 100})
+aa_df.to_csv('moltres_0.1_AA', index=False, sep='\t')
+bb_df.to_csv('moltres_0.1_BB', index=False, sep='\t')

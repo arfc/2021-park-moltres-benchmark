@@ -127,3 +127,15 @@ ax.set_ylim(-1e18, 6e17)
 ax.set_xlabel(r'$x$ [m]')
 ax.set_ylabel(r'Change in fission rate density [m$^{-3}\cdot$s$^{-1}$]')
 plt.savefig('1-2-fiss-plot.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'temperature (K)': temp_aa['temp'],
+                      'change in fiss dens (1/m3s)': fiss_aa})
+bb_df = pd.DataFrame({'y (m)': np.around(coords, decimals=2),
+                      'temperature (K)': temp_bb['temp'],
+                      'change in fiss dens (1/m3s)': fiss_bb})
+aa_df.to_csv('moltres_1.2_AA', index=False, sep='\t')
+bb_df.to_csv('moltres_1.2_BB', index=False, sep='\t')

@@ -116,3 +116,13 @@ ax.set_xlim(0, 2)
 ax.set_xlabel(r'$x$ [m]')
 ax.set_ylabel(r'Delayed neutron source [m$^{-3}\cdot$s$^{-1}$]')
 plt.savefig('1-1-dnp-x-plot.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'delayed n source (1/m3s)': pre_aa})
+bb_df = pd.DataFrame({'y (m)': np.around(coords, decimals=2),
+                      'delayed n source (1/m3s)': np.reshape(pre_bb, 201)})
+aa_df.to_csv('moltres_1.1_AA', index=False, sep='\t')
+bb_df.to_csv('moltres_1.1_BB', index=False, sep='\t')

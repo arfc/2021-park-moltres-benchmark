@@ -62,3 +62,17 @@ ax.set_ylim(0, 2)
 ax.set_xlabel(r'$T$ [K]')
 ax.set_ylabel(r'$y$ [m]')
 plt.savefig('0-3-temp-plot.png', dpi=400)
+
+ax.set_xlim(900, 1100)
+ax.set_ylim(1.94, 2)
+plt.savefig('0-3-temp-plot-zoom.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'temperature (K)': aa['temp']})
+bb_df = pd.DataFrame({'y (m)': np.around(coords, decimals=2),
+                      'temperature (K)': bb['temp']})
+aa_df.to_csv('moltres_0.3_AA', index=False, sep='\t')
+bb_df.to_csv('moltres_0.3_BB', index=False, sep='\t')

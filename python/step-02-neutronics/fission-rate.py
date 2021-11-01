@@ -64,3 +64,10 @@ ax.set_ylim(0, 2e19)
 ax.set_xlabel(r'$x$ [m]')
 ax.set_ylabel(r'Fission rate density [m$^{-3}\cdot$s$^{-1}$]')
 plt.savefig('0-2-fiss-plot.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'fiss dens (1/m3s)': fiss})
+aa_df.to_csv('moltres_0.2_AA', index=False, sep='\t')

@@ -205,3 +205,19 @@ ax.set_xlabel(r'$x$ [m]')
 ax.set_ylabel(r'$u_y$ [m$\cdot$s$^{-1}$]')
 plt.tight_layout()
 plt.savefig('1-3-vel-plot.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'ux (m/s)': vel_aa['vel_x'],
+                      'uy (m/s)': vel_aa['vel_y'],
+                      'temperature (K)': temp_aa['temp'],
+                      'delayed n source (1/m3s)': pre_aa})
+bb_df = pd.DataFrame({'y (m)': np.around(coords, decimals=2),
+                      'ux (m/s)': vel_bb['vel_x'],
+                      'uy (m/s)': vel_bb['vel_y'],
+                      'temperature (K)': temp_bb['temp'],
+                      'delayed n source (1/m3s)': np.reshape(pre_bb, 201)})
+aa_df.to_csv('moltres_1.3_AA', index=False, sep='\t')
+bb_df.to_csv('moltres_1.3_BB', index=False, sep='\t')
