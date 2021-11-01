@@ -29,13 +29,12 @@ and 3) a decay heat model to simulate decay heat from fission products.
 
 To perform neutronics calculations, Moltres requires homogenized group constant
 data from dedicated high-fidelity neutronics software such as the NEWT module
-in SCALE
-\cite{dehart_reactor_2011} or Serpent 2 \cite{leppanen_serpent_2014}. Users
+in SCALE \cite{dehart_reactor_2011}, Serpent 2 \cite{leppanen_serpent_2014}, or
+OpenMC \cite{romano_openmc:_2015}. Users
 can run a Python script in Moltres' Github repository which automatically reads
-user-provided SCALE or Serpent 2 output data files and creates
+user-provided SCALE/Serpent 2/OpenMC output data files and creates
 Moltres-compatible JSON or text files containing all required group constant
-data. There are ongoing efforts to produce a similar script for parsing OpenMC
-output data.
+data.
 
 Moltres solves for the neutron fluxes governed by
 the multigroup neutron diffusion equations given by:
