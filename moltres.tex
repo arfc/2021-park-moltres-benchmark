@@ -159,7 +159,11 @@ we discretized them using
 discontinuous shape functions supported by \gls{MOOSE}'s discontinuous finite
 element solver to circumvent the numerical instability issue.
 
-\subsection{Modeling approach} \label{sec:model}
+\subsection[Modeling approach]{Modeling approach\footnote{The input files for
+all benchmark
+cases are available on the Moltres GitHub repository at 
+\url{https://github.com/arfc/moltres/tree/devel/problems/2021-cnrs-benchmark}.
+}} \label{sec:model}
 
 For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
 of 200$\times$200 elements. Thus, the dimensions of each mesh element are
@@ -174,8 +178,8 @@ cell-centered precursor values to obtain the nodal values for results
 analysis.
 
 As mentioned in Section \ref{sec:description-of-moltres}, the
-\texttt{Navier-Stokes} and \texttt{Heat} \texttt{Conduction} modules from \gls{MOOSE}
-provide some of the capabilities for
+\texttt{Navier-Stokes} and \texttt{Heat} \texttt{Conduction} modules from
+\gls{MOOSE} provide some of the capabilities for
 modeling incompressible flow and heat transfer. In particular, we stabilized
 the incompressible flow and temperature governing equations using the
 \gls{SUPG} stabilization method implemented in \gls{MOOSE}
@@ -192,12 +196,12 @@ velocity discretizations for stability without \gls{PSPG}
 \cite{chapelle_inf-sup_1993}.
 
 We performed all eigenvalue calculations in Steps 0.2, 1.1, 1.2, 1.3, and 1.4
-using the inverse power method solver in \gls{MOOSE}. All other Steps
+using the inverse power method solver in \gls{MOOSE}. All other steps
 were performed using the Preconditioned Newton-Krylov solver
 \cite{gaston_physics-based_2015}. The coupled steady-state problems in
 Steps 1.2, 1.3, and 1.4 required segregated solvers for the neutronics
-and the thermal-hydraulics due to the unique problem
-setups involving an eigenvalue problem for the neutron multiplication factor
+and the thermal-hydraulics due to the unique problem setups involving a
+criticality search problem for the neutron multiplication factor
 and a steady-state problem in thermal-hydraulics simultaneously.
 
 \begin{table}[tb]

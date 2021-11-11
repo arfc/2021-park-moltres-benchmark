@@ -10,7 +10,7 @@ maximizing safety, reducing proliferation risks, and improving fuel
 efficiency in the next generation of advanced reactors.
 
 Liquid-fueled \glspl{MSR} present new challenges in computational reactor
-safety analysis arising from the fuel's mobility. \glspl{MSR} feature strong
+safety analysis arising from fuel movement. \glspl{MSR} feature strong
 negative temperature reactivity feedback in the primary fuel salt, leading to
 strong and near-instantaneous
 interactions between reactor power and thermal-hydraulics. Thus,
@@ -23,7 +23,7 @@ absent in solid-fuel reactors. The movement of delayed neutron precursors
 impacts the effective delayed neutron fraction in the core and consequently
 also impacts the transient behavior of the reactor. At the same time, the fuel
 salt serves a dual role of generating fission heat and cooling the reactor
-core, leading to a stronger coupling between heat generation and salt flow
+core, leading to stronger coupling between heat generation and salt flow
 dynamics than traditional \glspl{LWR}.
 
 In recent years, several simulation tools have been developed for full-core
@@ -49,26 +49,27 @@ researchers to leverage on older, well-validated, single-physics software.
 These single-physics software are also highly optimized for solving specific
 types of \glspl{PDE} relevant to the investigated system.
 
-With advancements in computing hardware and growing access to
-high-performance computing systems, others have
-developed multiphysics tools by coupling the \gls{CFD} software OpenFOAM
-\cite{openfoam_openfoam_2021} with the Monte Carlo particle transport software
-Serpent 2 \cite{leppanen_serpent_2014}, thus achieving high-fidelity neutronics
+With modern advancements in computing hardware and growing access to
+high-performance computing systems, others have developed multiphysics tools by
+coupling the \gls{CFD} software OpenFOAM
+\cite{the_openfoam_foundation_ltd_openfoam_2021} with the Monte Carlo particle
+transport software
+Serpent \cite{leppanen_serpent_2014}, thus achieving high-fidelity neutronics
 calculations in transient reactor analyses. Laureau et al.
 \cite{laureau_transient_2017} developed an innovative technique called the
 \gls{TFM} method through the introduction of additional time-dependence
 operators to conventional fission matrices typically used to accelerate source
 convergence in Monte Carlo neutronics calculations. The \gls{TFM} method
-pre-calculates three \glspl{TFM} of the reactor system in Serpent 2 and
+pre-calculates three \glspl{TFM} of the reactor system in Serpent and
 interpolates the matrix values during the actual transient calculations to
 incorporate the effects of temperature-induced density change and Doppler
 effect on the neutron cross sections and ultimately the neutron flux. Blanco
 \cite{blanco_neutronic_2020} took a more integrated approach by
-compiling Serpent 2 as an internal \texttt{C}-based function within OpenFOAM's
+compiling Serpent as an internal \texttt{C}-based function within OpenFOAM's
 \texttt{C++}-based framework. This approach reduced the amount of required data
-transfers between Serpent 2 and OpenFOAM as both software have access to shared
+transfers between Serpent and OpenFOAM as both software have access to shared
 memory during runtime. Their integrated tool employs the Quasi-Static
-method for transient neutronics calculations and runs Serpent 2 Monte Carlo
+method for transient neutronics calculations and runs Serpent Monte Carlo
 calculations several times per timestep until convergence is reached.
 
 Another \gls{MSR} simulation approach involves developing ``all-in-one''
@@ -85,9 +86,10 @@ steady-state and transient analysis capabilities of COUPLE, a neutronics and
 thermal-hydraulics software developed at the Karlsruhe Institute of Technology.
 Others adopted extensible software frameworks for developing numerical solvers
 to develop multiphysics reactor analysis software. Examples of these software
-frameworks include the commercial COMSOL Multiphysics software
-\cite{comsol_ab_comsol_2018}, the aforementioned open-source CFD toolbox
-OpenFOAM \cite{openfoam_openfoam_2021}, and the open-source finite-element
+frameworks include the commercial COMSOL
+Multiphysics\textsuperscript{\textregistered} software
+\cite{comsol_ab_comsol_nodate}, the aforementioned open-source CFD toolbox
+OpenFOAM, and the open-source finite-element
 framework \gls{MOOSE} \cite{gaston_physics-based_2015}. Researchers at
 \gls{PoliMi} developed a \gls{MSR} simulation tool in COMSOL and
 modeled the \gls{MSBR} as a single axisymmetric fuel channel with a uniform
@@ -109,7 +111,7 @@ model and leveraging OpenFOAM's turbulent flow modeling capabilities.
 Differences include fuel compressibility modeling and helium bubble tracking
 capabilities from \gls{PoliMi} \cite{cervi_development_2019}, fuel
 performance analysis capability from \gls{PSI} \cite{fiorina_creation_2018},
-and the aforementioned external coupling capability with Serpent 2 from
+and the aforementioned external coupling capability with Serpent from
 \gls{CNRS} \cite{blanco_neutronic_2020}.
 
 Finally, within MOOSE,
@@ -155,7 +157,7 @@ on GitHub \cite{github_build_2017}. Moltres leverages \texttt{git} for
 version control, and integrated testing to protect existing capabilities while
 concurrently supporting continued code development. Moltres depends on the
 \gls{MOOSE} finite element framework for its meshing and parallel, nonlinear
-Newton-Krylov solver capabilities. Therefore Moltres, has access to
+Newton-Krylov solver capabilities. Therefore Moltres has access to
 \textit{fully coupled} methods with implicit time-stepping.
 \textit{Full coupling} in the context of numerical methods refers to
 solving multiple physics simultaneously.
