@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc, get_benchmark_ave_disc
+from common_func import get_disc, get_benchmark_disc
 
 # Data
 aa = pd.read_csv('temp_csv_aa_0002.csv')
@@ -19,8 +19,8 @@ benchmark_bb = pd.read_csv('T_BB', delim_whitespace=True, header=None)
 disc_aa = get_disc(aa['temp'], benchmark_aa)
 disc_bb = get_disc(bb['temp'], benchmark_bb)
 
-ave_aa = get_benchmark_ave_disc(benchmark_aa)
-ave_bb = get_benchmark_ave_disc(benchmark_bb)
+ave_aa, std_aa = get_benchmark_disc(benchmark_aa)
+ave_bb, std_bb = get_benchmark_disc(benchmark_bb)
 
 f = open('temp.txt', 'w')
 f.write("Discrepancy in temperature along AA' = " +
@@ -31,6 +31,10 @@ f.write("Benchmark average discrepancy in temperature along AA' = " +
         str(ave_aa*100) + " %\n")
 f.write("Benchmark average discrepancy in temperature along BB' = " +
         str(ave_bb*100) + " %\n")
+f.write("Benchmark discrepancy std dev in temperature along AA' = " +
+        str(std_aa*100) + " %\n")
+f.write("Benchmark discrepancy std dev in temperature along BB' = " +
+        str(std_bb*100) + " %\n")
 f.close()
 
 # %% Plot

@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc, get_benchmark_ave_disc
+from common_func import get_disc, get_benchmark_disc
 
 # Data
 aa = pd.read_csv('nts_csv_aa_0002.csv')
@@ -26,13 +26,15 @@ for i in range(6):
 # Calculate % discrepancy
 disc_aa = get_disc(fiss, benchmark_aa)
 
-ave_aa = get_benchmark_ave_disc(benchmark_aa)
+ave_aa, std_aa = get_benchmark_disc(benchmark_aa)
 
 f = open('fission-rate.txt', 'w')
 f.write("Discrepancy in fission rate along AA' = " +
         str(disc_aa*100) + " %\n")
 f.write("Benchmark average discrepancy in fission rate along AA' = " +
         str(ave_aa*100) + " %\n")
+f.write("Benchmark discrepancy std dev in fission rate along AA' = " +
+        str(std_aa*100) + " %\n")
 f.close()
 
 # %% Plot

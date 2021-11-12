@@ -8,7 +8,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc
+from common_func import get_disc, get_benchmark_disc
 
 # Data
 benchmark_phase = pd.read_csv('phase_shift',
@@ -39,13 +39,8 @@ for i in range(1, len(freq)+1):
 disc_phase = get_disc(phase[::-1], benchmark_phase)
 disc_gain = get_disc(gain[::-1], benchmark_gain)
 
-ave_phase = 0
-ave_gain = 0
-for i in range(6):
-    ave_phase += get_disc(benchmark_phase[:][i+1], benchmark_phase)
-    ave_gain += get_disc(benchmark_gain[:][i+1], benchmark_gain)
-ave_phase /= 6
-ave_gain /= 6
+ave_phase, std_phase = get_benchmark_disc(benchmark_phase)
+ave_gain, std_gain = get_benchmark_disc(benchmark_gain)
 
 f = open('phase_gain.txt', 'w')
 f.write("Discrepancy in phase shift = " +
@@ -56,6 +51,10 @@ f.write("Benchmark average discrepancy in phase shift = " +
         str(ave_phase*100) + " %\n")
 f.write("Benchmark average discrepancy in gain = " +
         str(ave_gain*100) + " %\n")
+f.write("Benchmark discrepancy std dev in phase shift = " +
+        str(std_phase*100) + " %\n")
+f.write("Benchmark discrepancy std dev in gain = " +
+        str(std_gain*100) + " %\n")
 f.close()
 
 # Plot

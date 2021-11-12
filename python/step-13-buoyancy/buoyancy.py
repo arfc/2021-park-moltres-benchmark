@@ -8,7 +8,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc, get_benchmark_ave_disc
+from common_func import get_disc, get_benchmark_disc
 
 # Data
 pre_elemental = pd.read_csv('buoyancy_out_ntsApp0_csv_pre_elemental_0054.csv')
@@ -100,13 +100,13 @@ for i in range(len(x)):
 
 # %% Benchmark discrepancy
 
-ave_aa_pre = get_benchmark_ave_disc(benchmark_aa_pre)
-ave_bb_pre = get_benchmark_ave_disc(benchmark_bb_pre)
-ave_aa_temp = get_benchmark_ave_disc(benchmark_aa_temp)
-ave_bb_temp = get_benchmark_ave_disc(benchmark_bb_temp)
-ave_aa_ux = get_benchmark_ave_disc(benchmark_aa_ux)
-ave_aa_uy = get_benchmark_ave_disc(benchmark_aa_uy)
-ave_bb_uy = get_benchmark_ave_disc(benchmark_bb_uy)
+ave_aa_pre, std_aa_pre = get_benchmark_disc(benchmark_aa_pre)
+ave_bb_pre, std_bb_pre = get_benchmark_disc(benchmark_bb_pre)
+ave_aa_temp, std_aa_temp = get_benchmark_disc(benchmark_aa_temp)
+ave_bb_temp, std_bb_temp = get_benchmark_disc(benchmark_bb_temp)
+ave_aa_ux, std_aa_ux = get_benchmark_disc(benchmark_aa_ux)
+ave_aa_uy, std_aa_uy = get_benchmark_disc(benchmark_aa_uy)
+ave_bb_uy, std_bb_uy = get_benchmark_disc(benchmark_bb_uy)
 
 f = open('buoyancy.txt', 'w')
 f.write("Discrepancy in delayed neutron source along AA' = " +
@@ -134,6 +134,20 @@ f.write("Benchmark average discrepancy in uy along AA' = " +
         str(ave_aa_uy*100) + " %\n")
 f.write("Benchmark average discrepancy in uy along BB' = " +
         str(ave_bb_uy*100) + " %\n")
+f.write("Benchmark discrepancy std dev in delayed neutron source along AA' = "
+        + str(std_aa_pre*100) + " %\n")
+f.write("Benchmark discrepancy std dev in delayed neutron source along BB' = "
+        + str(std_bb_pre*100) + " %\n")
+f.write("Benchmark discrepancy std dev in temperature along AA' = " +
+        str(std_aa_temp*100) + " %\n")
+f.write("Benchmark discrepancy std dev in temperature along BB' = " +
+        str(std_bb_temp*100) + " %\n")
+f.write("Benchmark discrepancy std dev in ux along AA' = " +
+        str(std_aa_ux*100) + " %\n")
+f.write("Benchmark discrepancy std dev in uy along AA' = " +
+        str(std_aa_uy*100) + " %\n")
+f.write("Benchmark discrepancy std dev in uy along BB' = " +
+        str(std_bb_uy*100) + " %\n")
 f.close()
 
 # %% Plot

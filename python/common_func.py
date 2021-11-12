@@ -89,7 +89,7 @@ def get_disc(software_data, benchmark_data):
     return disc
 
 
-def get_benchmark_ave_disc(benchmark_data):
+def get_benchmark_disc(benchmark_data):
     """
     Calculates the overall benchmark average discrepancy against the benchmark
     pointwise average data. Uses average_value() to get the pointwise average
@@ -114,4 +114,5 @@ def get_benchmark_ave_disc(benchmark_data):
     for i in range(Nc-1):
         discs[i] = discrepancy(benchmark_data[i+1], ave)
     benchmark_ave_disc = np.average(discs)
-    return benchmark_ave_disc
+    benchmark_std_disc = np.std(discs)
+    return benchmark_ave_disc, benchmark_std_disc
