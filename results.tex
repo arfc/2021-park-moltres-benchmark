@@ -82,29 +82,30 @@ Steps 0.2, 1.1, 1.2, and 1.3.
 \FloatBarrier
 %
 \begin{table}[htb]
-	\caption{Discrepancy values from Moltres and the average discrepancy values
-	of the benchmark participants for Phase 0.}
+	\caption{Discrepancy values from Moltres alongside the average and standard
+	deviation of the discrepancy values of the benchmark participants for Phase
+	0.}
 	\centering
 	\small
-	\begin{tabular}{l l c S S}
+	\begin{tabular}{l l c S S S}
 		\toprule
-		\multirow{2}{*}{\textbf{Step}} & \multirow{2}{*}{\textbf{Observable}} & \multirow{2}{*}{\textbf{Centerline}} & \multicolumn{2}{c}{\textbf{Discrepancies [\%]}} \\
-		& & & {Moltres} & {Benchmark} \\
+		\multirow{2}{*}{\textbf{Step}} & \multirow{2}{*}{\textbf{Observable}} & \multirow{2}{*}{\textbf{Centerline}} & {\multirow{2}{*}{\textbf{Moltres [\%]}}} & \multicolumn{2}{c}{\textbf{Benchmark [\%]}} \\
+		& & & & {Average} & {SD} \\
 		\midrule
 		\multirow{4}{*}{0.1} &
-		\multirow{2}{*}{$u_x$} & AA' & 0.247 & 0.253 \\
-		& & BB' & 0.266 & 0.318 \\
-		\cmidrule{2-5}
-		& \multirow{2}{*}{$u_y$} & AA' & 0.540 & 0.598
-		\\
-		& & BB' & 0.468 & 0.795 \\
+		\multirow{2}{*}{$u_x$} & AA' & 0.247 & 0.253 & 0.150 \\
+		& & BB' & 0.266 & 0.318 & 0.102 \\
+		\cmidrule{2-6}
+		& \multirow{2}{*}{$u_y$} & AA' & 0.540 & 0.598 & 0.266 \\
+		& & BB' & 0.468 & 0.795 & 0.421 \\
 		\midrule
 		{0.2} &
-		{$\sum^6_g \Sigma_{f,g} \phi_g(\vec{r})$} & AA' & 0.313 & 0.285 \\
+		{$\sum^6_g \Sigma_{f,g} \phi_g(\vec{r})$} & AA' & 0.313 & 0.285 & 0.153
+		\\
 		\midrule
 		\multirow{2}{*}{0.3} &
-		\multirow{2}{*}{$T$} & AA' & 0.090 & 0.085 \\
-		& & BB' & 0.164 & 0.083 \\
+		\multirow{2}{*}{$T$} & AA' & 0.090 & 0.085 & 0.031 \\
+		& & BB' & 0.164 & 0.083 & 0.027\\
 		\bottomrule
 	\end{tabular}
 	\label{table:disc0}
@@ -116,11 +117,13 @@ Figures \ref{fig:0.1}, \ref{fig:0.2}, and \ref{fig:0.3} show that Moltres
 accurately reproduced all three sets of results in Phase 0 for the velocity
 field, fission rate density, and temperature. Table
 \ref{table:disc0} reports the discrepancy values from Moltres for Phase 0 and
-the corresponding average discrepancy values from the benchmark participants
-\cite{tiberga_results_2020}. Moltres performs very well as all discrepancy
-values are on the same order of magnitude as those from the benchmark
-participants. The discrepancy value for $T$ along centerline BB' in Step 0.3 is
-marginally higher at 0.164\% compared to 0.083\% from the benchmark average.
+the corresponding average and \gls{SD} of the discrepancy values from
+the benchmark participants
+\cite{tiberga_results_2020}. Moltres performs very well as most discrepancy
+values are either lower than or fall within one \gls{SD} of the benchmark
+average discrepancies. The discrepancy value for $T$ along centerline BB' in
+Step 0.3 is the only exception with its value of 0.164\% being larger than
+the benchmark average by 3 \gls{SD}.
 
 We
 note in Figure \ref{fig:0.3} that the $T$ distribution from Moltres is almost
@@ -194,44 +197,47 @@ transport models, namely CNRS-$SP_1$, PoliMi, PSI, and TUD-$S_2$.
 \subsection{Phase 1 results \& discussion}
 
 Table \ref{table:disc1} shows the discrepancy values from Moltres relative to
-the average of the benchmark participants for Steps 1.1, 1.2, and 1.3,
-and the corresponding average discrepancy values from the benchmark
+the average and \gls{SD} of the benchmark participants for Steps 1.1, 1.2, and
+1.3, and the corresponding average discrepancy values from the benchmark
 \cite{tiberga_results_2020}. The subsequent subsections discuss the results
 for each benchmark step in Phase 1.
 %
 \begin{table*}[htb]
-	\caption{Discrepancy values from Moltres and the average discrepancy values
-	of the benchmark participants for Phase 1.}
+	\caption{Discrepancy values from Moltres alongside the average and standard
+	deviation of the discrepancy values of the benchmark participants for Phase
+	1.}
 	\centering
 	\small
-	\begin{tabular}{l l c S S}
+	\begin{tabular}{l l c S S S}
 		\toprule
-		\multirow{2}{*}{\textbf{Step}} & \multirow{2}{*}{\textbf{Observable}} & \multirow{2}{*}{\textbf{Centerline}} & \multicolumn{2}{c}{\textbf{Discrepancies [\%]}} \\
-		& & & {Moltres} & {Benchmark} \\
+		\multirow{2}{*}{\textbf{Step}} & \multirow{2}{*}{\textbf{Observable}} & \multirow{2}{*}{\textbf{Centerline}} & {\multirow{2}{*}{\textbf{Moltres [\%]}}} & \multicolumn{2}{c}{\textbf{Benchmark [\%]}} \\
+		& & & & {Average} & {SD} \\
 		\midrule
 		\multirow{2}{*}{1.1} &
-		\multirow{2}{*}{$\sum_i \lambda_i C_i$} & AA' & 0.603 & 0.346 \\
-		& & BB' & 0.327 & 0.294 \\
+		\multirow{2}{*}{$\sum_i \lambda_i C_i$} & AA' & 0.603 & 0.346 & 0.166
+		\\
+		& & BB' & 0.327 & 0.294 & 0.153 \\
 		\midrule
 		\multirow{4}{*}{1.2} &
-		\multirow{2}{*}{$T$} & AA' & 0.076 & 0.095 \\
-		& & BB' & 0.179 & 0.089 \\
-		\cmidrule{2-5}
+		\multirow{2}{*}{$T$} & AA' & 0.076 & 0.095 & 0.015 \\
+		& & BB' & 0.179 & 0.089 & 0.012 \\
+		\cmidrule{2-6}
 		& \multirow{2}{*}{\footnotesize $\Delta\left[\sum^6_g \Sigma_{f,g} \phi_g(\vec{r})
-		\right]_{s_{1.2}-s_{0.2}}$} & AA' & 1.110 & 1.576 \\
-		& & BB' & 1.089 & 1.133 \\
+		\right]_{s_{1.2}-s_{0.2}}$} & AA' & 1.110 & 1.576 & 0.564 \\
+		& & BB' & 1.089 & 1.133 & 0.392 \\
 		\midrule
 		\multirow{7}{*}{1.3} &
-		{$u_x$} & AA' & 0.123 & 0.691 \\
-		\cmidrule{2-5}
-		& \multirow{2}{*}{$u_y$} & AA' & 0.237 & 0.329 \\
-		& & BB' & 0.238 & 0.356 \\
-		\cmidrule{2-5}
-		& \multirow{2}{*}{$T$} & AA' & 0.064 & 0.057 \\
-		& & BB' & 0.070 & 0.080 \\
-		\cmidrule{2-5}
-		& \multirow{2}{*}{$\sum_i \lambda_i C_i$} & AA' & 1.043 & 0.460 \\
-		& & BB' & 0.462 & 1.194 \\
+		{$u_x$} & AA' & 0.123 & 0.691 & 0.566 \\
+		\cmidrule{2-6}
+		& \multirow{2}{*}{$u_y$} & AA' & 0.237 & 0.329 & 0.131 \\
+		& & BB' & 0.238 & 0.356 & 0.217 \\
+		\cmidrule{2-6}
+		& \multirow{2}{*}{$T$} & AA' & 0.064 & 0.057 & 0.023 \\
+		& & BB' & 0.070 & 0.080 & 0.024 \\
+		\cmidrule{2-6}
+		& \multirow{2}{*}{$\sum_i \lambda_i C_i$} & AA' & 1.043 & 0.460 & 0.190
+		\\
+		& & BB' & 0.462 & 1.194 & 0.178 \\
 		\bottomrule
 	\end{tabular}
 	\label{table:disc1}
@@ -243,8 +249,8 @@ Figure \ref{fig:1.1} shows good qualitative agreement in the delayed neutron
 source distribution along BB' among Moltres and the benchmark participants.
 From Table \ref{table:disc1}, Moltres reports discrepancies of 0.603\% and
 0.327\% along the centerlines AA' and BB', respectively. Both values are on the
-same order of magnitude as the average discrepancies of the benchmark
-participants (0.346\% and 0.294\%).
+within two and one \gls{SD}, respectively, of the average discrepancies of the
+benchmark participants (0.346\% and 0.294\%).
 In Table \ref{table:rho}, we observe that the change in
 $\rho$ relative to Step 0.2 is $-62.7$ pcm for Moltres and this value is
 consistent with the $-63.0$ to $-62.0$ pcm range that most of the benchmark
@@ -278,7 +284,7 @@ temperature distribution from Moltres agrees closest with CNRS-$SP_3$ and
 TUD-$S_2$. Table \ref{table:disc1} reports the same trends we observed in Phase
 0; the average discrepancy in temperature along BB' from Moltres for Step 1.2
 is marginally higher than the benchmark while the average discrepancy in the
-fission rate density is on the same order of magnitude as the benchmark.
+fission rate density is within one \gls{SD} range to the benchmark average.
 From Table \ref{table:rho}, Moltres also reports a change in $\rho$
 relative to Step 1.1 of $-1142.2$ pcm which
 falls within the range of reported benchmark participants' values.
@@ -292,8 +298,8 @@ observables. Step 1.3 has a relatively slower buoyancy-driven flow profile with
 no forced flow from the top boundary. Consequently, there are no temperature
 deviations near the top boundary and we observe in Table \ref{table:disc1} that
 the average discrepancy value of 0.070\% for the temperature distribution along
-BB' is much closer to the benchmark value of 0.080\% compared to the
-corresponding discrepancy values for Step 0.3 and 1.2.
+BB' is in much closer agreement to the benchmark value of 0.080\% compared to
+the corresponding temperature discrepancy values for Step 0.3 and 1.2.
 
 In Table \ref{table:rho}, we observe that the change in $\rho$ from
 Moltres (-1207.7 pcm) falls within the range of reported benchmark values and
@@ -366,17 +372,19 @@ neutronics models.
 \FloatBarrier
 
 \begin{table}[htb]
-	\caption{Discrepancy values for the results from Step 2.1.}
+	\caption{Discrepancy values from Moltres alongside the average and standard
+	deviation of the discrepancy values of the benchmark participants for Step
+	2.1.}
 	\centering
 	\small
-	\begin{tabular}{l l S S}
+	\begin{tabular}{l l S S S}
 		\toprule
-		\multirow{2}{*}{\textbf{Step}} & \multirow{2}{*}{\textbf{Observable}} & \multicolumn{2}{c}{\textbf{Discrepancies [\%]}} \\
-		& & {Moltres} & {Benchmark} \\
+		\multirow{2}{*}{\textbf{Step}} & \multirow{2}{*}{\textbf{Observable}} & {\multirow{2}{*}{\textbf{Moltres [\%]}}} & \multicolumn{2}{c}{\textbf{Benchmark [\%]}} \\
+		& & & {Average} & {SD} \\
 		\midrule
-		\multirow{2}{*}{2.1} & Gain & 0.493 & 0.587 \\
-		\cmidrule{2-4}
-		& Phase shift & 1.741 & 2.176\\
+		\multirow{2}{*}{2.1} & Gain & 0.493 & 0.587 & 0.244 \\
+		\cmidrule{2-5}
+		& Phase shift & 1.741 & 2.176 & 0.554 \\
 		\bottomrule
 	\end{tabular}
 	\label{table:disc2}
