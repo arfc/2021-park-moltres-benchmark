@@ -8,7 +8,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc, get_benchmark_ave_disc
+from common_func import get_disc, get_benchmark_disc    # noqa: E402
 
 # Data
 pre_elemental = pd.read_csv('circ-fuel_csv_pre_elemental_0002.csv')
@@ -44,8 +44,8 @@ pre_bb[-1] = pre_func(1, 1.995) + (pre_func(1, 1.995) - pre_func(1, 1.985)) / 2
 disc_aa_pre = get_disc(pre_aa, benchmark_aa)
 disc_bb_pre = get_disc(pre_bb, benchmark_bb)
 
-ave_aa = get_benchmark_ave_disc(benchmark_aa)
-ave_bb = get_benchmark_ave_disc(benchmark_bb)
+ave_aa, std_aa = get_benchmark_disc(benchmark_aa)
+ave_bb, std_bb = get_benchmark_disc(benchmark_bb)
 
 f = open('circ-fuel.txt', 'w')
 f.write("Discrepancy in delayed neutron source along AA' = " +
@@ -56,6 +56,10 @@ f.write("Benchmark average discrepancy in delayed neutron source along AA' = "
         + str(ave_aa*100) + " %\n")
 f.write("Benchmark average discrepancy in delayed neutron source along BB' = "
         + str(ave_bb*100) + " %\n")
+f.write("Benchmark discrepancy std dev in delayed neutron source along AA' = "
+        + str(std_aa*100) + " %\n")
+f.write("Benchmark discrepancy std dev in delayed neutron source along BB' = "
+        + str(std_bb*100) + " %\n")
 f.close()
 
 # %% Plot
@@ -116,3 +120,13 @@ ax.set_xlim(0, 2)
 ax.set_xlabel(r'$x$ [m]')
 ax.set_ylabel(r'Delayed neutron source [m$^{-3}\cdot$s$^{-1}$]')
 plt.savefig('1-1-dnp-x-plot.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'delayed n source (1/m3s)': pre_aa})
+bb_df = pd.DataFrame({'y (m)': np.around(coords, decimals=2),
+                      'delayed n source (1/m3s)': np.reshape(pre_bb, 201)})
+aa_df.to_csv('moltres_1.1_AA', index=False, sep='\t')
+bb_df.to_csv('moltres_1.1_BB', index=False, sep='\t')

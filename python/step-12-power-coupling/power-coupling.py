@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc, get_benchmark_ave_disc
+from common_func import get_disc, get_benchmark_disc    # noqa: E402
 
 # Data
 flux_aa = pd.read_csv('power-coupling_csv_flux_aa_0003.csv')
@@ -56,10 +56,10 @@ disc_bb_fiss = get_disc(fiss_bb, benchmark_bb_fiss)
 disc_aa_temp = get_disc(temp_aa['temp'], benchmark_aa_temp)
 disc_bb_temp = get_disc(temp_bb['temp'], benchmark_bb_temp)
 
-ave_aa_fiss = get_benchmark_ave_disc(benchmark_aa_fiss)
-ave_bb_fiss = get_benchmark_ave_disc(benchmark_bb_fiss)
-ave_aa_temp = get_benchmark_ave_disc(benchmark_aa_temp)
-ave_bb_temp = get_benchmark_ave_disc(benchmark_bb_temp)
+ave_aa_fiss, std_aa_fiss = get_benchmark_disc(benchmark_aa_fiss)
+ave_bb_fiss, std_bb_fiss = get_benchmark_disc(benchmark_bb_fiss)
+ave_aa_temp, std_aa_temp = get_benchmark_disc(benchmark_aa_temp)
+ave_bb_temp, std_bb_temp = get_benchmark_disc(benchmark_bb_temp)
 
 f = open('power-coupling.txt', 'w')
 f.write("Discrepancy in fission rate along AA' = " +
@@ -78,6 +78,14 @@ f.write("Benchmark average discrepancy in temperature along AA' = " +
         str(ave_aa_temp*100) + " %\n")
 f.write("Benchmark average discrepancy in temperature along BB' = " +
         str(ave_bb_temp*100) + " %\n")
+f.write("Benchmark discrepancy std dev in fission rate along AA' = " +
+        str(std_aa_fiss*100) + " %\n")
+f.write("Benchmark discrepancy std dev in fission rate along BB' = " +
+        str(std_bb_fiss*100) + " %\n")
+f.write("Benchmark discrepancy std dev in temperature along AA' = " +
+        str(std_aa_temp*100) + " %\n")
+f.write("Benchmark discrepancy std dev in temperature along BB' = " +
+        str(std_bb_temp*100) + " %\n")
 f.close()
 
 # Plot
@@ -127,3 +135,15 @@ ax.set_ylim(-1e18, 6e17)
 ax.set_xlabel(r'$x$ [m]')
 ax.set_ylabel(r'Change in fission rate density [m$^{-3}\cdot$s$^{-1}$]')
 plt.savefig('1-2-fiss-plot.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'temperature (K)': temp_aa['temp'],
+                      'change in fiss dens (1/m3s)': fiss_aa})
+bb_df = pd.DataFrame({'y (m)': np.around(coords, decimals=2),
+                      'temperature (K)': temp_bb['temp'],
+                      'change in fiss dens (1/m3s)': fiss_bb})
+aa_df.to_csv('moltres_1.2_AA', index=False, sep='\t')
+bb_df.to_csv('moltres_1.2_BB', index=False, sep='\t')

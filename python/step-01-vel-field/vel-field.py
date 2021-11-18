@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc, get_benchmark_ave_disc
+from common_func import get_disc, get_benchmark_disc    # noqa: E402
 
 # Data
 aa = pd.read_csv('vel-field_csv_aa_0002.csv')
@@ -23,10 +23,10 @@ disc_aa_uy = get_disc(aa['vel_y'] / 100, benchmark_aa_uy)
 disc_bb_ux = get_disc(bb['vel_x'] / 100, benchmark_bb_ux)
 disc_bb_uy = get_disc(bb['vel_y'] / 100, benchmark_bb_uy)
 
-ave_aa_ux = get_benchmark_ave_disc(benchmark_aa_ux)
-ave_aa_uy = get_benchmark_ave_disc(benchmark_aa_uy)
-ave_bb_ux = get_benchmark_ave_disc(benchmark_bb_ux)
-ave_bb_uy = get_benchmark_ave_disc(benchmark_bb_uy)
+ave_aa_ux, std_aa_ux = get_benchmark_disc(benchmark_aa_ux)
+ave_aa_uy, std_aa_uy = get_benchmark_disc(benchmark_aa_uy)
+ave_bb_ux, std_bb_ux = get_benchmark_disc(benchmark_bb_ux)
+ave_bb_uy, std_bb_uy = get_benchmark_disc(benchmark_bb_uy)
 
 f = open('vel-field.txt', 'w')
 f.write("Discrepancy in ux along AA' = " + str(disc_aa_ux*100) + " %\n")
@@ -37,10 +37,18 @@ f.write("Benchmark average discrepancy in ux along AA' = " +
         str(ave_aa_ux*100) + " %\n")
 f.write("Benchmark average discrepancy in uy along AA' = " +
         str(ave_aa_uy*100) + " %\n")
-f.write("Benchmark average discrepancy in uy along BB' = " +
+f.write("Benchmark average discrepancy in ux along BB' = " +
         str(ave_bb_ux*100) + " %\n")
 f.write("Benchmark average discrepancy in uy along BB' = " +
         str(ave_bb_uy*100) + " %\n")
+f.write("Benchmark discrepancy std dev in ux along AA' = " +
+        str(std_aa_ux*100) + " %\n")
+f.write("Benchmark discrepancy std dev in uy along AA' = " +
+        str(std_aa_uy*100) + " %\n")
+f.write("Benchmark discrepancy std dev in ux along BB' = " +
+        str(std_bb_ux*100) + " %\n")
+f.write("Benchmark discrepancy std dev in uy along BB' = " +
+        str(std_bb_uy*100) + " %\n")
 f.close()
 
 # %% Plot
@@ -72,3 +80,15 @@ ax.set_ylim(0, 2)
 ax.set_xlabel(r'$u_x$ [m$\cdot$s$^{-1}$]')
 ax.set_ylabel(r'$y$ [m]')
 plt.savefig('0-1-vel-plot.png', dpi=400)
+
+# %% Write tsv
+
+coords = np.linspace(0, 2, 201)
+aa_df = pd.DataFrame({'x (m)': np.around(coords, decimals=2),
+                      'ux (m/s)': aa['vel_x'] / 100,
+                      'uy (m/s)': aa['vel_y'] / 100})
+bb_df = pd.DataFrame({'y (m)': np.around(coords, decimals=2),
+                      'ux (m/s)': bb['vel_x'] / 100,
+                      'uy (m/s)': bb['vel_y'] / 100})
+aa_df.to_csv('moltres_0.1_AA', index=False, sep='\t')
+bb_df.to_csv('moltres_0.1_BB', index=False, sep='\t')
