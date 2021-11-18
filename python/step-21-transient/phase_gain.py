@@ -8,6 +8,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
+from common_func import get_disc, get_benchmark_disc    # noqa: E402
 from common_func import get_disc, get_benchmark_disc
 
 # Data

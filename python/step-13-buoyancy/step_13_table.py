@@ -29,11 +29,11 @@ cl = ['aa', 'bb']
 
 def format_table_entry(data):
     data = map(
-        lambda x : "{:.3e}".format(float(x)),
+        lambda x: "{:.3e}".format(float(x)),
         data)
     data = list(
         map(
-            lambda x : x.upper(),
+            lambda x: x.upper(),
             list(data)
             )
         )

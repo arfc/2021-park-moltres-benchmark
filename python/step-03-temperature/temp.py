@@ -7,7 +7,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc, get_benchmark_disc
+from common_func import get_disc, get_benchmark_disc    # noqa: E402
 
 # Data
 aa = pd.read_csv('temp_csv_aa_0002.csv')

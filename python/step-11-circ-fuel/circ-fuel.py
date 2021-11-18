@@ -8,7 +8,7 @@ sys.path.append(
         os.path.dirname(
                 os.path.dirname(
                         os.path.abspath(__file__))))
-from common_func import get_disc, get_benchmark_disc
+from common_func import get_disc, get_benchmark_disc    # noqa: E402
 
 # Data
 pre_elemental = pd.read_csv('circ-fuel_csv_pre_elemental_0002.csv')
