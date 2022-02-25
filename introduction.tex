@@ -26,7 +26,7 @@ salt serves a dual role of generating fission heat and cooling the reactor
 core, leading to stronger coupling between heat generation and salt flow
 dynamics than traditional \glspl{LWR}.
 
-In recent years, several simulation tools have been developed for full-core
+In recent years, several multiphysics solvers have been developed for full-core
 modeling of fast-spectrum \glspl{MSR}. \textit{Tightly coupled} approaches,
 through segregated solvers, involve coupling separate single-physics neutronics
 and thermal-hydraulics software. For example, researchers at
@@ -44,19 +44,21 @@ coupling the thermal-hydraulics system software \gls{TRACE}
 \cite{nrc_trace_2007} with the
 nodal neutron diffusion software \gls{PARCS} \cite{downar_parcs_2010} for the
 safety analysis of the \gls{MSFR} \cite{pettersen_coupled_2016}. Coupling
-single-physics software to form an integrated multiphysics tool allows
+single-physics software to form an integrated multiphysics solver allows
 researchers to leverage on older, well-validated, single-physics software.
 These single-physics software are also highly optimized for solving specific
 types of \glspl{PDE} relevant to the investigated system.
 
 With modern advancements in computing hardware and growing access to
-high-performance computing systems, others have developed multiphysics tools by
-coupling the \gls{CFD} software OpenFOAM
+high-performance computing systems, others have developed multiphysics solvers
+by coupling the \gls{CFD} software OpenFOAM
 \cite{the_openfoam_foundation_ltd_openfoam_2021} with the Monte Carlo particle
 transport software
 Serpent \cite{leppanen_serpent_2014}, thus achieving high-fidelity neutronics
-calculations in transient reactor analyses. Laureau et al.
-\cite{laureau_transient_2017} developed an innovative technique called the
+calculations in transient reactor analyses. Serpent has a multiphysics
+interface which supports coupling with multiphysics software such as OpenFOAM
+\cite{leppanen_development_2013}. Laureau et al. \cite{laureau_transient_2017}
+separately developed an innovative technique called the
 \gls{TFM} method through the introduction of additional time-dependence
 operators to conventional fission matrices typically used to accelerate source
 convergence in Monte Carlo neutronics calculations. The \gls{TFM} method
@@ -68,7 +70,7 @@ effect on the neutron cross sections and ultimately the neutron flux. Blanco
 compiling Serpent as an internal \texttt{C}-based function within OpenFOAM's
 \texttt{C++}-based framework. This approach reduced the amount of required data
 transfers between Serpent and OpenFOAM as both software have access to shared
-memory during runtime. Their integrated tool employs the Quasi-Static
+memory during runtime. Their integrated solver employs the Quasi-Static
 method for transient neutronics calculations and runs Serpent Monte Carlo
 calculations several times per timestep until convergence is reached.
 
@@ -80,7 +82,7 @@ recognized the
 need for more robust multiphysics coupling techniques and higher-fidelity
 thermal hydraulics solutions to accurately capture complex flow profiles in
 pool-type \glspl{MSR}. They each independently developed unnamed multiphysics
-simulation tools and demonstrated their tools with non-moderated \gls{MSR}
+solvers and demonstrated them with non-moderated \gls{MSR}
 designs. Later, Li et al. \cite{li_transient_2015} demonstrated the
 steady-state and transient analysis capabilities of COUPLE, a neutronics and
 thermal-hydraulics software developed at the Karlsruhe Institute of Technology.
@@ -91,43 +93,52 @@ Multiphysics\textsuperscript{\textregistered} software
 \cite{comsol_ab_comsol_nodate}, the aforementioned open-source CFD toolbox
 OpenFOAM, and the open-source finite-element
 framework \gls{MOOSE} \cite{gaston_physics-based_2015}. Researchers at
-\gls{PoliMi} developed a \gls{MSR} simulation tool in COMSOL and
+\gls{PoliMi} developed a \gls{MSR} multiphysics solver in COMSOL and
 modeled the \gls{MSBR} as a single axisymmetric fuel channel with a uniform
 flow profile \cite{cammi_multi-physics_2011}, followed by the \gls{MSRE} core
 also as a single axisymmetric fuel channel with parabola-shaped laminar flow
 \cite{cammi_dimensional_2012}. They later expanded on their approach by
 modeling the \gls{MSRE} upper plenum, downcomer and lower plenum, primary heat
-exchanger, and secondary heat exchanger as 0D systems (lumped-parameter model),
-and substituting the 2D fuel channel with a 3D fuel channel which more closely
-resembled the actual fuel channels in the \gls{MSRE}
+exchanger, and secondary heat exchanger as 0D systems (lumped-parameter
+models), and substituting the 2D fuel channel with a 3D fuel channel which more
+closely resembled the actual fuel channels in the \gls{MSRE}
 \cite{zanetti_geometric_2015}. Beyond graphite-moderated \glspl{MSR}, they
 also modeled the \gls{MSFR} in the same publication which featured \gls{TUD}'s
-DALTON + HEAT coupled multiphysics tool.
-More recently, several European institutes (\gls{CNRS}, \gls{PoliMi},
-and the \gls{PSI}) have also developed coupled neutronics and
-thermal-hydraulics tools in OpenFOAM. Their tools share some
-similarities such as implementing the $SP_N$ simplified $P_N$ neutron transport
-model and leveraging OpenFOAM's turbulent flow modeling capabilities.
-Differences include fuel compressibility modeling and helium bubble tracking
-capabilities from \gls{PoliMi} \cite{cervi_development_2019}, fuel
-performance analysis capability from \gls{PSI} \cite{fiorina_creation_2018},
-and the aforementioned external coupling capability with Serpent from
-\gls{CNRS} \cite{blanco_neutronic_2020}.
+DALTON + HEAT coupled multiphysics solver.
 
-Finally, within MOOSE,
-simulation tools capable of modeling
-\glspl{MSR} include: Rattlesnake \cite{wang_rattlesnake_2021}; and Moltres
+Other European institutes have dedicated significant development work towards
+OpenFOAM-based \gls{MSR} multiphysics solvers. Aufiero et al.
+\cite{aufiero_development_2014} first introduced an OpenFOAM model developed
+at \gls{PoliMi}. Their model implemented a neutron diffusion model and a
+\gls{RANS}-based turbulence model with incompressible flow to demonstrate 2D
+and 3D transient analyses of the \gls{MSFR}. Later advancements in the
+\gls{PoliMi} solver include a fuel compressibility model and a helium bubble
+tracking model to study fuel compressibility effects
+\cite{cervi_development_2019} and a $SP_3$ neutron transport
+model for improved neutronics calculations \cite{cervi_development_2019-1} in
+the \gls{MSFR}. GeN-Foam is another OpenFOAM-based solver developed by Fiorina
+et al. \cite{fiorina_gen-foam_2015} as a general reactor multiphysics solver
+applicable to \glspl{MSR} and other reactor types. GeN-Foam features neutron
+diffusion, $SP_3$, and $S_N$ neutronics models 
+\cite{fiorina_development_2016,fiorina_gen-foam_2015,fiorina_detailed_2019},
+and thermo-mechanical modeling for reactor expansion effects. Using GeN-Foam,
+Altahhan et al. \cite{altahhan_preliminary_2020} developed and optimized a
+liquid-fuel \gls{MSR} design while Shi \& Fratoni \cite{shi_gen-foam_2021}
+benchmarked precursor drift effects in their \gls{MSRE} model.
+
+Finally, within MOOSE, multiphysics solvers capable of modeling
+\glspl{MSR} include: Griffin \cite{wang_rattlesnake_2021}; and Moltres
 \cite{lindsay_moltres_2017}\textemdash the subject of this work.
-Rattlesnake primarily tackles radiation transport problems, but the MOOSE
+Griffin primarily tackles radiation transport problems, but the MOOSE
 framework facilitates multiphysics coupling
 with MOOSE-based applications for other physics
 such that all applications share the same data structure. This eliminates
-computational costs from external data transfers and optionally allowing for
+computational costs from external data transfers and optionally allows for
 \textit{fully coupled} solves in which the application solves all physics
 simultaneously. Similarly, Moltres benefits from the highly-integrated
 cross-compatibility
 within the ecosystem of MOOSE-based applications. Abou-Jaoude et al.
-\cite{abou-jaoude_coupled_2020} coupled Rattlesnake with Pronghorn, another
+\cite{abou-jaoude_coupled_2020} coupled Griffin with Pronghorn, another
 MOOSE-based application for advanced reactor thermal-hydraulics modeling, to
 demonstrate several steady-state \gls{MSR} simulation capabilities defined in
 the CNRS benchmark. Lindsay et al.
@@ -149,21 +160,49 @@ simulations in Moltres such as those in this study, we coupled Moltres'
 \texttt{Heat} \texttt{Conduction} physics modules \cite{peterson_overview_2018}
 for general thermal-hydraulics modeling.
 
-This paper presents benchmarking results from Moltres, an open-source
-multiphysics simulation software for advanced reactors. Making Moltres
-open-source promotes quality and participation through transparency and
-ease of peer review. The source code \cite{lindsay_moltres_2017} is available
-on GitHub \cite{github_build_2017}. Moltres leverages \texttt{git} for
-version control, and integrated testing to protect existing capabilities while
-concurrently supporting continued code development. Moltres depends on the
-\gls{MOOSE} finite element framework for its meshing and parallel, nonlinear
-Newton-Krylov solver capabilities. Therefore Moltres has access to
-\textit{fully coupled} methods with implicit time-stepping.
-\textit{Full coupling} in the context of numerical methods refers to
-solving multiple physics simultaneously.
-Users also have the flexibility of separating different physics through
+This paper presents benchmarking results from Moltres of the CNRS benchmark
+to verify Moltres' capabilities for modeling fast-spectrum \glspl{MSR}. Moltres
+is an open-source multiphysics simulation software for advanced reactors.
+Making Moltres open-source promotes quality and participation through
+transparency and ease of peer review. The source code
+\cite{lindsay_moltres_2017} is available on GitHub \cite{github_build_2017}.
+Moltres leverages \texttt{git} for version control, and integrated testing to
+protect existing capabilities while concurrently supporting continued code
+development. Moltres depends on the \gls{MOOSE} finite element framework for
+its meshing and parallel, nonlinear Newton-Krylov solver capabilities.
+Therefore Moltres has access to \textit{fully coupled} methods with implicit
+time-stepping. \textit{Full coupling} in the context of numerical methods
+refers to solving multiple equations simultaneously in a larger system of
+equations. In this study, we applied full coupling for the transient
+cases in Phase 2 of the CNRS benchmark.
+
+Users also have the flexibility of separating the equations through
 \textit{tight coupling} in which coupling is achieved through
-fixed-point iterations. The combination of robust and flexible coupling
-methods extends Moltres' capabilities for tackling various phenomena in
-nuclear reactors from prompt neutron responses at microsecond time scales to
-\gls{DNP} advection-diffusion and thermal-hydraulics at larger time scales.
+fixed-point iterations. For instance, users can employ full coupling to solve
+the multigroup neutron diffusion equations and the Navier-Stokes equations as
+two large, separate systems of equations to handle the strong coupling within
+those systems, thereby benefitting from solver stability and convergence
+over fewer iterations. These two systems can then be tightly coupled via outer
+fixed-point iterations to handle the relatively weak (but still objectively
+strong) coupling between the neutronics and thermal-hydraulics. Other than
+potentially lower compute times, this segregated approach allows us to use
+different mesh resolutions for the neutronics and thermal-hydraulics solvers
+or subcycle multiple timesteps of one system during one timestep of the other
+system to handle differences in spatial and temporal scales for various
+time-dependent phenomena in reactors. In this study, we applied tight coupling
+to run criticality calculations coupled with pseudo transient calculations of
+the buoyancy-driven salt flow for the steady-state cases in Phase 1 of the CNRS
+benchmark.
+
+For the reader's convenience, we wish to note that Moltres, GeN-Foam
+\cite{fiorina_gen-foam_2015}, and the PoliMi OpenFOAM solver
+\cite{aufiero_development_2014} share several common characteristics as
+multiphysics solvers for reactor analysis. In terms of numerical methods, all
+three solvers implement general \gls{PDE} discretization methods for solving
+deterministic models on unstructured meshes and highly scalable solution
+algorithms, albeit \gls{FEM} for Moltres and \gls{FVM} for the OpenFOAM-based
+solvers. They also adopt open-source philosophies and inherit \texttt{C++}
+object-oriented programming structures from \gls{MOOSE}/OpenFOAM. Lastly, all
+three solvers benefit immensely from being a part of broader ecosystems of
+\gls{MOOSE}-based or OpenFOAM-based solvers which eliminates external data
+transfers and eases solver coupling.

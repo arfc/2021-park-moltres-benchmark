@@ -75,7 +75,7 @@ the multigroup neutron diffusion equations given by:
 \end{align}
 
 The delayed neutron precursor concentrations are
-governed by the following equation:
+governed in Moltres by the following equation:
 %
 \begin{align}
     \frac{\partial C_i}{\partial t} =& \beta_i \sum^G_{g'=1} \nu \Sigma^f_{g'}
@@ -92,7 +92,7 @@ governed by the following equation:
     &\text{ precursor group $i$,} \nonumber \\
     \vec{u} =& \text{ molten salt flow velocity vector,}
     \nonumber \\
-    D_{\text{P}} =& \text{ effective diffusion coefficient of the delayed}
+    D_{\text{P}} =& \text{ diffusion coefficient of the delayed}
     \nonumber \\
     &\text{ neutron precursors.} \nonumber
 \end{align}
@@ -101,8 +101,8 @@ The last two terms in Equation \ref{eq:dnp} represent the advection and
 diffusion terms, respectively, to model the movement of \gls{DNP} in
 liquid-fuel \glspl{MSR}.
 
-The governing equation for temperature is an advection-diffusion equation with
-a fission heat source term $Q_f$ given by:
+The governing equation for temperature in Moltres is an advection-diffusion
+equation with a fission heat source term $Q_f$ given by:
 %
 \begin{align}
     \rho c_{p} \frac{\partial T}{\partial t} =& - \rho c_p \vec{u}
@@ -145,19 +145,19 @@ given by:
     \nonumber
 \end{align}
 
-The velocity, temperature, and delayed neutron precursor
-variables are all susceptible to numerical node-to-node oscillations
-commonly observed when resolving advection-dominated transport using continuous
-Galerkin methods \cite{kuhlmann_lid-driven_2018}.
-\gls{MOOSE}'s \texttt{Navier-Stokes} module provides the
-\gls{SUPG} stabilization scheme \cite{brooks_streamline_1982} for the velocity
-and temperature variables to combat these oscillations. We
-refer readers to \cite{peterson_overview_2018} for details on the
-implementation of these methods in the \texttt{Navier-Stokes} module. On the
-other hand, for the delayed neutron precursor variables,
-we discretized them using
-discontinuous shape functions supported by \gls{MOOSE}'s discontinuous finite
-element solver to circumvent the numerical instability issue.
+The velocity, temperature, and delayed neutron precursor variables are all
+susceptible to numerical node-to-node oscillations near discontinuous boundary
+conditions commonly observed when resolving advection-dominated transport using
+continuous \gls{FEM} \cite{kuhlmann_lid-driven_2018}. MOOSE's
+\texttt{Navier-Stokes} module provides the \gls{SUPG} stabilization scheme
+\cite{brooks_streamline_1982} for the velocity and temperature variables to
+combat these oscillations. We refer readers to \cite{peterson_overview_2018}
+for details on the implementation of these methods in the
+\texttt{Navier-Stokes} module. For the delayed neutron precursor variables, we
+discretized them using discontinuous shape functions supported by \gls{MOOSE}'s
+\gls{DGFEM} solver. The cell-centered \gls{DGFEM} scheme does not produce the
+aforementioned numerical oscillations observed with node-centered continuous
+\gls{FEM}.
 
 \subsection[Modeling approach]{Modeling approach\footnote{The input files for
 all benchmark
@@ -166,16 +166,22 @@ cases are available on the Moltres GitHub repository at
 }} \label{sec:model}
 
 For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
-of 200$\times$200 elements. Thus, the dimensions of each mesh element are
-0.01m$\times$0.01m. We adopt the group constant data
-provided by Tiberga et al. \cite{tiberga_results_2020}. Next, we
+of 200$\times$200 elements (0.01m$\times$0.01m each). This was sufficient for
+mesh convergence as further mesh refinement by a factor of two produced a small
+0.1 pcm increase in the reactivity for Step 0.2. We adopted the group constant
+data provided by Tiberga et al. \cite{tiberga_results_2020}. Next, we
 discretized most of the relevant variables, i.e. neutron fluxes, velocity
 components, pressure, and temperature, using continuous, first-order, Lagrange
-shape functions. The only exception is the precursor concentration variables,
-which we discretized using zeroth-order monomial shape functions and solved
-using a \gls{DFEM}. We interpolated the resulting discontinuous,
+shape functions. The only exceptions are the precursor concentration variables,
+which we discretized using zeroth-order monomial shape functions for the 
+\gls{DGFEM} solver mentioned in Section 3.1. Zeroth-order \gls{DGFEM} shares
+the same order of accuracy as first-order \gls{FVM} because they share the same
+number of degrees of freedom. We interpolated the resulting discontinuous,
 cell-centered precursor values to obtain the nodal values for results
-analysis.
+analysis. Given the high Schmidt number ($2\times10^8$)
+\cite{tiberga_results_2020} of the salt, we neglected the precursor diffusion
+term in Equation \ref{eq:dnp} as it has no observable effect on the
+distribution.
 
 As mentioned in Section \ref{sec:description-of-moltres}, the
 \texttt{Navier-Stokes} and \texttt{Heat} \texttt{Conduction} modules from
@@ -200,8 +206,8 @@ using the inverse power method solver in \gls{MOOSE}. All other steps
 were performed using the Preconditioned Newton-Krylov solver
 \cite{gaston_physics-based_2015}. The coupled steady-state problems in
 Steps 1.2, 1.3, and 1.4 required segregated solvers for the neutronics
-and the thermal-hydraulics due to the unique problem setups involving a
-criticality search problem for the neutron multiplication factor
+and the thermal-hydraulics due to the unique problem setups involving
+neutronics criticality calculations for the neutron multiplication factor
 and a steady-state problem in thermal-hydraulics simultaneously.
 
 \begin{table}[tb]
