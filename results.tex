@@ -421,4 +421,42 @@ $\pm0.9^\circ$ for each phase shift value, Moltres accurately reproduces the
 correct trend with a lower average discrepancy (1.741\%) than the benchmark
 participants' average (2.176\%).
 
+\subsection{Computational performance}
+
+We ran all of the simulations on the Cray XE nodes of the Blue Waters
+supercomputer. Each XE node comprised of two AMD Opteron\texttrademark\ 6276
+processors, for a total of 32 CPU cores per node, rated at a maximum clock
+speed of 3.2 GHz. Lindsay et al. \cite{lindsay_introduction_2018} previously
+reported good scaling performance of Moltres on the Blue Waters system.
+
+While the simulations for Phases 0 and 1 were not computationally intensive,
+they required more memory than the 8GB to 16GB typically available in most
+consumer desktops. Table \ref{table:compute} shows the compute times required
+per perturbation cycle of the highest and lowest perturbation frequencies for
+Step 2.1 on 16 XE nodes. The compute times of all other simulations in Step 2.1
+fall within the range of the two values provided. The simulations with smaller
+perturbation frequencies required more iterations to converge in every timestep
+because the larger timestep sizes led to greater changes in the variables per
+timestep. The compute times are competitive compared with the 6h and 8h per
+cycle reported for the CNRS-$SP_1$ and CNRS-$SP_3$ models, respectively, on 20
+Intel\textsuperscript{\tiny\textregistered}
+Xeon\textsuperscript{\tiny\textregistered} Gold 5118 processors
+\cite{blanco_neutronic_2021,blanco_neutronic_2020}.
+
+\begin{table}[htb]
+	\caption{Compute times required for one perturbation cycle in Step 2.1 for
+	$f=0.0125$ Hz and $0.8$ Hz on 16 XE nodes (512 CPU cores).}
+	\centering
+	\small
+	\setlength\tabcolsep{1.5pt}
+	\begin{tabular}{l S S}
+		\toprule
+		$f$ [Hz] & 0.0125 & 0.8 \\
+		\midrule
+		Compute time [hours] & 6.29 & 0.98 \\
+		\bottomrule
+	\end{tabular}
+	\label{table:compute}
+\end{table}
+
 \FloatBarrier
