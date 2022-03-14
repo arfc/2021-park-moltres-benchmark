@@ -26,12 +26,17 @@ salt serves a dual role of generating fission heat and cooling the reactor
 core, leading to stronger coupling between heat generation and salt flow
 dynamics than traditional \glspl{LWR}.
 
-In recent years, several simulation tools have been developed for full-core
-modeling of fast-spectrum \glspl{MSR}. \textit{Tightly coupled} approaches,
-through segregated solvers, involve coupling separate single-physics neutronics
-and thermal-hydraulics software. For example, researchers at
-the \gls{TUD} coupled the 3D neutron diffusion software DALTON
-\cite{boer_validation_2010} and the \gls{CFD} software HEAT
+\gls{MSR} research in the early 2000s led to the development of several novel
+\gls{MSR} simulation tools such as Cinsf1D \cite{lecarpentier_neutronic_2003},
+SIMMER-III \cite{rineiski_kinetics_2005}, DYN1D-MSR
+\cite{krepel_dyn1d-msr_2005}, and DYN3D-MSR \cite{krepel_dyn3d-msr_2007}. These
+works influenced many subsequent developments contributing to the more advanced
+\gls{MSR} simulation tools available today.
+
+Some of these simulation tools employ \textit{tight coupling} to couple
+separate single-physics neutronics and thermal-hydraulics software. For
+example, researchers at the \gls{TUD} coupled the 3D neutron diffusion software
+DALTON \cite{boer_validation_2010} and the \gls{CFD} software HEAT
 \cite{de_zwaan_static_2007} to perform a safety analysis of the \gls{MSFR}
 \cite{fiorina_modelling_2014}. In a later effort from the same institute,
 Tiberga et al. \cite{tiberga_discontinuous_2019} coupled PHANTOM-$S_N$ and
@@ -192,7 +197,7 @@ Alternatively, users can subcycle multiple timesteps of one system during one
 timestep of the other system. This flexibility helps users handle differences
 in spatial and temporal scales of various
 time-dependent phenomena in reactors. In this study, we applied tight coupling
-to run criticality calculations coupled with pseudo transient calculations of
+to run criticality calculations coupled with pseudo-transient calculations of
 the buoyancy-driven salt flow for the steady-state cases in Phase 1 of the CNRS
 benchmark.
 

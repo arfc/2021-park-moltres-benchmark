@@ -36,7 +36,8 @@ user-provided SCALE/Serpent 2/OpenMC output data files and creates
 Moltres-compatible JSON or text files containing all required group constant
 data.
 
-Moltres solves for the neutron fluxes governed by
+We present the governing equations for the various physics models implemented
+in Moltres. Moltres solves for the neutron fluxes governed by
 the multigroup neutron diffusion equations given by:
 %
 \begin{align}
@@ -121,8 +122,8 @@ equation with a fission heat source term $Q_f$ given by:
     $g$.} \nonumber
 \end{align}
 
-Lastly, the governing equations for the incompressible Navier-Stokes flow are
-given by:
+Lastly, the governing equations for the incompressible Navier-Stokes flow in
+Moltres are given by:
 %
 \begin{align}
     \rho \frac{\partial \vec{u}}{\partial t} =&
@@ -167,16 +168,16 @@ cases are available on the Moltres GitHub repository at
 
 For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
 of 200$\times$200 elements (0.01m$\times$0.01m each). This was sufficient for
-mesh convergence as further mesh refinement to 0.005m$\times$0.005m produced a
+mesh convergence as further refinement to 0.005m$\times$0.005m produced a
 small 0.1 pcm increase in the reactivity for Step 0.2. We adopted the group
 constant data provided by Tiberga et al. \cite{tiberga_results_2020}. Next, we
 discretized most of the relevant variables, i.e. neutron fluxes, velocity
 components, pressure, and temperature, using continuous, first-order, Lagrange
 shape functions. The only exceptions are the precursor concentration variables,
-which we discretized using piecewise constant shape functions for the 
-\gls{DGFEM} solver mentioned in Section 3.1. In terms of accuracy, \gls{DGFEM}
-with piecewise constant discretization is similar to first-order \gls{FVM}
-because they share the same
+which we discretized using piecewise constant shape functions for the
+\gls{DGFEM} solver mentioned in Section 3.1. In terms of solver accuracy,
+\gls{DGFEM} with piecewise constant discretization is similar to first-order
+\gls{FVM} because they share the same
 number of degrees of freedom. We interpolated the resulting discontinuous,
 cell-centered precursor values to obtain the nodal values for results
 analysis. Given the high Schmidt number ($2\times10^8$)
@@ -208,7 +209,7 @@ steps were performed using the Preconditioned Newton-Krylov solver
 \cite{gaston_physics-based_2015}. The coupled steady-state problems in
 Steps 1.2, 1.3, and 1.4 required segregated solvers due to the unique problem
 setups involving time-independent neutronics criticality calculations
-and pseudo transient thermal-hydraulics calculations.
+and pseudo-transient thermal-hydraulics calculations.
 
 \begin{table}[tb]
     \caption{Timestep sizes used for the time-dependent cases in
