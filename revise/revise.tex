@@ -30,7 +30,7 @@
 %
 %
 %\documentclass[preprint,12pt]{elsarticle}
-\documentclass[answers,11pt]{exam}
+\documentclass[answers,12pt]{exam}
 
 % \documentclass[preprint,review,12pt]{elsarticle}
 
@@ -130,6 +130,7 @@
 Fast-Spectrum Molten Salt Reactors\\
         \large Response to Review Comments}
 \author{Sun Myung Park, Madicken Munk}
+\date{}
 
 % use optional labels to link authors explicitly to addresses:
 % \author[label1,label2]{<author name>}
@@ -244,7 +245,7 @@ analysis.''
         \question The paper is very well written. I have a few
         comments/remarks:
         \begin{solution}
-            Thank you for these comments. We appreciate your review which has
+            Thank you for your comments. We appreciate your review which has
             spurred clarifying improvements to the paper.
         \end{solution}
         %---------------------------------------------------------------------
@@ -357,15 +358,15 @@ analysis.''
         	clear here. We edited and expanded on this discussion to improve
         	clarity as follows:
         	
-        	``This paper presents benchmarking results from Moltres of the CNRS benchmark
-to verify Moltres' capabilities for modeling fast-spectrum \glspl{MSR}. Moltres
+        	``This paper presents results of the CNRS benchmark from Moltres
+to verify its capabilities for modeling fast-spectrum \glspl{MSR}. Moltres
 is an open-source multiphysics simulation software for advanced reactors.
 Making Moltres open-source promotes quality and participation through
 transparency and ease of peer review. The source code
 \cite{lindsay_moltres_2017} is available on GitHub \cite{github_build_2017}.
 Moltres leverages \texttt{git} for version control, and integrated testing to
 protect existing capabilities while concurrently supporting continued code
-development. Moltres depends on the MOOSE finite element framework for
+development. Moltres depends on the \gls{MOOSE} finite element framework for
 its meshing and parallel, nonlinear Newton-Krylov solver capabilities.
 Therefore Moltres has access to \textit{fully coupled} methods with implicit
 time-stepping. \textit{Full coupling} in the context of numerical methods
@@ -382,10 +383,11 @@ those systems, thereby benefitting from solver stability and convergence
 over fewer iterations. These two systems can then be tightly coupled via outer
 fixed-point iterations to handle the relatively weak (but still objectively
 strong) coupling between the neutronics and thermal-hydraulics. Other than
-potentially lower compute times, this segregated approach allows us to use
-different mesh resolutions for the neutronics and thermal-hydraulics solvers
-or subcycle multiple timesteps of one system during one timestep of the other
-system to handle differences in spatial and temporal scales for various
+potentially lower compute times, this segregated approach allows users to adopt
+different mesh resolutions for the neutronics and thermal-hydraulics solvers.
+Alternatively, users can subcycle multiple timesteps of one system during one
+timestep of the other system. This flexibility helps users handle different
+spatial and temporal scales of various
 time-dependent phenomena in reactors. In this study, we applied tight coupling
 to run criticality calculations coupled with pseudo-transient calculations of
 the buoyancy-driven salt flow for the steady-state cases in Phase 1 of the CNRS
@@ -477,8 +479,8 @@ algorithms, though Moltres uses \gls{FEM} and OpenFOAM uses \gls{FVM}. They
 also adopt open-source philosophies and inherit \texttt{C++}
 object-oriented programming structures. Lastly, all
 three solvers benefit immensely from being a part of broader ecosystems of
-compatible tools which eliminates external data
-transfers and facilitates solver coupling.''
+compatible tools, eliminating external data
+transfers and facilitating solver coupling.''
         \end{solution}
 
         %---------------------------------------------------------------------
@@ -538,15 +540,15 @@ convergence in Monte Carlo neutronics calculations.''
         	vs operator-splitting approaches, and instead bring more focus on
         	the flexibility that Moltres affords with access to both methods:
         	
-        	``This paper presents benchmarking results from Moltres of the CNRS benchmark
-to verify Moltres' capabilities for modeling fast-spectrum \glspl{MSR}. Moltres
+        	``This paper presents results of the CNRS benchmark from Moltres
+to verify its capabilities for modeling fast-spectrum \glspl{MSR}. Moltres
 is an open-source multiphysics simulation software for advanced reactors.
 Making Moltres open-source promotes quality and participation through
 transparency and ease of peer review. The source code
 \cite{lindsay_moltres_2017} is available on GitHub \cite{github_build_2017}.
 Moltres leverages \texttt{git} for version control, and integrated testing to
 protect existing capabilities while concurrently supporting continued code
-development. Moltres depends on the MOOSE finite element framework for
+development. Moltres depends on the \gls{MOOSE} finite element framework for
 its meshing and parallel, nonlinear Newton-Krylov solver capabilities.
 Therefore Moltres has access to \textit{fully coupled} methods with implicit
 time-stepping. \textit{Full coupling} in the context of numerical methods
@@ -563,10 +565,11 @@ those systems, thereby benefitting from solver stability and convergence
 over fewer iterations. These two systems can then be tightly coupled via outer
 fixed-point iterations to handle the relatively weak (but still objectively
 strong) coupling between the neutronics and thermal-hydraulics. Other than
-potentially lower compute times, this segregated approach allows us to use
-different mesh resolutions for the neutronics and thermal-hydraulics solvers
-or subcycle multiple timesteps of one system during one timestep of the other
-system to handle differences in spatial and temporal scales for various
+potentially lower compute times, this segregated approach allows users to adopt
+different mesh resolutions for the neutronics and thermal-hydraulics solvers.
+Alternatively, users can subcycle multiple timesteps of one system during one
+timestep of the other system. This flexibility helps users handle different
+spatial and temporal scales of various
 time-dependent phenomena in reactors. In this study, we applied tight coupling
 to run criticality calculations coupled with pseudo-transient calculations of
 the buoyancy-driven salt flow for the steady-state cases in Phase 1 of the CNRS
@@ -591,17 +594,17 @@ frequent mentioning of the fully-coupled option in the paper.
         	Phase 2 calculations through the following edits:
         	
         	``We ran all of the simulations on Cray XE nodes on the Blue Waters
-supercomputer. Each XE node is comprised of two AMD Opteron\texttrademark\ 6276
+supercomputer. Each XE node comprises two AMD Opteron\texttrademark\ 6276
 processors, for a total of 32 CPU cores per node, rated at a maximum clock
 speed of 3.2 GHz. Lindsay et al. \cite{lindsay_introduction_2018} previously
 reported good scaling performance of Moltres on the Blue Waters system.
 
 While the simulations for Phases 0 and 1 were not computationally intensive,
 some required more memory than the 8GB to 16GB typically available on most
-personal computers. Table 9 shows the compute times required
+personal computers. Table \ref{table:compute} shows the compute times required
 per perturbation cycle of the highest and lowest perturbation frequencies for
 Step 2.1 on 16 XE nodes. The compute times of all other simulations in Step 2.1
-fall between 0.98h and 6.29h. The simulations with smaller perturbation
+fall between 0.98 and 6.29 hours. The simulations with smaller perturbation
 frequencies required longer compute times because the larger timestep sizes led
 to greater changes in the variables per timestep. The compute times are
 comparable to the compute times for the CNRS-$SP_1$ and CNRS-$SP_3$ models on
@@ -627,7 +630,7 @@ Xeon\textsuperscript{\tiny\textregistered} Gold 5118 processors reported in
 In my understanding, stability problems result from the pressure-velocity coupling, and should not affect precursors. Can the authors confirm that  they observe stability problems on the precursors equations when not using discontinuous finite elements?
 
         \begin{solution}
-        	Thank you for pointing out this point of confusion. By ``numerical
+        	Thank you for identifying this point of confusion. By ``numerical
         	instability'', we are referring to node-to-node oscillations in the
         	velocity, temperature, and precursors near discontinuous
         	boundary conditions (such as the top-left corner where the zero and
