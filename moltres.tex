@@ -1,6 +1,6 @@
 \section{Moltres} \label{sec:moltres}
 
-In this section we describe Moltres \cite{lindsay_introduction_2018}, the
+In this section, we describe Moltres \cite{lindsay_introduction_2018}, the
 multiphysics reactor simulation tool, and the specific modeling approach for
 simulating the CNRS Benchmark cases in Moltres. Much of Moltres' development
 focuses on meeting the needs of \gls{MSR} multiphysics.
@@ -20,7 +20,7 @@ Previously, Lindsay et al. \cite{lindsay_introduction_2018}
 demonstrated Moltres' \gls{MSR} neutronics modeling capabilities with 1D salt
 flow in 2D-axisymmetric and 3D models of the \gls{MSRE}. The neutron flux and
 temperature distributions agreed qualitatively with legacy
-\gls{MSRE} data albeit with some minor quantitative discrepancies due to
+\gls{MSRE} data, albeit with some minor quantitative discrepancies due to
 simplifications and assumptions in the reactor geometry. Moltres has
 since undergone further development to support 1) the looping of \gls{DNP}
 drift back into the reactor core, 2) coupling the aforementioned \gls{DNP}
@@ -30,13 +30,14 @@ and 3) a decay heat model to simulate decay heat from fission products.
 To perform neutronics calculations, Moltres requires homogenized group constant
 data from dedicated high-fidelity neutronics software such as the NEWT module
 in SCALE \cite{dehart_reactor_2011}, Serpent 2 \cite{leppanen_serpent_2014}, or
-OpenMC \cite{romano_openmc:_2015}. Users
-can run a Python script in Moltres' Github repository which automatically reads
+OpenMC \cite{romano_openmc:_2015}. Users can run a Python script in Moltres'
+Github repository, which automatically reads
 user-provided SCALE/Serpent 2/OpenMC output data files and creates
 Moltres-compatible JSON or text files containing all required group constant
 data.
 
-Moltres solves for the neutron fluxes governed by
+We present the governing equations for the various physics models implemented
+in Moltres. Moltres solves for the neutron fluxes governed by
 the multigroup neutron diffusion equations given by:
 %
 \begin{align}
@@ -121,8 +122,8 @@ equation with a fission heat source term $Q_f$ given by:
     $g$.} \nonumber
 \end{align}
 
-Lastly, the governing equations for the incompressible Navier-Stokes flow are
-given by:
+Lastly, the governing equations for the incompressible Navier-Stokes flow in
+Moltres are given by:
 %
 \begin{align}
     \rho \frac{\partial \vec{u}}{\partial t} =&
@@ -166,16 +167,18 @@ cases are available on the Moltres GitHub repository at
 }} \label{sec:model}
 
 For this work, we ran the benchmark cases on a uniformly-spaced mesh consisting
-of 200$\times$200 elements (0.01m$\times$0.01m each). This was sufficient for
-mesh convergence as further mesh refinement by a factor of two produced a small
-0.1 pcm increase in the reactivity for Step 0.2. We adopted the group constant
-data provided by Tiberga et al. \cite{tiberga_results_2020}. Next, we
-discretized most of the relevant variables, i.e. neutron fluxes, velocity
-components, pressure, and temperature, using continuous, first-order, Lagrange
+of 200$\times$200 elements (0.01m$\times$0.01m each). This mesh resolution was
+sufficient for
+mesh convergence as further refinement to 0.005m$\times$0.005m produced a
+small 0.1 pcm increase in the reactivity for Step 0.2. We adopted the group
+constant data provided by Tiberga et al. \cite{tiberga_results_2020}. Next, we
+discretized most of the relevant variables, i.e., neutron fluxes, velocity
+components, pressure, and temperature, using continuous, first-order Lagrange
 shape functions. The only exceptions are the precursor concentration variables,
-which we discretized using zeroth-order monomial shape functions for the 
-\gls{DGFEM} solver mentioned in Section 3.1. Zeroth-order \gls{DGFEM} shares
-the same order of accuracy as first-order \gls{FVM} because they share the same
+which we discretized using piecewise constant shape functions for the
+\gls{DGFEM} solver mentioned in Section 3.1. In terms of solver accuracy,
+\gls{DGFEM} with piecewise constant discretization is similar to first-order
+\gls{FVM} because they share the same
 number of degrees of freedom. We interpolated the resulting discontinuous,
 cell-centered precursor values to obtain the nodal values for results
 analysis. Given the high Schmidt number ($2\times10^8$)
@@ -201,14 +204,13 @@ cheaper and more convenient to work with than implementing higher-order
 velocity discretizations for stability without \gls{PSPG}
 \cite{chapelle_inf-sup_1993}.
 
-We performed all eigenvalue calculations in Steps 0.2, 1.1, 1.2, 1.3, and 1.4
-using the inverse power method solver in \gls{MOOSE}. All other steps
-were performed using the Preconditioned Newton-Krylov solver
-\cite{gaston_physics-based_2015}. The coupled steady-state problems in
-Steps 1.2, 1.3, and 1.4 required segregated solvers for the neutronics
-and the thermal-hydraulics due to the unique problem setups involving
-neutronics criticality calculations for the neutron multiplication factor
-and a steady-state problem in thermal-hydraulics simultaneously.
+We performed all neutronics criticality calculations in Steps 0.2, 1.1, 1.2,
+1.3, and 1.4 using the inverse power method solver in \gls{MOOSE} and other
+calculations in Steps 0.1, 0.3, and 2.1 using the Preconditioned Newton-Krylov
+solver \cite{gaston_physics-based_2015}. The coupled steady-state problems in
+Steps 1.2, 1.3, and 1.4 required segregated solvers due to the unique problem
+setups involving time-independent neutronics criticality calculations
+and pseudo-transient thermal-hydraulics calculations.
 
 \begin{table}[tb]
     \caption{Timestep sizes used for the time-dependent cases in
@@ -228,8 +230,8 @@ and a steady-state problem in thermal-hydraulics simultaneously.
 
 For the time-dependent cases in Step 2.1, we employed fully coupled solves with
 a second-order implicit Backward Differential Formula (BDF2) time-stepping
-scheme. For each driving frequency in the heat transfer coefficient, we set the
-timestep sizes to 1/200th of the perturbation period. Table
+scheme. We set the timestep sizes to 1/200th of the perturbation period for
+each driving frequency in the heat transfer coefficient. Table
 \ref{table:timestep} shows the timestep sizes. We assumed the
 systems reached asymptotic behavior when the magnitudes of neighboring power
 peaks differed by less than 0.001\% for at least ten wavelengths. Under this
@@ -244,8 +246,8 @@ $S_N$ discrete ordinates neutron transport models, respectively. Based on the
 solvers and methods of solution, Moltres is most similar to the
 PHANTOM-$S_N$ + DGFlows \cite{tiberga_discontinuous_2019} multiphysics package
 from \gls{TUD} with the $S_2$ neutron transport model. Participants from
-\gls{CNRS} and \gls{PSI}
-employed non-uniform meshes which were refined near the boundaries while we and
+\gls{CNRS} and \gls{PSI} employed non-uniform meshes with smaller mesh elements
+near the boundaries, while we and
 the participants from \gls{PoliMi} and \gls{TUD} employed uniform meshes.
 
 \FloatBarrier

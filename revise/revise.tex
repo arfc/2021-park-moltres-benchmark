@@ -30,7 +30,7 @@
 %
 %
 %\documentclass[preprint,12pt]{elsarticle}
-\documentclass[answers,11pt]{exam}
+\documentclass[answers,12pt]{exam}
 
 % \documentclass[preprint,review,12pt]{elsarticle}
 
@@ -130,6 +130,7 @@
 Fast-Spectrum Molten Salt Reactors\\
         \large Response to Review Comments}
 \author{Sun Myung Park, Madicken Munk}
+\date{}
 
 % use optional labels to link authors explicitly to addresses:
 % \author[label1,label2]{<author name>}
@@ -161,14 +162,19 @@ paper.
         comments are listed below:
         
         \begin{solution}
-            Thank you for your kind comments. Your comments have helped us
-            further improve the clarity of our paper.
+            We appreciate the detailed commentary that follows, which helped
+            improve the paper.
         \end{solution}
 
         %---------------------------------------------------------------------
         \question What is the calculation method of effective diffusion
         coefficient of the delayed neutron precursors Dp shown in Equation
         (10)? Please give more descriptions.
+        
+        Have you ever assessed how much
+        influence diffusion term in
+        delayed neutron precursors Equation on the distribution of delayed
+        neutron precursors?
 
         \begin{solution}
         	Moltres does not provide any specific calculation methods for
@@ -177,13 +183,7 @@ paper.
         	we expect delayed neutron precursor diffusion to arise mainly from
         	turbulent mixing in the salt. Given that the name may be confusing
         	for readers, we changed it to ``diffusion coefficient''.
-        \end{solution}
-
-        %---------------------------------------------------------------------
-        \question Have you ever assessed how much influence diffusion term in
-        delayed neutron precursors Equation on the distribution of delayed
-        neutron precursors?
-        \begin{solution}
+        	
         	Yes, our assessment showed that precursor diffusion produces no
         	observable change in the CNRS benchmark cases. This is expected as
         	the Schmidt number is very high ($2\times10^8$), i.e. advective
@@ -205,9 +205,9 @@ term in Equation 10 as it has no observable effect on the distribution.''
         	
         	``For this work, we ran the benchmark cases on a uniformly-spaced
         	mesh consisting of 200$\times$200 elements (0.01m$\times$0.01m
-        	each). This was sufficient for mesh convergence as further mesh
-        	refinement by a factor of two produced a small 0.1 pcm increase in
-        	the reactivity for Step 0.2.''
+        	each). This was sufficient for mesh convergence as further
+        	refinement to 0.005m$\times$0.005m produced a small 0.1 pcm
+        	increase in the reactivity for Step 0.2.''
         \end{solution}
 
         %---------------------------------------------------------------------
@@ -221,11 +221,21 @@ term in Equation 10 as it has no observable effect on the distribution.''
         	paragraph of Section 3.1. In conjunction with addressing comments
         	from Reviewers 2 and 3, we edited the last paragraph in Section 3.1
         	to improve clarity on our motivations for using DGFEM for the
-        	precursors. Please refer to our reply to comment (9) for those
-        	edits. We also edited the sentence highlighted in this comment
+        	precursors as follows:
+        	
+        	``The velocity, temperature, and delayed neutron precursor variables are all susceptible to numerical node-to-node oscillations near discontinuous boundary conditions commonly observed when resolving advection-dominated transport using continuous FEM \cite{kuhlmann_lid-driven_2018}. MOOSE's \texttt{Navier-Stokes} module provides the SUPG stabilization scheme \cite{brooks_streamline_1982} for the velocity and temperature variables to combat these oscillations. We refer readers to \cite{peterson_overview_2018} for details on the implementation of these methods in the \texttt{Navier-Stokes} module. For the delayed neutron precursor variables, we discretized them using discontinuous shape functions supported by MOOSE's DGFEM solver. The cell-centered DGFEM scheme does not produce the aforementioned numerical oscillations observed with node-centered continuous FEM.''        	
+        	
+        	We also edited the sentence highlighted in this comment
         	as follows:
         	
-        	``The only exceptions are the precursor concentration variables, which we discretized using zeroth-order monomial shape functions for the DGFEM solver mentioned in Section 3.1. Zeroth-order DGFEM shares the same order of accuracy as first-order FVM because they share the same number of degrees of freedom. We interpolated the resulting discontinuous, cell-centered precursor values to obtain the nodal values for the results analysis.''
+        	``The only exceptions are the precursor concentration variables,
+which we discretized using piecewise constant shape functions for the 
+\gls{DGFEM} solver mentioned in Section 3.1. In terms of accuracy, \gls{DGFEM}
+with piecewise constant discretization is similar to first-order \gls{FVM}
+because they share the same
+number of degrees of freedom. We interpolated the resulting discontinuous,
+cell-centered precursor values to obtain the nodal values for results
+analysis.''
         \end{solution}
 
         %---------------------------------------------------------------------
@@ -235,7 +245,7 @@ term in Equation 10 as it has no observable effect on the distribution.''
         \question The paper is very well written. I have a few
         comments/remarks:
         \begin{solution}
-            Thank you for these comments. We appreciate your review which has
+            Thank you for your comments. We appreciate your review which has
             spurred clarifying improvements to the paper.
         \end{solution}
         %---------------------------------------------------------------------
@@ -263,7 +273,11 @@ term in Equation 10 as it has no observable effect on the distribution.''
         	is a functionality that we hope
         	to introduce in the near future. For now, we have clarified our
         	statements in our paper by indicating that the governing equations
-        	represent what we currently have implemented in Moltres.
+        	represent what we currently have implemented in Moltres by adding
+        	the following text to Section 3.1:
+        	
+        	``We present the governing equations for the various physics models
+        	implemented in Moltres.''
         \end{solution}
 
         %---------------------------------------------------------------------
@@ -272,8 +286,8 @@ term in Equation 10 as it has no observable effect on the distribution.''
         avoiding negativity? What is the formal order of
         accuracy of the total scheme due to this?
         \begin{solution}
-        	Thank you for identifying this point of confusion. As mentioned in
-        	our reply to Reviewer 1, our motivation for using DGFEM
+        	Thank you for identifying this point of confusion.
+        	Our motivation for using DGFEM
         	arose from the numerical oscillations described in the last
         	paragraph of Section 3.1. We made the following edits to that
         	paragraph for clarity:
@@ -290,8 +304,17 @@ term in Equation 10 as it has no observable effect on the distribution.''
             (e.g. a first-order n$\times$n mesh has n$^2$ cells and
             n$^2+2$n$-1$ nodes).
             Therefore, all variables (including the precursor concentrations)
-            are first-order accurate. Please refer to our reply to comment (5)
-            for the edits which address the clarity of this section.
+            are first-order accurate. We made the following changes in the
+            relevant text to highlight this:
+            
+            ``The only exceptions are the precursor concentration variables,
+which we discretized using piecewise constant shape functions for the 
+\gls{DGFEM} solver mentioned in Section 3.1. In terms of solver accuracy,
+\gls{DGFEM} with piecewise constant discretization is similar to first-order
+\gls{FVM} because they share the same
+number of degrees of freedom. We interpolated the resulting discontinuous,
+cell-centered precursor values to obtain the nodal values for results
+analysis.''
         \end{solution}
 
         %---------------------------------------------------------------------
@@ -335,15 +358,15 @@ term in Equation 10 as it has no observable effect on the distribution.''
         	clear here. We edited and expanded on this discussion to improve
         	clarity as follows:
         	
-        	``This paper presents benchmarking results from Moltres of the CNRS benchmark
-to verify Moltres' capabilities for modeling fast-spectrum \glspl{MSR}. Moltres
+        	``This paper presents results of the CNRS benchmark from Moltres
+to verify its capabilities for modeling fast-spectrum \glspl{MSR}. Moltres
 is an open-source multiphysics simulation software for advanced reactors.
 Making Moltres open-source promotes quality and participation through
 transparency and ease of peer review. The source code
 \cite{lindsay_moltres_2017} is available on GitHub \cite{github_build_2017}.
 Moltres leverages \texttt{git} for version control, and integrated testing to
 protect existing capabilities while concurrently supporting continued code
-development. Moltres depends on the MOOSE finite element framework for
+development. Moltres depends on the \gls{MOOSE} finite element framework for
 its meshing and parallel, nonlinear Newton-Krylov solver capabilities.
 Therefore Moltres has access to \textit{fully coupled} methods with implicit
 time-stepping. \textit{Full coupling} in the context of numerical methods
@@ -360,12 +383,13 @@ those systems, thereby benefitting from solver stability and convergence
 over fewer iterations. These two systems can then be tightly coupled via outer
 fixed-point iterations to handle the relatively weak (but still objectively
 strong) coupling between the neutronics and thermal-hydraulics. Other than
-potentially lower compute times, this segregated approach allows us to use
-different mesh resolutions for the neutronics and thermal-hydraulics solvers
-or subcycle multiple timesteps of one system during one timestep of the other
-system to handle differences in spatial and temporal scales for various
+potentially lower compute times, this segregated approach allows users to adopt
+different mesh resolutions for the neutronics and thermal-hydraulics solvers.
+Alternatively, users can subcycle multiple timesteps of one system during one
+timestep of the other system. This flexibility helps users handle different
+spatial and temporal scales of various
 time-dependent phenomena in reactors. In this study, we applied tight coupling
-to run criticality calculations coupled with pseudo transient calculations of
+to run criticality calculations coupled with pseudo-transient calculations of
 the buoyancy-driven salt flow for the steady-state cases in Phase 1 of the CNRS
 benchmark.''
         \end{solution}
@@ -377,7 +401,7 @@ benchmark.''
         \question This is a well-written and interesting paper that presents in a structured and concise way the Moltres solver for MSR analysis and its verification against the CNRS benchmark. I suggest to accept the paper after addressing a few minor points.
         \begin{solution}
             Thank you for your kind comments. We appreciate your thorough
-            review and suggestions.
+            review and suggestions which allowed us to improve this manuscript.
         \end{solution}
         %---------------------------------------------------------------------
         \question The authors should mention older (early 2000s) but important
@@ -385,16 +409,22 @@ benchmark.''
         the development of tools like DYN1D-MSR, DYN3D-MSR, SIMMER-III,
         Cinsf1D. This is seminal work that influenced many subsequent developments.
         \begin{solution}
-        	We strongly agree about and are appreciative of the significance of
+        	We strongly agree, and are appreciative of the significance of
         	the earlier MSR research work
         	which lay the foundations for the MSR simulation tools we have
-        	today. However, we chose to focus our literature review on the
-        	more recent MSR simulation tools with explicit flow modeling so as
-        	to give readers a
-        	perspective on the options that are available today. In addition,
-        	our group's 2018 publication on Moltres
-        	\cite{lindsay_introduction_2018} referenced and credited some of
-        	the earlier MSR work.
+        	today. We added the following paragraph near the start of the
+        	Introduction section:
+        	
+        	``\gls{MSR} research in the early 2000s led to the development of several novel
+\gls{MSR} simulation tools such as Cinsf1D \cite{lecarpentier_neutronic_2003},
+SIMMER-III \cite{rineiski_kinetics_2005}, DYN1D-MSR
+\cite{krepel_dyn1d-msr_2005}, and DYN3D-MSR \cite{krepel_dyn3d-msr_2007}. These
+works influenced many subsequent developments contributing to the more advanced
+\gls{MSR} simulation tools available today.
+
+Some of these simulation tools employ \textit{tight coupling} to couple
+separate single-physics neutronics and thermal-hydraulics software. For
+example, researchers at the \gls{TUD} ...''
         \end{solution}
 
         %---------------------------------------------------------------------
@@ -416,25 +446,25 @@ benchmark.''
         	incorporate more information on the PoliMi/GeN-Foam solvers as
         	follows:
         	
-        	``Other European institutes have dedicated significant development work towards
-OpenFOAM-based MSR multiphysics solvers. Aufiero et al.
+        	``Other institutes have dedicated significant development work towards
+OpenFOAM-based \gls{MSR} simulation tools. Aufiero et al.
 \cite{aufiero_development_2014} first introduced an OpenFOAM model developed
-at PoliMi. Their model implemented a neutron diffusion model and a
-RANS-based turbulence model with incompressible flow to demonstrate 2D
-and 3D transient analyses of the MSFR. Later advancements in the
-PoliMi solver include a fuel compressibility model and a helium bubble
-tracking model to study fuel compressibility effects
+at \gls{PoliMi}. Their model implemented a neutron diffusion model and a
+\gls{RANS}-based turbulence model with incompressible flow to demonstrate 2D
+and 3D transient analyses of the \gls{MSFR}. Later advancements in the
+\gls{PoliMi} solver include a fuel compressibility model with helium bubble
+tracking to study fuel compressibility effects
 \cite{cervi_development_2019} and a $SP_3$ neutron transport
 model for improved neutronics calculations \cite{cervi_development_2019-1} in
-the MSFR. GeN-Foam is another OpenFOAM-based solver developed by Fiorina
+the \gls{MSFR}. GeN-Foam is another OpenFOAM-based tool developed by Fiorina
 et al. \cite{fiorina_gen-foam_2015} as a general reactor multiphysics solver
-applicable to MSRs and other reactor types. GeN-Foam features neutron
+applicable to \glspl{MSR} and other reactor types. GeN-Foam features neutron
 diffusion, $SP_3$, and $S_N$ neutronics models 
 \cite{fiorina_development_2016,fiorina_gen-foam_2015,fiorina_detailed_2019},
 and thermo-mechanical modeling for reactor expansion effects. Using GeN-Foam,
 Altahhan et al. \cite{altahhan_preliminary_2020} developed and optimized a
-liquid-fuel MSR design while Shi \& Fratoni \cite{shi_gen-foam_2021}
-benchmarked precursor drift effects in their MSRE model.''
+liquid-fuel \gls{MSR} design while Shi \& Fratoni \cite{shi_gen-foam_2021}
+benchmarked precursor drift effects in an \gls{MSRE} model.''
             
             We also added a paragraph at the end of the introduction section to
             highlight the similarities and differences:
@@ -443,14 +473,14 @@ benchmarked precursor drift effects in their MSRE model.''
 \cite{fiorina_gen-foam_2015}, and the PoliMi OpenFOAM solver
 \cite{aufiero_development_2014} share several common characteristics as
 multiphysics solvers for reactor analysis. In terms of numerical methods, all
-three solvers implement general PDE discretization methods for solving
+three solvers implement general \gls{PDE} discretization methods for solving
 deterministic models on unstructured meshes and highly scalable solution
-algorithms, albeit FEM for Moltres and FVM for the OpenFOAM-based
-solvers. They also adopt open-source philosophies and inherit \texttt{C++}
-object-oriented programming structures from MOOSE/OpenFOAM. Lastly, all
+algorithms, though Moltres uses \gls{FEM} and OpenFOAM uses \gls{FVM}. They
+also adopt open-source philosophies and inherit \texttt{C++}
+object-oriented programming structures. Lastly, all
 three solvers benefit immensely from being a part of broader ecosystems of
-MOOSE-based or OpenFOAM-based solvers which eliminates external data
-transfers and eases solver coupling.''
+compatible tools, eliminating external data
+transfers and facilitating solver coupling.''
         \end{solution}
 
         %---------------------------------------------------------------------
@@ -464,14 +494,15 @@ transfers and eases solver coupling.''
         	
         	``With modern advancements in computing hardware and growing access to
 high-performance computing systems, others have developed multiphysics solvers
-by coupling the CFD software OpenFOAM
+by coupling the \gls{CFD} software OpenFOAM
 \cite{the_openfoam_foundation_ltd_openfoam_2021} with the Monte Carlo particle
 transport software
 Serpent \cite{leppanen_serpent_2014}, thus achieving high-fidelity neutronics
-calculations in transient reactor analyses. Serpent has a multiphysics
-interface which supports coupling with multiphysics software such as OpenFOAM
-\cite{leppanen_development_2013}. Laureau et al. \cite{laureau_transient_2017}
-separately developed an innovative technique called the
+calculations in transient reactor analyses.
+To that end, Serpent has a multiphysics interface supporting coupling
+with other physics software \cite{leppanen_development_2013}.
+Laureau et al. \cite{laureau_transient_2017}
+separately developed another technique called the
 \gls{TFM} method through the introduction of additional time-dependence
 operators to conventional fission matrices typically used to accelerate source
 convergence in Monte Carlo neutronics calculations.''
@@ -486,29 +517,63 @@ convergence in Monte Carlo neutronics calculations.''
         any OpenFOAM solvers.
         \begin{solution}
         	Thank you for bringing this work to our attention. We expanded the
-        	OpenFOAM description in response to your previous comment (15). In
+        	OpenFOAM descriptions in response to your previous comment. In
         	that process, we decided to exclude the references to fuel
         	performance codes as they were not relevant for liquid-fuel MSRs.
-        	We will keep this reference in mind for future publications where
-        	relevant.
+        	We will keep this reference in mind for future publications.
         \end{solution}
 
         %---------------------------------------------------------------------
         \question Throughout the paper, the authors stress the possibility of fully coupled simulations. Although this strategy has been strongly advocated in recent years by a part of our community, operator-splitting is often proposed to overcome the limitations of fully-coupled approaches (difficult preconditioning, necessity for solving for all physics at each time step, etc.).  I would suggest to adopt a more neutral wording when describing this possibility, since operator-splitting often turns out to be preferable in practical applications, notably when CFD is involved.
 
         \begin{solution}
-        	Thank you for these comments. I agree with your view that
+        	Thank you for these comments. We agree with your view that
         	operator-splitting is better in many use cases, especially for
         	practical applications which involve multiphysics on different
         	spatial and time scales. In fact, as mentioned in Section 3.2,
         	our multiphysics simulations in
         	Phase 1 of the benchmark used segregated solvers to get the
         	thermal-hydraulics solution via pseudo-transient calculations while
-        	separately performing the neutronics criticality calculations. I've
-        	adopted edits to reflect a more neutral stance on full coupling
+        	separately performing the neutronics criticality calculations. We
+        	adopted the following edits to reflect a more neutral stance on
+        	full coupling
         	vs operator-splitting approaches, and instead bring more focus on
-        	the flexibility that Moltres affords with access to both methods.
-        	Please refer the edits in our reply to comment (12).
+        	the flexibility that Moltres affords with access to both methods:
+        	
+        	``This paper presents results of the CNRS benchmark from Moltres
+to verify its capabilities for modeling fast-spectrum \glspl{MSR}. Moltres
+is an open-source multiphysics simulation software for advanced reactors.
+Making Moltres open-source promotes quality and participation through
+transparency and ease of peer review. The source code
+\cite{lindsay_moltres_2017} is available on GitHub \cite{github_build_2017}.
+Moltres leverages \texttt{git} for version control, and integrated testing to
+protect existing capabilities while concurrently supporting continued code
+development. Moltres depends on the \gls{MOOSE} finite element framework for
+its meshing and parallel, nonlinear Newton-Krylov solver capabilities.
+Therefore Moltres has access to \textit{fully coupled} methods with implicit
+time-stepping. \textit{Full coupling} in the context of numerical methods
+refers to solving multiple equations simultaneously in a larger system of
+equations. In this study, we applied full coupling for the transient
+cases in Phase 2 of the CNRS benchmark.
+
+Users also have the flexibility of separating the equations through
+\textit{tight coupling} in which coupling is achieved through
+fixed-point iterations. For instance, users can employ full coupling to solve
+the multigroup neutron diffusion equations and the Navier-Stokes equations as
+two large, separate systems of equations to handle the strong coupling within
+those systems, thereby benefitting from solver stability and convergence
+over fewer iterations. These two systems can then be tightly coupled via outer
+fixed-point iterations to handle the relatively weak (but still objectively
+strong) coupling between the neutronics and thermal-hydraulics. Other than
+potentially lower compute times, this segregated approach allows users to adopt
+different mesh resolutions for the neutronics and thermal-hydraulics solvers.
+Alternatively, users can subcycle multiple timesteps of one system during one
+timestep of the other system. This flexibility helps users handle different
+spatial and temporal scales of various
+time-dependent phenomena in reactors. In this study, we applied tight coupling
+to run criticality calculations coupled with pseudo-transient calculations of
+the buoyancy-driven salt flow for the steady-state cases in Phase 1 of the CNRS
+benchmark.''
         \end{solution}
         
         %---------------------------------------------------------------------
@@ -520,51 +585,44 @@ frequent mentioning of the fully-coupled option in the paper.
             MSR community. By comparing these
             two methods for various MSR-related simulations, we could provide
             general recommendations on which methods to employ for each
-            use case.
-            Unfortunately, we're currently unable to rerun the simulations
-        	because our group's heavy computing resource, the Blue Waters
-        	supercomputer, went permanently offline at the end of 2021.
-        	However, we plan to explore this suggestion once we can secure more
-        	computing resources.
+            use case. However, we feel that a comparison of the two approaches
+            is out of the scope of this benchmark paper. We will look into
+            this suggestion for a future work.
         	
-        	As an alternative, we provided the compute time of our
+        	Because timing and compute needs are important in choosing which
+        	methods to use, we provided the compute time of our
         	Phase 2 calculations through the following edits:
         	
-        	``We ran all of the simulations on the Cray XE nodes of the Blue Waters
-supercomputer. Each XE node comprised of two AMD Opteron\texttrademark\ 6276
+        	``We ran all of the simulations on Cray XE nodes on the Blue Waters
+supercomputer. Each XE node comprises two AMD Opteron\texttrademark\ 6276
 processors, for a total of 32 CPU cores per node, rated at a maximum clock
 speed of 3.2 GHz. Lindsay et al. \cite{lindsay_introduction_2018} previously
 reported good scaling performance of Moltres on the Blue Waters system.
 
 While the simulations for Phases 0 and 1 were not computationally intensive,
-they required more memory than the 8GB to 16GB typically available in most
-consumer desktops. Table \ref{table:compute} shows the compute times required
+some required more memory than the 8GB to 16GB typically available on most
+personal computers. Table \ref{table:compute} shows the compute times required
 per perturbation cycle of the highest and lowest perturbation frequencies for
 Step 2.1 on 16 XE nodes. The compute times of all other simulations in Step 2.1
-fall within the range of the two values provided. The simulations with smaller
-perturbation frequencies required more iterations to converge in every timestep
-because the larger timestep sizes led to greater changes in the variables per
-timestep. The compute times are competitive compared with the 6h and 8h per
-cycle reported for the CNRS-$SP_1$ and CNRS-$SP_3$ models, respectively, on 20
-Intel\textsuperscript{\tiny\textregistered}
-Xeon\textsuperscript{\tiny\textregistered} Gold 5118 processors
+fall between 0.98 and 6.29 hours. The simulations with smaller perturbation
+frequencies required longer compute times because the larger timestep sizes led
+to greater changes in the variables per timestep. The compute times are
+comparable to the compute times for the CNRS-$SP_1$ and CNRS-$SP_3$ models on
+20 Intel\textsuperscript{\tiny\textregistered}
+Xeon\textsuperscript{\tiny\textregistered} Gold 5118 processors reported in
 \cite{blanco_neutronic_2021,blanco_neutronic_2020}.''
+
+        Table 9: Compute times required for one perturbation cycle in Step 2.1
+        for $f=0.0125$ Hz and $0.8$ Hz on 16 XE nodes (512 CPU cores).
+	    
+	    \begin{tabular}{l c c}
+		    \toprule
+		    $f$ [Hz] & 0.0125 & 0.8 \\
+		    \midrule
+		    Compute time [hours] & 6.29 & 0.98 \\
+		    \bottomrule
+	    \end{tabular}
         \end{solution}
-        \begin{table}[htb]
-	\caption{Compute times required for one perturbation cycle in Step 2.1 for
-	$f=0.0125$ Hz and $0.8$ Hz on 16 XE nodes (512 CPU cores).}
-	\centering
-	\small
-	\setlength\tabcolsep{1.5pt}
-	\begin{tabular}{l c c}
-		\toprule
-		$f$ [Hz] & 0.0125 & 0.8 \\
-		\midrule
-		Compute time [hours] & 6.29 & 0.98 \\
-		\bottomrule
-	\end{tabular}
-	\label{table:compute}
-\end{table}
 
         %---------------------------------------------------------------------
         \question At some point, the authors mention:
@@ -572,7 +630,7 @@ Xeon\textsuperscript{\tiny\textregistered} Gold 5118 processors
 In my understanding, stability problems result from the pressure-velocity coupling, and should not affect precursors. Can the authors confirm that  they observe stability problems on the precursors equations when not using discontinuous finite elements?
 
         \begin{solution}
-        	Thank you for pointing out this point of confusion. By ``numerical
+        	Thank you for identifying this point of confusion. By ``numerical
         	instability'', we are referring to node-to-node oscillations in the
         	velocity, temperature, and precursors near discontinuous
         	boundary conditions (such as the top-left corner where the zero and
@@ -581,8 +639,10 @@ In my understanding, stability problems result from the pressure-velocity coupli
         	\cite{kuhlmann_lid-driven_2018}. FVM solvers do not encounter
         	this issue due to their cell-centered implementation. We now
         	realize that readers may confuse this issue with the more commonly
-        	known pressure-velocity coupling instability issue. Please refer to
-        	our reply to comment (9) for the relevant edits to improve clarity.
+        	known pressure-velocity coupling instability issue. We have made
+        	the following modifications:
+        	
+        	``The velocity, temperature, and delayed neutron precursor variables are all susceptible to numerical node-to-node oscillations near discontinuous boundary conditions commonly observed when resolving advection-dominated transport using continuous FEM \cite{kuhlmann_lid-driven_2018}. MOOSE's \texttt{Navier-Stokes} module provides the SUPG stabilization scheme \cite{brooks_streamline_1982} for the velocity and temperature variables to combat these oscillations. We refer readers to \cite{peterson_overview_2018} for details on the implementation of these methods in the \texttt{Navier-Stokes} module. For the delayed neutron precursor variables, we discretized them using discontinuous shape functions supported by MOOSE's DGFEM solver. The cell-centered DGFEM scheme does not produce the aforementioned numerical oscillations observed with node-centered continuous FEM.''
         \end{solution}
 
         %---------------------------------------------------------------------
@@ -591,13 +651,9 @@ In my understanding, stability problems result from the pressure-velocity coupli
 \section*{Other Changes}
 
 \begin{itemize}
-    \item Minor grammatical edits
-    \item Replaced the word ``tool'' with ``solver'' when referring to
-    multiphysics solvers
+    \item Minor grammatical corrections
     \item Replaced all references of ``Rattlesnake'' to its new name
     ``Griffin''
-    \item Replaced ``criticality search'' with ``neutronics criticality
-    calculations''
 \end{itemize}
 
 \bibliographystyle{unsrt}
