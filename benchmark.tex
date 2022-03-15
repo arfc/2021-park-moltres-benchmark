@@ -5,9 +5,9 @@ benchmark for multiphysics software dedicated to modeling \glspl{MSR}. It
 consists of three phases and eight steps in total. Each
 step is a well-defined subproblem for systematically assessing the
 capabilities of \gls{MSR} software and pinpointing sources of discrepancies
-between software. Phase 0 consists three single-physics problems in fluid
+between software. Phase 0 consists of three single-physics problems in fluid
 dynamics, neutronics, and temperature, respectively. Phase 1 consists
-of four coupled, steady-state problems. Lastly, Phase 2 consists of one
+of four coupled steady-state problems. Lastly, Phase 2 consists of one
 coupled, time-dependent problem.
 
 \begin{figure}[htb!]
@@ -27,9 +27,9 @@ Standard vacuum boundary conditions apply for neutron flux along all
 boundaries whereby outgoing neutrons are considered lost, while homogeneous
 boundary conditions apply for delayed neutron precursors. No-slip boundary
 conditions apply for velocity variables in the cavity, except along the top
-boundary for Steps 0.1, 0.3, 1.1, 1.2, and 1.4 which impose forced flow in the
+boundary for Steps 0.1, 0.3, 1.1, 1.2, and 1.4, which impose forced flow in the
 form of lid-driven
-cavity flow. For the temperature variable, all boundaries are insulated and we
+cavity flow. For the temperature variable, all boundaries are insulated, and we
 simulate salt cooling with the following volumetric heat sink equation:
 %
 \begin{align}
@@ -69,7 +69,7 @@ dependence in the cross sections and the neutron diffusion coefficients:
 
 The benchmark also prescribes incompressible Navier-Stokes flow with the
 Boussinesq approximation for evaluating the salt flow in the
-domain, but does not restrict the type of neutronics model.
+domain but does not restrict the type of neutronics model.
 The following subsections briefly detail each benchmark step, with Table
 \ref{table:benchmark} listing the relevant input parameters and observables.
 
@@ -273,7 +273,7 @@ criticality eigenvalue problems.
 
 \subsubsection{Step 1.1: Circulating fuel}
 
-This step investigates effects of fuel salt flow on the neutronics,
+This step investigates the effects of fuel salt flow on the neutronics,
 namely the reactivity loss from the movement of precursors. The delayed neutron
 precursors are allowed to drift under the fixed velocity field from Step 0.1
 while keeping the temperature $T$ fixed at 900 K. With eight precursor groups,
@@ -302,11 +302,11 @@ velocity field from Step 0.1 and a volumetric heat sink described by Equation
 
 Building on the previous step, we replace the fixed velocity field with
 buoyancy-driven flow arising from the temperature gradients for a fully-coupled
-multiphysics problem without forced flow. Barring any major discrepancies in
-the previous steps, this step assesses the capability to reproduce the correct
-buoyancy-driven flow profile and the subsequent effects on the neutronics and
-temperature distribution due to precursor drift and fuel density reactivity
-feedback.
+multiphysics problem without forced flow. Barring any significant discrepancies
+in the previous steps, this step assesses the capability to reproduce the
+correct buoyancy-driven flow profile and the subsequent effects on the
+neutronics and temperature distribution due to precursor drift and fuel density
+reactivity feedback.
 
 \subsubsection{Step 1.4: Full coupling}
 
@@ -325,7 +325,7 @@ studied.
 
 \subsubsection{Step 2.1: Forced convection transient}
 
-Linear perturbation analyses are performed in this step by introducing periodic
+Linear perturbation analyses are performed by introducing periodic
 perturbations to the heat transfer coefficient $\gamma$ and studying the gain
 and phase shift of the response in the total power $P$. For the initial
 conditions, the steady-state solution from Step 1.4 with
